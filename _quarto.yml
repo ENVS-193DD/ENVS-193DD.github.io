@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "ENVS-193DD.github.io"
+  title: "ENVS 193DD"
   navbar:
     left:
       - href: index.qmd

@@ -1,8 +1,6 @@
 ---
-title: "ENVS 193DD"
+title: "Data Science for Environmental Studies"
 ---
-
-# Data Science for Environmental Studies
 
 Spring 2026
 
