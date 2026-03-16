@@ -1,16 +1,23 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "system-checks.html",
+    "href": "system-checks.html",
+    "title": "System checks",
     "section": "",
-    "text": "About this site"
+    "text": "this is where all system checks will live"
+  },
+  {
+    "objectID": "in-class-materials.html",
+    "href": "in-class-materials.html",
+    "title": "In-class materials",
+    "section": "",
+    "text": "This is where all class materials will live"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "ENVS-193DD.github.io",
+    "title": "ENVS 193DD",
     "section": "",
-    "text": "This website is IN PROGRESS FOR SPRING 2026!"
+    "text": "Data Science for Environmental Studies\nSpring 2026\n\n\nTeaching team\nThis website is IN PROGRESS FOR SPRING 2026!"
   }
 ]

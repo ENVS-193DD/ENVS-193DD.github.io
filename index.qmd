@@ -1,5 +1,13 @@
 ---
-title: "ENVS-193DD.github.io"
+title: "ENVS 193DD"
 ---
+
+# Data Science for Environmental Studies
+
+Spring 2026
+
+# Teaching team
+
+
 
 This website is IN PROGRESS FOR SPRING 2026!
