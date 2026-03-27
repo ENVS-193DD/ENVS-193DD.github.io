@@ -1,23 +1,100 @@
 [
   {
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nindex\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ENVS 193DD",
+    "section": "",
+    "text": "Spring 2026\n\nTeaching team\nThis website is IN PROGRESS FOR SPRING 2026!"
+  },
+  {
+    "objectID": "assignments/getting-set-up.html",
+    "href": "assignments/getting-set-up.html",
+    "title": "Getting set up",
+    "section": "",
+    "text": "Optional check in due on Monday 30 March (Week 1) at 11:59 PM\nIn this class, we’ll be using R and RStudio to code up our statistical analyses. Walk through these steps to make sure you have both programs on your computer and that everything is working properly. You need to make sure all tasks are completed before workshop on Friday."
+  },
+  {
+    "objectID": "assignments/getting-set-up.html#change-your-color-scheme.",
+    "href": "assignments/getting-set-up.html#change-your-color-scheme.",
+    "title": "Getting set up",
+    "section": "Change your color scheme.",
+    "text": "Change your color scheme.\nYou don’t have to stick with the boring RStudio color scheme! Go to Appearance and select the color scheme you want.\n\n\n\n\n\nClick apply before moving on!"
+  },
+  {
+    "objectID": "assignments/getting-set-up.html#change-your-workspace-save-settings.",
+    "href": "assignments/getting-set-up.html#change-your-workspace-save-settings.",
+    "title": "Getting set up",
+    "section": "Change your workspace save settings.",
+    "text": "Change your workspace save settings.\nForming good data science habits starts from the beginning. Changing your workspace save settings will allow you to start with a clean, blank slate every time you open RStudio.\nGo to the General tab. Make sure that:\n\n“Restore most recently opened project at startup” is unchecked\n\n“Restore previously open source documents at startup” is unchecked\n\n“Restore .Rdata into workspace at startup” is unchecked\n\n“Save workspace to .RData on exit” is “Never”\n\n“Always save history (even when not saving .RData)” is unchecked\n\n\n\n\n\n\n\nSome of these may already be checked! If so, great! Double check everything though!\n\n\n\n\n\n\n\n\n\n\n\nClick apply before moving on!"
+  },
+  {
+    "objectID": "assignments/getting-set-up.html#change-your-code-editing-settings.",
+    "href": "assignments/getting-set-up.html#change-your-code-editing-settings.",
+    "title": "Getting set up",
+    "section": "Change your code editing settings.",
+    "text": "Change your code editing settings.\nThen, go to the Code tab. Under editing, make sure:\n\n“Insert spaces for Tab” is checked\n\n“Auto-detect code indentation” is checked\n\n“Insert matching parens/quotes” is checked\n\n“Use native pipe operator, |&gt;” is checked\n\n“Auto-indent code after paste” is checked\n\n“Vertically align arguments in auto-indent” is checked\n\n“Continue comment when inserting new line” is checked\n\n“Enable hyperlink highlighting in editor” is checked\n\n“Enable code snippets” is checked\n\n\n\n\n\n\nClick apply before moving on!"
+  },
+  {
+    "objectID": "assignments/getting-set-up.html#change-your-display-settings.",
+    "href": "assignments/getting-set-up.html#change-your-display-settings.",
+    "title": "Getting set up",
+    "section": "Change your display settings.",
+    "text": "Change your display settings.\nThen, go to Display (still under the Code tab). Make sure:\n\n“Highlight selected word” is checked\n\n“Show line numbers” is checked\n\n“Show margin” is checked\n\n“Soft-wrap source files” is checked\n\n“Blinking cursor” (if you want it) is checked\n\n“Enable preview of named and hexadecimal colors” is checked\n\n“Use rainbow parentheses” is checked\n\n\n\n\n\n\nClick apply before moving on!"
+  },
+  {
+    "objectID": "assignments/getting-set-up.html#change-your-markdown-settings.",
+    "href": "assignments/getting-set-up.html#change-your-markdown-settings.",
+    "title": "Getting set up",
+    "section": "Change your Markdown settings.",
+    "text": "Change your Markdown settings.\nThen, go to the R Markdown tab. Under basic, make sure the following is checked:\n\n“Soft-wrap R Markdown files” is checked\n\n“Show output inline for all R Markdown documents” is unchecked\n\n“Show output preview in:” selection is “Viewer Pane”\n\n“Show document outline by default” is checked\n\n\n\n\n\n\nClick apply before moving on!"
+  },
+  {
+    "objectID": "assignments/getting-set-up.html#change-your-visual-settings.",
+    "href": "assignments/getting-set-up.html#change-your-visual-settings.",
+    "title": "Getting set up",
+    "section": "Change your visual settings.",
+    "text": "Change your visual settings.\nUnder visual (still under the R Markdown tab), make sure:\n\n“Use visual editor by default for new documents” is unchecked\n\n“Show document outline by default” is checked\n\n\n\n\n\n\nClick apply to save all your changes! Do not move on to the next task without hitting apply!"
+  },
+  {
+    "objectID": "assignments/getting-set-up.html#take-a-screenshot-of-your-rstudio-window-with-the-console-showing",
+    "href": "assignments/getting-set-up.html#take-a-screenshot-of-your-rstudio-window-with-the-console-showing",
+    "title": "Getting set up",
+    "section": "Take a screenshot of your RStudio window with the Console showing",
+    "text": "Take a screenshot of your RStudio window with the Console showing\nYour screenshot should look something like this:\n\n\n\n\n\n\n\n\n\n\n\nDouble check your screenshot!\n\n\n\n\n\nTake a screenshot of your whole RStudio window. Make sure that the messages in the orange box (above) are visible in your screenshot! Otherwise we will not be able to troubleshoot whatever issues you are having with installation (if you are actually having any)."
+  },
+  {
+    "objectID": "assignments/getting-set-up.html#take-a-screenshot-of-your-rstudio-window-with-the-terminal-showing",
+    "href": "assignments/getting-set-up.html#take-a-screenshot-of-your-rstudio-window-with-the-terminal-showing",
+    "title": "Getting set up",
+    "section": "Take a screenshot of your RStudio window with the Terminal showing",
+    "text": "Take a screenshot of your RStudio window with the Terminal showing\nYour screenshot should look something like this:\n\n\n\n\n\n\n\n\n\n\n\nDouble check your screenshot!\n\n\n\n\n\nAgain, take a screenshot of your whole RStudio window. Make sure that the messages in the orange box (above) are visible in your screenshot! Otherwise we will not be able to troubleshoot whatever issues you are having with installation (if you are actually having any)."
+  },
+  {
+    "objectID": "assignments/getting-set-up.html#take-a-screenshot-of-your-envs-193ds-folder",
+    "href": "assignments/getting-set-up.html#take-a-screenshot-of-your-envs-193ds-folder",
+    "title": "Getting set up",
+    "section": "Take a screenshot of your ENVS-193DS folder",
+    "text": "Take a screenshot of your ENVS-193DS folder\nLastly, take a screenshot of your ‘ENVS-193DS’ folder set up from task 1. It should be evident what the file path is, either from a path at the bottom of the window or on the side. It doesn’t matter where the file path appears in your screenshot as long as you can tell where the folder is. Your screenshot should look something like this:\n\n\n\n\n\nUpload all three screenshots to Canvas for your optional check-in."
+  },
+  {
+    "objectID": "assignments.html",
+    "href": "assignments.html",
+    "title": "Assignments",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nGetting set up\n\n\nMar 30, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "system-checks.html",
     "href": "system-checks.html",
     "title": "System checks",
     "section": "",
     "text": "this is where all system checks will live"
-  },
-  {
-    "objectID": "in-class-materials.html",
-    "href": "in-class-materials.html",
-    "title": "In-class materials",
-    "section": "",
-    "text": "This is where all class materials will live"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Data Science for Environmental Studies",
-    "section": "",
-    "text": "Spring 2026\n\nTeaching team\nThis website is IN PROGRESS FOR SPRING 2026!"
   }
 ]

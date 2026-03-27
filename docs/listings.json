@@ -1,0 +1,14 @@
+[
+  {
+    "listing": "/resources.html",
+    "items": [
+      "/resources/test/index.html"
+    ]
+  },
+  {
+    "listing": "/assignments.html",
+    "items": [
+      "/assignments/getting-set-up.html"
+    ]
+  }
+]

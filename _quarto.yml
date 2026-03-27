@@ -6,18 +6,23 @@ website:
   title: "ENVS 193DD"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
+      - href: https://docs.google.com/document/d/1lc34XEdLBvIMauBGT5pZ4mr_Ci99v-TsM8KhiZkVRnc/edit?usp=sharing
+        text: Syllabus
       - href: in-class-materials.qmd
         text: In-class materials
       - href: system-checks.qmd
         text: System checks
+      - href: assignments.qmd
+        text: Assignments
+      - href: resources.qmd
+        text: Resources
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme: 
+    - custom.scss
     toc: true
 
-
+editor: source
+lightbox: true
 
