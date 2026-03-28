@@ -21,6 +21,7 @@ $grey-blue: #A7C2CD;
 
 // greens
 $dark-green: #304830;
+$darker-green: #2F3425;
 $dark-sage-green: #607860;
 $light-sage-green: #92A587;
 $bright-green: #BED6B3;
@@ -47,7 +48,13 @@ $link-color: $light-orange;
 /*-- scss:rules --*/
 
 // header font & color
-h1, h2, h3, h4 {
+h1 {
+  font-family: $font-family-sans-serif;
+  color: $darker-green;
+}
+
+// header font & color
+h2, h3, h4 {
   font-family: $font-family-sans-serif;
   color: $dark-green;
 }
@@ -56,6 +63,13 @@ h1, h2, h3, h4 {
 h2 {
   border-bottom: 1px solid $dark-green;
   padding-bottom: 0.5rem;
+}
+
+
+
+body {
+  font-family: $font-family-sans-serif;
+  color: #181800;
 }
 
 .large-fa-icon {

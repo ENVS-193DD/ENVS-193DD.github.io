@@ -8,10 +8,10 @@ website:
     left:
       - href: https://docs.google.com/document/d/1lc34XEdLBvIMauBGT5pZ4mr_Ci99v-TsM8KhiZkVRnc/edit?usp=sharing
         text: Syllabus
-      - href: in-class-materials.qmd
-        text: In-class materials
-      - href: system-checks.qmd
-        text: System checks
+      # - href: in-class-materials.qmd
+      #   text: In-class materials
+      # - href: system-checks.qmd
+      #   text: System checks
       - href: assignments.qmd
         text: Assignments
       - href: resources.qmd
@@ -22,6 +22,9 @@ format:
     theme: 
     - custom.scss
     toc: true
+    toc-location: left
+    toc-depth: 5
+    code-tools: true
 
 editor: source
 lightbox: true
