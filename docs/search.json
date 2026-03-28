@@ -4,7 +4,7 @@
     "href": "resources.html",
     "title": "Resources",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nFormat for resubmission cover letter\n\n\nrequired for Revisions needed marks\n\n\n\n\nUsing the virtual machine\n\n\nCan’t install R/RStudio on your computer? Don’t have a computer? Use the virtual machine!\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nFormat for resubmission cover letter\n\n\nrequired for Revisions needed marks\n\n\n\n\nGuidelines and policies on using AI\n\n\nOpenness about using AI is good, actually!\n\n\n\n\nUsing the virtual machine\n\n\nCan’t install R/RStudio on your computer? Don’t have a computer? Use the virtual machine!\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -19,13 +19,6 @@
     "title": "Format for resubmission cover letter",
     "section": "",
     "text": "In a document, put the name of the assignment you want to resubmit and “resubmission cover letter” in the title (e.g. “Individual assignment 2 resubmission cover letter”).\nFor each component that you want to redo for the possibility of getting full marks, you will need to articulate (in 1-2 sentences):\n\nwhat you got wrong\nwhat you need to do to fix it\nwhy that fix would improve the quality of your work (independently of the grade you received)\n\nFor example, if you got “partial marks” for multiple plots where you had overlapping axis labels, a reasonable request would be:\n\nMy x-axis labels for Problem 2a, 3b, and 5c were overlapping.\nFor 2a, I need to either spread out the x-axis or fix the way I read in the data to make sure the columns are correct (so that the date column is read in as a date rather than a character). For 3b and 5c, I need to create a line break in the axis label.\nMaking sure the x-axis labels don’t overlap improves the figure because the text would be readable."
-  },
-  {
-    "objectID": "assignments.html",
-    "href": "assignments.html",
-    "title": "Assignments",
-    "section": "",
-    "text": "Order By\n       Default\n         \n          Due date - Oldest\n        \n         \n          Due date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\nGetting set up\n\n\nMar 30, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "assignments/getting-set-up.html",
@@ -103,6 +96,69 @@
     "title": "Getting set up",
     "section": "Triple checking your set up",
     "text": "Triple checking your set up\nIf you would like to verify your set up or get help, come see An on Tuesday the 31st of March between 9:30 AM - 12 PM in Bren 4017."
+  },
+  {
+    "objectID": "assignments.html",
+    "href": "assignments.html",
+    "title": "Assignments",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Due date - Oldest\n        \n         \n          Due date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\nGetting set up\n\n\nMar 30, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "resources/genAI.html",
+    "href": "resources/genAI.html",
+    "title": "Guidelines and policies on using AI",
+    "section": "",
+    "text": "Generative AI tools like ChatGPT, Claude, Copilot, etc. can help solve a lot of coding problems: if you’re stuck and don’t know where to start, if you have code that keeps giving you an error, etc. - most of these issues can be solved using AI. The key to effective use of generative AI tools in environmental studies is to be honest about its use."
+  },
+  {
+    "objectID": "resources/genAI.html#why-use-ai",
+    "href": "resources/genAI.html#why-use-ai",
+    "title": "Guidelines and policies on using AI",
+    "section": "",
+    "text": "Generative AI tools like ChatGPT, Claude, Copilot, etc. can help solve a lot of coding problems: if you’re stuck and don’t know where to start, if you have code that keeps giving you an error, etc. - most of these issues can be solved using AI. The key to effective use of generative AI tools in environmental studies is to be honest about its use."
+  },
+  {
+    "objectID": "resources/genAI.html#why-wouldnt-you-use-ai-in-this-class",
+    "href": "resources/genAI.html#why-wouldnt-you-use-ai-in-this-class",
+    "title": "Guidelines and policies on using AI",
+    "section": "Why wouldn’t you use AI in this class?",
+    "text": "Why wouldn’t you use AI in this class?\nIf you’re just starting out learning how to code, we recommend not using generative AI tools. You will likely retain a lot more information by googling, asking for help from classmates, meeting with An, or literally doing anything other than using a generative AI tool. In our experience, the conversations and discussions around materials and the struggle of sifting through a lot of information to try different things out is really effective for retaining information.\nAdditionally, while gen AI can quickly come up with code, it’s not always what you would expect, or what we expect to see in your assignments. It’s straightforward to see if it works - if the output is what you want, then the code works - but there are specifics in each assignment that you as a student enrolled in the class will know that an AI tool will not."
+  },
+  {
+    "objectID": "resources/genAI.html#if-i-want-to-use-ai-what-am-i-allowed-to-do",
+    "href": "resources/genAI.html#if-i-want-to-use-ai-what-am-i-allowed-to-do",
+    "title": "Guidelines and policies on using AI",
+    "section": "If I want to use AI, what am I allowed to do?",
+    "text": "If I want to use AI, what am I allowed to do?\nIf you want to use an AI tool, you may use it to:\n\nTo brainstorm or clarify your understanding of the assignment (e.g. “I have this idea but I’m not sure if it’s right. Can you help me figure out if it applies to this assignment?”)\n\nTo outline your approach or plan your workflow (e.g. “Can you help me figure out how to start this problem?”)\n\nTo clarify or deepen understanding of technical concepts (e.g. “What does this function do in my use case?”)\n\nTo generate or refine code snippets (e.g. “I wrote this code but I think it’s too long. How can I condense it?”)\n\nTo debug or troubleshoot code (e.g. “I wrote this code but it’s not working. What’s wrong with it?”)\n\nTo edit or improve the clarity, structure, or tone of my written responses (e.g. “I wrote this text to summarize a test but it’s too long. Can you help me shorten it to 1-2 sentences?”)\n\nTo check my reasoning, results, or interpretation of findings (e.g. “I interpreted a cleaning workflow in this way. Is my interpretation correct?”)"
+  },
+  {
+    "objectID": "resources/genAI.html#what-am-i-not-allowed-to-do",
+    "href": "resources/genAI.html#what-am-i-not-allowed-to-do",
+    "title": "Guidelines and policies on using AI",
+    "section": "What am I not allowed to do?",
+    "text": "What am I not allowed to do?\nYou are not allowed to use generative AI to produce new code for you to copy-paste into your assignments. Additionally, you may not use AI to generate new writing for you. For example, these prompts would not be allowed:\n\n“Write me code to visualize a boxplot.”\n\n“Write the description of this code.”\n\nAll code and writing in your assignments should be generated by you alone to start out with."
+  },
+  {
+    "objectID": "resources/genAI.html#im-ready-to-use-ai-on-my-assignments.-what-should-i-do-when-i-submit",
+    "href": "resources/genAI.html#im-ready-to-use-ai-on-my-assignments.-what-should-i-do-when-i-submit",
+    "title": "Guidelines and policies on using AI",
+    "section": "I’m ready to use AI on my assignments. What should I do when I submit?",
+    "text": "I’m ready to use AI on my assignments. What should I do when I submit?\nAll assignments need to include a generative AI statement of use (form here).\nKeep in mind that unreported or disallowed use of AI tools will result in an incomplete mark on an assignment and the assignment will not be eligible for revision or resubmission."
+  },
+  {
+    "objectID": "resources/genAI.html#im-not-sure-if-what-im-using-ai-for-is-allowed.-what-do-i-do",
+    "href": "resources/genAI.html#im-not-sure-if-what-im-using-ai-for-is-allowed.-what-do-i-do",
+    "title": "Guidelines and policies on using AI",
+    "section": "I’m not sure if what I’m using AI for is allowed. What do I do?",
+    "text": "I’m not sure if what I’m using AI for is allowed. What do I do?\nTalk to An!"
+  },
+  {
+    "objectID": "resources/genAI.html#im-troubled-about-ai-use-because-of-the-environmental-impacts-disadvantages-brain-deterioration-etc.-what-do-i-do",
+    "href": "resources/genAI.html#im-troubled-about-ai-use-because-of-the-environmental-impacts-disadvantages-brain-deterioration-etc.-what-do-i-do",
+    "title": "Guidelines and policies on using AI",
+    "section": "I’m troubled about AI use, because of the environmental impacts, disadvantages, brain deterioration, etc. What do I do?",
+    "text": "I’m troubled about AI use, because of the environmental impacts, disadvantages, brain deterioration, etc. What do I do?\nAgain, talk to An! I am here to help navigate this new landscape, and figure out a plan that works for you, whether that’s sparingly using AI, not using it at all and relying on other resources, etc."
   },
   {
     "objectID": "resources/using-virtual-machine.html",

@@ -3,6 +3,7 @@
     "listing": "/resources.html",
     "items": [
       "/resources/resubmissions.html",
+      "/resources/genAI.html",
       "/resources/using-virtual-machine.html"
     ]
   },
