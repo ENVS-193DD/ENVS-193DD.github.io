@@ -50,18 +50,22 @@ $link-color: $light-orange;
 // header font & color
 h1 {
   font-family: $font-family-sans-serif;
-  color: $darker-green;
+  color: $dark-sage-green;
+}
+
+h1.title {
+     color: $dark-green !important;
 }
 
 // header font & color
 h2, h3, h4 {
   font-family: $font-family-sans-serif;
-  color: $dark-green;
+  color: $dark-sage-green;
 }
 
-// line beneath h2
+// line beneath h1
 h2 {
-  border-bottom: 1px solid $dark-green;
+  border-bottom: 1px solid $dark-sage-green;
   padding-bottom: 0.5rem;
 }
 
