@@ -20,6 +20,7 @@ website:
 format:
   html:
     theme: 
+    - minty
     - custom.scss
     toc: true
     toc-location: left

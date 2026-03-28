@@ -15,7 +15,7 @@ At minimum, you need to have read through and completed tasks 1-8 (modifications
 :::
 
 :::{.callout-note title="What if I'm using the virtual machine?"}
-Follow steps 2 and 3 in the resource on [using the virtual machine]() INSERT NEW LINK HERE.  
+Follow steps 2 and 3 in the resource on [using the virtual machine](https://envs-193dd.github.io/resources/using-virtual-machine.html).  
 
 For set up, you will have to come back here and complete task 5.
 :::
@@ -237,9 +237,9 @@ Again, take a screenshot of your _whole_ RStudio window. Make sure that the mess
 :::
 
 
-### Take a screenshot of your `ENVS-193DS` folder
+### Take a screenshot of your `ENVS-193DD` folder
 
-Lastly, take a screenshot of your 'ENVS-193DS' folder set up from task 1. It should be evident what the file path is, either from a path at the bottom of the window or on the side. It doesn't matter where the file path appears in your screenshot as long as you can tell where the folder is. Your screenshot should look something like this: 
+Lastly, take a screenshot of your 'ENVS-193DD' folder set up from task 1. It should be evident what the file path is, either from a path at the bottom of the window or on the side. It doesn't matter where the file path appears in your screenshot as long as you can tell where the folder is. Your screenshot should look something like this: 
 
 ![](/assignments/images/getting-set-up/file-path.png){fig-align="center" width="90%"}
 

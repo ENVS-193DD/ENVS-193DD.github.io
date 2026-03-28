@@ -41,7 +41,7 @@ $purple: #654783;
 $navbar-bg: $dark-green;
 $navbar-fg: $light-cream; 
 $navbar-hl: $light-orange; 
-$body-color: $dark-green;
+$body-color: #181800;
 $footer-bg: $light-blue; 
 $link-color: $light-orange;
 
@@ -67,13 +67,6 @@ h2, h3, h4 {
 h2 {
   border-bottom: 1px solid $dark-sage-green;
   padding-bottom: 0.5rem;
-}
-
-
-
-body {
-  font-family: $font-family-sans-serif;
-  color: #181800;
 }
 
 .large-fa-icon {
@@ -119,5 +112,5 @@ thead, tbody, tfoot, tr, td, th {
 }
 
 #title-block-header.quarto-title-block.default .quarto-title .title {
-    color: $dark-green;
+    color: #fcfaf5;
 }
