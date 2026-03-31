@@ -50,20 +50,15 @@ $link-color: $light-orange;
 // header font & color
 h1 {
   font-family: $font-family-sans-serif;
-  color: $dark-sage-green;
+  color: $darker-green;
 }
 
-h1.title {
-     color: $dark-green !important;
-}
-
-// header font & color
 h2, h3, h4 {
   font-family: $font-family-sans-serif;
   color: $dark-sage-green;
 }
 
-// line beneath h1
+// line beneath h2
 h2 {
   border-bottom: 1px solid $dark-sage-green;
   padding-bottom: 0.5rem;
@@ -112,5 +107,5 @@ thead, tbody, tfoot, tr, td, th {
 }
 
 #title-block-header.quarto-title-block.default .quarto-title .title {
-    color: #fcfaf5;
+    color: $pale-blue;
 }

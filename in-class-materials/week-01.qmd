@@ -1,0 +1,305 @@
+---
+title: "Water surface elevation at Venoco Bridge"
+subtitle: "Week 1"
+categories: [tidyverse, dplyr, '$', '<-', '|>', pseudocode, min(), max(), nrow(), select(), mutate(), filter(), group_by(), summarize(), ungroup(), ggplot(), geom_point(), geom_line()]
+---
+
+# Summary
+
+## Guiding question
+
+How does mean daily water surface elevation change over the course of a single water year at Venoco Bridge?
+
+## Data science tools
+
+To answer this question, we will
+
+- use functions to manipulate objects or variables
+- use packages to take advantage of collections of specialized functions
+- extract variables from data using the `$` operator
+- assign values to objects using the `<-` operator
+- connect functions together using the `|>` operator
+- write _pseudocode_ to plan a workflow before coding it up
+- explore data using:
+  - `min()`
+  - `max()`
+  - `nrow()`
+- wrangle data using:
+  - `select()`
+  - `mutate()`
+  - `filter()`
+- summarize data using:
+  - `group_by()`, `summarize()`, `ungroup()`
+- visualize data using:
+  - `ggplot()` and its associated functions
+  
+# In-class code
+
+## 1. Set up
+
+A set up section is a nice location to read/load in packages and/or data that you'll use later in your script.  
+
+It is best practice to start any script with all the materials you will need later on. This includes both your packages and your data.  
+
+Start this set up section by reading in the `tidyverse` package.  
+
+```{r}
+#| message: false
+
+library(tidyverse)
+```
+
+Then, read in the data.  
+
+Name the object `venoco_water`. Use the assignment operator (i.e. the left arrow operator) and the function `read_csv()` to store the values.
+
+```{r}
+#| echo: false
+#| message: false
+
+venoco_water <- read_csv(here::here("data", "venoco-water.csv"))
+```
+
+
+```{r}
+#| eval: false
+
+venoco_water <- read_csv("venoco-water.csv")
+```
+
+:::{.callout-note title="Functions to read in data"}
+
+There are many functions to read in data. We will use the `read_csv()` function from the `readr` package in the `tidyverse` because it is good  at understanding the values that are in each column of a file.
+
+:::
+
+## 2. Data exploration
+
+Then, examine at the data by:  
+
+1. clicking on the object in the Environment or running `View(venoco_water)` in the Console
+2. exploring the variables in the dataset using `str(venoco_water)` in the Console
+3. determining the object type by running `class(venoco_water)` in the Console
+
+There are four columns in this dataset:  
+
+- `date`, which is a Date in ISO 8601 format
+- `time`, which is an `hms` object (hms stands for hours minutes seconds)
+- `level`, which is a numeric
+- `temperature`, which is a numeric
+
+How many observations are in this dataset?
+
+```{r}
+nrow(venoco_water)
+```
+
+There are 31974 observations.  
+
+How could you look at all the measurements of water elevation in this dataset?
+
+```{r}
+#| eval: false
+
+venoco_water$comp_level_ft
+```
+
+
+```{r}
+#| echo: false
+
+options(max.print = 50)
+
+venoco_water$comp_level_ft
+```
+
+This is useful, but not that informative. We can figure out some information about water elevation by applying functions.
+
+In this case, we want to know what the lowest measurement of water elevation is.
+
+```{r}
+min(venoco_water$comp_level_ft, na.rm = TRUE)
+```
+
+But we also remember that the logger is slightly higher than sea level too.
+
+Accounting for that:
+
+```{r}
+min(venoco_water$comp_level_ft, na.rm = TRUE) + 2.96
+```
+
+The lowest water elevation measured at Venoco bridge was 2.97 ft above sea level. 
+
+What was the highest measurement of water elevation in the dataset, accounting for the elevation of the logger?
+
+```{r}
+max(venoco_water$comp_level_ft, na.rm = TRUE) + 2.96
+```
+
+The highest water elevation measured at Venoco bridge was 9.86 ft above sea level. 
+
+## 3. Cleaning the data
+
+This dataset includes a lot of columns and rows that we don't need.  
+
+We can use functions from packages in the `tidyverse` to help us clean the data.  
+
+First, we could use `filter()` from the `dplyr` package in the `tidyverse` to filter the dataset to only include dates from the 2025 water year.
+
+```{r}
+water1 <- filter(
+  venoco_water, # starting with venoco_water
+  wy == "2025" # only include observations from 2025 water year
+)
+```
+
+Then, we could use `mutate()` (also from `dplyr`) to create a new column in which the values are water elevations converted to meters.
+
+```{r}
+water2 <- mutate(
+  water1, # starting with water1 data frame
+  comp_level_m = (comp_level_ft + 2.96) * 0.3048 # adding logger height and converting to meters from ft
+)
+```
+
+Then, we could use `select()` (also from `dplyr`) to choose the columns we 
+need to answer our guiding question.
+
+```{r}
+water3 <- select(
+  water2, # starting with water2 data frame
+  date, comp_level_m, temperature # select columns of interest
+)
+```
+
+## 4. The pipe operator
+
+Creating multiple data frames (`water1`, `water2`, `water3`) as we did above can be tedious. Instead, you can use the pipe operator `|>` to chain functions together.  
+
+You can think of the pipe operator as being a way of saying "and then".  
+
+In the code we will write, we could say that we will:  
+ 
+- create a new object called `venoco_clean` from `venoco_water` and then...
+- filter to only include `wy` that matches `2025` and then...
+- mutate to create a new column called `comp_level_m` to add logger elevation 
+  to `comp_level_ft` and convert to meters and then...
+- select the columns of interest (only `date`, `comp_level_m`, and `temperature`)
+
+This is "pseudocode". Pseudocode looks different depending on the coding language, but in this class, "pseudocode" will refer to a bulleted list of steps you will later write in code.
+ 
+Writing pseudocode makes working with data much more straightforward. If you can plan out your code in plain language, it is easier to write the code (and troubleshoot when things go wrong!).
+ 
+```{r}
+# create a new object from venoco_water
+venoco_clean <- venoco_water |> 
+  # filter to only include 2025 water year
+  filter(wy == "2025") |> 
+  # create a new column to convert water elevation in ft to meters
+  mutate(comp_level_m = (comp_level_ft + 2.96) * 0.3048) |> 
+  # select columns of interest
+  select(date, comp_level_m, temperature)
+```
+
+## 5. Grouping data
+
+In this dataset, each row is an observation of water level elevation at a particular time on a given day.  
+
+What if you want to visualize the mean water level for a given day?  
+  
+You can add a function called `group_by()` from the `dplyr` package which allows you to "group" a data frame.  
+When you use `group_by()`, you are essentially telling R: there are "groups" in this data frame that I need to pay attention to.  
+
+When you pair `group_by()` with `summarize()` (also from `dplyr`), you can calculate summary statistics (e.g. calculate the mean daily water elevation) by each group (the date).
+
+In this next section, we will:  
+
+- create a new object called `venoco_daily` from `venoco_clean`
+- group by date to
+- summarize (calculate) mean daily water level in m
+- ungroup the dataframe
+ 
+```{r}
+# create new object from venoco_clean
+venoco_daily <- venoco_clean |> 
+  # group data frame by date
+  group_by(date) |> 
+  # calculate mean water level in meters for a given day
+  summarize(mean_level_m = mean(comp_level_m, na.rm = TRUE)) |> 
+  # ungroup the data frame
+  ungroup()
+```
+
+## 6. Visualizing data
+
+To answer our question (How does mean daily water surface elevation change over the course of a single water year at Venoco Bridge?), we need to visualize the data in a timeseries plot.
+
+Timeseries plots have time on the x-axis and the variable of interest on the y-axis.
+
+To visualize the data, we'll use `ggplot()` and its associated functions, which are all in the `ggplot2` package in the `tidyverse`.
+
+The main parts of creating a plot in ggplot() are:  
+
+1. the **global call**: telling R that you want to use `ggplot()` by naming the
+   function
+2. the **data and mapping**: telling R the data frame you want to use (with the
+   argument `data = `) and the columns in that data frame to plot (with the
+   argument `mapping =` and the `aes()` function for the "aesthetics")
+3. the **geometries**: these are the shapes, lines, etc. in the plot. In this
+   case, we'll use two geometries: `geom_point()` to represent mean daily
+   water elevation and `geom_line()` to represent connections between each 
+   day.
+
+```{r}
+# base layer: ggplot
+ggplot(data = venoco_daily,
+       # x-axis should be date
+       # y-axis should be mean daily water elevation
+       mapping = aes(x = date,
+                     y = mean_level_m)) +
+  # first layer: points
+  geom_point(color = "#287948") +
+  # second layer: line
+  geom_line(color = "#287948") +
+  # relabeling x- and y-axes, adding title
+  labs(x = "Date",
+       y = "Mean daily water elevation (m)",
+       title = "Water year 2025 (01 October 2024 - 30 September 2025)") +
+  # using theme that is different from default
+  theme_bw()
+```
+
+## 7. Understanding trends
+
+What seasonal trends can you see?  
+
+Highs: February, March, April  
+Declines: April to August  
+More increases: August, September  
+
+## 8. Understanding warnings
+
+When you run the code to make the plot, you get a warning.
+
+That warning means there is a missing value in your dataset that can't be plotted (because it's missing).
+
+You can use the `is.na()` function to determine which values are missing.
+
+```{r}
+is.na(venoco_daily$mean_level_m)
+```
+
+That's not super helpful.
+
+```{r}
+venoco_daily |> 
+  filter(is.na(mean_level_m))
+```
+
+The missing value is from 2025-09-03.
+
+**END OF CLASS MATERIALS**
+
+
+

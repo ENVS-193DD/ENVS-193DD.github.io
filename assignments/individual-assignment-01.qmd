@@ -1,0 +1,201 @@
+---
+title: "Individual assignment 1"
+date: 2026-04-10
+---
+
+# Set up
+
+1. Fill in your name in the `individual-assignment-template.R` script.
+2. File > Save as > `lastname-firstname_individual-assignment-01.R`.
+3. Read in your packages.  
+4. Read in your data.  
+5. Copy paste any code you need from class into your assignment script.
+
+:::{.callout-note title="Practice your own editorial judgement!" collapse="true"}
+You will not need _all_ the code from class to do your assignment.  
+
+You will need to pick and choose the components that are relevant to the assignment.  
+
+If you copy-paste your entire class script into your homework, you will need to revise your assignment!
+:::
+
+6. Start your homework!
+
+# Problems
+
+## 1. Exploring missing data
+
+### a. Write pseudocode
+
+In class, we practiced writing "pseudocode" to group and summarize the data. Write pseudocode to calculate the number of missing water elevation values from 2025-09-03.  
+
+Remember that pseudocode should not include any actual code. It should be plain language in the _format_ of code.
+
+### b. Code up your pseudocode.
+
+Write the code that corresponds to the pseudocode that you wrote in part a.  
+
+Annotate all your code.  
+
+Show the output.
+
+### c. Number of missing values
+
+In 1 sentence, state how many missing values there are for water elevation on 2025-09-03. 
+
+## 2. Exploration of temperature data
+
+For this exercise, be sure you are looking at `venoco_water` using `View(venoco_water)`.  
+
+Use the column manipulations to answer these questions.
+
+### a. Lowest temperature
+
+On what date and at what time was the lowest temperature taken? What was the lowest temperature? 
+
+Express all numbers with units as needed.
+
+### b. Highest temperature
+
+On what date and at what time was the highest temperature taken? What was the highest temperature? 
+
+Express all numbers with units as needed.
+
+## 3. Another visualization
+
+### a. Write pseudocode to clean and summarize data
+
+Write pseudocode to calculate the mean daily temperature at Venoco Bridge.
+
+### b. Code up your pseudocode.
+
+Code the pseudocode you wrote in part a.  
+
+### c. Write pseudocode to visualize data
+
+Write pseudocode to visualize mean daily temperature through time.  
+
+Use point and line geometries.  
+
+Make sure your pseudocode includes lines for labelling x- and y-axes.
+
+### d. Code up your pseudocode
+
+Make a visualization of temperature through time following the pseudocode you wrote in part a.  
+
+Annotate each function in your code to demonstrate your understanding of what you've written.
+
+### e. Comparing temporal trends
+
+Does temperature follow similar temporal trends as water elevation? Why or why not?  
+
+Compare the visual components of each plot to justify your answer.
+
+## 4. Dealing with dates
+
+### a. Types of objects
+
+The earliest observation recorded in the dataset was from `2024-11-13`. Run `str("2024-11-13")` in the _Console_.  
+
+What type of object is this?  
+
+Reference specific components of the output of `str("2024-11-13")` to justify your response.
+
+### b. Other types of objects
+
+Now, run `str(as.Date("2024-11-13"))` in the _Console_.  
+
+In one sentence, describe what type of object is this. Use the specific components of the output of `str(as.Date("2024-11-13"))` to justify your response.
+
+### c. Working with a new dataset
+
+Read in the precipitation data using the following code **in your set up section**:
+
+```{r}
+#| eval: false
+
+precip <- read_csv("NOAA_daily_summaries_USW00053152_full_2025-12-09.csv")
+```
+
+List the variables and what values they contain in a bulleted list.
+
+### d. Write pseudocode to filter the dataset
+
+Write pseudocode to create a new object called `precip_filtered` to filter the dataset to only include precipitation readings from after 2024-09-30 and before 2025-10-01 (the 2025 water year).
+
+### e. Code up your pseudocode
+
+Code your pseudocode that you wrote in part d.  
+
+Annotate all lines.  
+
+:::{.callout-hint title="Function combinations" collapse="true"}
+Try using `as.Date()` and `filter()` together for this problem.
+:::
+
+### f. Connecting information
+
+Look at the `precip_filtered` data frame. Find the column that corresponds to precipitation in inches called `PRCP`.    
+
+What three dates in the `precip_filtered` data frame likely correspond to peaks in water elevation in (m) from the figure we made in class?  
+
+Be specific by stating the date and the amount of precipitation in inches, and which peak the precipitation date connects to (e.g. the peak in [insert month here] likely corresponds to precipitation on [this date], which was [insert amount in inches here]). 
+
+# Assignment checklist
+
+Your script should:
+
+- [ ] include your name at the top of the script  
+- [ ] include all code with annotations (see "General formatting components" for details)   
+- [ ] be organized and readable (see "General formatting components" for details)     
+- [ ] run from top to bottom in a clean R environment with no objects pre-saved
+
+Your responses should include:  
+
+for Problem 1:   
+
+- [ ] written response for Problem 1a
+- [ ] annotated code for Problem 1b
+- [ ] written response for Problem 1c
+
+for Problem 2:  
+
+- [ ] written response for Problem 2a
+- [ ] written response for Problem 2b
+
+for Problem 3:  
+
+- [ ] written response for Problem 3a
+- [ ] annotated code for Problem 3b
+- [ ] written response for Problem 3c
+- [ ] annotated code for Problem 3d
+- [ ] written response for Problem 3e
+
+for Problem 4:  
+
+- [ ] written response for Problem 4a
+- [ ] written response for Problem 4b
+- [ ] written response for Problem 4c
+- [ ] written response for Problem 4d
+- [ ] annotated code for Problem 4e
+- [ ] written response for Problem 4d
+
+Lastly, check out the **rubric on Canvas** to see the component breakdown in more detail.  
+
+Your final submission should include:  
+
+- [ ] your script uploaded to Canvas with the correct file name
+- [ ] your submitted [Generative AI statement of use](https://docs.google.com/forms/d/e/1FAIpQLSevf1zSjndFN-XMyKrCmpiIl-K6pwP4aUShOzI94t0ZW-yiuw/viewform) by the due date
+
+# General formatting components
+
+You will only receive full marks for annotations if you have:  
+
+- meaningful comments on each line of visualization code and/or ggplot geom/theme call (not needed for each argument, though good to have)  
+- meaningful comments on each function in any piping operations  
+- meaningful comments in set up code to denote where packages and/or data are read in
+
+You will only receive full marks for readability if:  
+
+- code includes carriage returns, spaces, etc. to make pipe operations and arguments clear  
+- code includes consistent spacing and indents
