@@ -48,12 +48,7 @@ $link-color: $light-orange;
 /*-- scss:rules --*/
 
 // header font & color
-h1 {
-  font-family: $font-family-sans-serif;
-  color: $darker-green;
-}
-
-h2, h3, h4 {
+h1, h2, h3, h4 {
   font-family: $font-family-sans-serif;
   color: $dark-sage-green;
 }
