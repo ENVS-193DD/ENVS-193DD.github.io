@@ -37,7 +37,9 @@ Write the code that corresponds to the pseudocode that you wrote in part a.
 
 Annotate all your code.  
 
-Show the output.
+::: {.column-margin}
+edited 2026-04-02: took out requirement to show output (though output does have to be correct!)
+:::
 
 ### c. Number of missing values
 

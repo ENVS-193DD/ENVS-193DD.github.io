@@ -200,7 +200,7 @@
     "href": "assignments/individual-assignment-01.html#exploring-missing-data",
     "title": "Individual assignment 1",
     "section": "1. Exploring missing data",
-    "text": "1. Exploring missing data\n\na. Write pseudocode\nIn class, we practiced writing “pseudocode” to group and summarize the data. Write pseudocode to calculate the number of missing water elevation values from 2025-09-03.\nRemember that pseudocode should not include any actual code. It should be plain language in the format of code.\n\n\nb. Code up your pseudocode.\nWrite the code that corresponds to the pseudocode that you wrote in part a.\nAnnotate all your code.\nShow the output.\n\n\nc. Number of missing values\nIn 1 sentence, state how many missing values there are for water elevation on 2025-09-03."
+    "text": "1. Exploring missing data\n\na. Write pseudocode\nIn class, we practiced writing “pseudocode” to group and summarize the data. Write pseudocode to calculate the number of missing water elevation values from 2025-09-03.\nRemember that pseudocode should not include any actual code. It should be plain language in the format of code.\n\n\nb. Code up your pseudocode.\nWrite the code that corresponds to the pseudocode that you wrote in part a.\nAnnotate all your code.\n\n\nedited 2026-04-02: took out requirement to show output (though output does have to be correct!)\n\n\nc. Number of missing values\nIn 1 sentence, state how many missing values there are for water elevation on 2025-09-03."
   },
   {
     "objectID": "assignments/individual-assignment-01.html#exploration-of-temperature-data",
