@@ -1,0 +1,262 @@
+---
+title: "Individual assignment 2"
+date: 2026-04-17
+---
+
+# Set up
+
+1. Fill in your name in the YAML of the `individual-assignment-template.qmd` file.
+2. Read in your packages.  
+3. Read in your data.  
+4. Copy paste any code you need from class into your assignment script.
+
+:::{.callout-note title="Practice your own editorial judgement!" collapse="true"}
+You will not need _all_ the code from class to do your assignment.  
+
+You will need to pick and choose the components that are relevant to the assignment.  
+
+If you copy-paste your entire class script into your homework, you will need to revise your assignment!
+:::
+
+5. Render to .pdf to make sure that you can render (if not, come ask for help!).
+6. Start your assignment!
+
+# Problems
+
+## 1. Numbers of individuals
+
+In the "Observations per species" section, we made figures showing the total counts per species for two eBird groups: Herons, Ibis, and Allies and Waterfowl.  
+
+We did this by summarizing the data for each group separately, then creating two separate figures.  
+
+In this section, you will use `facet_wrap()` to create a new figure.
+
+### a. Prep your data
+
+Create a new data frame called `bird_obs_count` from `birds_wy2025` summarizing the total counts per species in each of the _four_ eBird groups.  
+
+You should be able to copy-paste the code from class and modify it to complete this question. For any line that you change, include an annotation explaining _how_ you changed that line.  
+
+### b. Make a new figure
+
+Use a combination of `ggplot()`, `geom_()` and `facet_wrap()` (along with any associated functions to make your plot look nicer) to create a plot with total count on the _x-axis_ and species on the _y-axis_ with separate panels for each eBird group.  
+
+For full credit, be sure to:  
+
+- label the x- and y-axes
+- get rid of the space between the bottom of the column and the axis line
+- use custom colors
+- get rid of the legend (which is a redundant feature)
+- make sure all your axis labels are clear and readable (there are multiple solutions to this, from wrapping the labels to flipping the axes - do what you think is best to make sure that _all_ the text is visible)
+
+Annotate all your code to demonstrate your understanding of what you have written.  
+
+:::{.callout-note title="Weird looking y-axis?" collapse=true}
+If your y-axis looks off, pay attention to what species are included in each group. Does it make sense that there is an axis tick for "Mallard" under "Shorebirds"? (Hint: no.)  
+
+To fix this, try running your code with additional arguments in your `facet_wrap()` like:  
+
+- `scales = "free_x"`
+- `scales = "free_y"`
+- `scales = "free"`
+
+to see how the axes might change. Choose the option that makes most sense for your figure.
+:::
+
+### c. Interpret the figure
+
+Across all eBird groups:  
+
+- Which species had the highest total count?
+- Which species had the lowest total count?  
+
+Use values from the data frame you made in part a OR visual components of the figure you made in part b to justify your claim.  
+
+## 2. Waterfowl species turnover
+
+Species turnover describes differences in the composition of species (i.e. which species are present or absent, and how their abundances differ).
+
+While species richness gives you a sense of how many species are in a community, species turnover can tell you which species are contributing to differences in abundance or richness between seasons.  
+
+### a. Revisit an old figure
+
+Look back at class materials under the section "Seasonal differences in number of individuals". 
+
+In 1-2 sentences, describe seasonal differences in total counts for _Waterfowl_.  
+
+Use visual components of the plot to justify your interpretation.
+
+### b. Write pseudocode
+
+Write pseudocode to calculate the total count _per species_ in Waterfowl per season.  
+
+You should end up with a data frame that looks something like this:
+
+![](/assignments/images/individual-assignment-02/dataframe-example.png){fig-align="center" width="70%"}
+
+
+### c. Code your pseudocode.
+
+Write the code that corresponds to your pseudocode.  
+
+At the end of the code chunk, write code to run `str()` on your object to display the structure.
+
+### d. Make a visualization.
+
+Make a visualization of individual counts on the y-axis and season on the x-axis.  
+Fill the bars by _species_.  
+
+Annotate all code to demonstrate your understanding of what you've written.  
+
+Additionally, for full credit:  
+
+- label the x-axis, y-axis, and legend
+- include a title
+- get rid of the space at the bottom of the count axis
+- use custom colors from a palette package or otherwise
+- use a different theme from the default
+
+:::{.callout-note title="x-axis order looking off?" collapse=true}
+Remember that water years start on October 1 of one year and end on September 30 of the next year. That means that a logical season order is fall --> winter --> spring --> summer.  
+
+If your axis order needs fixing, set the levels in your code in part c.
+:::
+
+### e. Understanding trends
+
+In 1-2 sentences each, describe:  
+
+- What species is the most abundant across seasons?
+- Which species increased in abundance when comparing fall to winter?
+- Which species contribute to the increased _number of Waterfowl individuals_ in winter and spring relative to fall and summer? In other words, which species are _more abundant_ in winter and spring relative to fall and summer?  
+
+For each question, _be specific_ about the calculated values from your object in part b OR visual components from your figure in part c that justifies each claim.
+
+## 3. Waterfowl temporal dynamics
+
+In the "Temporal dynamics of individual counts" section, we calculated the total counts within eBird groups.  
+
+In this question, you will calculate and visualize the total counts within species for _Waterfowl_ to answer the question: What are the dynamics through time of total counts for individual Waterfowl species?
+
+### a. Prep your data
+
+You should be able to copy-paste the code from the "Temporal dynamics of individual counts" section and modify it to wrangle the data for Waterfowl. 
+
+On each line that you modify, write in your annotation _how_ you modified the code.  
+
+You should end up with a wrangled data frame that is ready to be plotted.
+
+### b. Make a new figure
+
+Make a visualization of the total counts for individual Waterfowl species through time. All species should be shown on your plot.
+
+Additionally, for full credit:  
+
+- label the x-axis, y-axis, and legend
+- include a title
+- use custom colors from a palette package or otherwise
+- use a different theme from the default
+
+### c. Interpret the figure
+
+In 1-2 sentences each, summarize:  
+
+- the similarities or differences between the figure you made in part a and the figure you made in part b. _Be specific_ regarding the visual components (geometries) and how they represent variables (i.e. the x- and y-axes and colors)
+- 1 species that was consistently present through time in _high abundance_, with information from the visual components from the figure
+
+
+## 4. New World Sparrow temporal dynamics
+
+In this question, you will calculate and visualize the total counts within species for _New World Sparrows_ to answer the question: What are the dynamics through time of total counts for individual sparrow species species?
+
+### a. Prep your data
+
+You should be able to copy-paste the code from the "Temporal dynamics of individual counts" section and modify it to wrangle the data for sparrows. 
+
+On each line that you modify, write in your annotation _how_ you modified the code.  
+
+You should end up with a wrangled data frame that is ready to be plotted.
+
+
+### b. Make a new figure
+
+Make a visualization of the total counts for individual Waterfowl species through time. All species should be shown on your plot.
+
+Additionally, for full credit:  
+
+- label the x-axis, y-axis, and legend
+- include a title
+- use custom colors from a palette package or otherwise
+- use a different theme from the default
+
+### c. Interpret the figure
+
+In 1-2 sentences each, describe:  
+
+- 2 species that tend to be consistently present throughout the year
+- 2 species that are only present in specific seasons (i.e. leave after a certain point in the year)
+
+# Assignment checklist
+
+Your rendered PDF should:
+
+- [ ] include your name, title, and submission date
+- [ ] include all code with annotations (see "General formatting components" for details)   
+- [ ] be organized and readable (see "General formatting components" for details)     
+- [ ] be free of messages and warnings from code chunk evaluation
+
+Your responses should include:  
+
+for Problem 1:   
+
+- [ ] annotated code for Problem 1a
+- [ ] annotated code and output for Problem 1b
+- [ ] written response for Problem 1c
+
+for Problem 2:  
+
+- [ ] written response for Problem 2a
+- [ ] written response for Problem 2b
+- [ ] annotated code for Problem 2c
+- [ ] annotated code and output for Problem 2d
+- [ ] written responses for Problem 2e
+
+for Problem 3:  
+
+- [ ] annotated code for Problem 3a
+- [ ] annotated code and output for Problem 3b
+- [ ] written response for Problem 3c
+
+for Problem 4:  
+
+- [ ] annotated code for Problem 4a
+- [ ] annotated code and output for Problem 4b
+- [ ] written response for Problem 4c
+
+Lastly, check out the **rubric on Canvas** to see the component breakdown in more detail.  
+
+Your final submission should include:  
+
+- [ ] a single PDF rendered from a .qmd file
+- [ ] your submitted [Generative AI statement of use](https://docs.google.com/forms/d/e/1FAIpQLSevf1zSjndFN-XMyKrCmpiIl-K6pwP4aUShOzI94t0ZW-yiuw/viewform) by the due date
+
+# General formatting components
+
+You will only receive full marks for annotations if you have:  
+
+- meaningful comments on each line of visualization code and/or ggplot geom/theme call (not needed for each argument, though good to have)  
+- meaningful comments on each function in any piping operations  
+- meaningful comments in set up code to denote where packages and/or data are read in
+
+You will only receive full marks for readability if:  
+
+- code includes carriage returns, spaces, etc. to make pipe operations and arguments clear  
+- code includes consistent spacing and indents
+- headers are used correctly throughout document
+- text is formatted correctly (for example, superscripts/subscripts appear correctly)
+- text is distinct from in-line code or references to functions/objects (e.g. using backticks to denote functions)
+
+
+
+
+

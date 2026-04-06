@@ -1,0 +1,128 @@
+---
+title: "Elective 1"
+date: 2026-04-17
+---
+
+# Set up
+
+1. Create a new .qmd file. Be sure to select the PDF option.
+2. Insert a code chunk to read in your packages.  
+3. Insert a code chunk to read in your data.  
+4. Copy paste any code you need from class into your .qmd.
+
+:::{.callout-note title="Practice your own editorial judgement!" collapse="true"}
+You will not need _all_ the code from class to do your assignment.  
+
+You will need to pick and choose the components that are relevant to the assignment.  
+
+If you copy-paste your entire class script into your elective, it will be marked as incomplete!
+:::
+
+5. Render to .pdf to make sure that you can render.
+6. Start your elective!
+
+# Elective
+
+In class and in the homework, you have worked with data from the 2025 water year (2024-10-01 to 2025-09-30).  
+
+For your elective, you will answer the question:  
+
+Across the last 4 water years (2022, 2023, 2024, and 2025), what temporal dynamics occur for the most abundant species for each group: 1) Black-crowned Night-Heron, 2) Killdeer, 3) Mallard, and 4) Song Sparrow?  
+
+Additionally, you will explore data about the special status bird species you identified in your system check.
+
+## 1. Wrangle the data
+
+All the code in this section is _out of order_. Put the code in order to create the correct data frame.  
+
+For each line of code, explain what it is doing.
+
+```{r}
+#| label: out of order code
+#| eval: false
+
+# function 1
+mutate(month = month(observation_date, label = TRUE))
+
+# function 2
+ungroup() 
+
+# function 3
+filter(observation_date > "2021-09-30" & observation_date < "2025-10-01",
+       repeat_observation == "No",
+       species %in% c("Mallard",
+                      "Black-crowned Night-Heron",
+                      "Killdeer",
+                      "Song Sparrow"))
+
+# function 4
+group_by(wy, species, observation_date) 
+
+# function 5
+birds_4wy_sum <- birds
+
+# function 6
+mutate(month_label = fct_relevel(month,
+                                 "Oct", "Nov", "Dec", 
+                                 "Jan", "Feb", "Mar", 
+                                 "Apr", "May", "Jun", 
+                                 "Jul", "Aug", "Sep"
+))
+
+# function 7
+mutate(wy = case_when(
+  observation_date > "2021-09-30" & observation_date < "2022-10-01" ~ "wy2022",
+  observation_date > "2022-09-30" & observation_date < "2023-10-01" ~ "wy2023",
+  observation_date > "2023-09-30" & observation_date < "2024-10-01" ~ "wy2024",
+  observation_date > "2024-09-30" & observation_date < "2025-10-01" ~ "wy2025"
+)) 
+
+# function 8
+summarize(total_counts = sum(count))
+```
+
+## 2. Visualize the data
+
+Create a figure with months on the x-axis and total counts on the y-axis.  
+
+Facet your figure so that you have four panels for each species.  
+
+For full credit:  
+
+- annotate all code
+- customize the colors
+- relabel the x- and y-axes and legend title to be clean and informative
+- use a different theme than the default
+- use free scales for the y-axis
+
+## 3. Interpret the figure
+
+In 1-2 sentences each, describe:  
+
+- the months in which total counts for Black-crowned Night-Herons are highest
+- consistencies or anomalies across water years for Black-crowned Night-Herons
+- the months in which total counts for Killdeer are highest
+- consistencies or anomalies across water years for Killdeer
+- the months in which total counts for Mallards are highest
+- consistencies or anomalies across water years for Mallards
+- the months in which total counts for Song Sparrows are highest
+- consistencies or anomalies across water years for Song Sparrows
+
+For each point, be sure to be _specific_ about the visual components of the plot upon which you have based your interpretation.
+
+## 4. Special status birds
+
+Refer to your system check for the special status bird species you examined.  
+
+For that species, make a plot of the _number of observations_ of that species in each season.  
+
+Reorder the x-axis if needed.
+
+For full credit:  
+
+- get rid of the space at the bottom of the bars
+- use different colors from the default
+- use a different theme from the default
+- relabel the x- and y-axes
+- make sure all 4 seasons are shown on your plot (even if there were no observations)
+

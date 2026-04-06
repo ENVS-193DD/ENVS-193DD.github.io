@@ -8,16 +8,24 @@
     ]
   },
   {
-    "listing": "/in-class-materials.html",
-    "items": [
-      "/in-class-materials/week-01.html"
-    ]
-  },
-  {
     "listing": "/assignments.html",
     "items": [
       "/assignments/getting-set-up.html",
-      "/assignments/individual-assignment-01.html"
+      "/assignments/individual-assignment-01.html",
+      "/assignments/individual-assignment-02.html"
+    ]
+  },
+  {
+    "listing": "/electives.html",
+    "items": [
+      "/electives/elective-01.html"
+    ]
+  },
+  {
+    "listing": "/in-class-materials.html",
+    "items": [
+      "/in-class-materials/week-01.html",
+      "/in-class-materials/week-02.html"
     ]
   }
 ]

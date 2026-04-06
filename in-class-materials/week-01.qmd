@@ -81,12 +81,28 @@ Then, examine at the data by:
 2. exploring the variables in the dataset using `str(venoco_water)` in the Console
 3. determining the object type by running `class(venoco_water)` in the Console
 
-There are four columns in this dataset:  
+There are seven columns in this dataset:  
 
-- `date`, which is a Date in ISO 8601 format
-- `time`, which is an `hms` object (hms stands for hours minutes seconds)
-- `level`, which is a numeric
-- `temperature`, which is a numeric
+::: {.column-margin}
+edited 2026-04-02:  
+
+- explaining column information in more detail
+- adding note about water year
+:::
+
+- `date`, which is a Date in ISO 8601 format representing date of water elevation observation
+- `time`, which is an `hms` object (hms stands for hours minutes seconds) representing time of water elevation observation
+- `comp_level_ft`, which is a numeric representing water elevation above sea level (not accounting for position of levelogger)
+- `temperature`, which is a numeric representing water temperature in ° Celsius
+- `year`, which is a numeric representing calendar year
+- `month`, which is a numeric representing calendar month
+- `wy`, which is a numeric representing water year
+
+:::{.callout-note title="What is a water year?" collapse="true"}
+The year in the dataset and the water year are different in that the `year` column represents calendar year, while the `wy` column represents the water year. A water year is defined as starting on October 1st of one year and ending on September 30th of the next year. The 2025 water year in the dataset starts on October 1st, 2024 and ends on September 30th, 2025. 
+
+A water year is a period of time [defined by the US Geological Survey](https://water.usgs.gov/nwc/explain_data.html) to account for precipitation falling in fall/winter that accumulates as snow and thus doesn't leave a watershed until the following spring/summer. At NCOS, it makes sense to consider trends in the time period of water years because the amount of rain that falls in the fall/winter is a strong determinant of water availability etc. for the spring and summer. The cycle starts again with rain in the fall and winter, which would mark the start of the next water year.
+:::
 
 How many observations are in this dataset?
 

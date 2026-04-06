@@ -1,0 +1,746 @@
+---
+title: "Bird species at NCOS"
+subtitle: "Week 2"
+categories: [library(), tidyverse, ggplot colors, filter(), mutate(), select(), group_by(), summarize(), ungroup(), ggplot(), geom_bar(), facet_wrap(), reorder(), scale_color_manual(), distinct(), nrow(), colnames(), case_when(), count(), arrange(), n_distinct(), sum(), fct_relevel(), '%in%', quarto]
+---
+
+# Summary
+
+## Guiding questions
+
+Across four main bird groups, what are the:  
+
+- species richness trends across seasons and through time?
+- individual count trends across season and through time?
+- individual count differences across seasons within a group?
+
+## Data science tools
+
+To answer these questions, we are going to:  
+
+- review reading in packages
+  - `library()`
+- use familiar packages
+  - `tidyverse`
+- introduce new packages
+  - `NatParksPalettes` to customize plot colors
+- review reading in data
+  - `read_csv()`
+- review cleaning and wrangling functions from last week
+  - `filter()`
+  - `mutate()`
+  - `select()`
+- review summarizing functions from last week
+  - `group_by()`, `summarize()`, and `ungroup()`
+- review visualizations using `ggplot()`
+- introduce a new visualization tools
+  - `geom_bar()`
+  - `facet_wrap()`
+- make visualizations easier to intepret using `reorder()`
+- customize colors in visualizations using
+  - `scale_color_manual()`
+- introduce new summarizing/exploration functions
+  - `distinct()`
+  - `nrow()`
+  - `colnames()`
+  - `case_when()`
+  - `count()`
+  - `arrange()`
+  - `n_distinct()`
+  - `sum()`
+- introduce extracting values from dataframes using square brackets (`[]`) and references to rows and columns
+- introduce a new wrangling function
+  - `fct_relevel()`
+- introduce a new operator: `%in%`
+
+Additionally, we are going to learn new ways of working with code in a Quarto document (file suffix `.qmd`). Quarto allows people to write code along with prose.  
+
+In class, we will discuss how to:  
+
+- insert code chunks to run code
+- render a document to turn a .qmd file into a .pdf
+- set code chunk options to make sure the output is readable in a final rendered document
+  - hide messages
+  - hide warnings
+  - adjust figure sizes
+- use headers and code chunk labels to organize documents
+
+# In-class code
+
+## Set up
+
+### Packages
+
+```{r}
+#| label: packages
+
+# cleaning packages
+library(tidyverse)
+
+# visualization packages
+library(NatParksPalettes)
+library(scales)
+```
+
+### Data
+
+```{r}
+#| label: data for rendering
+#| echo: false
+
+# reading in data
+birds <- read_csv(here::here("data", "birds.csv"))
+```
+
+```{r}
+#| label: data
+#| eval: false
+
+# reading in data
+birds <- read_csv("birds.csv")
+```
+
+## Look at the data
+
+Look at the data by:
+
+-   clicking on the object in the Environment (or running `View(birds)` in the Console)
+-   running `class(birds)` in the Console to understand what type of object it is
+    - this is a data frame
+-   running `str(birds)` in the Console to look at the structure
+    - there are 6 columns and 15,377 rows in this data frame
+
+Another useful function to look at the data is `colnames()`, which gives you a list of column names in the data frame.  
+
+Run `colnames(birds)` in the Console.  
+
+Make a list of the variables in this data set, what they contain, and what they represent.
+
+Columns: 
+
+- `observation_date`: date of observation, which represents the date that individuals/species were seen
+- `season`: character, which represents the season of observation
+- `species`: character, which represents bird species
+- `count`: numeric, species counts for a given observation
+- `repeat_observation`: character, whether or not the observation was a repeated sighting
+- `e_bird_group`: character, which represents group of birds according to eBird
+
+## Figuring out unique eBird groups
+
+We'll be working with four specific types of birds this week.  
+
+The information about those groups are in the `e_bird_group` column of the data frame.
+
+However, there are a lot of rows in the data frame, so it's hard to see what the eBird groups are. 
+
+Use `distinct()` to figure out what the eBird groups are.
+
+```{r}
+#| label: distinct groups
+
+# creating new data frame from birds
+ebird_groups <- birds |> 
+  # extracting unique values for e_bird_group column
+  distinct(e_bird_group)
+```
+
+How many groups are there in this dataset?
+
+```{r}
+#| label: nrow to find number of groups
+
+# counting number of eBird groups
+nrow(ebird_groups)
+
+```
+
+There are 39 groups in this dataset.
+
+## Wrangling the data
+
+### Pseudocode
+
+Write pseudocode to create a data frame called `birds_wy2025` that:
+
+- only includes the 2025 water year,
+- excludes repeat observations, and 
+- includes observations from the following eBird groups: Waterfowl; New World Sparrows; Herons, Ibis, and Allies; Shorebirds
+
+**Pseudocode:**
+
+- create object called `birds_wy2025` from `birds`
+- filter date to keep observations after Sept 30 2024 and before Oct 1 2025 
+- filter repeat_observations to only include "No" rows
+- filter ebird_group to only include Waterfowl; New World Sparrows; Herons, Ibis, and Allies; Shorebirds
+  
+### Running code
+
+We'll add a new function at the end of this code to insert the lowest taxonomic group for each eBird group name.  
+
+We'll use `mutate()` (a function you already know) along with `case_when()`, which is a new function, to replace values in a column.
+
+```{r}
+#| label: cleaning and wrangling birds
+
+# creating new object from birds
+birds_wy2025 <- birds |> 
+  # filter to include:
+  # observation_dates in the 2025 water year
+  # observations that are not repeats
+  # eBird groups in the 4 groups of interest
+  filter(observation_date > "2024-09-30" & observation_date < "2025-10-01",
+         repeat_observation == "No",
+         e_bird_group %in% c("Waterfowl",
+                             "New World Sparrows",
+                             "Herons, Ibis, and Allies",
+                             "Shorebirds")) |> 
+  # create a new column called lowest group
+  mutate(lowest_group = case_when(
+    # lowest group for sparrows is family
+    e_bird_group == "New World Sparrows" ~ "Passerellidae",
+    # lowest group for herons is family
+    e_bird_group == "Herons, Ibis, and Allies" ~ "Ardeidae",
+    # lowest group for shorebirds is order
+    e_bird_group == "Shorebirds" ~ "Charadriiformes",
+    # lowest group for waterfowl is family
+    e_bird_group == "Waterfowl" ~ "Anatidae"
+  ))
+```
+
+### Figure out the species in each group.
+
+You can combine wrangling functions to get subsets of information from a dataset.
+
+At the end of this chunk of code, you should end up with a dataframe with the all the species in all eBird groups.
+
+```{r}
+#| label: finding species in a group
+
+# create a new object called group_species from birds_wy2025
+group_species <- birds_wy2025 |> 
+  # group data frame by ebird group
+  group_by(e_bird_group) |> 
+  # find the unique species in each group
+  distinct(species) |> 
+  # arrange by group
+  arrange(e_bird_group)
+```
+
+How many species are in each group? We can use the `count()` function to figure it out.
+
+```{r}
+#| label: finding number of species in a group
+
+# create new
+group_species_count <- group_species |> 
+  count()
+
+group_species_count
+```
+
+Note that we ran that code without `ungroup()` in the `group_species` code. What happens if you add `ungroup()` to that code and rerun the next chunk?  
+
+Adding `ungroup()` leads to one number that represents all the species across all four eBird groups (37 total).
+
+What if you wanted to extract a single number from the dataframe?  
+
+You can subset data frames using square brackets `[ ]`. The syntax to extract a single value from a dataframe is as follows:  
+
+`dataframe[row position, column position]`
+
+So for example, to extract the value representing the total number of Shorebird species from `group_species_count` you would run something like:
+
+```{r}
+#| label: finding value for total number of shorebirds
+
+group_species_count[3, 2]
+```
+
+What about the total number of Waterfowl species?
+
+```{r}
+#| label: finding value for total number of waterfowl
+
+group_species_count[4, 2]
+```
+
+Summarize these values in words.
+
+In the 2025 water year, NCOS recorded:  
+
+- 10 "species" of New World sparrows (9 species if considering Savannah Sparrow (Belding's) as a subset)
+- 8 species of Shorebirds 
+- 6 species of Herons, Ibis, and Allies 
+- 13 species of Waterfowl 
+
+## Total count per species
+
+### Guiding question
+
+What is the total count for each species in "Herons, Ibis, and Allies"/family Ardeidae for the 2025 water year?
+
+### Pseudocode for summarizing
+
+Write pseudocode to figure out the number of counted individuals in each species in this group.  
+
+In no particular order, reference the following functions:  
+
+- `arrange()` 
+- `ungroup()`
+- `filter()`
+- `summarize()`
+- `group_by()`
+
+**Pseudocode:**
+
+- create a new object from `birds_wy2025`
+- filter to only include wading bird observations
+- group by species
+- calculate total counts per species
+- ungroup the data frame
+- arrange in descending order
+
+### Running code
+
+Then, write the code that corresponds to your pseudocode.
+
+```{r}
+#| label: calculating total count of herons
+
+# create new object from birds_wy2025
+herons_total_count <- birds_wy2025 |> 
+  # filter to only include wading birds
+  filter(lowest_group == "Ardeidae") |> 
+  # group data frame by species
+  group_by(species) |> 
+  # calculate total counts per species
+  summarize(total_count = sum(count)) |> 
+  # ungroup data frame
+  ungroup() |> 
+  # arrange by descending order in total_count column
+  arrange(-total_count)
+```
+
+### Visualizing total counts between species in Ardeidae
+
+**Planning visualization:**  
+
+- x-axis should be species
+- y-axis should be total counts
+- columns represent total counts in each species
+
+#### Running code
+
+```{r}
+#| label: plotting total counts of herons
+
+# base layer: ggplot
+ggplot(data = herons_total_count,
+       # x-axis should be species, y-axis should be count
+       # fill columns by species
+       mapping = aes(x = reorder(species, -total_count),
+                     y = total_count,
+                     fill = species)) +
+  # first layer: column plot
+  geom_col() +
+  # take out legend
+  theme(legend.position = "none") +
+  scale_x_discrete(labels = label_wrap(15)) +
+  # get rid of space between columns and x-axis
+  scale_y_continuous(expand = c(0, 0),
+                     limits = c(0, 42)) +
+  # use custom colors
+  scale_fill_manual(values = natparks.pals("Torres")) +
+  # relabel x- and y-axes
+  labs(x = "Species",
+       y = "Total counts",
+       title = "Herons, Ibis, and Allies (Ardeidae)") +
+  # use different theme
+  theme_bw() +
+  # get rid of legend
+  theme(legend.position = "none")
+```
+
+#### Interpretation
+
+Black-crowned Night Herons have the highest total counts. White-faced Ibis have the lowest.
+
+### What about Shorebirds?  
+
+You can wrangle the data here by repurposing the code from above:
+
+```{r}
+#| label: calculating total count of shorebirds
+
+# create new object from birds_wy2025
+shorebirds_total_count <- birds_wy2025 |> 
+  # filter to only include shorebirds
+  filter(e_bird_group == "Shorebirds") |> 
+  # group data frame by species
+  group_by(species) |> 
+  # calculate total counts per species
+  summarize(total_count = sum(count)) |> 
+  # ungroup data frame
+  ungroup() |> 
+  # arrange by descending order in total_count column
+  arrange(-total_count)
+```
+
+And visualize:
+
+```{r}
+#| label: plotting total counts of shorebirds
+#| fig-height: 6
+#| fig-width: 8
+
+# base layer: ggplot
+ggplot(data = shorebirds_total_count,
+       # x-axis should be species, y-axis should be count
+       # fill columns by species
+       mapping = aes(x = reorder(species, -total_count),
+                     y = total_count,
+                     fill = species)) +
+  # first layer: column plot
+  geom_col() +
+  scale_x_discrete(labels = label_wrap(10)) +
+  # get rid of space between columns and x-axis
+  scale_y_continuous(expand = c(0, 0),
+                     limits = c(0, 315)) +
+  # use custom colors
+  scale_fill_manual(values = natparks.pals("Olympic")) +
+  # relabel x- and y-axes
+  labs(x = "Species",
+       y = "Total counts",
+       title = "Shorebirds (Charadriiformes)") +
+  # use different theme
+  theme_bw() +
+  # take out legend
+  theme(legend.position = "none") 
+```
+
+#### Interpretation
+
+Killdeer have the highest counts.  
+
+Wilson's Snipe has the lowest.
+
+## Seasonal differences in species richness
+
+### Guiding question
+
+In what season is species richness highest for each eBird group?
+
+:::{.callout-note title="What is species richness?"}
+
+Species richness is the _number of species that occur in a given sampling unit_. In this case, we are interested in the number of species in a given group in a given season in the 2025 water year. Thus, we are calculating _species richness_ for four different seasons for four different eBird groups.
+
+:::
+
+### Pseudocode for summarizing
+
+When used with `group_by()` and `summarize()`, `n_distinct()` allows you to count the number of distinct values in a group or multiple groups.  
+
+We can use this combination of functions to determine the number of species observed in a given eBird group in a given season.  
+
+Write pseudocode to calculate the number of species observed in each eBird group in a given season. 
+
+**Pseudocode:**
+
+- create new object from `birds_wy2025`
+- "roll up" Belding's subspecies to be considered with Savannah Sparrows
+- group by ebird group and season
+- count number of species in each group in each season 
+- ungroup dataframe
+
+:::{.callout-note title="What is roll up?"}
+Belding's is a subspecies of Savannah Sparrow. When doing any calculations of species richness, it wouldn't make sense to include both Savannah Sparrow and Belding's Savannah Sparrow.
+
+Instead of counting subspecies as species, researchers tend to "roll up" subspecies; that is, count subspecies as the higher species. In this example, we'll use `mutate()` and `case_when()` to roll up the subspecies to make sure that Belding's (the subspecies) is counted as Savannah (the species).
+:::
+
+### Running code
+
+```{r}
+#| label: calculating species richness per group per season
+
+# create new object from birds_wy2025
+season_spp_count <- birds_wy2025 |>
+  # roll up subspecies
+  mutate(species = case_when(
+    # whenever Belding's appears, replace with Savannah Sparrow
+    species == "Savannah Sparrow (Belding's)" ~ "Savannah Sparrow",
+    # keep all other values in species
+    .default = species
+  )) |> 
+  # group data frame by eBird group and season
+  group_by(e_bird_group, season) |> 
+  # count unique species that appear in each season in each group
+  summarize(num_spp = n_distinct(species)) |> 
+  # ungroup data frame
+  ungroup() |> 
+  # relevel season to be in correct order for water year
+  mutate(season = fct_relevel(season,
+                              "Fall", "Winter", "Spring", "Summer"))
+```
+
+### Visualizing
+
+```{r}
+#| label: plotting species richness per group per season
+
+# base layer: ggplot
+ggplot(data = season_spp_count,
+       # x-axis should be season, y-axis should be number of species
+       mapping = aes(x = season,
+                     y = num_spp,
+                     fill = season)) +
+  # first layer: columns for species richness
+  geom_col() +
+  # custom color for seasons
+  scale_fill_manual(values = c(
+    "Fall" = "#287984",
+    "Winter" = "#9c8020",
+    "Spring" = "#589101",
+    "Summer" = "#4987c9"
+  )) +
+  # get rid of space between columns and x-axis
+  scale_y_continuous(expand = c(0, 0),
+                     limits = c(0, 12)) +
+  # different theme from default
+  theme_bw() +
+  # facet figure to have one panel for each eBird group
+  facet_wrap(~ e_bird_group) +
+  # relabel x-and y-axes
+  labs(x = "Season",
+       y = "Species richness") +
+  # take out the legend
+  theme(legend.position = "none")
+  
+```
+
+### Interpretation
+
+When is species richness highest and lowest for each group?
+
+Species richness for Herons is highest in Spring and Summer, but lowest in Fall and Winter (low throughout though).  
+
+Species richness for New World Sparrows is highest in Winter and lowest in summer.  
+
+Shorebird species richness is highest in winter and spring, but lowest in fall and summer.  
+
+Waterfowl species richness is highest in winter and spring and lowest in fall and summer. 
+
+## Seasonal differences in total counts
+
+### Guiding question
+
+What are differences in total counts between seasons?  
+
+How does this differ (or not) from differences in species richness between seasons?
+
+:::{.callout-note title="What are total counts?"}
+
+In each survey, some number of individuals are counted for a species.  
+
+For example, you might see a flock of 12 Song Sparrows at the beginning of your survey, and another flock of 5 Song Sparrows at the end.  
+
+For that survey, your total count of Song Sparrows is 17. However, there is no way to know for sure if the 5 sparrows from the end of your survey are different from the 12 you saw at the beginning.
+
+For this reason, we can only calculate "total counts": the total number of counted individuals in a given survey.
+
+:::
+
+### Running code to summarize data
+
+First, write code to calculate the number of individuals counted in each eBird group in each season. 
+
+```{r}
+#| label: calculating total counts per group per season
+
+# create new object from birds_wy2025
+season_bird_count <- birds_wy2025 |>
+  # group data frame by eBird group and season
+  group_by(e_bird_group, season) |> 
+  # calculate total counts for each group in each season
+  summarize(total_count = sum(count)) |> 
+  # ungroup data frame
+  ungroup() |> 
+  # relevel seasons 
+  mutate(season = fct_relevel(season,
+                              "Fall", "Winter", "Spring", "Summer"))
+```
+
+### Visualizing data
+
+Then, plot using `ggplot()`.
+
+```{r}
+#| label: plotting total count per group per season
+
+# base layer: ggplot
+ggplot(data = season_bird_count,
+       # x-axis should be season, y-axis should be total counts
+       # fill column by season
+       mapping = aes(x = season,
+                     y = total_count,
+                     fill = season)) +
+  # first layer: column plot
+  geom_col() +
+  # custom colors
+  scale_fill_manual(values = c(
+    "Fall" = "#287984",
+    "Winter" = "#9c8020",
+    "Spring" = "#589101",
+    "Summer" = "#4987c9"
+  )) +
+  # get rid of space between bottom of column and x-axis
+  scale_y_continuous(expand = c(0, 0),
+                     limits = c(0, 400)) +
+  # different theme from default
+  theme_bw() +
+  # facet so that there are four panels, one for each eBird group
+  facet_wrap(~ e_bird_group) +
+  # relabel x- and y-axes
+  labs(x = "Season",
+       y = "Total count") +
+  # take out legend
+  theme(legend.position = "none") 
+
+```
+
+### Interpretation
+
+Are the patterns shown in this figure different from the patterns shown in the figure depicting species richness? Why or why not?
+
+## Temporal dynamics of individual counts
+
+### Guiding question
+
+How do total counts change through time for each group?
+
+### Summarize data
+
+```{r}
+#| label: calculating total counts per observation date per group
+
+# create new object from birds_wy_2025
+bird_count <- birds_wy2025 |> 
+  # group data frame by observation date and eBird group
+  group_by(observation_date, e_bird_group) |> 
+  # calculate total counts for each date in each group
+  summarize(total_count = sum(count)) |> 
+  # ungroup data frame
+  ungroup() 
+```
+
+### Visualize data
+
+```{r}
+#| label: plotting total counts per group
+
+# base layer: ggplot
+ggplot(data = bird_count,
+       # x-axis should be observation date,
+       # y-axis should be total_count,
+       # color by group
+       mapping = aes(x = observation_date,
+                     y = total_count,
+                     color = e_bird_group)) +
+  # first layer: points
+  geom_point() +
+  # second layer: lines
+  geom_line() +
+  # custom colors
+  scale_color_manual(values = natparks.pals("Saguaro")) +
+  # different theme from default
+  theme_bw() +
+  # relabelling x- and y-axes
+  labs(x = "Date",
+       y = "Total count",
+       color = "eBird group")
+```
+
+### Interpretation
+
+Herons are consistently low.  
+
+Waterfowl peak in winter and spring, then decline in summer.  
+
+Shorebirds peak in fall and decline through winter, spring, and summer.
+
+Sparrows peak in fall and decline through winter, spring, and summer.
+
+## Temporal dynamics of species richness
+
+### Guiding question
+
+How does species richness change through time for each group?
+
+### Summarizing the data
+
+```{r}
+#| label: calculating species richness for each survey
+
+# creating new object from birds_wy2025
+bird_spp_count <- birds_wy2025 |> 
+  # roll up subspecies
+  mutate(species = case_when(
+    species == "Savannah Sparrow (Belding's)" ~ "Savannah Sparrow",
+    .default = species
+  )) |> 
+  # group by observation date and eBird group
+  group_by(observation_date, e_bird_group) |> 
+  # calculate total counts
+  summarize(sum_spp = n_distinct(species)) |> 
+  # ungroup data frame
+  ungroup()
+```
+
+### Visualizing the data
+
+```{r}
+#| label: visualizing species richness for each survey
+
+# base layer: ggplot
+ggplot(data = bird_spp_count,
+       # x-axis should be observation date,
+       # y-axis should be number of species
+       # color by group
+       mapping = aes(x = observation_date,
+                     y = sum_spp,
+                     color = e_bird_group)) +
+  # first layer: points
+  geom_point() +
+  # second layer: lines
+  geom_line() +
+  # defining new y-axis breaks
+  scale_y_continuous(breaks = seq(from = 0, to = 10, by = 2)) +
+  # custom colors
+  scale_color_manual(values = natparks.pals("Saguaro")) +
+  # different theme from default
+  theme_bw() +
+  # relabelling axes and adding title
+  labs(x = "Date",
+       y = "Species richness",
+       color = "eBird group")
+```
+
+### Interpretation
+
+Species richness of Herons, Ibis, and Allies stays consistent throughout the year.
+
+Species richness of waterfowl and shorebirds peaks in winter and spring.
+
+Species richness of New World Sparrows is highest in fall/winter and decinds in spring and summer.
+
+**END OF WEEK 2**
+
+
+
+
+
+
+
+
+
+
