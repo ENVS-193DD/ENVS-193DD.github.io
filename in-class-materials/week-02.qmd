@@ -4,6 +4,8 @@ subtitle: "Week 2"
 categories: [library(), tidyverse, ggplot colors, filter(), mutate(), select(), group_by(), summarize(), ungroup(), ggplot(), geom_bar(), facet_wrap(), reorder(), scale_color_manual(), distinct(), nrow(), colnames(), case_when(), count(), arrange(), n_distinct(), sum(), fct_relevel(), '%in%', quarto]
 ---
 
+[Download zip here](https://github.com/ENVS-193DD/ENVS-193DD.github.io/blob/main/data/week-02.zip)
+
 # Summary
 
 ## Guiding questions
