@@ -1,11 +1,15 @@
 ---
-title: "Elective 1"
+title: "Basic elective option 1"
 date: 2026-04-17
 ---
 
 # Set up
 
-1. Create a new .qmd file. Be sure to select the PDF option.
+1. Create a new .qmd file in your `week-02` directory. Be sure to:  
+
+    - select the PDF option
+    - **uncheck** the box to use the visual editor (so that you are using the source editor)
+    
 2. Insert a code chunk to read in your packages.  
 3. Insert a code chunk to read in your data.  
 4. Copy paste any code you need from class into your .qmd.

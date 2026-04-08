@@ -180,7 +180,7 @@ You should end up with a wrangled data frame that is ready to be plotted.
 
 ### b. Make a new figure
 
-Make a visualization of the total counts for individual Waterfowl species through time. All species should be shown on your plot.
+Make a visualization of the total counts for individual sparrow species through time. All species should be shown on your plot.
 
 Additionally, for full credit:  
 
