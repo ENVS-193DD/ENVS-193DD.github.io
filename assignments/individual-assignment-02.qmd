@@ -173,6 +173,10 @@ In this question, you will calculate and visualize the total counts within speci
 
 You should be able to copy-paste the code from the "Temporal dynamics of individual counts" section and modify it to wrangle the data for sparrows. 
 
+:::{.column-margin}
+edited 2026-04-08: corrected text to refer to "sparrows"
+:::
+
 On each line that you modify, write in your annotation _how_ you modified the code.  
 
 You should end up with a wrangled data frame that is ready to be plotted.
