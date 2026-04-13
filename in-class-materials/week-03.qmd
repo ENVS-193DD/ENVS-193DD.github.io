@@ -10,6 +10,12 @@ categories: [library(), tidyverse, janitor, here, ggplot colors, filter(), mutat
 
 ## Guiding questions
 
+What are the differences in mean salinity between sites in the 2024 water year?
+
+How do sites differ in salinity through time in the 2024 water year?
+
+How does dissolved oxygen stratification differ through time at Venoco Bridge for the 2024 and 2025 water years?
+
 ## Data science tools
 
 To answer these questions, we are going to:  
@@ -618,7 +624,7 @@ Necessary wrangling steps:
 
 - filter outliers
 - exclude "other" sites
-- filter to only include observations from 2025 water year
+- filter to only include observations from 2024 water year
 - filter to only include observations from bottom, ~1 ft above bottom, ~2 ft above bottom
 - reorder site levels
 
@@ -698,7 +704,7 @@ ggplot(data = salinity_filtered,
 
 #### Guiding question
 
-How do sites differ in salinity through time in the 2025 water year?
+How do sites differ in salinity through time in the 2024 water year?
 
 #### Planning
 
