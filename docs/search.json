@@ -46,14 +46,21 @@
     "href": "in-class-materials/week-03.html",
     "title": "Water quality parameters",
     "section": "",
-    "text": "To answer these questions, we are going to:\n\nreview reading in packages\n\nlibrary()\n\nuse familiar packages\n\ntidyverse\n\nintroduce new packages\n\njanitor to clean column names\nhere to manage file paths\n\nreview reading in data\n\nread_csv()\n\nreview cleaning and wrangling functions/operators\n\nfilter()\nmutate()\nselect()\ncase_when()\nfct_relevel()\n%in%\n\nreview summarizing functions\n\ngroup_by(), summarize(), and ungroup()\ncount()\n\nreview visualizations using ggplot(), including:\n\ngeom_point() and geom_line()\ngeom_bar()\nfacet_wrap()\nscale_color_manual()\n\nintroduce a new visualization tool:\n\nstat_summary()\n\nintroduce new tools to deal with dates and times:\n\nmdy_hms()\nmonth()\nyear()\n\nintroduce a new wrangling concept: joins using\n\nleft_join() and\nfull_join()\n\nintroduce a new wrangling function:\n\npull()\n\nintroduce a new operator:\n\n! to exclude observations\n\nintroduce new ways of formatting Quarto documents, including\n\ncallout blocks\nin-line code"
+    "text": "Download zip here"
+  },
+  {
+    "objectID": "in-class-materials/week-03.html#guiding-questions",
+    "href": "in-class-materials/week-03.html#guiding-questions",
+    "title": "Water quality parameters",
+    "section": "Guiding questions",
+    "text": "Guiding questions"
   },
   {
     "objectID": "in-class-materials/week-03.html#data-science-tools",
     "href": "in-class-materials/week-03.html#data-science-tools",
     "title": "Water quality parameters",
-    "section": "",
-    "text": "To answer these questions, we are going to:\n\nreview reading in packages\n\nlibrary()\n\nuse familiar packages\n\ntidyverse\n\nintroduce new packages\n\njanitor to clean column names\nhere to manage file paths\n\nreview reading in data\n\nread_csv()\n\nreview cleaning and wrangling functions/operators\n\nfilter()\nmutate()\nselect()\ncase_when()\nfct_relevel()\n%in%\n\nreview summarizing functions\n\ngroup_by(), summarize(), and ungroup()\ncount()\n\nreview visualizations using ggplot(), including:\n\ngeom_point() and geom_line()\ngeom_bar()\nfacet_wrap()\nscale_color_manual()\n\nintroduce a new visualization tool:\n\nstat_summary()\n\nintroduce new tools to deal with dates and times:\n\nmdy_hms()\nmonth()\nyear()\n\nintroduce a new wrangling concept: joins using\n\nleft_join() and\nfull_join()\n\nintroduce a new wrangling function:\n\npull()\n\nintroduce a new operator:\n\n! to exclude observations\n\nintroduce new ways of formatting Quarto documents, including\n\ncallout blocks\nin-line code"
+    "section": "Data science tools",
+    "text": "Data science tools\nTo answer these questions, we are going to:\n\nreview reading in packages\n\nlibrary()\n\nuse familiar packages\n\ntidyverse\n\nintroduce new packages\n\njanitor to clean column names\nhere to manage file paths\n\nreview reading in data\n\nread_csv()\n\nreview cleaning and wrangling functions/operators\n\nfilter()\nmutate()\nselect()\ncase_when()\nfct_relevel()\n%in%\n\nreview summarizing functions\n\ngroup_by(), summarize(), and ungroup()\ncount()\n\nreview visualizations using ggplot(), including:\n\ngeom_point() and geom_line()\ngeom_bar()\nfacet_wrap()\nscale_color_manual()\n\nintroduce a new visualization tool:\n\nstat_summary()\n\nintroduce new tools to deal with dates and times:\n\nmdy_hms()\nmonth()\nyear()\n\nintroduce a new wrangling concept: joins using\n\nleft_join() and\nfull_join()\n\nintroduce a new wrangling function:\n\npull()\n\nintroduce a new operator:\n\n! to exclude observations\n\nintroduce new ways of formatting Quarto documents, including\n\ncallout blocks\nin-line code"
   },
   {
     "objectID": "in-class-materials/week-03.html#set-up",

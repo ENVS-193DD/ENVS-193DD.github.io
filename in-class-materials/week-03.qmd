@@ -4,6 +4,8 @@ subtitle: "Week 3"
 categories: [library(), tidyverse, janitor, here, ggplot colors, filter(), mutate(), select(), case_when(), fct_relevel(), '%in%', group_by(), summarize(), ungroup(), count(), ggplot(), geom_point(), geom_line(), geom_bar(), facet_wrap(), scale_color_manual(), stat_summary(), mdy_hms(), month(), year(), left_join(), full_join(), pull(), '!', quarto]
 ---
 
+[Download zip here](https://github.com/ENVS-193DD/ENVS-193DD.github.io/blob/main/data/week-03.zip)
+
 # Summary
 
 ## Guiding questions
