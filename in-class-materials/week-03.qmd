@@ -1,0 +1,843 @@
+---
+title: "Water quality parameters"
+subtitle: "Week 3"
+categories: [library(), tidyverse, janitor, here, ggplot colors, filter(), mutate(), select(), case_when(), fct_relevel(), '%in%', group_by(), summarize(), ungroup(), count(), ggplot(), geom_point(), geom_line(), geom_bar(), facet_wrap(), scale_color_manual(), stat_summary(), mdy_hms(), month(), year(), left_join(), full_join(), pull(), '!', quarto]
+---
+
+# Summary
+
+## Guiding questions
+
+## Data science tools
+
+To answer these questions, we are going to:  
+
+- review reading in packages
+  - `library()`
+- use familiar packages
+  - `tidyverse`
+- introduce new packages
+  - `janitor` to clean column names
+  - `here` to manage file paths
+- review reading in data
+  - `read_csv()`
+- review cleaning and wrangling functions/operators
+  - `filter()`
+  - `mutate()`
+  - `select()`
+  - `case_when()`
+  - `fct_relevel()`
+  - `%in%`
+- review summarizing functions 
+  - `group_by()`, `summarize()`, and `ungroup()`
+  - `count()`
+- review visualizations using `ggplot()`, including:
+  - `geom_point()` and `geom_line()`
+  - `geom_bar()`
+  - `facet_wrap()`
+  - `scale_color_manual()`
+- introduce a new visualization tool:
+  - `stat_summary()`
+- introduce new tools to deal with dates and times:
+  - `mdy_hms()`
+  - `month()`
+  - `year()`
+- introduce a new wrangling concept: **joins** using
+  - `left_join()` and
+  - `full_join()`
+- introduce a new wrangling function:
+  - `pull()`
+- introduce a new operator:
+  - `!` to exclude observations
+- introduce new ways of formatting Quarto documents, including
+  - [callout blocks](https://quarto.org/docs/authoring/callouts.html)
+  - in-line code
+
+
+# In-class code
+
+## 1. Set up
+
+### Packages
+
+```{r}
+#| label: packages
+#| message: false
+
+# general use
+library(tidyverse)
+library(janitor)
+
+# file organization
+library(here)
+```
+
+### Data
+
+```{r}
+#| label: data
+
+# weather data from NOAA weather station
+weather <- read_csv(here("data", "NOAA-weather-data.csv"))
+
+# water quality survey metadata
+metadata <- read_csv(here("data", "NCOS_YSI_Water_Quality_Monitoring_0.csv"))
+
+# water quality parameter measurements
+water_parameters <- read_csv(here("data", "YSI_Data_Begin_1.csv"))
+```
+
+### Understanding variables
+
+#### Weather
+
+- Which columns have the same value entered in each row?  
+
+    - `STATION`
+    - `NAME`
+    - `LATITUDE`
+    - `LONGITUDE`
+    - `ELEVATION`
+
+- Which columns have different values for each row?
+
+    - `DATE`
+    - `PRCP`
+    - `TMAX`
+    - `TMIN`
+
+#### Metadata
+
+- Observation location column names:
+
+    - `Site Name`
+    - `Other Site Name`
+    - `x`
+    - `y`
+
+- Observation date and time column names:
+
+    - `Monitoring Date`
+    - `Time of WQ Measurement`
+
+- Observation context column names:
+
+    - `Weather`
+    - `Flow`
+    - `Notes`
+    - `Water Surface Elevation`
+
+- Person who took measurement:
+
+    - `Monitor Name`
+
+- ArcGIS Survey123 info:
+
+    - `ObjectID`
+    - `GlobalID`
+    - `Creator`
+    - `Editor`
+    - `CreationDate`
+    - `EditDate`
+
+#### Water quality parameters
+
+- ArcGIS Survey123 info column names:
+
+    - `ObjectID`
+    - `GlobalID`
+    - `ParentGlobalID`
+    - `Creator`
+    - `Editor`
+    - `CreationDate`
+    - `EditDate`
+
+- Measurement depth column names:
+
+    - `Depth Code`
+
+- Parameter column names:
+
+    - `DO (mg/L)`
+    - `DO (%sat)`
+    - `Conductivity (uS/cm)`
+    - `Salinity (ppt)`
+    - `Temperature (°C)`
+
+**`ParentGlobalID` in `water_parameters` is the same as `GlobalID` in `metadata`**
+
+## 2. cleaning
+
+### cleaning weather
+
+#### Goal
+
+Data frame with the following columns:  
+
+- date
+- precipitation, max temperature, min temperature
+- month, year
+- water year
+
+#### Pseudocode
+
+- create new object from weather
+- clean column names
+- make sure that date is understood as date
+- select columns of interest
+- extract month and year from date
+- make new column for water year
+
+#### Code
+
+```{r}
+#| label: cleaning-weather-data
+
+# creating new object from weather
+weather_clean <- weather |> 
+  # cleaning column names
+  clean_names() |> 
+  # making sure date is in POSIXct format
+  mutate(date = mdy(date)) |> 
+  # selecting columns of interest
+  select(date, prcp, tmax, tmin) |> 
+  # extracting month and year from date column
+  mutate(month = month(date),
+         year = year(date)) |> 
+  # assigning water year
+  mutate(wy = case_when(
+    # when month is October or later, assign value of year + 1
+    month >= 10 ~ year + 1,
+    # when month is September or earlier, assign value of existing year
+    .default = year))
+```
+
+### cleaning metadata
+
+#### Goal
+
+Data frame with the following columns:
+
+- ArcGIS Survey123 info:
+
+    - global ID, 
+    - creation date, 
+    - edit date
+
+- observation date and time:
+
+    - monitoring date (note the format of this column), 
+    - time of wq measurement
+    
+- observation context: 
+
+    - weather, 
+    - flow, 
+    - notes, 
+    - water surface elevation
+  
+- observation location: 
+
+    - site name, 
+    - other site name, 
+    - x, 
+    - y
+
+#### Pseudocode
+
+- create new object from metadata
+- clean column names
+- exclude unneeded columns
+- make sure monitoring date is understood as date
+- rename monitoring date column to show that it has datetimes
+- extract month and year from monitoring date
+- create new column for water year
+
+#### Code
+
+```{r}
+#| label: cleaning-metadata
+
+# creating new object from metadata
+metadata_clean <- metadata |> 
+  # cleaning column  names
+  clean_names() |> 
+  # excluding unnecessary columns
+  select(!c(object_id, creator, editor)) |> 
+  # making sure monitoring_date is in POSIXct format
+  mutate(monitoring_date = mdy_hms(monitoring_date)) |> 
+  # renaming monitoring datetime column to reflect values
+  rename(monitoring_datetime = monitoring_date) |> 
+  # creating new columns for month and year of observations
+  mutate(month = month(monitoring_datetime),
+         year = year(monitoring_datetime)) |> 
+  # assigning water year
+  mutate(wy = case_when(
+    # when month is October or later, assign value of year + 1
+    month >= 10 ~ year + 1,
+    # when month is September or earlier, assign value of existing year
+    .default = year)) |> 
+  # create new column of full site name
+  mutate(site_full = case_when(
+    site_name == "east_channel" ~ "East Channel",
+    site_name == "phelps_bridge" ~ "Phelps Bridge",
+    site_name == "venoco_bridge" ~ "Venoco Bridge",
+    site_name == "other" ~ "Other"
+  ))
+```
+
+### cleaning water parameters
+
+#### Goal
+
+Data frame with the following columns:
+
+- ArcGIS Survey123 info:
+
+    - object ID, 
+    - global ID, 
+    - parent global ID, 
+    - creation date, 
+    - edit date
+
+- measurement depth:
+
+    - depth code
+    
+:::{.callout-note title="Consider the survey protocol"}
+You can get information about the survey protocol from the Survey123 form.
+
+In the "Depth code" field, the description is: Enter the correct code value for the depth you are monitoring, depending on the total depth of the site. For example, if the site si 2 feet deep, enter 2 for the surface, 1 for 1 foot depth, and 0 for the bottom. Bottom measurements will always be 0. If you are only able to take a surface measurement, enter 1.
+
+Draw this out on a piece of paper. If a survey has depth codes of 0, 1, 2, 3, and 4, where would those fall relative to the bottom?
+:::
+    
+- parameters:
+
+    - DO (mg/L)
+    - DO (%sat)
+    - Conductivity (uS/cm)
+    - Salinity (ppt)
+    - Temperature (°C)
+    
+#### Pseudocode
+
+- create new object from water parameters
+- clean column names
+- exclude unneeded columns
+- rename depth code to be elevation 
+
+#### Code
+
+```{r}
+#| label: cleaning-water-parameter-data
+
+# creating new object from water_parameters
+water_parameters_clean <- water_parameters |> 
+  # cleaning object names
+  clean_names() |> 
+  # excluding unnecessary columns
+  select(!c(creator, editor)) |> 
+  # renaming columns
+  rename(elevation_code = depth_code) |> 
+  # replacing incorrect elevation code from 2021-07-16
+  mutate(elevation_code = case_when(
+    elevation_code == 10 ~ 1,
+    .default = elevation_code
+  )) |> 
+  # set factors
+  mutate(elevation_code = as_factor(elevation_code),
+         elevation_code = fct_relevel(elevation_code,
+                                      "0", "1", "2", "3", "4", "5", "6"))
+```
+
+## 3. exploratory visualization
+
+### Temperature through time
+
+#### Guiding question
+
+What seasonal trends are there in maximum air temperature through time?
+
+#### Planning
+
+For a timeseries plot:  
+
+- x-axis: `date`
+- y-axis: `tmax`
+- (optionally) filter to only include 2024 and 2025 water years
+
+#### Code
+
+```{r}
+#| label: temp-timeseries
+#| warning: false
+
+# start with clean weather df
+weather_clean |> 
+  # filter to only include 2024 and 2025 water years
+  filter(wy %in% c("2024", "2025")) |> 
+  # x-axis: date, y-axis: maximum temp
+  ggplot(mapping = aes(x = date,
+                       y = tmax)) +
+  # first layer: point geometry
+  geom_point() +
+  # second layer: line geometry
+  geom_line()
+```
+
+#### Interpretation
+
+**What seasonal trends do you see in maximum temperature?**
+
+Air temperature is colder in winter months and hotter in summer months.
+
+**What is the missing value, and with what date is it associated?**
+
+There is a missing maximum temperature value from 2024-02-17.
+
+### Number of observations at each elevation code
+
+#### Planning
+
+For bar plot:  
+
+- x-axis: elevation code
+- y-axis: counts
+
+Necessary summarizing steps:
+
+- group by elevation code
+- count number of observations
+
+#### Code
+
+```{r}
+#| label: elevation-counts
+
+# create new object from clean water parameters df
+elevation_obs <- water_parameters_clean |> 
+  # group by elevation code
+  group_by(elevation_code) |>
+  # count number of observations at each depth
+  count()
+
+# start with elevation_obs df
+ggplot(data = elevation_obs,
+       # x-axis: elevation code
+       # y-axis: count of observations
+       mapping = aes(x = elevation_code,
+                     y = n)) +
+  # first layer: columns to represent counts
+  geom_col()
+```
+
+#### Interpretation
+
+**At which elevation code are there the most observations?**
+
+Most observations are at elevation code 1, which is the surface.
+
+**Are there any outliers in elevation codes?**
+
+There is an elevation code of 10 from Venoco Bridge on July 16, 2021. Given that the water elevation was 4.5 ft, it is likely that this is supposed to be an elevation code of 1.  
+
+To clean this up, we modified code in the `cleaning-water-parameters` chunk to replace elevation code 10 with 1. The new figure should not have an elevation code of 10.
+
+### Number of observations in each water year
+
+#### Planning
+
+For bar plot:
+
+- x-axis: water year
+- y-axis: count
+- facets: site name
+
+Necessary wrangling:
+
+- group by site name and water year
+- count number of observations
+
+#### Code
+
+```{r}
+#| label: site-counts
+
+# creating new object from clean metadata
+site_obs <- metadata_clean |> 
+  # group by site and water year
+  group_by(site_full, wy) |> 
+  # count observations
+  count()
+
+# start with site_obs object
+ggplot(data = site_obs,
+       # x-axis: water year
+       # y-axis: number of observations
+       mapping = aes(x = wy,
+                     y = n)) +
+  # columns to represent count
+  geom_col() +
+  # facet to create panels for different sites
+  facet_wrap(~ site_full,
+             nrow = 1)
+```
+
+#### Interpretation
+
+**How do sites differ in number of observations (across water years)?**
+
+There are fewer observations at East Channel than at Phelps Bridge and Venoco Bridge, on average. This might be because of differences in water depth at each site.
+
+**When do observations at "other" sites occur? Where are the "other" sites?**
+
+:::{.callout-note title="Look at the `metadata_clean` object to help you answer this question!"}
+Click on the `metadata_clean` object in the Environment. Search for "other" in the search bar.  
+
+What sites are listed under `other_site_name`?
+:::
+
+These occur in the 2021 water year on June 25th and July 9th. The sites are Whittier Pond, Seasonal Pond, and Devereux Slough Pier.
+
+There are three observations at "other" sites. 
+
+## 4. Joining data frames
+
+left join: keeps all observations in x
+
+right join: keeps all observations in y
+
+full join: keeps all observations in x and y
+
+### water quality = metadata + water parameters
+
+```{r}
+#| label: joining-parameters-and-metadata
+
+# join metadata and water parameters
+water_quality <- full_join(
+  # left
+  x = metadata_clean, 
+  # right
+  y = water_parameters_clean,
+  # shared column
+  by = c("global_id" = "parent_global_id")) |> 
+  # stop and look at colnames(water_quality) before continuing
+  # selecting relevant columns
+  select(
+    # information about observation
+    global_id, monitoring_datetime, time_of_wq_measurement, 
+    monitor_name, weather, site_name, other_site_name, site_full, x, y, 
+    
+    # water information
+    water_surface_elevation, flow, notes, 
+    
+    # measurement information
+    elevation_code, do_mg_l, do_percent_sat, conductivity_u_s_cm,
+    salinity_ppt, temperature_c) |> 
+  # extract date from monitoring datetime
+  mutate(date = date(monitoring_datetime)) |> 
+  # move date column to appear to the right of monitoring_datetime
+  relocate(date, .after = monitoring_datetime) |> 
+  # exclude monitoring_datetime
+  select(!monitoring_datetime)
+```
+
+### water quality weather = water quality + weather
+
+```{r}
+#| label: joining-water-quality-and-weather
+
+# join water quality and weather
+water_quality_weather <- full_join(
+  # left
+  x = water_quality, 
+  # right
+  y = weather_clean,
+  # shared column
+  by = "date"
+)
+
+# left join (exclude rows that don't match in weather)
+water_quality_weather <- left_join(
+  # left
+  x = water_quality, 
+  # right
+  y = weather_clean,
+  # shared column
+  by = "date"
+)
+```
+
+Where are the missing values? Which variables are missing values?
+
+### Dealing with outliers
+
+```{r}
+#| label: salinity-outliers
+
+# creating new object from water_quality_weather
+salinity_outlier_df <- water_quality_weather |> 
+  # filtering outliers
+  filter(salinity_ppt > 1410) |> 
+  # group by site 
+  group_by(site_full) |> 
+  # count number of outlier observations in each site
+  count()
+
+# creating new object
+salinity_outlier_ids <- water_quality_weather |> 
+  # filtering outliers
+  filter(salinity_ppt > 1410) |> 
+  # extracting global_id as vector for downstream use in filter
+  pull(global_id)
+```
+
+There were `r salinity_outlier_df[2, 2]` outlier observations from Venoco Bridge, and `r salinity_outlier_df [1, 2]` outlier observation from East Channel (Dilling's Link). There are `r length(salinity_outlier_ids)` total outlier observations for salinity in this data set.
+
+## 5. Visualizations
+
+### Site differences in mean salinity
+
+#### Guiding question
+
+What are the differences in salinity between sites in the 2024 water year?
+
+#### Planning
+
+Goal: create a plot to compare differences in salinity between sites:
+
+- x-axis should be site
+- y-axis should be salinity
+- points should represent individual salinity measurements at each site
+
+Necessary wrangling steps:
+
+- filter outliers
+- exclude "other" sites
+- filter to only include observations from 2025 water year
+- filter to only include observations from bottom, ~1 ft above bottom, ~2 ft above bottom
+- reorder site levels
+
+#### Code
+
+Wrangling:
+
+```{r}
+#| label: wrangling-salinity
+
+# create new object from water_quality_weather
+salinity_filtered <- water_quality_weather |> 
+  # filter out outliers
+  filter(!(global_id %in% salinity_outlier_ids)) |> 
+  # filter out other sites
+  filter(site_full != "Other") |> 
+  # only include observations from 2024 water year
+  filter(wy == "2024") |> 
+  # filter bottom, ~ 1ft above bottom, ~2ft above bottom
+  filter(elevation_code %in% c("0", "1", "2")) |> 
+  # reorder site levels from lowest to highest mean salinity
+  mutate(site_full = fct_relevel(
+    site_full,
+    "Phelps Bridge", "East Channel", "Venoco Bridge"
+  ))
+```
+
+Quick summary:
+
+```{r}
+#| label: quick-summary
+
+# start with filtered data frame
+salinity_filtered |> 
+  # group by site
+  group_by(site_full) |> 
+  # calculate mean salinity
+  summarize(mean_salinity = mean(salinity_ppt, na.rm = TRUE)) |> 
+  # ungroup data frame
+  ungroup()
+```
+
+Visualizing:
+
+```{r}
+#| label: salinity-site-diff-plot
+
+# base layer: ggplot
+ggplot(data = salinity_filtered,
+       # x-axis: site
+       # y-axis: salinity
+       mapping = aes(x = site_full,
+                     y = salinity_ppt)) +
+  # jitter to represent individual salinity measurements
+  geom_jitter(height = 0,
+              width = 0.2,
+              shape = 21) +
+  # quick calculation of mean for visualization
+  stat_summary(fun = mean,
+               geom = "point",
+               color = "red",
+               size = 5) +
+  # relabelling x- and y-axes, adding title
+  labs(x = "Site",
+       y = "Salinity (ppt)",
+       title = "Sites differ in mean salinity across all timepoints") +
+  # different theme from default
+  theme_bw()
+```
+
+
+#### Interpretation
+
+**How do sites differ in mean salinity across all timepoints?**
+
+### Temporal salinity dynamics
+
+#### Guiding question
+
+How do sites differ in salinity through time in the 2025 water year?
+
+#### Planning
+
+Goal: create a figure with:
+
+- time on the x-axis
+- salinity on the y-axis
+- different colors for each elevation code
+- different panels for each site
+
+No wrangling needed if using `salinity_filtered` data frame!
+
+#### Code
+
+Visualizing:
+
+```{r}
+#| label: salinity-through-time-by-site
+#| fig-height: 6
+#| fig-width: 24
+
+# using salinity_filtered data frame
+ggplot(data = salinity_filtered,
+       # x-axis: date
+       # y-axis: salinity
+       # color by elevation code
+       mapping = aes(x = date,
+                     y = salinity_ppt,
+                     color = elevation_code)) +
+  # points to represent measurements 
+  geom_point() +
+  # lines to connect measurements
+  geom_line() +
+  # separate panels for each site
+  facet_wrap(~ site_full) +
+  # custom colors
+  scale_color_manual(
+    values = c("0" = "darkgreen",
+               "1" = "goldenrod",
+               "2" = "turquoise")
+  ) +
+  # relabelling x-and y-axes, legend
+  labs(x = "Date", 
+       y = "Salinity (ppt)",
+       color = "Elevation code") +
+  # different theme
+  theme_bw()
+```
+
+#### Interpretation
+
+**Are there differences in trends through time between sites?**
+
+**Are there differences in elevation through time between sites?**
+
+### Dissolved oxygen stratification
+
+#### Guiding question
+
+How does dissolved oxygen stratification differ through time at Venoco Bridge for the 2024 and 2025 water years?
+
+#### Planning
+
+Goal: create a figure with:
+
+- time on the x-axis
+- percent saturation of DO on y-axis
+- colors should represent elevation codes
+- different panels for water years
+
+Necessary cleaning steps:
+
+- filter to only include Venoco, water years, elevation codes
+- select columns of interest
+
+#### Code
+
+Wrangling:
+
+```{r}
+#| label: do-dataframe
+
+# start with joined data frame
+venoco_do <- water_quality_weather |> 
+  # filter to only include Venoco,
+  filter(site_full == "Venoco Bridge" &
+           # water years of interest
+           wy %in% c("2024", "2025") &
+           # bottom, ~ 1 ft, ~ 2 ft above bottom
+           elevation_code %in% c("0", "1", "2")) |> 
+  # select columns of interest
+  select(date, wy, do_mg_l, elevation_code) |> 
+  # relevel elevation code order
+  mutate(elevation_code = fct_relevel(elevation_code,
+                                      "2", "1", "0"))
+```
+
+Visualizing:
+
+```{r}
+#| label: plot-DO
+#| fig-height: 4
+#| fig-width: 14
+
+# start with venoco DO data frame
+ggplot(data = venoco_do,
+       # x-axis: date
+       # y-axis: percent saturation dissolved oxygen
+       # color by elevation code
+       mapping = aes(x = date,
+                     y = do_mg_l,
+                     color = elevation_code)) +
+  # points to represent DO measurements
+  geom_point() +
+  # lines to connect points
+  geom_line() +
+  # separate panels for each water year
+  # free x-axis 
+  facet_wrap(~ wy,
+             scales = "free_x") +
+  # custom colors
+  scale_color_manual(
+    values = c("2" = "turquoise", 
+               "1" = "goldenrod", 
+               "0" = "darkgreen")
+  ) +
+  # different theme
+  theme_bw() +
+  # relabelling
+  labs(x = "Date",
+       y = "Dissolved oxygen (mg/L)",
+       color = "Elevation code")
+```
+
+
+#### Interpretation
+
+**Do water years differ in the degree of stratification in winter months?**
+
+Stratification is more obvious in the 2025 water year than in the 2024 water year.
+
+**Does stratification change through time?**
+
+The magnitude of stratification is greater in winter than in spring and summer, though there is some stratification in summer even though DO is lower overall.

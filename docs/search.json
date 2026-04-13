@@ -42,6 +42,356 @@
     "text": "4. Special status birds\nRefer to your system check for the special status bird species you examined.\nFor that species, make a plot of the number of observations of that species in each season.\nReorder the x-axis if needed.\nFor full credit:\n\nget rid of the space at the bottom of the bars\nuse different colors from the default\nuse a different theme from the default\nrelabel the x- and y-axes\nmake sure all 4 seasons are shown on your plot (even if there were no observations)"
   },
   {
+    "objectID": "in-class-materials/week-03.html",
+    "href": "in-class-materials/week-03.html",
+    "title": "Water quality parameters",
+    "section": "",
+    "text": "To answer these questions, we are going to:\n\nreview reading in packages\n\nlibrary()\n\nuse familiar packages\n\ntidyverse\n\nintroduce new packages\n\njanitor to clean column names\nhere to manage file paths\n\nreview reading in data\n\nread_csv()\n\nreview cleaning and wrangling functions/operators\n\nfilter()\nmutate()\nselect()\ncase_when()\nfct_relevel()\n%in%\n\nreview summarizing functions\n\ngroup_by(), summarize(), and ungroup()\ncount()\n\nreview visualizations using ggplot(), including:\n\ngeom_point() and geom_line()\ngeom_bar()\nfacet_wrap()\nscale_color_manual()\n\nintroduce a new visualization tool:\n\nstat_summary()\n\nintroduce new tools to deal with dates and times:\n\nmdy_hms()\nmonth()\nyear()\n\nintroduce a new wrangling concept: joins using\n\nleft_join() and\nfull_join()\n\nintroduce a new wrangling function:\n\npull()\n\nintroduce a new operator:\n\n! to exclude observations\n\nintroduce new ways of formatting Quarto documents, including\n\ncallout blocks\nin-line code"
+  },
+  {
+    "objectID": "in-class-materials/week-03.html#data-science-tools",
+    "href": "in-class-materials/week-03.html#data-science-tools",
+    "title": "Water quality parameters",
+    "section": "",
+    "text": "To answer these questions, we are going to:\n\nreview reading in packages\n\nlibrary()\n\nuse familiar packages\n\ntidyverse\n\nintroduce new packages\n\njanitor to clean column names\nhere to manage file paths\n\nreview reading in data\n\nread_csv()\n\nreview cleaning and wrangling functions/operators\n\nfilter()\nmutate()\nselect()\ncase_when()\nfct_relevel()\n%in%\n\nreview summarizing functions\n\ngroup_by(), summarize(), and ungroup()\ncount()\n\nreview visualizations using ggplot(), including:\n\ngeom_point() and geom_line()\ngeom_bar()\nfacet_wrap()\nscale_color_manual()\n\nintroduce a new visualization tool:\n\nstat_summary()\n\nintroduce new tools to deal with dates and times:\n\nmdy_hms()\nmonth()\nyear()\n\nintroduce a new wrangling concept: joins using\n\nleft_join() and\nfull_join()\n\nintroduce a new wrangling function:\n\npull()\n\nintroduce a new operator:\n\n! to exclude observations\n\nintroduce new ways of formatting Quarto documents, including\n\ncallout blocks\nin-line code"
+  },
+  {
+    "objectID": "in-class-materials/week-03.html#set-up",
+    "href": "in-class-materials/week-03.html#set-up",
+    "title": "Water quality parameters",
+    "section": "1. Set up",
+    "text": "1. Set up\n\nPackages\n\n# general use\nlibrary(tidyverse)\nlibrary(janitor)\n\n# file organization\nlibrary(here)\n\n\n\nData\n\n# weather data from NOAA weather station\nweather &lt;- read_csv(here(\"data\", \"NOAA-weather-data.csv\"))\n\n# water quality survey metadata\nmetadata &lt;- read_csv(here(\"data\", \"NCOS_YSI_Water_Quality_Monitoring_0.csv\"))\n\n# water quality parameter measurements\nwater_parameters &lt;- read_csv(here(\"data\", \"YSI_Data_Begin_1.csv\"))\n\n\n\nUnderstanding variables\n\nWeather\n\nWhich columns have the same value entered in each row?\n\nSTATION\nNAME\nLATITUDE\nLONGITUDE\nELEVATION\n\nWhich columns have different values for each row?\n\nDATE\nPRCP\nTMAX\nTMIN\n\n\n\n\nMetadata\n\nObservation location column names:\n\nSite Name\nOther Site Name\nx\ny\n\nObservation date and time column names:\n\nMonitoring Date\nTime of WQ Measurement\n\nObservation context column names:\n\nWeather\nFlow\nNotes\nWater Surface Elevation\n\nPerson who took measurement:\n\nMonitor Name\n\nArcGIS Survey123 info:\n\nObjectID\nGlobalID\nCreator\nEditor\nCreationDate\nEditDate\n\n\n\n\nWater quality parameters\n\nArcGIS Survey123 info column names:\n\nObjectID\nGlobalID\nParentGlobalID\nCreator\nEditor\nCreationDate\nEditDate\n\nMeasurement depth column names:\n\nDepth Code\n\nParameter column names:\n\nDO (mg/L)\nDO (%sat)\nConductivity (uS/cm)\nSalinity (ppt)\nTemperature (°C)\n\n\nParentGlobalID in water_parameters is the same as GlobalID in metadata"
+  },
+  {
+    "objectID": "in-class-materials/week-03.html#cleaning",
+    "href": "in-class-materials/week-03.html#cleaning",
+    "title": "Water quality parameters",
+    "section": "2. cleaning",
+    "text": "2. cleaning\n\ncleaning weather\n\nGoal\nData frame with the following columns:\n\ndate\nprecipitation, max temperature, min temperature\nmonth, year\nwater year\n\n\n\nPseudocode\n\ncreate new object from weather\nclean column names\nmake sure that date is understood as date\nselect columns of interest\nextract month and year from date\nmake new column for water year\n\n\n\nCode\n\n# creating new object from weather\nweather_clean &lt;- weather |&gt; \n  # cleaning column names\n  clean_names() |&gt; \n  # making sure date is in POSIXct format\n  mutate(date = mdy(date)) |&gt; \n  # selecting columns of interest\n  select(date, prcp, tmax, tmin) |&gt; \n  # extracting month and year from date column\n  mutate(month = month(date),\n         year = year(date)) |&gt; \n  # assigning water year\n  mutate(wy = case_when(\n    # when month is October or later, assign value of year + 1\n    month &gt;= 10 ~ year + 1,\n    # when month is September or earlier, assign value of existing year\n    .default = year))\n\n\n\n\ncleaning metadata\n\nGoal\nData frame with the following columns:\n\nArcGIS Survey123 info:\n\nglobal ID,\ncreation date,\nedit date\n\nobservation date and time:\n\nmonitoring date (note the format of this column),\ntime of wq measurement\n\nobservation context:\n\nweather,\nflow,\nnotes,\nwater surface elevation\n\nobservation location:\n\nsite name,\nother site name,\nx,\ny\n\n\n\n\nPseudocode\n\ncreate new object from metadata\nclean column names\nexclude unneeded columns\nmake sure monitoring date is understood as date\nrename monitoring date column to show that it has datetimes\nextract month and year from monitoring date\ncreate new column for water year\n\n\n\nCode\n\n# creating new object from metadata\nmetadata_clean &lt;- metadata |&gt; \n  # cleaning column  names\n  clean_names() |&gt; \n  # excluding unnecessary columns\n  select(!c(object_id, creator, editor)) |&gt; \n  # making sure monitoring_date is in POSIXct format\n  mutate(monitoring_date = mdy_hms(monitoring_date)) |&gt; \n  # renaming monitoring datetime column to reflect values\n  rename(monitoring_datetime = monitoring_date) |&gt; \n  # creating new columns for month and year of observations\n  mutate(month = month(monitoring_datetime),\n         year = year(monitoring_datetime)) |&gt; \n  # assigning water year\n  mutate(wy = case_when(\n    # when month is October or later, assign value of year + 1\n    month &gt;= 10 ~ year + 1,\n    # when month is September or earlier, assign value of existing year\n    .default = year)) |&gt; \n  # create new column of full site name\n  mutate(site_full = case_when(\n    site_name == \"east_channel\" ~ \"East Channel\",\n    site_name == \"phelps_bridge\" ~ \"Phelps Bridge\",\n    site_name == \"venoco_bridge\" ~ \"Venoco Bridge\",\n    site_name == \"other\" ~ \"Other\"\n  ))\n\n\n\n\ncleaning water parameters\n\nGoal\nData frame with the following columns:\n\nArcGIS Survey123 info:\n\nobject ID,\nglobal ID,\nparent global ID,\ncreation date,\nedit date\n\nmeasurement depth:\n\ndepth code\n\n\n\n\n\n\n\n\nConsider the survey protocol\n\n\n\nYou can get information about the survey protocol from the Survey123 form.\nIn the “Depth code” field, the description is: Enter the correct code value for the depth you are monitoring, depending on the total depth of the site. For example, if the site si 2 feet deep, enter 2 for the surface, 1 for 1 foot depth, and 0 for the bottom. Bottom measurements will always be 0. If you are only able to take a surface measurement, enter 1.\nDraw this out on a piece of paper. If a survey has depth codes of 0, 1, 2, 3, and 4, where would those fall relative to the bottom?\n\n\n\nparameters:\n\nDO (mg/L)\nDO (%sat)\nConductivity (uS/cm)\nSalinity (ppt)\nTemperature (°C)\n\n\n\n\nPseudocode\n\ncreate new object from water parameters\nclean column names\nexclude unneeded columns\nrename depth code to be elevation\n\n\n\nCode\n\n# creating new object from water_parameters\nwater_parameters_clean &lt;- water_parameters |&gt; \n  # cleaning object names\n  clean_names() |&gt; \n  # excluding unnecessary columns\n  select(!c(creator, editor)) |&gt; \n  # renaming columns\n  rename(elevation_code = depth_code) |&gt; \n  # replacing incorrect elevation code from 2021-07-16\n  mutate(elevation_code = case_when(\n    elevation_code == 10 ~ 1,\n    .default = elevation_code\n  )) |&gt; \n  # set factors\n  mutate(elevation_code = as_factor(elevation_code),\n         elevation_code = fct_relevel(elevation_code,\n                                      \"0\", \"1\", \"2\", \"3\", \"4\", \"5\", \"6\"))"
+  },
+  {
+    "objectID": "in-class-materials/week-03.html#exploratory-visualization",
+    "href": "in-class-materials/week-03.html#exploratory-visualization",
+    "title": "Water quality parameters",
+    "section": "3. exploratory visualization",
+    "text": "3. exploratory visualization\n\nTemperature through time\n\nGuiding question\nWhat seasonal trends are there in maximum air temperature through time?\n\n\nPlanning\nFor a timeseries plot:\n\nx-axis: date\ny-axis: tmax\n(optionally) filter to only include 2024 and 2025 water years\n\n\n\nCode\n\n# start with clean weather df\nweather_clean |&gt; \n  # filter to only include 2024 and 2025 water years\n  filter(wy %in% c(\"2024\", \"2025\")) |&gt; \n  # x-axis: date, y-axis: maximum temp\n  ggplot(mapping = aes(x = date,\n                       y = tmax)) +\n  # first layer: point geometry\n  geom_point() +\n  # second layer: line geometry\n  geom_line()\n\n\n\n\n\n\n\n\n\n\nInterpretation\nWhat seasonal trends do you see in maximum temperature?\nAir temperature is colder in winter months and hotter in summer months.\nWhat is the missing value, and with what date is it associated?\nThere is a missing maximum temperature value from 2024-02-17.\n\n\n\nNumber of observations at each elevation code\n\nPlanning\nFor bar plot:\n\nx-axis: elevation code\ny-axis: counts\n\nNecessary summarizing steps:\n\ngroup by elevation code\ncount number of observations\n\n\n\nCode\n\n# create new object from clean water parameters df\nelevation_obs &lt;- water_parameters_clean |&gt; \n  # group by elevation code\n  group_by(elevation_code) |&gt;\n  # count number of observations at each depth\n  count()\n\n# start with elevation_obs df\nggplot(data = elevation_obs,\n       # x-axis: elevation code\n       # y-axis: count of observations\n       mapping = aes(x = elevation_code,\n                     y = n)) +\n  # first layer: columns to represent counts\n  geom_col()\n\n\n\n\n\n\n\n\n\n\nInterpretation\nAt which elevation code are there the most observations?\nMost observations are at elevation code 1, which is the surface.\nAre there any outliers in elevation codes?\nThere is an elevation code of 10 from Venoco Bridge on July 16, 2021. Given that the water elevation was 4.5 ft, it is likely that this is supposed to be an elevation code of 1.\nTo clean this up, we modified code in the cleaning-water-parameters chunk to replace elevation code 10 with 1. The new figure should not have an elevation code of 10.\n\n\n\nNumber of observations in each water year\n\nPlanning\nFor bar plot:\n\nx-axis: water year\ny-axis: count\nfacets: site name\n\nNecessary wrangling:\n\ngroup by site name and water year\ncount number of observations\n\n\n\nCode\n\n# creating new object from clean metadata\nsite_obs &lt;- metadata_clean |&gt; \n  # group by site and water year\n  group_by(site_full, wy) |&gt; \n  # count observations\n  count()\n\n# start with site_obs object\nggplot(data = site_obs,\n       # x-axis: water year\n       # y-axis: number of observations\n       mapping = aes(x = wy,\n                     y = n)) +\n  # columns to represent count\n  geom_col() +\n  # facet to create panels for different sites\n  facet_wrap(~ site_full,\n             nrow = 1)\n\n\n\n\n\n\n\n\n\n\nInterpretation\nHow do sites differ in number of observations (across water years)?\nThere are fewer observations at East Channel than at Phelps Bridge and Venoco Bridge, on average. This might be because of differences in water depth at each site.\nWhen do observations at “other” sites occur? Where are the “other” sites?\n\n\n\n\n\n\nLook at the metadata_clean object to help you answer this question!\n\n\n\nClick on the metadata_clean object in the Environment. Search for “other” in the search bar.\nWhat sites are listed under other_site_name?\n\n\nThese occur in the 2021 water year on June 25th and July 9th. The sites are Whittier Pond, Seasonal Pond, and Devereux Slough Pier.\nThere are three observations at “other” sites."
+  },
+  {
+    "objectID": "in-class-materials/week-03.html#joining-data-frames",
+    "href": "in-class-materials/week-03.html#joining-data-frames",
+    "title": "Water quality parameters",
+    "section": "4. Joining data frames",
+    "text": "4. Joining data frames\nleft join: keeps all observations in x\nright join: keeps all observations in y\nfull join: keeps all observations in x and y\n\nwater quality = metadata + water parameters\n\n# join metadata and water parameters\nwater_quality &lt;- full_join(\n  # left\n  x = metadata_clean, \n  # right\n  y = water_parameters_clean,\n  # shared column\n  by = c(\"global_id\" = \"parent_global_id\")) |&gt; \n  # stop and look at colnames(water_quality) before continuing\n  # selecting relevant columns\n  select(\n    # information about observation\n    global_id, monitoring_datetime, time_of_wq_measurement, \n    monitor_name, weather, site_name, other_site_name, site_full, x, y, \n    \n    # water information\n    water_surface_elevation, flow, notes, \n    \n    # measurement information\n    elevation_code, do_mg_l, do_percent_sat, conductivity_u_s_cm,\n    salinity_ppt, temperature_c) |&gt; \n  # extract date from monitoring datetime\n  mutate(date = date(monitoring_datetime)) |&gt; \n  # move date column to appear to the right of monitoring_datetime\n  relocate(date, .after = monitoring_datetime) |&gt; \n  # exclude monitoring_datetime\n  select(!monitoring_datetime)\n\n\n\nwater quality weather = water quality + weather\n\n# join water quality and weather\nwater_quality_weather &lt;- full_join(\n  # left\n  x = water_quality, \n  # right\n  y = weather_clean,\n  # shared column\n  by = \"date\"\n)\n\n# left join (exclude rows that don't match in weather)\nwater_quality_weather &lt;- left_join(\n  # left\n  x = water_quality, \n  # right\n  y = weather_clean,\n  # shared column\n  by = \"date\"\n)\n\nWhere are the missing values? Which variables are missing values?\n\n\nDealing with outliers\n\n# creating new object from water_quality_weather\nsalinity_outlier_df &lt;- water_quality_weather |&gt; \n  # filtering outliers\n  filter(salinity_ppt &gt; 1410) |&gt; \n  # group by site \n  group_by(site_full) |&gt; \n  # count number of outlier observations in each site\n  count()\n\n# creating new object\nsalinity_outlier_ids &lt;- water_quality_weather |&gt; \n  # filtering outliers\n  filter(salinity_ppt &gt; 1410) |&gt; \n  # extracting global_id as vector for downstream use in filter\n  pull(global_id)\n\nThere were 6 outlier observations from Venoco Bridge, and 1 outlier observation from East Channel (Dilling’s Link). There are 7 total outlier observations for salinity in this data set."
+  },
+  {
+    "objectID": "in-class-materials/week-03.html#visualizations",
+    "href": "in-class-materials/week-03.html#visualizations",
+    "title": "Water quality parameters",
+    "section": "5. Visualizations",
+    "text": "5. Visualizations\n\nSite differences in mean salinity\n\nGuiding question\nWhat are the differences in salinity between sites in the 2024 water year?\n\n\nPlanning\nGoal: create a plot to compare differences in salinity between sites:\n\nx-axis should be site\ny-axis should be salinity\npoints should represent individual salinity measurements at each site\n\nNecessary wrangling steps:\n\nfilter outliers\nexclude “other” sites\nfilter to only include observations from 2025 water year\nfilter to only include observations from bottom, ~1 ft above bottom, ~2 ft above bottom\nreorder site levels\n\n\n\nCode\nWrangling:\n\n# create new object from water_quality_weather\nsalinity_filtered &lt;- water_quality_weather |&gt; \n  # filter out outliers\n  filter(!(global_id %in% salinity_outlier_ids)) |&gt; \n  # filter out other sites\n  filter(site_full != \"Other\") |&gt; \n  # only include observations from 2024 water year\n  filter(wy == \"2024\") |&gt; \n  # filter bottom, ~ 1ft above bottom, ~2ft above bottom\n  filter(elevation_code %in% c(\"0\", \"1\", \"2\")) |&gt; \n  # reorder site levels from lowest to highest mean salinity\n  mutate(site_full = fct_relevel(\n    site_full,\n    \"Phelps Bridge\", \"East Channel\", \"Venoco Bridge\"\n  ))\n\nQuick summary:\n\n# start with filtered data frame\nsalinity_filtered |&gt; \n  # group by site\n  group_by(site_full) |&gt; \n  # calculate mean salinity\n  summarize(mean_salinity = mean(salinity_ppt, na.rm = TRUE)) |&gt; \n  # ungroup data frame\n  ungroup()\n\n# A tibble: 3 × 2\n  site_full     mean_salinity\n  &lt;fct&gt;                 &lt;dbl&gt;\n1 Phelps Bridge          2.39\n2 East Channel          11.6 \n3 Venoco Bridge         25.3 \n\n\nVisualizing:\n\n# base layer: ggplot\nggplot(data = salinity_filtered,\n       # x-axis: site\n       # y-axis: salinity\n       mapping = aes(x = site_full,\n                     y = salinity_ppt)) +\n  # jitter to represent individual salinity measurements\n  geom_jitter(height = 0,\n              width = 0.2,\n              shape = 21) +\n  # quick calculation of mean for visualization\n  stat_summary(fun = mean,\n               geom = \"point\",\n               color = \"red\",\n               size = 5) +\n  # relabelling x- and y-axes, adding title\n  labs(x = \"Site\",\n       y = \"Salinity (ppt)\",\n       title = \"Sites differ in mean salinity across all timepoints\") +\n  # different theme from default\n  theme_bw()\n\n\n\n\n\n\n\n\n\n\nInterpretation\nHow do sites differ in mean salinity across all timepoints?\n\n\n\nTemporal salinity dynamics\n\nGuiding question\nHow do sites differ in salinity through time in the 2025 water year?\n\n\nPlanning\nGoal: create a figure with:\n\ntime on the x-axis\nsalinity on the y-axis\ndifferent colors for each elevation code\ndifferent panels for each site\n\nNo wrangling needed if using salinity_filtered data frame!\n\n\nCode\nVisualizing:\n\n# using salinity_filtered data frame\nggplot(data = salinity_filtered,\n       # x-axis: date\n       # y-axis: salinity\n       # color by elevation code\n       mapping = aes(x = date,\n                     y = salinity_ppt,\n                     color = elevation_code)) +\n  # points to represent measurements \n  geom_point() +\n  # lines to connect measurements\n  geom_line() +\n  # separate panels for each site\n  facet_wrap(~ site_full) +\n  # custom colors\n  scale_color_manual(\n    values = c(\"0\" = \"darkgreen\",\n               \"1\" = \"goldenrod\",\n               \"2\" = \"turquoise\")\n  ) +\n  # relabelling x-and y-axes, legend\n  labs(x = \"Date\", \n       y = \"Salinity (ppt)\",\n       color = \"Elevation code\") +\n  # different theme\n  theme_bw()\n\n\n\n\n\n\n\n\n\n\nInterpretation\nAre there differences in trends through time between sites?\nAre there differences in elevation through time between sites?\n\n\n\nDissolved oxygen stratification\n\nGuiding question\nHow does dissolved oxygen stratification differ through time at Venoco Bridge for the 2024 and 2025 water years?\n\n\nPlanning\nGoal: create a figure with:\n\ntime on the x-axis\npercent saturation of DO on y-axis\ncolors should represent elevation codes\ndifferent panels for water years\n\nNecessary cleaning steps:\n\nfilter to only include Venoco, water years, elevation codes\nselect columns of interest\n\n\n\nCode\nWrangling:\n\n# start with joined data frame\nvenoco_do &lt;- water_quality_weather |&gt; \n  # filter to only include Venoco,\n  filter(site_full == \"Venoco Bridge\" &\n           # water years of interest\n           wy %in% c(\"2024\", \"2025\") &\n           # bottom, ~ 1 ft, ~ 2 ft above bottom\n           elevation_code %in% c(\"0\", \"1\", \"2\")) |&gt; \n  # select columns of interest\n  select(date, wy, do_mg_l, elevation_code) |&gt; \n  # relevel elevation code order\n  mutate(elevation_code = fct_relevel(elevation_code,\n                                      \"2\", \"1\", \"0\"))\n\nVisualizing:\n\n# start with venoco DO data frame\nggplot(data = venoco_do,\n       # x-axis: date\n       # y-axis: percent saturation dissolved oxygen\n       # color by elevation code\n       mapping = aes(x = date,\n                     y = do_mg_l,\n                     color = elevation_code)) +\n  # points to represent DO measurements\n  geom_point() +\n  # lines to connect points\n  geom_line() +\n  # separate panels for each water year\n  # free x-axis \n  facet_wrap(~ wy,\n             scales = \"free_x\") +\n  # custom colors\n  scale_color_manual(\n    values = c(\"2\" = \"turquoise\", \n               \"1\" = \"goldenrod\", \n               \"0\" = \"darkgreen\")\n  ) +\n  # different theme\n  theme_bw() +\n  # relabelling\n  labs(x = \"Date\",\n       y = \"Dissolved oxygen (mg/L)\",\n       color = \"Elevation code\")\n\n\n\n\n\n\n\n\n\n\nInterpretation\nDo water years differ in the degree of stratification in winter months?\nStratification is more obvious in the 2025 water year than in the 2024 water year.\nDoes stratification change through time?\nThe magnitude of stratification is greater in winter than in spring and summer, though there is some stratification in summer even though DO is lower overall."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ENVS 193DD",
+    "section": "",
+    "text": "Photo by FH Joyce"
+  },
+  {
+    "objectID": "index.html#instructor",
+    "href": "index.html#instructor",
+    "title": "ENVS 193DD",
+    "section": "Instructor",
+    "text": "Instructor\n\n\n\n\n\n\n\n\nName: An Bui (she/her)\nForms of address: An (preferred), Dr. Bui, Professor Bui\nEmail: an_bui [at] ucsb [dot] edu\nDrop-in hours: Thursdays 9:30 - 11:30 AM\nDrop-in location: At the tables outside the UCen 1st floor (facing the lagoon)\nMore about me: an-bui.com"
+  },
+  {
+    "objectID": "index.html#undergraduate-learning-assistants",
+    "href": "index.html#undergraduate-learning-assistants",
+    "title": "ENVS 193DD",
+    "section": "Undergraduate learning assistants",
+    "text": "Undergraduate learning assistants\n\n\n\n\n\n\n\n\nName: Matthew Roco-Calvo\nForms of address: Matt\nDrop-in hours: Fridays 10:50 - 11:50 AM\nDrop-in location: HSSB courtyard\nMore about me: LinkedIn\n\n\n\n\n\n\n\n\n\n\nName: Abigail Youngblood\nForms of address: Abigail\nDrop-in hours: Wednesdays 4-5 PM\nDrop-in location: UCEN (tables in front of Subway)\nMore about me: LinkedIn\n\n\n\n\n\n\n\nPhoto by FH Joyce"
+  },
+  {
+    "objectID": "resources/resubmissions.html",
+    "href": "resources/resubmissions.html",
+    "title": "Format for resubmission cover letter",
+    "section": "",
+    "text": "In a document, put the name of the assignment you want to resubmit and “resubmission cover letter” in the title (e.g. “Individual assignment 2 resubmission cover letter”).\nFor each component that you want to redo for the possibility of getting full marks, you will need to articulate (in 1-2 sentences):\n\nwhat you got wrong\nwhat you need to do to fix it\nwhy that fix would improve the quality of your work (independently of the grade you received)\n\nFor example, if you got “partial marks” for multiple plots where you had overlapping axis labels, a reasonable request would be:\n\nMy x-axis labels for Problem 2a, 3b, and 5c were overlapping.\nFor 2a, I need to either spread out the x-axis or fix the way I read in the data to make sure the columns are correct (so that the date column is read in as a date rather than a character). For 3b and 5c, I need to create a line break in the axis label.\nMaking sure the x-axis labels don’t overlap improves the figure because the text would be readable."
+  },
+  {
+    "objectID": "assignments/getting-set-up.html",
+    "href": "assignments/getting-set-up.html",
+    "title": "Getting set up",
+    "section": "",
+    "text": "Optional check in due on Monday 30 March (Week 1) at 11:59 PM\nIn this class, we’ll be using R and RStudio to code up our statistical analyses. Walk through these steps to make sure you have both programs on your computer and that everything is working properly. You need to make sure all tasks are completed before workshop on Friday."
+  },
+  {
+    "objectID": "assignments/getting-set-up.html#task-1.-set-up-a-folder-for-class-materials",
+    "href": "assignments/getting-set-up.html#task-1.-set-up-a-folder-for-class-materials",
+    "title": "Getting set up",
+    "section": "Task 1. Set up a folder for class materials",
+    "text": "Task 1. Set up a folder for class materials\nUsing R/RStudio requires you to know how your computer is organized and where your files are. For now, we’ll want to set up a folder in your computer called ENVS-193DD (note no spaces in the folder name).\nAll operating systems are different, but make sure that your folder is not in the “iCloud”, “OneDrive”, or “Google Drive” folders in your computer. Basically, you want to be sure that you can get from your “root” directory (i.e. your actual computer hard drive) to the folder you’re using.\nYou can check this using the file path, or the folders you would need to open to get to the folder called ENVS-193DD. One example for MacOS is below, where the file path is shown at the bottom of the pane:\n\n\n\n\n\n\n\n\n\n\n\nDisplaying a file path\n\n\n\n\n\nThe easiest way to know where a file or folder is on your computer is to show the file path.\nIf you are using Mac OS, see these directions under “Show the path to a file or folder” to display the file path in the Finder window.\nIf you are using Windows 10 or 11, see this video with directions to show the file path in File Explorer."
+  },
+  {
+    "objectID": "assignments/getting-set-up.html#task-2.-install-r.",
+    "href": "assignments/getting-set-up.html#task-2.-install-r.",
+    "title": "Getting set up",
+    "section": "Task 2. Install R.",
+    "text": "Task 2. Install R.\nGo to cran.rstudio.com. Choose the correct download for your operating system!"
+  },
+  {
+    "objectID": "assignments/getting-set-up.html#task-3.-install-rstudio-and-optionally-quarto",
+    "href": "assignments/getting-set-up.html#task-3.-install-rstudio-and-optionally-quarto",
+    "title": "Getting set up",
+    "section": "Task 3. Install RStudio (and optionally Quarto)",
+    "text": "Task 3. Install RStudio (and optionally Quarto)\nGo to posit.co/download/rstudio-desktop. Click on the button under “2: Install RStudio”. It should automatically show the correct version for your operating system.\n\n\n\n\n\n\n\n\n\n\n\nInstalling Quarto\n\n\n\n\n\nYou only need to install Quarto if you are running RStudio version 2022.07.1 or earlier. If you are installing a later version of RStudio, you do not need to install Quarto.\nFollow the instructions for installing Quarto here.\nI (An) recommend that you install an new version of RStudio instead of installing Quarto, if it is possible on your computer.\nIf you cannot install Quarto on your computer (because it doesn’t work with your operating system, etc.), you may need to use the virtual machine."
+  },
+  {
+    "objectID": "assignments/getting-set-up.html#task-4.-open-rstudio",
+    "href": "assignments/getting-set-up.html#task-4.-open-rstudio",
+    "title": "Getting set up",
+    "section": "Task 4. Open RStudio",
+    "text": "Task 4. Open RStudio\nWhen we say we’re “using R” in the class, what we’re really using is RStudio, which is a graphical user interface (GUI) for R (the language). Basically, we’re never going to open up “R”, but we’ll always open up “RStudio”.\nOpen RStudio on your computer."
+  },
+  {
+    "objectID": "assignments/getting-set-up.html#task-5.-change-your-settings",
+    "href": "assignments/getting-set-up.html#task-5.-change-your-settings",
+    "title": "Getting set up",
+    "section": "Task 5. Change your settings",
+    "text": "Task 5. Change your settings\nYou can change some settings to make your life easier when working in RStudio. The following steps are all done in the same menu. Go to Tools &gt; Global Options.\n\nChange your color scheme.\nYou don’t have to stick with the boring RStudio color scheme! Go to Appearance and select the color scheme you want.\n\n\n\n\n\nClick apply before moving on!\n\n\nChange your workspace save settings.\nForming good data science habits starts from the beginning. Changing your workspace save settings will allow you to start with a clean, blank slate every time you open RStudio.\nGo to the General tab. Make sure that:\n\n“Restore most recently opened project at startup” is unchecked\n\n“Restore previously open source documents at startup” is unchecked\n\n“Restore .Rdata into workspace at startup” is unchecked\n\n“Save workspace to .RData on exit” is “Never”\n\n“Always save history (even when not saving .RData)” is unchecked\n\n\n\n\n\n\n\nSome of these may already be checked! If so, great! Double check everything though!\n\n\n\n\n\n\n\n\n\n\n\nClick apply before moving on!\n\n\nChange your code editing settings.\nThen, go to the Code tab. Under editing, make sure:\n\n“Insert spaces for Tab” is checked\n\n“Auto-detect code indentation” is checked\n\n“Insert matching parens/quotes” is checked\n\n“Use native pipe operator, |&gt;” is checked\n\n“Auto-indent code after paste” is checked\n\n“Vertically align arguments in auto-indent” is checked\n\n“Continue comment when inserting new line” is checked\n\n“Enable hyperlink highlighting in editor” is checked\n\n“Enable code snippets” is checked\n\n\n\n\n\n\nClick apply before moving on!\n\n\nChange your display settings.\nThen, go to Display (still under the Code tab). Make sure:\n\n“Highlight selected word” is checked\n\n“Show line numbers” is checked\n\n“Show margin” is checked\n\n“Soft-wrap source files” is checked\n\n“Blinking cursor” (if you want it) is checked\n\n“Enable preview of named and hexadecimal colors” is checked\n\n“Use rainbow parentheses” is checked\n\n\n\n\n\n\nClick apply before moving on!\n\n\nChange your Markdown settings.\nThen, go to the R Markdown tab. Under basic, make sure the following is checked:\n\n“Soft-wrap R Markdown files” is checked\n\n“Show output inline for all R Markdown documents” is unchecked\n\n“Show output preview in:” selection is “Viewer Pane”\n\n“Show document outline by default” is checked\n\n\n\n\n\n\nClick apply before moving on!\n\n\nChange your visual settings.\nUnder visual (still under the R Markdown tab), make sure:\n\n“Use visual editor by default for new documents” is unchecked\n\n“Show document outline by default” is checked\n\n\n\n\n\n\nClick apply to save all your changes! Do not move on to the next task without hitting apply!"
+  },
+  {
+    "objectID": "assignments/getting-set-up.html#task-6.-test-out-installing-a-package",
+    "href": "assignments/getting-set-up.html#task-6.-test-out-installing-a-package",
+    "title": "Getting set up",
+    "section": "Task 6. Test out installing a package",
+    "text": "Task 6. Test out installing a package\nPackages are the best part of using R. We’ll talk more about what packages are in workshop, but for now try installing a package. Go to your Console (the bottom left pane in the RStudio window), and type (or copy paste) install.packages(\"tidyverse\"). Hit Enter.\nYou should get a message that looks something like this:\n\n\n\n\n\n\n\n\n\n\n\nOperating system differences\n\n\n\n\n\nThe database that holds all these packages will automatically detect which version you need based on your operating system. Don’t worry if your output message doesn’t look exactly the same as the one here - just as long as you get something like “The downloaded binary packages are in…”, you’ve probably got the package installed."
+  },
+  {
+    "objectID": "assignments/getting-set-up.html#task-7.-test-out-reading-in-a-package",
+    "href": "assignments/getting-set-up.html#task-7.-test-out-reading-in-a-package",
+    "title": "Getting set up",
+    "section": "Task 7. Test out reading in a package",
+    "text": "Task 7. Test out reading in a package\nNow you’ve installed a package, but you want to make sure you can actually run it. Again in the Console (the bottom left pane), type library(tidyverse) and hit Enter.\nYou should get a message that looks something like this:"
+  },
+  {
+    "objectID": "assignments/getting-set-up.html#task-8.-install-a-small-package-in-the-terminal",
+    "href": "assignments/getting-set-up.html#task-8.-install-a-small-package-in-the-terminal",
+    "title": "Getting set up",
+    "section": "Task 8. Install a small package in the Terminal",
+    "text": "Task 8. Install a small package in the Terminal\nIn this class, we will use a file format called .qmd to integrate code and plain text into a document.\nTo use .qmd files and turn them into .pdf files, you will need an additional piece of software.\nIn the Terminal tab (to the right of the console), type the following:\nquarto install tinytex\nHit enter to run that line.\n\n\n\n\n\nDepending on whether or not you have installed tinytex before, you may see different messages.\nOn my (An’s) computer, I see the message tinytex is already installed and up to date. You may see a different message, or be prompted to do different things. That is ok!"
+  },
+  {
+    "objectID": "assignments/getting-set-up.html#task-9.-take-a-screenshot-of-your-set-up.",
+    "href": "assignments/getting-set-up.html#task-9.-take-a-screenshot-of-your-set-up.",
+    "title": "Getting set up",
+    "section": "Task 9. Take a screenshot of your set up.",
+    "text": "Task 9. Take a screenshot of your set up.\n\nTake a screenshot of your RStudio window with the Console showing\nYour screenshot should look something like this:\n\n\n\n\n\n\n\n\n\n\n\nDouble check your screenshot!\n\n\n\n\n\nTake a screenshot of your whole RStudio window. Make sure that the messages in the orange box (above) are visible in your screenshot! Otherwise we will not be able to troubleshoot whatever issues you are having with installation (if you are actually having any).\n\n\n\n\n\nTake a screenshot of your RStudio window with the Terminal showing\nYour screenshot should look something like this:\n\n\n\n\n\n\n\n\n\n\n\nDouble check your screenshot!\n\n\n\n\n\nAgain, take a screenshot of your whole RStudio window. Make sure that the messages in the orange box (above) are visible in your screenshot! Otherwise we will not be able to troubleshoot whatever issues you are having with installation (if you are actually having any).\n\n\n\n\n\nTake a screenshot of your ENVS-193DD folder\nLastly, take a screenshot of your ‘ENVS-193DD’ folder set up from task 1. It should be evident what the file path is, either from a path at the bottom of the window or on the side. It doesn’t matter where the file path appears in your screenshot as long as you can tell where the folder is. Your screenshot should look something like this:\n\n\n\n\n\nUpload all three screenshots to Canvas for your optional check-in."
+  },
+  {
+    "objectID": "assignments/getting-set-up.html#triple-checking-your-set-up",
+    "href": "assignments/getting-set-up.html#triple-checking-your-set-up",
+    "title": "Getting set up",
+    "section": "Triple checking your set up",
+    "text": "Triple checking your set up\nIf you would like to verify your set up or get help, come see An on Tuesday the 31st of March between 9:30 AM - 12 PM in Bren 4017."
+  },
+  {
+    "objectID": "assignments/individual-assignment-01.html",
+    "href": "assignments/individual-assignment-01.html",
+    "title": "Individual assignment 1",
+    "section": "",
+    "text": "Fill in your name in the individual-assignment-template.R script.\nFile &gt; Save as &gt; lastname-firstname_individual-assignment-01.R.\nRead in your packages.\n\nRead in your data.\n\nCopy paste any code you need from class into your assignment script.\n\n\n\n\n\n\n\nPractice your own editorial judgement!\n\n\n\n\n\nYou will not need all the code from class to do your assignment.\nYou will need to pick and choose the components that are relevant to the assignment.\nIf you copy-paste your entire class script into your homework, you will need to revise your assignment!\n\n\n\n\nStart your homework!"
+  },
+  {
+    "objectID": "assignments/individual-assignment-01.html#exploring-missing-data",
+    "href": "assignments/individual-assignment-01.html#exploring-missing-data",
+    "title": "Individual assignment 1",
+    "section": "1. Exploring missing data",
+    "text": "1. Exploring missing data\n\na. Write pseudocode\nIn class, we practiced writing “pseudocode” to group and summarize the data. Write pseudocode to calculate the number of missing water elevation values from 2025-09-03.\nRemember that pseudocode should not include any actual code. It should be plain language in the format of code.\n\n\nb. Code up your pseudocode.\nWrite the code that corresponds to the pseudocode that you wrote in part a.\nAnnotate all your code.\n\n\nedited 2026-04-02: took out requirement to show output (though output does have to be correct!)\n\n\nc. Number of missing values\nIn 1 sentence, state how many missing values there are for water elevation on 2025-09-03."
+  },
+  {
+    "objectID": "assignments/individual-assignment-01.html#exploration-of-temperature-data",
+    "href": "assignments/individual-assignment-01.html#exploration-of-temperature-data",
+    "title": "Individual assignment 1",
+    "section": "2. Exploration of temperature data",
+    "text": "2. Exploration of temperature data\nFor this exercise, be sure you are looking at venoco_water using View(venoco_water).\nUse the column manipulations to answer these questions.\n\na. Lowest temperature\nOn what date and at what time was the lowest temperature taken? What was the lowest temperature?\nExpress all numbers with units as needed.\n\n\nb. Highest temperature\nOn what date and at what time was the highest temperature taken? What was the highest temperature?\nExpress all numbers with units as needed."
+  },
+  {
+    "objectID": "assignments/individual-assignment-01.html#another-visualization",
+    "href": "assignments/individual-assignment-01.html#another-visualization",
+    "title": "Individual assignment 1",
+    "section": "3. Another visualization",
+    "text": "3. Another visualization\n\na. Write pseudocode to clean and summarize data\nWrite pseudocode to calculate the mean daily temperature at Venoco Bridge.\n\n\nb. Code up your pseudocode.\nCode the pseudocode you wrote in part a.\n\n\nc. Write pseudocode to visualize data\nWrite pseudocode to visualize mean daily temperature through time.\nUse point and line geometries.\nMake sure your pseudocode includes lines for labelling x- and y-axes.\n\n\nd. Code up your pseudocode\nMake a visualization of temperature through time following the pseudocode you wrote in part a.\nAnnotate each function in your code to demonstrate your understanding of what you’ve written.\n\n\ne. Comparing temporal trends\nDoes temperature follow similar temporal trends as water elevation? Why or why not?\nCompare the visual components of each plot to justify your answer."
+  },
+  {
+    "objectID": "assignments/individual-assignment-01.html#dealing-with-dates",
+    "href": "assignments/individual-assignment-01.html#dealing-with-dates",
+    "title": "Individual assignment 1",
+    "section": "4. Dealing with dates",
+    "text": "4. Dealing with dates\n\na. Types of objects\nThe earliest observation recorded in the dataset was from 2024-11-13. Run str(\"2024-11-13\") in the Console.\nWhat type of object is this?\nReference specific components of the output of str(\"2024-11-13\") to justify your response.\n\n\nb. Other types of objects\nNow, run str(as.Date(\"2024-11-13\")) in the Console.\nIn one sentence, describe what type of object is this. Use the specific components of the output of str(as.Date(\"2024-11-13\")) to justify your response.\n\n\nc. Working with a new dataset\nRead in the precipitation data using the following code in your set up section:\n\nprecip &lt;- read_csv(\"NOAA_daily_summaries_USW00053152_full_2025-12-09.csv\")\n\nList the variables and what values they contain in a bulleted list.\n\n\nd. Write pseudocode to filter the dataset\nWrite pseudocode to create a new object called precip_filtered to filter the dataset to only include precipitation readings from after 2024-09-30 and before 2025-10-01 (the 2025 water year).\n\n\ne. Code up your pseudocode\nCode your pseudocode that you wrote in part d. \nAnnotate all lines.\n\nTry using as.Date() and filter() together for this problem.\n\n\n\nf. Connecting information\nLook at the precip_filtered data frame. Find the column that corresponds to precipitation in inches called PRCP.\nWhat three dates in the precip_filtered data frame likely correspond to peaks in water elevation in (m) from the figure we made in class?\nBe specific by stating the date and the amount of precipitation in inches, and which peak the precipitation date connects to (e.g. the peak in [insert month here] likely corresponds to precipitation on [this date], which was [insert amount in inches here])."
+  },
+  {
+    "objectID": "in-class-materials.html",
+    "href": "in-class-materials.html",
+    "title": "In-class materials",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nWeek\n\n\nTitle\n\n\n\n\n\n\nWeek 1\n\n\nWater surface elevation at Venoco Bridge\n\n\n\n\nWeek 2\n\n\nBird species at NCOS\n\n\n\n\nWeek 3\n\n\nWater quality parameters\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "electives.html",
+    "href": "electives.html",
+    "title": "Electives",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Due date - Oldest\n        \n         \n          Due date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\nBasic elective option 1\n\n\nApr 17, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "assignments.html",
+    "href": "assignments.html",
+    "title": "Assignments",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Due date - Oldest\n        \n         \n          Due date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\nGetting set up\n\n\nMar 30, 2026\n\n\n\n\nIndividual assignment 1\n\n\nApr 10, 2026\n\n\n\n\nIndividual assignment 2\n\n\nApr 17, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "assignments/individual-assignment-02.html",
+    "href": "assignments/individual-assignment-02.html",
+    "title": "Individual assignment 2",
+    "section": "",
+    "text": "Fill in your name in the YAML of the individual-assignment-template.qmd file.\nRead in your packages.\n\nRead in your data.\n\nCopy paste any code you need from class into your assignment script.\n\n\n\n\n\n\n\nPractice your own editorial judgement!\n\n\n\n\n\nYou will not need all the code from class to do your assignment.\nYou will need to pick and choose the components that are relevant to the assignment.\nIf you copy-paste your entire class script into your homework, you will need to revise your assignment!\n\n\n\n\nRender to .pdf to make sure that you can render (if not, come ask for help!).\nStart your assignment!"
+  },
+  {
+    "objectID": "assignments/individual-assignment-02.html#numbers-of-individuals",
+    "href": "assignments/individual-assignment-02.html#numbers-of-individuals",
+    "title": "Individual assignment 2",
+    "section": "1. Numbers of individuals",
+    "text": "1. Numbers of individuals\nIn the “Observations per species” section, we made figures showing the total counts per species for two eBird groups: Herons, Ibis, and Allies and Waterfowl.\nWe did this by summarizing the data for each group separately, then creating two separate figures.\nIn this section, you will use facet_wrap() to create a new figure.\n\na. Prep your data\nCreate a new data frame called bird_obs_count from birds_wy2025 summarizing the total counts per species in each of the four eBird groups.\nYou should be able to copy-paste the code from class and modify it to complete this question. For any line that you change, include an annotation explaining how you changed that line.\n\n\nb. Make a new figure\nUse a combination of ggplot(), geom_() and facet_wrap() (along with any associated functions to make your plot look nicer) to create a plot with total count on the x-axis and species on the y-axis with separate panels for each eBird group.\nFor full credit, be sure to:\n\nlabel the x- and y-axes\nget rid of the space between the bottom of the column and the axis line\nuse custom colors\nget rid of the legend (which is a redundant feature)\nmake sure all your axis labels are clear and readable (there are multiple solutions to this, from wrapping the labels to flipping the axes - do what you think is best to make sure that all the text is visible)\n\nAnnotate all your code to demonstrate your understanding of what you have written.\n\n\n\n\n\n\nWeird looking y-axis?\n\n\n\n\n\nIf your y-axis looks off, pay attention to what species are included in each group. Does it make sense that there is an axis tick for “Mallard” under “Shorebirds”? (Hint: no.)\nTo fix this, try running your code with additional arguments in your facet_wrap() like:\n\nscales = \"free_x\"\nscales = \"free_y\"\nscales = \"free\"\n\nto see how the axes might change. Choose the option that makes most sense for your figure.\n\n\n\n\n\nc. Interpret the figure\nAcross all eBird groups:\n\nWhich species had the highest total count?\nWhich species had the lowest total count?\n\nUse values from the data frame you made in part a OR visual components of the figure you made in part b to justify your claim."
+  },
+  {
+    "objectID": "assignments/individual-assignment-02.html#waterfowl-species-turnover",
+    "href": "assignments/individual-assignment-02.html#waterfowl-species-turnover",
+    "title": "Individual assignment 2",
+    "section": "2. Waterfowl species turnover",
+    "text": "2. Waterfowl species turnover\nSpecies turnover describes differences in the composition of species (i.e. which species are present or absent, and how their abundances differ).\nWhile species richness gives you a sense of how many species are in a community, species turnover can tell you which species are contributing to differences in abundance or richness between seasons.\n\na. Revisit an old figure\nLook back at class materials under the section “Seasonal differences in number of individuals”.\nIn 1-2 sentences, describe seasonal differences in total counts for Waterfowl.\nUse visual components of the plot to justify your interpretation.\n\n\nb. Write pseudocode\nWrite pseudocode to calculate the total count per species in Waterfowl per season.\nYou should end up with a data frame that looks something like this:\n\n\n\n\n\n\n\nc. Code your pseudocode.\nWrite the code that corresponds to your pseudocode.\nAt the end of the code chunk, write code to run str() on your object to display the structure.\n\n\nd. Make a visualization.\nMake a visualization of individual counts on the y-axis and season on the x-axis.\nFill the bars by species.\nAnnotate all code to demonstrate your understanding of what you’ve written.\nAdditionally, for full credit:\n\nlabel the x-axis, y-axis, and legend\ninclude a title\nget rid of the space at the bottom of the count axis\nuse custom colors from a palette package or otherwise\nuse a different theme from the default\n\n\n\n\n\n\n\nx-axis order looking off?\n\n\n\n\n\nRemember that water years start on October 1 of one year and end on September 30 of the next year. That means that a logical season order is fall –&gt; winter –&gt; spring –&gt; summer.\nIf your axis order needs fixing, set the levels in your code in part c.\n\n\n\n\n\ne. Understanding trends\nIn 1-2 sentences each, describe:\n\nWhat species is the most abundant across seasons?\nWhich species increased in abundance when comparing fall to winter?\nWhich species contribute to the increased number of Waterfowl individuals in winter and spring relative to fall and summer? In other words, which species are more abundant in winter and spring relative to fall and summer?\n\nFor each question, be specific about the calculated values from your object in part b OR visual components from your figure in part c that justifies each claim."
+  },
+  {
+    "objectID": "assignments/individual-assignment-02.html#waterfowl-temporal-dynamics",
+    "href": "assignments/individual-assignment-02.html#waterfowl-temporal-dynamics",
+    "title": "Individual assignment 2",
+    "section": "3. Waterfowl temporal dynamics",
+    "text": "3. Waterfowl temporal dynamics\nIn the “Temporal dynamics of individual counts” section, we calculated the total counts within eBird groups.\nIn this question, you will calculate and visualize the total counts within species for Waterfowl to answer the question: What are the dynamics through time of total counts for individual Waterfowl species?\n\na. Prep your data\nYou should be able to copy-paste the code from the “Temporal dynamics of individual counts” section and modify it to wrangle the data for Waterfowl.\nOn each line that you modify, write in your annotation how you modified the code.\nYou should end up with a wrangled data frame that is ready to be plotted.\n\n\nb. Make a new figure\nMake a visualization of the total counts for individual Waterfowl species through time. All species should be shown on your plot.\nAdditionally, for full credit:\n\nlabel the x-axis, y-axis, and legend\ninclude a title\nuse custom colors from a palette package or otherwise\nuse a different theme from the default\n\n\n\nc. Interpret the figure\nIn 1-2 sentences each, summarize:\n\nthe similarities or differences between the figure you made in part a and the figure you made in part b. Be specific regarding the visual components (geometries) and how they represent variables (i.e. the x- and y-axes and colors)\n1 species that was consistently present through time in high abundance, with information from the visual components from the figure"
+  },
+  {
+    "objectID": "assignments/individual-assignment-02.html#new-world-sparrow-temporal-dynamics",
+    "href": "assignments/individual-assignment-02.html#new-world-sparrow-temporal-dynamics",
+    "title": "Individual assignment 2",
+    "section": "4. New World Sparrow temporal dynamics",
+    "text": "4. New World Sparrow temporal dynamics\nIn this question, you will calculate and visualize the total counts within species for New World Sparrows to answer the question: What are the dynamics through time of total counts for individual sparrow species species?\n\na. Prep your data\nYou should be able to copy-paste the code from the “Temporal dynamics of individual counts” section and modify it to wrangle the data for sparrows.\n\n\nedited 2026-04-08: corrected text to refer to “sparrows”\nOn each line that you modify, write in your annotation how you modified the code.\nYou should end up with a wrangled data frame that is ready to be plotted.\n\n\nb. Make a new figure\nMake a visualization of the total counts for individual sparrow species through time. All species should be shown on your plot.\nAdditionally, for full credit:\n\nlabel the x-axis, y-axis, and legend\ninclude a title\nuse custom colors from a palette package or otherwise\nuse a different theme from the default\n\n\n\nc. Interpret the figure\nIn 1-2 sentences each, describe:\n\n2 species that tend to be consistently present throughout the year\n2 species that are only present in specific seasons (i.e. leave after a certain point in the year)"
+  },
+  {
+    "objectID": "resources/genAI.html",
+    "href": "resources/genAI.html",
+    "title": "Guidelines and policies on using AI",
+    "section": "",
+    "text": "Generative AI tools like ChatGPT, Claude, Copilot, etc. can help solve a lot of coding problems: if you’re stuck and don’t know where to start, if you have code that keeps giving you an error, etc. - most of these issues can be solved using AI. The key to effective use of generative AI tools in environmental studies is to be honest about its use."
+  },
+  {
+    "objectID": "resources/genAI.html#why-use-ai",
+    "href": "resources/genAI.html#why-use-ai",
+    "title": "Guidelines and policies on using AI",
+    "section": "",
+    "text": "Generative AI tools like ChatGPT, Claude, Copilot, etc. can help solve a lot of coding problems: if you’re stuck and don’t know where to start, if you have code that keeps giving you an error, etc. - most of these issues can be solved using AI. The key to effective use of generative AI tools in environmental studies is to be honest about its use."
+  },
+  {
+    "objectID": "resources/genAI.html#why-wouldnt-you-use-ai-in-this-class",
+    "href": "resources/genAI.html#why-wouldnt-you-use-ai-in-this-class",
+    "title": "Guidelines and policies on using AI",
+    "section": "Why wouldn’t you use AI in this class?",
+    "text": "Why wouldn’t you use AI in this class?\nIf you’re just starting out learning how to code, we recommend not using generative AI tools. You will likely retain a lot more information by googling, asking for help from classmates, meeting with An, or literally doing anything other than using a generative AI tool. In our experience, the conversations and discussions around materials and the struggle of sifting through a lot of information to try different things out is really effective for retaining information.\nAdditionally, while gen AI can quickly come up with code, it’s not always what you would expect, or what we expect to see in your assignments. It’s straightforward to see if it works - if the output is what you want, then the code works - but there are specifics in each assignment that you as a student enrolled in the class will know that an AI tool will not."
+  },
+  {
+    "objectID": "resources/genAI.html#if-i-want-to-use-ai-what-am-i-allowed-to-do",
+    "href": "resources/genAI.html#if-i-want-to-use-ai-what-am-i-allowed-to-do",
+    "title": "Guidelines and policies on using AI",
+    "section": "If I want to use AI, what am I allowed to do?",
+    "text": "If I want to use AI, what am I allowed to do?\nIf you want to use an AI tool, you may use it to:\n\nTo brainstorm or clarify your understanding of the assignment (e.g. “I have this idea but I’m not sure if it’s right. Can you help me figure out if it applies to this assignment?”)\n\nTo outline your approach or plan your workflow (e.g. “Can you help me figure out how to start this problem?”)\n\nTo clarify or deepen understanding of technical concepts (e.g. “What does this function do in my use case?”)\n\nTo generate or refine code snippets (e.g. “I wrote this code but I think it’s too long. How can I condense it?”)\n\nTo debug or troubleshoot code (e.g. “I wrote this code but it’s not working. What’s wrong with it?”)\n\nTo edit or improve the clarity, structure, or tone of my written responses (e.g. “I wrote this text to summarize a test but it’s too long. Can you help me shorten it to 1-2 sentences?”)\n\nTo check my reasoning, results, or interpretation of findings (e.g. “I interpreted a cleaning workflow in this way. Is my interpretation correct?”)"
+  },
+  {
+    "objectID": "resources/genAI.html#what-am-i-not-allowed-to-do",
+    "href": "resources/genAI.html#what-am-i-not-allowed-to-do",
+    "title": "Guidelines and policies on using AI",
+    "section": "What am I not allowed to do?",
+    "text": "What am I not allowed to do?\nYou are not allowed to use generative AI to produce new code for you to copy-paste into your assignments. Additionally, you may not use AI to generate new writing for you. For example, these prompts would not be allowed:\n\n“Write me code to visualize a boxplot.”\n\n“Write the description of this code.”\n\nAll code and writing in your assignments should be generated by you alone to start out with."
+  },
+  {
+    "objectID": "resources/genAI.html#im-ready-to-use-ai-on-my-assignments.-what-should-i-do-when-i-submit",
+    "href": "resources/genAI.html#im-ready-to-use-ai-on-my-assignments.-what-should-i-do-when-i-submit",
+    "title": "Guidelines and policies on using AI",
+    "section": "I’m ready to use AI on my assignments. What should I do when I submit?",
+    "text": "I’m ready to use AI on my assignments. What should I do when I submit?\nAll assignments need to include a generative AI statement of use (form here).\nKeep in mind that unreported or disallowed use of AI tools will result in an incomplete mark on an assignment and the assignment will not be eligible for revision or resubmission."
+  },
+  {
+    "objectID": "resources/genAI.html#im-not-sure-if-what-im-using-ai-for-is-allowed.-what-do-i-do",
+    "href": "resources/genAI.html#im-not-sure-if-what-im-using-ai-for-is-allowed.-what-do-i-do",
+    "title": "Guidelines and policies on using AI",
+    "section": "I’m not sure if what I’m using AI for is allowed. What do I do?",
+    "text": "I’m not sure if what I’m using AI for is allowed. What do I do?\nTalk to An!"
+  },
+  {
+    "objectID": "resources/genAI.html#im-troubled-about-ai-use-because-of-the-environmental-impacts-disadvantages-brain-deterioration-etc.-what-do-i-do",
+    "href": "resources/genAI.html#im-troubled-about-ai-use-because-of-the-environmental-impacts-disadvantages-brain-deterioration-etc.-what-do-i-do",
+    "title": "Guidelines and policies on using AI",
+    "section": "I’m troubled about AI use, because of the environmental impacts, disadvantages, brain deterioration, etc. What do I do?",
+    "text": "I’m troubled about AI use, because of the environmental impacts, disadvantages, brain deterioration, etc. What do I do?\nAgain, talk to An! I am here to help navigate this new landscape, and figure out a plan that works for you, whether that’s sparingly using AI, not using it at all and relying on other resources, etc."
+  },
+  {
+    "objectID": "resources/using-virtual-machine.html",
+    "href": "resources/using-virtual-machine.html",
+    "title": "Using the virtual machine",
+    "section": "",
+    "text": "For this class, we have a virtual machine: it allows you to run R and RStudio in a browser (e.g. Google Chrome, Safari, Firefox). Find the virtual machine here!\nThe benefits of using the virtual machine are plenty:\n\nyou don’t have to download R, RStudio, and Quarto\n\nthe versions of all the software you need are updated\n\nthe packages you need for the class are already installed\n\nyou can download everything you’ve worked on\n\nand more!\nThe one con is that you do need to be connected to the internet. But compared to the benefits, this is hopefully not a major hurdle.\nBasically, if you’re having any issues with your versions of R, RStudio, or Quarto, try running your code on the virtual machine."
+  },
+  {
+    "objectID": "resources/using-virtual-machine.html#what-is-the-virtual-machine",
+    "href": "resources/using-virtual-machine.html#what-is-the-virtual-machine",
+    "title": "Using the virtual machine",
+    "section": "",
+    "text": "For this class, we have a virtual machine: it allows you to run R and RStudio in a browser (e.g. Google Chrome, Safari, Firefox). Find the virtual machine here!\nThe benefits of using the virtual machine are plenty:\n\nyou don’t have to download R, RStudio, and Quarto\n\nthe versions of all the software you need are updated\n\nthe packages you need for the class are already installed\n\nyou can download everything you’ve worked on\n\nand more!\nThe one con is that you do need to be connected to the internet. But compared to the benefits, this is hopefully not a major hurdle.\nBasically, if you’re having any issues with your versions of R, RStudio, or Quarto, try running your code on the virtual machine."
+  },
+  {
+    "objectID": "resources/using-virtual-machine.html#logging-in-and-opening-things-up",
+    "href": "resources/using-virtual-machine.html#logging-in-and-opening-things-up",
+    "title": "Using the virtual machine",
+    "section": "2. Logging in and opening things up",
+    "text": "2. Logging in and opening things up\nOnce you open up the virtual machine, you’ll be asked to log in. Use your UCSB email to do that. You should then get a screen that looks like this:\n Click RStudio.\nYou should then see a screen that looks exactly like an RStudio screen!"
+  },
+  {
+    "objectID": "resources/using-virtual-machine.html#setting-up",
+    "href": "resources/using-virtual-machine.html#setting-up",
+    "title": "Using the virtual machine",
+    "section": "3. Setting up",
+    "text": "3. Setting up\nIf you’re opening this up for the first time, do task 5 in the Getting set up guide called “Change your settings”: Change your settings.\nAdditionally, you’ll want to set up a new folder for your ENVS 193DD materials. Make a new folder called ENVS-193DD by clicking on the “Folder” button in the Files tab in the bottom right."
+  },
+  {
+    "objectID": "resources/using-virtual-machine.html#getting-files-into-the-machine",
+    "href": "resources/using-virtual-machine.html#getting-files-into-the-machine",
+    "title": "Using the virtual machine",
+    "section": "4. Getting files into the machine",
+    "text": "4. Getting files into the machine\nDownload the zipped file of workshop materials from Canvas. Hit the Upload button (yellow arrow pointing up against a white paper). You should see a window that looks like this:\n\nHit Choose file and select the .zip file.\nThe machine will automatically unzip the file and create a new folder with all the file contents."
+  },
+  {
+    "objectID": "resources/using-virtual-machine.html#creating-and-using-rprojects",
+    "href": "resources/using-virtual-machine.html#creating-and-using-rprojects",
+    "title": "Using the virtual machine",
+    "section": "5. Creating and using Rprojects",
+    "text": "5. Creating and using Rprojects\nWe’re going to create a lot of Rprojects in this class to get used to it. You can create a project in an existing directory (aka folder) in the same way that you would in the desktop version of RStudio. Go to the button in the top left that says Project: (None) and click. Hit New Project.\n Then, select the “Existing Directory” option.\n\nChoose the directory you want to create a project in. Once you click “Browse”, you’ll see a box that looks like this:\n\nDouble click the folders until you get to the one you want (in this example, I went from ENVS-193DS &gt; ENVS-193DS_workshop-01).\nYou can confirm that you chose the right folder once you hit “Choose”:\n\nHit “Create Project”.\nYou should now see the new Rproject in two locations: 1) in the upper right corner and 2) in the list of files in your directory.\n\nOnce you’re done working in your project, you can close the project by going to Project &gt; Close Project.\n\nIf you need to open your project again, navigate to the folder using the Files tab in the bottom right corner. Click on the .Rproj file. You will then see a window that looks like this:\n\nHit “Yes” to open the project."
+  },
+  {
+    "objectID": "resources/using-virtual-machine.html#downloading-your-files",
+    "href": "resources/using-virtual-machine.html#downloading-your-files",
+    "title": "Using the virtual machine",
+    "section": "6. Downloading your files",
+    "text": "6. Downloading your files\nIf you want to hold onto your files on your computer (for example, once the class ends), you can download a whole directory. Click on the folder you want to download and go to More &gt; Export in the lower right pane.\n\nThe machine will download the whole folder as a .zip file, which you can then unzip on your computer."
+  },
+  {
     "objectID": "in-class-materials/week-02.html",
     "href": "in-class-materials/week-02.html",
     "title": "Bird species at NCOS",
@@ -124,307 +474,6 @@
     "title": "Bird species at NCOS",
     "section": "Temporal dynamics of species richness",
     "text": "Temporal dynamics of species richness\n\nGuiding question\nHow does species richness change through time for each group?\n\n\nSummarizing the data\n\n# creating new object from birds_wy2025\nbird_spp_count &lt;- birds_wy2025 |&gt; \n  # roll up subspecies\n  mutate(species = case_when(\n    species == \"Savannah Sparrow (Belding's)\" ~ \"Savannah Sparrow\",\n    .default = species\n  )) |&gt; \n  # group by observation date and eBird group\n  group_by(observation_date, e_bird_group) |&gt; \n  # calculate total counts\n  summarize(sum_spp = n_distinct(species)) |&gt; \n  # ungroup data frame\n  ungroup()\n\n\n\nVisualizing the data\n\n# base layer: ggplot\nggplot(data = bird_spp_count,\n       # x-axis should be observation date,\n       # y-axis should be number of species\n       # color by group\n       mapping = aes(x = observation_date,\n                     y = sum_spp,\n                     color = e_bird_group)) +\n  # first layer: points\n  geom_point() +\n  # second layer: lines\n  geom_line() +\n  # defining new y-axis breaks\n  scale_y_continuous(breaks = seq(from = 0, to = 10, by = 2)) +\n  # custom colors\n  scale_color_manual(values = natparks.pals(\"Saguaro\")) +\n  # different theme from default\n  theme_bw() +\n  # relabelling axes and adding title\n  labs(x = \"Date\",\n       y = \"Species richness\",\n       color = \"eBird group\")\n\n\n\n\n\n\n\n\n\n\nInterpretation\nSpecies richness of Herons, Ibis, and Allies stays consistent throughout the year.\nSpecies richness of waterfowl and shorebirds peaks in winter and spring.\nSpecies richness of New World Sparrows is highest in fall/winter and decinds in spring and summer.\nEND OF WEEK 2"
-  },
-  {
-    "objectID": "resources/using-virtual-machine.html",
-    "href": "resources/using-virtual-machine.html",
-    "title": "Using the virtual machine",
-    "section": "",
-    "text": "For this class, we have a virtual machine: it allows you to run R and RStudio in a browser (e.g. Google Chrome, Safari, Firefox). Find the virtual machine here!\nThe benefits of using the virtual machine are plenty:\n\nyou don’t have to download R, RStudio, and Quarto\n\nthe versions of all the software you need are updated\n\nthe packages you need for the class are already installed\n\nyou can download everything you’ve worked on\n\nand more!\nThe one con is that you do need to be connected to the internet. But compared to the benefits, this is hopefully not a major hurdle.\nBasically, if you’re having any issues with your versions of R, RStudio, or Quarto, try running your code on the virtual machine."
-  },
-  {
-    "objectID": "resources/using-virtual-machine.html#what-is-the-virtual-machine",
-    "href": "resources/using-virtual-machine.html#what-is-the-virtual-machine",
-    "title": "Using the virtual machine",
-    "section": "",
-    "text": "For this class, we have a virtual machine: it allows you to run R and RStudio in a browser (e.g. Google Chrome, Safari, Firefox). Find the virtual machine here!\nThe benefits of using the virtual machine are plenty:\n\nyou don’t have to download R, RStudio, and Quarto\n\nthe versions of all the software you need are updated\n\nthe packages you need for the class are already installed\n\nyou can download everything you’ve worked on\n\nand more!\nThe one con is that you do need to be connected to the internet. But compared to the benefits, this is hopefully not a major hurdle.\nBasically, if you’re having any issues with your versions of R, RStudio, or Quarto, try running your code on the virtual machine."
-  },
-  {
-    "objectID": "resources/using-virtual-machine.html#logging-in-and-opening-things-up",
-    "href": "resources/using-virtual-machine.html#logging-in-and-opening-things-up",
-    "title": "Using the virtual machine",
-    "section": "2. Logging in and opening things up",
-    "text": "2. Logging in and opening things up\nOnce you open up the virtual machine, you’ll be asked to log in. Use your UCSB email to do that. You should then get a screen that looks like this:\n Click RStudio.\nYou should then see a screen that looks exactly like an RStudio screen!"
-  },
-  {
-    "objectID": "resources/using-virtual-machine.html#setting-up",
-    "href": "resources/using-virtual-machine.html#setting-up",
-    "title": "Using the virtual machine",
-    "section": "3. Setting up",
-    "text": "3. Setting up\nIf you’re opening this up for the first time, do task 5 in the Getting set up guide called “Change your settings”: Change your settings.\nAdditionally, you’ll want to set up a new folder for your ENVS 193DD materials. Make a new folder called ENVS-193DD by clicking on the “Folder” button in the Files tab in the bottom right."
-  },
-  {
-    "objectID": "resources/using-virtual-machine.html#getting-files-into-the-machine",
-    "href": "resources/using-virtual-machine.html#getting-files-into-the-machine",
-    "title": "Using the virtual machine",
-    "section": "4. Getting files into the machine",
-    "text": "4. Getting files into the machine\nDownload the zipped file of workshop materials from Canvas. Hit the Upload button (yellow arrow pointing up against a white paper). You should see a window that looks like this:\n\nHit Choose file and select the .zip file.\nThe machine will automatically unzip the file and create a new folder with all the file contents."
-  },
-  {
-    "objectID": "resources/using-virtual-machine.html#creating-and-using-rprojects",
-    "href": "resources/using-virtual-machine.html#creating-and-using-rprojects",
-    "title": "Using the virtual machine",
-    "section": "5. Creating and using Rprojects",
-    "text": "5. Creating and using Rprojects\nWe’re going to create a lot of Rprojects in this class to get used to it. You can create a project in an existing directory (aka folder) in the same way that you would in the desktop version of RStudio. Go to the button in the top left that says Project: (None) and click. Hit New Project.\n Then, select the “Existing Directory” option.\n\nChoose the directory you want to create a project in. Once you click “Browse”, you’ll see a box that looks like this:\n\nDouble click the folders until you get to the one you want (in this example, I went from ENVS-193DS &gt; ENVS-193DS_workshop-01).\nYou can confirm that you chose the right folder once you hit “Choose”:\n\nHit “Create Project”.\nYou should now see the new Rproject in two locations: 1) in the upper right corner and 2) in the list of files in your directory.\n\nOnce you’re done working in your project, you can close the project by going to Project &gt; Close Project.\n\nIf you need to open your project again, navigate to the folder using the Files tab in the bottom right corner. Click on the .Rproj file. You will then see a window that looks like this:\n\nHit “Yes” to open the project."
-  },
-  {
-    "objectID": "resources/using-virtual-machine.html#downloading-your-files",
-    "href": "resources/using-virtual-machine.html#downloading-your-files",
-    "title": "Using the virtual machine",
-    "section": "6. Downloading your files",
-    "text": "6. Downloading your files\nIf you want to hold onto your files on your computer (for example, once the class ends), you can download a whole directory. Click on the folder you want to download and go to More &gt; Export in the lower right pane.\n\nThe machine will download the whole folder as a .zip file, which you can then unzip on your computer."
-  },
-  {
-    "objectID": "resources/genAI.html",
-    "href": "resources/genAI.html",
-    "title": "Guidelines and policies on using AI",
-    "section": "",
-    "text": "Generative AI tools like ChatGPT, Claude, Copilot, etc. can help solve a lot of coding problems: if you’re stuck and don’t know where to start, if you have code that keeps giving you an error, etc. - most of these issues can be solved using AI. The key to effective use of generative AI tools in environmental studies is to be honest about its use."
-  },
-  {
-    "objectID": "resources/genAI.html#why-use-ai",
-    "href": "resources/genAI.html#why-use-ai",
-    "title": "Guidelines and policies on using AI",
-    "section": "",
-    "text": "Generative AI tools like ChatGPT, Claude, Copilot, etc. can help solve a lot of coding problems: if you’re stuck and don’t know where to start, if you have code that keeps giving you an error, etc. - most of these issues can be solved using AI. The key to effective use of generative AI tools in environmental studies is to be honest about its use."
-  },
-  {
-    "objectID": "resources/genAI.html#why-wouldnt-you-use-ai-in-this-class",
-    "href": "resources/genAI.html#why-wouldnt-you-use-ai-in-this-class",
-    "title": "Guidelines and policies on using AI",
-    "section": "Why wouldn’t you use AI in this class?",
-    "text": "Why wouldn’t you use AI in this class?\nIf you’re just starting out learning how to code, we recommend not using generative AI tools. You will likely retain a lot more information by googling, asking for help from classmates, meeting with An, or literally doing anything other than using a generative AI tool. In our experience, the conversations and discussions around materials and the struggle of sifting through a lot of information to try different things out is really effective for retaining information.\nAdditionally, while gen AI can quickly come up with code, it’s not always what you would expect, or what we expect to see in your assignments. It’s straightforward to see if it works - if the output is what you want, then the code works - but there are specifics in each assignment that you as a student enrolled in the class will know that an AI tool will not."
-  },
-  {
-    "objectID": "resources/genAI.html#if-i-want-to-use-ai-what-am-i-allowed-to-do",
-    "href": "resources/genAI.html#if-i-want-to-use-ai-what-am-i-allowed-to-do",
-    "title": "Guidelines and policies on using AI",
-    "section": "If I want to use AI, what am I allowed to do?",
-    "text": "If I want to use AI, what am I allowed to do?\nIf you want to use an AI tool, you may use it to:\n\nTo brainstorm or clarify your understanding of the assignment (e.g. “I have this idea but I’m not sure if it’s right. Can you help me figure out if it applies to this assignment?”)\n\nTo outline your approach or plan your workflow (e.g. “Can you help me figure out how to start this problem?”)\n\nTo clarify or deepen understanding of technical concepts (e.g. “What does this function do in my use case?”)\n\nTo generate or refine code snippets (e.g. “I wrote this code but I think it’s too long. How can I condense it?”)\n\nTo debug or troubleshoot code (e.g. “I wrote this code but it’s not working. What’s wrong with it?”)\n\nTo edit or improve the clarity, structure, or tone of my written responses (e.g. “I wrote this text to summarize a test but it’s too long. Can you help me shorten it to 1-2 sentences?”)\n\nTo check my reasoning, results, or interpretation of findings (e.g. “I interpreted a cleaning workflow in this way. Is my interpretation correct?”)"
-  },
-  {
-    "objectID": "resources/genAI.html#what-am-i-not-allowed-to-do",
-    "href": "resources/genAI.html#what-am-i-not-allowed-to-do",
-    "title": "Guidelines and policies on using AI",
-    "section": "What am I not allowed to do?",
-    "text": "What am I not allowed to do?\nYou are not allowed to use generative AI to produce new code for you to copy-paste into your assignments. Additionally, you may not use AI to generate new writing for you. For example, these prompts would not be allowed:\n\n“Write me code to visualize a boxplot.”\n\n“Write the description of this code.”\n\nAll code and writing in your assignments should be generated by you alone to start out with."
-  },
-  {
-    "objectID": "resources/genAI.html#im-ready-to-use-ai-on-my-assignments.-what-should-i-do-when-i-submit",
-    "href": "resources/genAI.html#im-ready-to-use-ai-on-my-assignments.-what-should-i-do-when-i-submit",
-    "title": "Guidelines and policies on using AI",
-    "section": "I’m ready to use AI on my assignments. What should I do when I submit?",
-    "text": "I’m ready to use AI on my assignments. What should I do when I submit?\nAll assignments need to include a generative AI statement of use (form here).\nKeep in mind that unreported or disallowed use of AI tools will result in an incomplete mark on an assignment and the assignment will not be eligible for revision or resubmission."
-  },
-  {
-    "objectID": "resources/genAI.html#im-not-sure-if-what-im-using-ai-for-is-allowed.-what-do-i-do",
-    "href": "resources/genAI.html#im-not-sure-if-what-im-using-ai-for-is-allowed.-what-do-i-do",
-    "title": "Guidelines and policies on using AI",
-    "section": "I’m not sure if what I’m using AI for is allowed. What do I do?",
-    "text": "I’m not sure if what I’m using AI for is allowed. What do I do?\nTalk to An!"
-  },
-  {
-    "objectID": "resources/genAI.html#im-troubled-about-ai-use-because-of-the-environmental-impacts-disadvantages-brain-deterioration-etc.-what-do-i-do",
-    "href": "resources/genAI.html#im-troubled-about-ai-use-because-of-the-environmental-impacts-disadvantages-brain-deterioration-etc.-what-do-i-do",
-    "title": "Guidelines and policies on using AI",
-    "section": "I’m troubled about AI use, because of the environmental impacts, disadvantages, brain deterioration, etc. What do I do?",
-    "text": "I’m troubled about AI use, because of the environmental impacts, disadvantages, brain deterioration, etc. What do I do?\nAgain, talk to An! I am here to help navigate this new landscape, and figure out a plan that works for you, whether that’s sparingly using AI, not using it at all and relying on other resources, etc."
-  },
-  {
-    "objectID": "assignments/individual-assignment-02.html",
-    "href": "assignments/individual-assignment-02.html",
-    "title": "Individual assignment 2",
-    "section": "",
-    "text": "Fill in your name in the YAML of the individual-assignment-template.qmd file.\nRead in your packages.\n\nRead in your data.\n\nCopy paste any code you need from class into your assignment script.\n\n\n\n\n\n\n\nPractice your own editorial judgement!\n\n\n\n\n\nYou will not need all the code from class to do your assignment.\nYou will need to pick and choose the components that are relevant to the assignment.\nIf you copy-paste your entire class script into your homework, you will need to revise your assignment!\n\n\n\n\nRender to .pdf to make sure that you can render (if not, come ask for help!).\nStart your assignment!"
-  },
-  {
-    "objectID": "assignments/individual-assignment-02.html#numbers-of-individuals",
-    "href": "assignments/individual-assignment-02.html#numbers-of-individuals",
-    "title": "Individual assignment 2",
-    "section": "1. Numbers of individuals",
-    "text": "1. Numbers of individuals\nIn the “Observations per species” section, we made figures showing the total counts per species for two eBird groups: Herons, Ibis, and Allies and Waterfowl.\nWe did this by summarizing the data for each group separately, then creating two separate figures.\nIn this section, you will use facet_wrap() to create a new figure.\n\na. Prep your data\nCreate a new data frame called bird_obs_count from birds_wy2025 summarizing the total counts per species in each of the four eBird groups.\nYou should be able to copy-paste the code from class and modify it to complete this question. For any line that you change, include an annotation explaining how you changed that line.\n\n\nb. Make a new figure\nUse a combination of ggplot(), geom_() and facet_wrap() (along with any associated functions to make your plot look nicer) to create a plot with total count on the x-axis and species on the y-axis with separate panels for each eBird group.\nFor full credit, be sure to:\n\nlabel the x- and y-axes\nget rid of the space between the bottom of the column and the axis line\nuse custom colors\nget rid of the legend (which is a redundant feature)\nmake sure all your axis labels are clear and readable (there are multiple solutions to this, from wrapping the labels to flipping the axes - do what you think is best to make sure that all the text is visible)\n\nAnnotate all your code to demonstrate your understanding of what you have written.\n\n\n\n\n\n\nWeird looking y-axis?\n\n\n\n\n\nIf your y-axis looks off, pay attention to what species are included in each group. Does it make sense that there is an axis tick for “Mallard” under “Shorebirds”? (Hint: no.)\nTo fix this, try running your code with additional arguments in your facet_wrap() like:\n\nscales = \"free_x\"\nscales = \"free_y\"\nscales = \"free\"\n\nto see how the axes might change. Choose the option that makes most sense for your figure.\n\n\n\n\n\nc. Interpret the figure\nAcross all eBird groups:\n\nWhich species had the highest total count?\nWhich species had the lowest total count?\n\nUse values from the data frame you made in part a OR visual components of the figure you made in part b to justify your claim."
-  },
-  {
-    "objectID": "assignments/individual-assignment-02.html#waterfowl-species-turnover",
-    "href": "assignments/individual-assignment-02.html#waterfowl-species-turnover",
-    "title": "Individual assignment 2",
-    "section": "2. Waterfowl species turnover",
-    "text": "2. Waterfowl species turnover\nSpecies turnover describes differences in the composition of species (i.e. which species are present or absent, and how their abundances differ).\nWhile species richness gives you a sense of how many species are in a community, species turnover can tell you which species are contributing to differences in abundance or richness between seasons.\n\na. Revisit an old figure\nLook back at class materials under the section “Seasonal differences in number of individuals”.\nIn 1-2 sentences, describe seasonal differences in total counts for Waterfowl.\nUse visual components of the plot to justify your interpretation.\n\n\nb. Write pseudocode\nWrite pseudocode to calculate the total count per species in Waterfowl per season.\nYou should end up with a data frame that looks something like this:\n\n\n\n\n\n\n\nc. Code your pseudocode.\nWrite the code that corresponds to your pseudocode.\nAt the end of the code chunk, write code to run str() on your object to display the structure.\n\n\nd. Make a visualization.\nMake a visualization of individual counts on the y-axis and season on the x-axis.\nFill the bars by species.\nAnnotate all code to demonstrate your understanding of what you’ve written.\nAdditionally, for full credit:\n\nlabel the x-axis, y-axis, and legend\ninclude a title\nget rid of the space at the bottom of the count axis\nuse custom colors from a palette package or otherwise\nuse a different theme from the default\n\n\n\n\n\n\n\nx-axis order looking off?\n\n\n\n\n\nRemember that water years start on October 1 of one year and end on September 30 of the next year. That means that a logical season order is fall –&gt; winter –&gt; spring –&gt; summer.\nIf your axis order needs fixing, set the levels in your code in part c.\n\n\n\n\n\ne. Understanding trends\nIn 1-2 sentences each, describe:\n\nWhat species is the most abundant across seasons?\nWhich species increased in abundance when comparing fall to winter?\nWhich species contribute to the increased number of Waterfowl individuals in winter and spring relative to fall and summer? In other words, which species are more abundant in winter and spring relative to fall and summer?\n\nFor each question, be specific about the calculated values from your object in part b OR visual components from your figure in part c that justifies each claim."
-  },
-  {
-    "objectID": "assignments/individual-assignment-02.html#waterfowl-temporal-dynamics",
-    "href": "assignments/individual-assignment-02.html#waterfowl-temporal-dynamics",
-    "title": "Individual assignment 2",
-    "section": "3. Waterfowl temporal dynamics",
-    "text": "3. Waterfowl temporal dynamics\nIn the “Temporal dynamics of individual counts” section, we calculated the total counts within eBird groups.\nIn this question, you will calculate and visualize the total counts within species for Waterfowl to answer the question: What are the dynamics through time of total counts for individual Waterfowl species?\n\na. Prep your data\nYou should be able to copy-paste the code from the “Temporal dynamics of individual counts” section and modify it to wrangle the data for Waterfowl.\nOn each line that you modify, write in your annotation how you modified the code.\nYou should end up with a wrangled data frame that is ready to be plotted.\n\n\nb. Make a new figure\nMake a visualization of the total counts for individual Waterfowl species through time. All species should be shown on your plot.\nAdditionally, for full credit:\n\nlabel the x-axis, y-axis, and legend\ninclude a title\nuse custom colors from a palette package or otherwise\nuse a different theme from the default\n\n\n\nc. Interpret the figure\nIn 1-2 sentences each, summarize:\n\nthe similarities or differences between the figure you made in part a and the figure you made in part b. Be specific regarding the visual components (geometries) and how they represent variables (i.e. the x- and y-axes and colors)\n1 species that was consistently present through time in high abundance, with information from the visual components from the figure"
-  },
-  {
-    "objectID": "assignments/individual-assignment-02.html#new-world-sparrow-temporal-dynamics",
-    "href": "assignments/individual-assignment-02.html#new-world-sparrow-temporal-dynamics",
-    "title": "Individual assignment 2",
-    "section": "4. New World Sparrow temporal dynamics",
-    "text": "4. New World Sparrow temporal dynamics\nIn this question, you will calculate and visualize the total counts within species for New World Sparrows to answer the question: What are the dynamics through time of total counts for individual sparrow species species?\n\na. Prep your data\nYou should be able to copy-paste the code from the “Temporal dynamics of individual counts” section and modify it to wrangle the data for sparrows.\n\n\nedited 2026-04-08: corrected text to refer to “sparrows”\nOn each line that you modify, write in your annotation how you modified the code.\nYou should end up with a wrangled data frame that is ready to be plotted.\n\n\nb. Make a new figure\nMake a visualization of the total counts for individual sparrow species through time. All species should be shown on your plot.\nAdditionally, for full credit:\n\nlabel the x-axis, y-axis, and legend\ninclude a title\nuse custom colors from a palette package or otherwise\nuse a different theme from the default\n\n\n\nc. Interpret the figure\nIn 1-2 sentences each, describe:\n\n2 species that tend to be consistently present throughout the year\n2 species that are only present in specific seasons (i.e. leave after a certain point in the year)"
-  },
-  {
-    "objectID": "assignments.html",
-    "href": "assignments.html",
-    "title": "Assignments",
-    "section": "",
-    "text": "Order By\n       Default\n         \n          Due date - Oldest\n        \n         \n          Due date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\nGetting set up\n\n\nMar 30, 2026\n\n\n\n\nIndividual assignment 1\n\n\nApr 10, 2026\n\n\n\n\nIndividual assignment 2\n\n\nApr 17, 2026\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "electives.html",
-    "href": "electives.html",
-    "title": "Electives",
-    "section": "",
-    "text": "Order By\n       Default\n         \n          Due date - Oldest\n        \n         \n          Due date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\nBasic elective option 1\n\n\nApr 17, 2026\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "in-class-materials.html",
-    "href": "in-class-materials.html",
-    "title": "In-class materials",
-    "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nWeek\n\n\nTitle\n\n\n\n\n\n\nWeek 1\n\n\nWater surface elevation at Venoco Bridge\n\n\n\n\nWeek 2\n\n\nBird species at NCOS\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "assignments/individual-assignment-01.html",
-    "href": "assignments/individual-assignment-01.html",
-    "title": "Individual assignment 1",
-    "section": "",
-    "text": "Fill in your name in the individual-assignment-template.R script.\nFile &gt; Save as &gt; lastname-firstname_individual-assignment-01.R.\nRead in your packages.\n\nRead in your data.\n\nCopy paste any code you need from class into your assignment script.\n\n\n\n\n\n\n\nPractice your own editorial judgement!\n\n\n\n\n\nYou will not need all the code from class to do your assignment.\nYou will need to pick and choose the components that are relevant to the assignment.\nIf you copy-paste your entire class script into your homework, you will need to revise your assignment!\n\n\n\n\nStart your homework!"
-  },
-  {
-    "objectID": "assignments/individual-assignment-01.html#exploring-missing-data",
-    "href": "assignments/individual-assignment-01.html#exploring-missing-data",
-    "title": "Individual assignment 1",
-    "section": "1. Exploring missing data",
-    "text": "1. Exploring missing data\n\na. Write pseudocode\nIn class, we practiced writing “pseudocode” to group and summarize the data. Write pseudocode to calculate the number of missing water elevation values from 2025-09-03.\nRemember that pseudocode should not include any actual code. It should be plain language in the format of code.\n\n\nb. Code up your pseudocode.\nWrite the code that corresponds to the pseudocode that you wrote in part a.\nAnnotate all your code.\n\n\nedited 2026-04-02: took out requirement to show output (though output does have to be correct!)\n\n\nc. Number of missing values\nIn 1 sentence, state how many missing values there are for water elevation on 2025-09-03."
-  },
-  {
-    "objectID": "assignments/individual-assignment-01.html#exploration-of-temperature-data",
-    "href": "assignments/individual-assignment-01.html#exploration-of-temperature-data",
-    "title": "Individual assignment 1",
-    "section": "2. Exploration of temperature data",
-    "text": "2. Exploration of temperature data\nFor this exercise, be sure you are looking at venoco_water using View(venoco_water).\nUse the column manipulations to answer these questions.\n\na. Lowest temperature\nOn what date and at what time was the lowest temperature taken? What was the lowest temperature?\nExpress all numbers with units as needed.\n\n\nb. Highest temperature\nOn what date and at what time was the highest temperature taken? What was the highest temperature?\nExpress all numbers with units as needed."
-  },
-  {
-    "objectID": "assignments/individual-assignment-01.html#another-visualization",
-    "href": "assignments/individual-assignment-01.html#another-visualization",
-    "title": "Individual assignment 1",
-    "section": "3. Another visualization",
-    "text": "3. Another visualization\n\na. Write pseudocode to clean and summarize data\nWrite pseudocode to calculate the mean daily temperature at Venoco Bridge.\n\n\nb. Code up your pseudocode.\nCode the pseudocode you wrote in part a.\n\n\nc. Write pseudocode to visualize data\nWrite pseudocode to visualize mean daily temperature through time.\nUse point and line geometries.\nMake sure your pseudocode includes lines for labelling x- and y-axes.\n\n\nd. Code up your pseudocode\nMake a visualization of temperature through time following the pseudocode you wrote in part a.\nAnnotate each function in your code to demonstrate your understanding of what you’ve written.\n\n\ne. Comparing temporal trends\nDoes temperature follow similar temporal trends as water elevation? Why or why not?\nCompare the visual components of each plot to justify your answer."
-  },
-  {
-    "objectID": "assignments/individual-assignment-01.html#dealing-with-dates",
-    "href": "assignments/individual-assignment-01.html#dealing-with-dates",
-    "title": "Individual assignment 1",
-    "section": "4. Dealing with dates",
-    "text": "4. Dealing with dates\n\na. Types of objects\nThe earliest observation recorded in the dataset was from 2024-11-13. Run str(\"2024-11-13\") in the Console.\nWhat type of object is this?\nReference specific components of the output of str(\"2024-11-13\") to justify your response.\n\n\nb. Other types of objects\nNow, run str(as.Date(\"2024-11-13\")) in the Console.\nIn one sentence, describe what type of object is this. Use the specific components of the output of str(as.Date(\"2024-11-13\")) to justify your response.\n\n\nc. Working with a new dataset\nRead in the precipitation data using the following code in your set up section:\n\nprecip &lt;- read_csv(\"NOAA_daily_summaries_USW00053152_full_2025-12-09.csv\")\n\nList the variables and what values they contain in a bulleted list.\n\n\nd. Write pseudocode to filter the dataset\nWrite pseudocode to create a new object called precip_filtered to filter the dataset to only include precipitation readings from after 2024-09-30 and before 2025-10-01 (the 2025 water year).\n\n\ne. Code up your pseudocode\nCode your pseudocode that you wrote in part d. \nAnnotate all lines.\n\nTry using as.Date() and filter() together for this problem.\n\n\n\nf. Connecting information\nLook at the precip_filtered data frame. Find the column that corresponds to precipitation in inches called PRCP.\nWhat three dates in the precip_filtered data frame likely correspond to peaks in water elevation in (m) from the figure we made in class?\nBe specific by stating the date and the amount of precipitation in inches, and which peak the precipitation date connects to (e.g. the peak in [insert month here] likely corresponds to precipitation on [this date], which was [insert amount in inches here])."
-  },
-  {
-    "objectID": "assignments/getting-set-up.html",
-    "href": "assignments/getting-set-up.html",
-    "title": "Getting set up",
-    "section": "",
-    "text": "Optional check in due on Monday 30 March (Week 1) at 11:59 PM\nIn this class, we’ll be using R and RStudio to code up our statistical analyses. Walk through these steps to make sure you have both programs on your computer and that everything is working properly. You need to make sure all tasks are completed before workshop on Friday."
-  },
-  {
-    "objectID": "assignments/getting-set-up.html#task-1.-set-up-a-folder-for-class-materials",
-    "href": "assignments/getting-set-up.html#task-1.-set-up-a-folder-for-class-materials",
-    "title": "Getting set up",
-    "section": "Task 1. Set up a folder for class materials",
-    "text": "Task 1. Set up a folder for class materials\nUsing R/RStudio requires you to know how your computer is organized and where your files are. For now, we’ll want to set up a folder in your computer called ENVS-193DD (note no spaces in the folder name).\nAll operating systems are different, but make sure that your folder is not in the “iCloud”, “OneDrive”, or “Google Drive” folders in your computer. Basically, you want to be sure that you can get from your “root” directory (i.e. your actual computer hard drive) to the folder you’re using.\nYou can check this using the file path, or the folders you would need to open to get to the folder called ENVS-193DD. One example for MacOS is below, where the file path is shown at the bottom of the pane:\n\n\n\n\n\n\n\n\n\n\n\nDisplaying a file path\n\n\n\n\n\nThe easiest way to know where a file or folder is on your computer is to show the file path.\nIf you are using Mac OS, see these directions under “Show the path to a file or folder” to display the file path in the Finder window.\nIf you are using Windows 10 or 11, see this video with directions to show the file path in File Explorer."
-  },
-  {
-    "objectID": "assignments/getting-set-up.html#task-2.-install-r.",
-    "href": "assignments/getting-set-up.html#task-2.-install-r.",
-    "title": "Getting set up",
-    "section": "Task 2. Install R.",
-    "text": "Task 2. Install R.\nGo to cran.rstudio.com. Choose the correct download for your operating system!"
-  },
-  {
-    "objectID": "assignments/getting-set-up.html#task-3.-install-rstudio-and-optionally-quarto",
-    "href": "assignments/getting-set-up.html#task-3.-install-rstudio-and-optionally-quarto",
-    "title": "Getting set up",
-    "section": "Task 3. Install RStudio (and optionally Quarto)",
-    "text": "Task 3. Install RStudio (and optionally Quarto)\nGo to posit.co/download/rstudio-desktop. Click on the button under “2: Install RStudio”. It should automatically show the correct version for your operating system.\n\n\n\n\n\n\n\n\n\n\n\nInstalling Quarto\n\n\n\n\n\nYou only need to install Quarto if you are running RStudio version 2022.07.1 or earlier. If you are installing a later version of RStudio, you do not need to install Quarto.\nFollow the instructions for installing Quarto here.\nI (An) recommend that you install an new version of RStudio instead of installing Quarto, if it is possible on your computer.\nIf you cannot install Quarto on your computer (because it doesn’t work with your operating system, etc.), you may need to use the virtual machine."
-  },
-  {
-    "objectID": "assignments/getting-set-up.html#task-4.-open-rstudio",
-    "href": "assignments/getting-set-up.html#task-4.-open-rstudio",
-    "title": "Getting set up",
-    "section": "Task 4. Open RStudio",
-    "text": "Task 4. Open RStudio\nWhen we say we’re “using R” in the class, what we’re really using is RStudio, which is a graphical user interface (GUI) for R (the language). Basically, we’re never going to open up “R”, but we’ll always open up “RStudio”.\nOpen RStudio on your computer."
-  },
-  {
-    "objectID": "assignments/getting-set-up.html#task-5.-change-your-settings",
-    "href": "assignments/getting-set-up.html#task-5.-change-your-settings",
-    "title": "Getting set up",
-    "section": "Task 5. Change your settings",
-    "text": "Task 5. Change your settings\nYou can change some settings to make your life easier when working in RStudio. The following steps are all done in the same menu. Go to Tools &gt; Global Options.\n\nChange your color scheme.\nYou don’t have to stick with the boring RStudio color scheme! Go to Appearance and select the color scheme you want.\n\n\n\n\n\nClick apply before moving on!\n\n\nChange your workspace save settings.\nForming good data science habits starts from the beginning. Changing your workspace save settings will allow you to start with a clean, blank slate every time you open RStudio.\nGo to the General tab. Make sure that:\n\n“Restore most recently opened project at startup” is unchecked\n\n“Restore previously open source documents at startup” is unchecked\n\n“Restore .Rdata into workspace at startup” is unchecked\n\n“Save workspace to .RData on exit” is “Never”\n\n“Always save history (even when not saving .RData)” is unchecked\n\n\n\n\n\n\n\nSome of these may already be checked! If so, great! Double check everything though!\n\n\n\n\n\n\n\n\n\n\n\nClick apply before moving on!\n\n\nChange your code editing settings.\nThen, go to the Code tab. Under editing, make sure:\n\n“Insert spaces for Tab” is checked\n\n“Auto-detect code indentation” is checked\n\n“Insert matching parens/quotes” is checked\n\n“Use native pipe operator, |&gt;” is checked\n\n“Auto-indent code after paste” is checked\n\n“Vertically align arguments in auto-indent” is checked\n\n“Continue comment when inserting new line” is checked\n\n“Enable hyperlink highlighting in editor” is checked\n\n“Enable code snippets” is checked\n\n\n\n\n\n\nClick apply before moving on!\n\n\nChange your display settings.\nThen, go to Display (still under the Code tab). Make sure:\n\n“Highlight selected word” is checked\n\n“Show line numbers” is checked\n\n“Show margin” is checked\n\n“Soft-wrap source files” is checked\n\n“Blinking cursor” (if you want it) is checked\n\n“Enable preview of named and hexadecimal colors” is checked\n\n“Use rainbow parentheses” is checked\n\n\n\n\n\n\nClick apply before moving on!\n\n\nChange your Markdown settings.\nThen, go to the R Markdown tab. Under basic, make sure the following is checked:\n\n“Soft-wrap R Markdown files” is checked\n\n“Show output inline for all R Markdown documents” is unchecked\n\n“Show output preview in:” selection is “Viewer Pane”\n\n“Show document outline by default” is checked\n\n\n\n\n\n\nClick apply before moving on!\n\n\nChange your visual settings.\nUnder visual (still under the R Markdown tab), make sure:\n\n“Use visual editor by default for new documents” is unchecked\n\n“Show document outline by default” is checked\n\n\n\n\n\n\nClick apply to save all your changes! Do not move on to the next task without hitting apply!"
-  },
-  {
-    "objectID": "assignments/getting-set-up.html#task-6.-test-out-installing-a-package",
-    "href": "assignments/getting-set-up.html#task-6.-test-out-installing-a-package",
-    "title": "Getting set up",
-    "section": "Task 6. Test out installing a package",
-    "text": "Task 6. Test out installing a package\nPackages are the best part of using R. We’ll talk more about what packages are in workshop, but for now try installing a package. Go to your Console (the bottom left pane in the RStudio window), and type (or copy paste) install.packages(\"tidyverse\"). Hit Enter.\nYou should get a message that looks something like this:\n\n\n\n\n\n\n\n\n\n\n\nOperating system differences\n\n\n\n\n\nThe database that holds all these packages will automatically detect which version you need based on your operating system. Don’t worry if your output message doesn’t look exactly the same as the one here - just as long as you get something like “The downloaded binary packages are in…”, you’ve probably got the package installed."
-  },
-  {
-    "objectID": "assignments/getting-set-up.html#task-7.-test-out-reading-in-a-package",
-    "href": "assignments/getting-set-up.html#task-7.-test-out-reading-in-a-package",
-    "title": "Getting set up",
-    "section": "Task 7. Test out reading in a package",
-    "text": "Task 7. Test out reading in a package\nNow you’ve installed a package, but you want to make sure you can actually run it. Again in the Console (the bottom left pane), type library(tidyverse) and hit Enter.\nYou should get a message that looks something like this:"
-  },
-  {
-    "objectID": "assignments/getting-set-up.html#task-8.-install-a-small-package-in-the-terminal",
-    "href": "assignments/getting-set-up.html#task-8.-install-a-small-package-in-the-terminal",
-    "title": "Getting set up",
-    "section": "Task 8. Install a small package in the Terminal",
-    "text": "Task 8. Install a small package in the Terminal\nIn this class, we will use a file format called .qmd to integrate code and plain text into a document.\nTo use .qmd files and turn them into .pdf files, you will need an additional piece of software.\nIn the Terminal tab (to the right of the console), type the following:\nquarto install tinytex\nHit enter to run that line.\n\n\n\n\n\nDepending on whether or not you have installed tinytex before, you may see different messages.\nOn my (An’s) computer, I see the message tinytex is already installed and up to date. You may see a different message, or be prompted to do different things. That is ok!"
-  },
-  {
-    "objectID": "assignments/getting-set-up.html#task-9.-take-a-screenshot-of-your-set-up.",
-    "href": "assignments/getting-set-up.html#task-9.-take-a-screenshot-of-your-set-up.",
-    "title": "Getting set up",
-    "section": "Task 9. Take a screenshot of your set up.",
-    "text": "Task 9. Take a screenshot of your set up.\n\nTake a screenshot of your RStudio window with the Console showing\nYour screenshot should look something like this:\n\n\n\n\n\n\n\n\n\n\n\nDouble check your screenshot!\n\n\n\n\n\nTake a screenshot of your whole RStudio window. Make sure that the messages in the orange box (above) are visible in your screenshot! Otherwise we will not be able to troubleshoot whatever issues you are having with installation (if you are actually having any).\n\n\n\n\n\nTake a screenshot of your RStudio window with the Terminal showing\nYour screenshot should look something like this:\n\n\n\n\n\n\n\n\n\n\n\nDouble check your screenshot!\n\n\n\n\n\nAgain, take a screenshot of your whole RStudio window. Make sure that the messages in the orange box (above) are visible in your screenshot! Otherwise we will not be able to troubleshoot whatever issues you are having with installation (if you are actually having any).\n\n\n\n\n\nTake a screenshot of your ENVS-193DD folder\nLastly, take a screenshot of your ‘ENVS-193DD’ folder set up from task 1. It should be evident what the file path is, either from a path at the bottom of the window or on the side. It doesn’t matter where the file path appears in your screenshot as long as you can tell where the folder is. Your screenshot should look something like this:\n\n\n\n\n\nUpload all three screenshots to Canvas for your optional check-in."
-  },
-  {
-    "objectID": "assignments/getting-set-up.html#triple-checking-your-set-up",
-    "href": "assignments/getting-set-up.html#triple-checking-your-set-up",
-    "title": "Getting set up",
-    "section": "Triple checking your set up",
-    "text": "Triple checking your set up\nIf you would like to verify your set up or get help, come see An on Tuesday the 31st of March between 9:30 AM - 12 PM in Bren 4017."
-  },
-  {
-    "objectID": "resources/resubmissions.html",
-    "href": "resources/resubmissions.html",
-    "title": "Format for resubmission cover letter",
-    "section": "",
-    "text": "In a document, put the name of the assignment you want to resubmit and “resubmission cover letter” in the title (e.g. “Individual assignment 2 resubmission cover letter”).\nFor each component that you want to redo for the possibility of getting full marks, you will need to articulate (in 1-2 sentences):\n\nwhat you got wrong\nwhat you need to do to fix it\nwhy that fix would improve the quality of your work (independently of the grade you received)\n\nFor example, if you got “partial marks” for multiple plots where you had overlapping axis labels, a reasonable request would be:\n\nMy x-axis labels for Problem 2a, 3b, and 5c were overlapping.\nFor 2a, I need to either spread out the x-axis or fix the way I read in the data to make sure the columns are correct (so that the date column is read in as a date rather than a character). For 3b and 5c, I need to create a line break in the axis label.\nMaking sure the x-axis labels don’t overlap improves the figure because the text would be readable."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "ENVS 193DD",
-    "section": "",
-    "text": "Photo by FH Joyce"
-  },
-  {
-    "objectID": "index.html#instructor",
-    "href": "index.html#instructor",
-    "title": "ENVS 193DD",
-    "section": "Instructor",
-    "text": "Instructor\n\n\n\n\n\n\n\n\nName: An Bui (she/her)\nForms of address: An (preferred), Dr. Bui, Professor Bui\nEmail: an_bui [at] ucsb [dot] edu\nDrop-in hours: Thursdays 9:30 - 11:30 AM\nDrop-in location: At the tables outside the UCen 1st floor (facing the lagoon)\nMore about me: an-bui.com"
-  },
-  {
-    "objectID": "index.html#undergraduate-learning-assistants",
-    "href": "index.html#undergraduate-learning-assistants",
-    "title": "ENVS 193DD",
-    "section": "Undergraduate learning assistants",
-    "text": "Undergraduate learning assistants\n\n\n\n\n\n\n\n\nName: Matthew Roco-Calvo\nForms of address: Matt\nDrop-in hours: Fridays 10:50 - 11:50 AM\nDrop-in location: HSSB courtyard\nMore about me: LinkedIn\n\n\n\n\n\n\n\n\n\n\nName: Abigail Youngblood\nForms of address: Abigail\nDrop-in hours: Wednesdays 4-5 PM\nDrop-in location: UCEN (tables in front of Subway)\nMore about me: LinkedIn\n\n\n\n\n\n\n\nPhoto by FH Joyce"
   },
   {
     "objectID": "in-class-materials/week-01.html",
