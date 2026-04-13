@@ -211,7 +211,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">April 6, 2026</p>
+        <p class="date-modified">April 13, 2026</p>
       </div>
     </div>
       
@@ -347,33 +347,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>group_by()</code>, <code>summarize()</code>, and <code>ungroup()</code></li>
 </ul></li>
 <li>review visualizations using <code>ggplot()</code></li>
-<li>introduce a new visualization tools
+<li>introduce new visualization tools
 <ul>
-<li><code>geom_bar()</code></li>
-<li><code>facet_wrap()</code></li>
+<li><code>geom_bar()</code> to represent counts using bars</li>
+<li><code>facet_wrap()</code> to create different panels in a graph for levels in a category</li>
 </ul></li>
 <li>make visualizations easier to intepret using <code>reorder()</code></li>
 <li>customize colors in visualizations using
 <ul>
-<li><code>scale_color_manual()</code></li>
+<li><code>scale_color_manual()</code> to set custom colors</li>
 </ul></li>
 <li>introduce new summarizing/exploration functions
 <ul>
-<li><code>distinct()</code></li>
-<li><code>nrow()</code></li>
-<li><code>colnames()</code></li>
-<li><code>case_when()</code></li>
-<li><code>count()</code></li>
-<li><code>arrange()</code></li>
-<li><code>n_distinct()</code></li>
-<li><code>sum()</code></li>
+<li><code>distinct()</code> to filter rows for unique values</li>
+<li><code>nrow()</code> to count the number of rows in a data frame</li>
+<li><code>colnames()</code> to get the column names in a data frame</li>
+<li><code>case_when()</code> to detect values in one column to change values in another column (when used with <code>mutate()</code>)</li>
+<li><code>count()</code> to count the number of rows in a group</li>
+<li><code>arrange()</code> to order a data frame by the values in a column</li>
+<li><code>n_distinct()</code> to count the number of distinct values in a column</li>
+<li><code>sum()</code> to calculate the total or sum of values</li>
 </ul></li>
 <li>introduce extracting values from dataframes using square brackets (<code>[]</code>) and references to rows and columns</li>
 <li>introduce a new wrangling function
 <ul>
-<li><code>fct_relevel()</code></li>
+<li><code>fct_relevel()</code> to set the order of levels in a category</li>
 </ul></li>
-<li>introduce a new operator: <code>%in%</code></li>
+<li>introduce a new operator: <code>%in%</code> to detect multiple matches in a list</li>
 </ul>
 <p>Additionally, we are going to learn new ways of working with code in a Quarto document (file suffix <code>.qmd</code>). Quarto allows people to write code along with prose.</p>
 <p>In class, we will discuss how to:</p>
@@ -1562,25 +1562,25 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>review summarizing functions from last week</span>
 <span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`group_by()`</span>, <span class="in">`summarize()`</span>, and <span class="in">`ungroup()`</span></span>
 <span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>review visualizations using <span class="in">`ggplot()`</span></span>
-<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>introduce a new visualization tools</span>
-<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`geom_bar()`</span></span>
-<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`facet_wrap()`</span></span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>introduce new visualization tools</span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`geom_bar()`</span> to represent counts using bars</span>
+<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`facet_wrap()`</span> to create different panels in a graph for levels in a category</span>
 <span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>make visualizations easier to intepret using <span class="in">`reorder()`</span></span>
 <span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>customize colors in visualizations using</span>
-<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`scale_color_manual()`</span></span>
+<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`scale_color_manual()`</span> to set custom colors</span>
 <span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>introduce new summarizing/exploration functions</span>
-<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`distinct()`</span></span>
-<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`nrow()`</span></span>
-<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`colnames()`</span></span>
-<span id="cb26-48"><a href="#cb26-48" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`case_when()`</span></span>
-<span id="cb26-49"><a href="#cb26-49" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`count()`</span></span>
-<span id="cb26-50"><a href="#cb26-50" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`arrange()`</span></span>
-<span id="cb26-51"><a href="#cb26-51" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`n_distinct()`</span></span>
-<span id="cb26-52"><a href="#cb26-52" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`sum()`</span></span>
+<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`distinct()`</span> to filter rows for unique values</span>
+<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`nrow()`</span> to count the number of rows in a data frame</span>
+<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`colnames()`</span> to get the column names in a data frame</span>
+<span id="cb26-48"><a href="#cb26-48" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`case_when()`</span> to detect values in one column to change values in another column (when used with <span class="in">`mutate()`</span>)</span>
+<span id="cb26-49"><a href="#cb26-49" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`count()`</span> to count the number of rows in a group</span>
+<span id="cb26-50"><a href="#cb26-50" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`arrange()`</span> to order a data frame by the values in a column</span>
+<span id="cb26-51"><a href="#cb26-51" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`n_distinct()`</span> to count the number of distinct values in a column</span>
+<span id="cb26-52"><a href="#cb26-52" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`sum()`</span> to calculate the total or sum of values</span>
 <span id="cb26-53"><a href="#cb26-53" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>introduce extracting values from dataframes using square brackets (<span class="in">`[]`</span>) and references to rows and columns</span>
 <span id="cb26-54"><a href="#cb26-54" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>introduce a new wrangling function</span>
-<span id="cb26-55"><a href="#cb26-55" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`fct_relevel()`</span></span>
-<span id="cb26-56"><a href="#cb26-56" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>introduce a new operator: <span class="in">`%in%`</span></span>
+<span id="cb26-55"><a href="#cb26-55" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`fct_relevel()`</span> to set the order of levels in a category</span>
+<span id="cb26-56"><a href="#cb26-56" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>introduce a new operator: <span class="in">`%in%`</span> to detect multiple matches in a list</span>
 <span id="cb26-57"><a href="#cb26-57" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-58"><a href="#cb26-58" aria-hidden="true" tabindex="-1"></a>Additionally, we are going to learn new ways of working with code in a Quarto document (file suffix <span class="in">`.qmd`</span>). Quarto allows people to write code along with prose.  </span>
 <span id="cb26-59"><a href="#cb26-59" aria-hidden="true" tabindex="-1"></a></span>
@@ -2275,7 +2275,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","selector":".lightbox","descPosition":"bottom","closeEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

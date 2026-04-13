@@ -1,7 +1,7 @@
 ---
 title: "Water quality parameters"
 subtitle: "Week 3"
-categories: [library(), tidyverse, janitor, here, ggplot colors, filter(), mutate(), select(), case_when(), fct_relevel(), '%in%', group_by(), summarize(), ungroup(), count(), ggplot(), geom_point(), geom_line(), geom_bar(), facet_wrap(), scale_color_manual(), stat_summary(), mdy_hms(), month(), year(), left_join(), full_join(), pull(), '!', quarto]
+categories: [library(), tidyverse, janitor, here, ggplot colors, filter(), mutate(), select(), case_when(), fct_relevel(), '%in%', relocate(), group_by(), summarize(), ungroup(), count(), ggplot(), geom_point(), geom_line(), geom_bar(), facet_wrap(), scale_color_manual(), stat_summary(), mdy_hms(), month(), year(), left_join(), full_join(), pull(), '!', quarto]
 ---
 
 [Download zip here](https://github.com/ENVS-193DD/ENVS-193DD.github.io/blob/main/data/week-03.zip)
@@ -45,16 +45,17 @@ To answer these questions, we are going to:
   - `facet_wrap()`
   - `scale_color_manual()`
 - introduce a new visualization tool:
-  - `stat_summary()`
+  - `stat_summary()` to visualize quick summary statistics
 - introduce new tools to deal with dates and times:
-  - `mdy_hms()`
-  - `month()`
-  - `year()`
+  - `mdy_hms()` to parse dates into POSIXct (Portable Operating System Interface calendar time) format, which is a standard way of denoting dates and times
+  - `month()` to extract the month from a given POSIXct object
+  - `year()` to extract the year from a given POSIXct object
 - introduce a new wrangling concept: **joins** using
-  - `left_join()` and
-  - `full_join()`
-- introduce a new wrangling function:
-  - `pull()`
+  - `left_join()` to join two data frames (x and y) and retain all rows in x
+  - `full_join()` to join two data frames (x and y) and retain all rows in x and y
+- introduce new wrangling functions:
+  - `pull()` to extract a data frame column as a vector
+  - `relocate()` to rearrange columns in a data frame
 - introduce a new operator:
   - `!` to exclude observations
 - introduce new ways of formatting Quarto documents, including

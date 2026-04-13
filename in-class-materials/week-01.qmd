@@ -21,15 +21,15 @@ To answer this question, we will
 - connect functions together using the `|>` operator
 - write _pseudocode_ to plan a workflow before coding it up
 - explore data using:
-  - `min()`
-  - `max()`
-  - `nrow()`
+  - `min()` to find the smallest number
+  - `max()` to find the largest number
+  - `nrow()` to count the number of rows in a data frame
 - wrangle data using:
-  - `select()`
-  - `mutate()`
-  - `filter()`
+  - `select()` to select columns in a data frame
+  - `mutate()` to alter or add columns in a data frame
+  - `filter()` to filter rows based on column values
 - summarize data using:
-  - `group_by()`, `summarize()`, `ungroup()`
+  - `group_by()`, `summarize()`, `ungroup()` to calculate summary statistics
 - visualize data using:
   - `ggplot()` and its associated functions
   

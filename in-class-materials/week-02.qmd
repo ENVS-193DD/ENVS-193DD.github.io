@@ -35,25 +35,25 @@ To answer these questions, we are going to:
 - review summarizing functions from last week
   - `group_by()`, `summarize()`, and `ungroup()`
 - review visualizations using `ggplot()`
-- introduce a new visualization tools
-  - `geom_bar()`
-  - `facet_wrap()`
+- introduce new visualization tools
+  - `geom_bar()` to represent counts using bars
+  - `facet_wrap()` to create different panels in a graph for levels in a category
 - make visualizations easier to intepret using `reorder()`
 - customize colors in visualizations using
-  - `scale_color_manual()`
+  - `scale_color_manual()` to set custom colors
 - introduce new summarizing/exploration functions
-  - `distinct()`
-  - `nrow()`
-  - `colnames()`
-  - `case_when()`
-  - `count()`
-  - `arrange()`
-  - `n_distinct()`
-  - `sum()`
+  - `distinct()` to filter rows for unique values
+  - `nrow()` to count the number of rows in a data frame
+  - `colnames()` to get the column names in a data frame
+  - `case_when()` to detect values in one column to change values in another column (when used with `mutate()`)
+  - `count()` to count the number of rows in a group
+  - `arrange()` to order a data frame by the values in a column
+  - `n_distinct()` to count the number of distinct values in a column
+  - `sum()` to calculate the total or sum of values
 - introduce extracting values from dataframes using square brackets (`[]`) and references to rows and columns
 - introduce a new wrangling function
-  - `fct_relevel()`
-- introduce a new operator: `%in%`
+  - `fct_relevel()` to set the order of levels in a category
+- introduce a new operator: `%in%` to detect multiple matches in a list
 
 Additionally, we are going to learn new ways of working with code in a Quarto document (file suffix `.qmd`). Quarto allows people to write code along with prose.  
 
