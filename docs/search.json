@@ -4,7 +4,7 @@
     "href": "resources.html",
     "title": "Resources",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nFormat for resubmission cover letter\n\n\nrequired for Revisions needed marks\n\n\n\n\nGuidelines and policies on using AI\n\n\nOpenness about using AI is good, actually!\n\n\n\n\nUsing the virtual machine\n\n\nCan’t install R/RStudio on your computer? Don’t have a computer? Use the virtual machine!\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nFormat for resubmission cover letter\n\n\nrequired for Revisions needed marks\n\n\n\n\nGit/GitHub Part 1: prechecks\n\n\ncreating an account and making sure git is on your computer and configured correctly\n\n\n\n\nGit/GitHub Part 2: personal access token\n\n\nstoring your personal access token\n\n\n\n\nGuidelines and policies on using AI\n\n\nOpenness about using AI is good, actually!\n\n\n\n\nUsing the virtual machine\n\n\nCan’t install R/RStudio on your computer? Don’t have a computer? Use the virtual machine!\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "electives/elective-01.html",
@@ -60,7 +60,7 @@
     "href": "in-class-materials/week-03.html#data-science-tools",
     "title": "Water quality parameters",
     "section": "Data science tools",
-    "text": "Data science tools\nTo answer these questions, we are going to:\n\nreview reading in packages\n\nlibrary()\n\nuse familiar packages\n\ntidyverse\n\nintroduce new packages\n\njanitor to clean column names\nhere to manage file paths\n\nreview reading in data\n\nread_csv()\n\nreview cleaning and wrangling functions/operators\n\nfilter()\nmutate()\nselect()\ncase_when()\nfct_relevel()\n%in%\n\nreview summarizing functions\n\ngroup_by(), summarize(), and ungroup()\ncount()\n\nreview visualizations using ggplot(), including:\n\ngeom_point() and geom_line()\ngeom_bar()\nfacet_wrap()\nscale_color_manual()\n\nintroduce a new visualization tool:\n\nstat_summary() to visualize quick summary statistics\n\nintroduce new tools to deal with dates and times:\n\nmdy_hms() to parse dates into POSIXct (Portable Operating System Interface calendar time) format, which is a standard way of denoting dates and times\nmonth() to extract the month from a given POSIXct object\nyear() to extract the year from a given POSIXct object\n\nintroduce a new wrangling concept: joins using\n\nleft_join() to join two data frames (x and y) and retain all rows in x\nfull_join() to join two data frames (x and y) and retain all rows in x and y\n\nintroduce new wrangling functions:\n\npull() to extract a data frame column as a vector\nrelocate() to rearrange columns in a data frame\n\nintroduce a new operator:\n\n! to exclude observations\n\nintroduce new ways of formatting Quarto documents, including\n\ncallout blocks\nin-line code"
+    "text": "Data science tools\nTo answer these questions, we are going to:\n\nreview reading in packages\n\nlibrary()\n\nuse familiar packages\n\ntidyverse\n\nintroduce new packages\n\njanitor to clean column names\nhere to manage file paths\n\nreview reading in data\n\nread_csv()\n\nreview cleaning and wrangling functions/operators\n\nfilter()\nmutate()\nselect()\ncase_when()\nfct_relevel()\n%in%\n\nreview summarizing functions\n\ngroup_by(), summarize(), and ungroup()\ncount()\n\nreview visualizations using ggplot(), including:\n\ngeom_point() and geom_line()\ngeom_bar()\nfacet_wrap()\nscale_color_manual()\n\nintroduce a new visualization tool:\n\nstat_summary() to visualize quick summary statistics\n\nintroduce new tools to deal with dates and times:\n\nmdy_hms() and mdy() to parse dates into POSIXct (Portable Operating System Interface calendar time) format which is a standard way of denoting dates and times\nmonth() to extract the month from a given POSIXct object\nyear() to extract the year from a given POSIXct object\n\nintroduce a new wrangling concept: joins using\n\nleft_join() to join two data frames (x and y) and retain all rows in x\nfull_join() to join two data frames (x and y) and retain all rows in x and y\n\nintroduce new wrangling functions:\n\npull() to extract a data frame column as a vector\nrelocate() to rearrange columns in a data frame\nrename() to rename a column\n\nintroduce a new operator:\n\n! to exclude observations\n\nintroduce new ways of formatting Quarto documents, including\n\ncallout blocks\nin-line code"
   },
   {
     "objectID": "in-class-materials/week-03.html#set-up",
@@ -124,6 +124,62 @@
     "title": "Format for resubmission cover letter",
     "section": "",
     "text": "In a document, put the name of the assignment you want to resubmit and “resubmission cover letter” in the title (e.g. “Individual assignment 2 resubmission cover letter”).\nFor each component that you want to redo for the possibility of getting full marks, you will need to articulate (in 1-2 sentences):\n\nwhat you got wrong\nwhat you need to do to fix it\nwhy that fix would improve the quality of your work (independently of the grade you received)\n\nFor example, if you got “partial marks” for multiple plots where you had overlapping axis labels, a reasonable request would be:\n\nMy x-axis labels for Problem 2a, 3b, and 5c were overlapping.\nFor 2a, I need to either spread out the x-axis or fix the way I read in the data to make sure the columns are correct (so that the date column is read in as a date rather than a character). For 3b and 5c, I need to create a line break in the axis label.\nMaking sure the x-axis labels don’t overlap improves the figure because the text would be readable."
+  },
+  {
+    "objectID": "resources/genAI.html",
+    "href": "resources/genAI.html",
+    "title": "Guidelines and policies on using AI",
+    "section": "",
+    "text": "Generative AI tools like ChatGPT, Claude, Copilot, etc. can help solve a lot of coding problems: if you’re stuck and don’t know where to start, if you have code that keeps giving you an error, etc. - most of these issues can be solved using AI. The key to effective use of generative AI tools in environmental studies is to be honest about its use."
+  },
+  {
+    "objectID": "resources/genAI.html#why-use-ai",
+    "href": "resources/genAI.html#why-use-ai",
+    "title": "Guidelines and policies on using AI",
+    "section": "",
+    "text": "Generative AI tools like ChatGPT, Claude, Copilot, etc. can help solve a lot of coding problems: if you’re stuck and don’t know where to start, if you have code that keeps giving you an error, etc. - most of these issues can be solved using AI. The key to effective use of generative AI tools in environmental studies is to be honest about its use."
+  },
+  {
+    "objectID": "resources/genAI.html#why-wouldnt-you-use-ai-in-this-class",
+    "href": "resources/genAI.html#why-wouldnt-you-use-ai-in-this-class",
+    "title": "Guidelines and policies on using AI",
+    "section": "Why wouldn’t you use AI in this class?",
+    "text": "Why wouldn’t you use AI in this class?\nIf you’re just starting out learning how to code, we recommend not using generative AI tools. You will likely retain a lot more information by googling, asking for help from classmates, meeting with An, or literally doing anything other than using a generative AI tool. In our experience, the conversations and discussions around materials and the struggle of sifting through a lot of information to try different things out is really effective for retaining information.\nAdditionally, while gen AI can quickly come up with code, it’s not always what you would expect, or what we expect to see in your assignments. It’s straightforward to see if it works - if the output is what you want, then the code works - but there are specifics in each assignment that you as a student enrolled in the class will know that an AI tool will not."
+  },
+  {
+    "objectID": "resources/genAI.html#if-i-want-to-use-ai-what-am-i-allowed-to-do",
+    "href": "resources/genAI.html#if-i-want-to-use-ai-what-am-i-allowed-to-do",
+    "title": "Guidelines and policies on using AI",
+    "section": "If I want to use AI, what am I allowed to do?",
+    "text": "If I want to use AI, what am I allowed to do?\nIf you want to use an AI tool, you may use it to:\n\nTo brainstorm or clarify your understanding of the assignment (e.g. “I have this idea but I’m not sure if it’s right. Can you help me figure out if it applies to this assignment?”)\n\nTo outline your approach or plan your workflow (e.g. “Can you help me figure out how to start this problem?”)\n\nTo clarify or deepen understanding of technical concepts (e.g. “What does this function do in my use case?”)\n\nTo generate or refine code snippets (e.g. “I wrote this code but I think it’s too long. How can I condense it?”)\n\nTo debug or troubleshoot code (e.g. “I wrote this code but it’s not working. What’s wrong with it?”)\n\nTo edit or improve the clarity, structure, or tone of my written responses (e.g. “I wrote this text to summarize a test but it’s too long. Can you help me shorten it to 1-2 sentences?”)\n\nTo check my reasoning, results, or interpretation of findings (e.g. “I interpreted a cleaning workflow in this way. Is my interpretation correct?”)"
+  },
+  {
+    "objectID": "resources/genAI.html#what-am-i-not-allowed-to-do",
+    "href": "resources/genAI.html#what-am-i-not-allowed-to-do",
+    "title": "Guidelines and policies on using AI",
+    "section": "What am I not allowed to do?",
+    "text": "What am I not allowed to do?\nYou are not allowed to use generative AI to produce new code for you to copy-paste into your assignments. Additionally, you may not use AI to generate new writing for you. For example, these prompts would not be allowed:\n\n“Write me code to visualize a boxplot.”\n\n“Write the description of this code.”\n\nAll code and writing in your assignments should be generated by you alone to start out with."
+  },
+  {
+    "objectID": "resources/genAI.html#im-ready-to-use-ai-on-my-assignments.-what-should-i-do-when-i-submit",
+    "href": "resources/genAI.html#im-ready-to-use-ai-on-my-assignments.-what-should-i-do-when-i-submit",
+    "title": "Guidelines and policies on using AI",
+    "section": "I’m ready to use AI on my assignments. What should I do when I submit?",
+    "text": "I’m ready to use AI on my assignments. What should I do when I submit?\nAll assignments need to include a generative AI statement of use (form here).\nKeep in mind that unreported or disallowed use of AI tools will result in an incomplete mark on an assignment and the assignment will not be eligible for revision or resubmission."
+  },
+  {
+    "objectID": "resources/genAI.html#im-not-sure-if-what-im-using-ai-for-is-allowed.-what-do-i-do",
+    "href": "resources/genAI.html#im-not-sure-if-what-im-using-ai-for-is-allowed.-what-do-i-do",
+    "title": "Guidelines and policies on using AI",
+    "section": "I’m not sure if what I’m using AI for is allowed. What do I do?",
+    "text": "I’m not sure if what I’m using AI for is allowed. What do I do?\nTalk to An!"
+  },
+  {
+    "objectID": "resources/genAI.html#im-troubled-about-ai-use-because-of-the-environmental-impacts-disadvantages-brain-deterioration-etc.-what-do-i-do",
+    "href": "resources/genAI.html#im-troubled-about-ai-use-because-of-the-environmental-impacts-disadvantages-brain-deterioration-etc.-what-do-i-do",
+    "title": "Guidelines and policies on using AI",
+    "section": "I’m troubled about AI use, because of the environmental impacts, disadvantages, brain deterioration, etc. What do I do?",
+    "text": "I’m troubled about AI use, because of the environmental impacts, disadvantages, brain deterioration, etc. What do I do?\nAgain, talk to An! I am here to help navigate this new landscape, and figure out a plan that works for you, whether that’s sparingly using AI, not using it at all and relying on other resources, etc."
   },
   {
     "objectID": "assignments/getting-set-up.html",
@@ -294,60 +350,109 @@
     "text": "4. New World Sparrow temporal dynamics\nIn this question, you will calculate and visualize the total counts within species for New World Sparrows to answer the question: What are the dynamics through time of total counts for individual sparrow species species?\n\na. Prep your data\nYou should be able to copy-paste the code from the “Temporal dynamics of individual counts” section and modify it to wrangle the data for sparrows.\n\n\nedited 2026-04-08: corrected text to refer to “sparrows”\nOn each line that you modify, write in your annotation how you modified the code.\nYou should end up with a wrangled data frame that is ready to be plotted.\n\n\nb. Make a new figure\nMake a visualization of the total counts for individual sparrow species through time. All species should be shown on your plot.\nAdditionally, for full credit:\n\nlabel the x-axis, y-axis, and legend\ninclude a title\nuse custom colors from a palette package or otherwise\nuse a different theme from the default\n\n\n\nc. Interpret the figure\nIn 1-2 sentences each, describe:\n\n2 species that tend to be consistently present throughout the year\n2 species that are only present in specific seasons (i.e. leave after a certain point in the year)"
   },
   {
-    "objectID": "resources/genAI.html",
-    "href": "resources/genAI.html",
-    "title": "Guidelines and policies on using AI",
+    "objectID": "resources/git-prechecks.html",
+    "href": "resources/git-prechecks.html",
+    "title": "Git/GitHub Part 1: prechecks",
     "section": "",
-    "text": "Generative AI tools like ChatGPT, Claude, Copilot, etc. can help solve a lot of coding problems: if you’re stuck and don’t know where to start, if you have code that keeps giving you an error, etc. - most of these issues can be solved using AI. The key to effective use of generative AI tools in environmental studies is to be honest about its use."
+    "text": "“Git” (pronounced with a hard “g”, as in “give”) is the software that tracks versions of files on your computer. “GitHub” (also pronounced with a hard “g”) is the hosting platform that holds all versions of files tracked by Git.\n\n\n\nYou NEED to know where the difference between files on your actual, physical computer vs files held on OneDrive or iCloud. Git will not work properly with files on OneDrive or iCloud (in short, the cloud syncing does not work with version control).\nFor every folder you track with Git, you have to make sure it is not on OneDrive or iCloud.\nOne easy way make sure that your folders are on your actual computer (again, not on OneDrive or iCloud) is to create a folder called git or github outside of cloud folders. On my (An’s) computer (which is a Mac), the file path to this folder is Macintosh HD &gt; Users &gt; An &gt; github.\nWith Macs: your root directory is usually Macintosh HD.\nWith Windows: your root directory is the C: drive.\n\n\n\nYou are going to run into problems when we use Git/GitHub in class if you do not set this up correctly. PLEASE give yourself time to read the directions and follow the steps exactly as they are laid out. Additionally, reach out to An for individual help with any of these steps.\n\n\n\nWe are going to start using Git/GitHub in class during week 5. You can get help to set up in:\n\ndrop-in hours with An during week 3 or week 4\na one-on-one meeting with An during week 3 or week 4\n\nIf you get your set up double checked, you will earn one additional token.\n\n\n\nAgain, we are going to start using Git/GitHub in class during week 5. If you do not set things up correctly on your own AND/OR if you do not get help during drop-ins, we will not stop to help you.\nYOU NEED TO SET EVERYTHING UP CORRECTLY BEFORE CLASS DURING WEEK 5."
   },
   {
-    "objectID": "resources/genAI.html#why-use-ai",
-    "href": "resources/genAI.html#why-use-ai",
-    "title": "Guidelines and policies on using AI",
+    "objectID": "resources/git-prechecks.html#git-vs-github",
+    "href": "resources/git-prechecks.html#git-vs-github",
+    "title": "Git/GitHub Part 1: prechecks",
     "section": "",
-    "text": "Generative AI tools like ChatGPT, Claude, Copilot, etc. can help solve a lot of coding problems: if you’re stuck and don’t know where to start, if you have code that keeps giving you an error, etc. - most of these issues can be solved using AI. The key to effective use of generative AI tools in environmental studies is to be honest about its use."
+    "text": "“Git” (pronounced with a hard “g”, as in “give”) is the software that tracks versions of files on your computer. “GitHub” (also pronounced with a hard “g”) is the hosting platform that holds all versions of files tracked by Git."
   },
   {
-    "objectID": "resources/genAI.html#why-wouldnt-you-use-ai-in-this-class",
-    "href": "resources/genAI.html#why-wouldnt-you-use-ai-in-this-class",
-    "title": "Guidelines and policies on using AI",
-    "section": "Why wouldn’t you use AI in this class?",
-    "text": "Why wouldn’t you use AI in this class?\nIf you’re just starting out learning how to code, we recommend not using generative AI tools. You will likely retain a lot more information by googling, asking for help from classmates, meeting with An, or literally doing anything other than using a generative AI tool. In our experience, the conversations and discussions around materials and the struggle of sifting through a lot of information to try different things out is really effective for retaining information.\nAdditionally, while gen AI can quickly come up with code, it’s not always what you would expect, or what we expect to see in your assignments. It’s straightforward to see if it works - if the output is what you want, then the code works - but there are specifics in each assignment that you as a student enrolled in the class will know that an AI tool will not."
+    "objectID": "resources/git-prechecks.html#do-not-track-files-in-folders-on-onedrive-or-icloud",
+    "href": "resources/git-prechecks.html#do-not-track-files-in-folders-on-onedrive-or-icloud",
+    "title": "Git/GitHub Part 1: prechecks",
+    "section": "",
+    "text": "You NEED to know where the difference between files on your actual, physical computer vs files held on OneDrive or iCloud. Git will not work properly with files on OneDrive or iCloud (in short, the cloud syncing does not work with version control).\nFor every folder you track with Git, you have to make sure it is not on OneDrive or iCloud.\nOne easy way make sure that your folders are on your actual computer (again, not on OneDrive or iCloud) is to create a folder called git or github outside of cloud folders. On my (An’s) computer (which is a Mac), the file path to this folder is Macintosh HD &gt; Users &gt; An &gt; github.\nWith Macs: your root directory is usually Macintosh HD.\nWith Windows: your root directory is the C: drive."
   },
   {
-    "objectID": "resources/genAI.html#if-i-want-to-use-ai-what-am-i-allowed-to-do",
-    "href": "resources/genAI.html#if-i-want-to-use-ai-what-am-i-allowed-to-do",
-    "title": "Guidelines and policies on using AI",
-    "section": "If I want to use AI, what am I allowed to do?",
-    "text": "If I want to use AI, what am I allowed to do?\nIf you want to use an AI tool, you may use it to:\n\nTo brainstorm or clarify your understanding of the assignment (e.g. “I have this idea but I’m not sure if it’s right. Can you help me figure out if it applies to this assignment?”)\n\nTo outline your approach or plan your workflow (e.g. “Can you help me figure out how to start this problem?”)\n\nTo clarify or deepen understanding of technical concepts (e.g. “What does this function do in my use case?”)\n\nTo generate or refine code snippets (e.g. “I wrote this code but I think it’s too long. How can I condense it?”)\n\nTo debug or troubleshoot code (e.g. “I wrote this code but it’s not working. What’s wrong with it?”)\n\nTo edit or improve the clarity, structure, or tone of my written responses (e.g. “I wrote this text to summarize a test but it’s too long. Can you help me shorten it to 1-2 sentences?”)\n\nTo check my reasoning, results, or interpretation of findings (e.g. “I interpreted a cleaning workflow in this way. Is my interpretation correct?”)"
+    "objectID": "resources/git-prechecks.html#stay-calm-and-do-not-panic",
+    "href": "resources/git-prechecks.html#stay-calm-and-do-not-panic",
+    "title": "Git/GitHub Part 1: prechecks",
+    "section": "",
+    "text": "You are going to run into problems when we use Git/GitHub in class if you do not set this up correctly. PLEASE give yourself time to read the directions and follow the steps exactly as they are laid out. Additionally, reach out to An for individual help with any of these steps."
   },
   {
-    "objectID": "resources/genAI.html#what-am-i-not-allowed-to-do",
-    "href": "resources/genAI.html#what-am-i-not-allowed-to-do",
-    "title": "Guidelines and policies on using AI",
-    "section": "What am I not allowed to do?",
-    "text": "What am I not allowed to do?\nYou are not allowed to use generative AI to produce new code for you to copy-paste into your assignments. Additionally, you may not use AI to generate new writing for you. For example, these prompts would not be allowed:\n\n“Write me code to visualize a boxplot.”\n\n“Write the description of this code.”\n\nAll code and writing in your assignments should be generated by you alone to start out with."
+    "objectID": "resources/git-prechecks.html#opportunities-to-get-help-before-we-start-using-gitgithub-in-class",
+    "href": "resources/git-prechecks.html#opportunities-to-get-help-before-we-start-using-gitgithub-in-class",
+    "title": "Git/GitHub Part 1: prechecks",
+    "section": "",
+    "text": "We are going to start using Git/GitHub in class during week 5. You can get help to set up in:\n\ndrop-in hours with An during week 3 or week 4\na one-on-one meeting with An during week 3 or week 4\n\nIf you get your set up double checked, you will earn one additional token."
   },
   {
-    "objectID": "resources/genAI.html#im-ready-to-use-ai-on-my-assignments.-what-should-i-do-when-i-submit",
-    "href": "resources/genAI.html#im-ready-to-use-ai-on-my-assignments.-what-should-i-do-when-i-submit",
-    "title": "Guidelines and policies on using AI",
-    "section": "I’m ready to use AI on my assignments. What should I do when I submit?",
-    "text": "I’m ready to use AI on my assignments. What should I do when I submit?\nAll assignments need to include a generative AI statement of use (form here).\nKeep in mind that unreported or disallowed use of AI tools will result in an incomplete mark on an assignment and the assignment will not be eligible for revision or resubmission."
+    "objectID": "resources/git-prechecks.html#in-class-technical-difficulties",
+    "href": "resources/git-prechecks.html#in-class-technical-difficulties",
+    "title": "Git/GitHub Part 1: prechecks",
+    "section": "",
+    "text": "Again, we are going to start using Git/GitHub in class during week 5. If you do not set things up correctly on your own AND/OR if you do not get help during drop-ins, we will not stop to help you.\nYOU NEED TO SET EVERYTHING UP CORRECTLY BEFORE CLASS DURING WEEK 5."
   },
   {
-    "objectID": "resources/genAI.html#im-not-sure-if-what-im-using-ai-for-is-allowed.-what-do-i-do",
-    "href": "resources/genAI.html#im-not-sure-if-what-im-using-ai-for-is-allowed.-what-do-i-do",
-    "title": "Guidelines and policies on using AI",
-    "section": "I’m not sure if what I’m using AI for is allowed. What do I do?",
-    "text": "I’m not sure if what I’m using AI for is allowed. What do I do?\nTalk to An!"
+    "objectID": "resources/git-prechecks.html#create-a-github-account",
+    "href": "resources/git-prechecks.html#create-a-github-account",
+    "title": "Git/GitHub Part 1: prechecks",
+    "section": "1. Create a GitHub account",
+    "text": "1. Create a GitHub account\nIf you don’t have one already, create a GitHub account.\nUse your personal email, not your ucsb.edu email (because you will lose access to that email once you graduate)."
   },
   {
-    "objectID": "resources/genAI.html#im-troubled-about-ai-use-because-of-the-environmental-impacts-disadvantages-brain-deterioration-etc.-what-do-i-do",
-    "href": "resources/genAI.html#im-troubled-about-ai-use-because-of-the-environmental-impacts-disadvantages-brain-deterioration-etc.-what-do-i-do",
-    "title": "Guidelines and policies on using AI",
-    "section": "I’m troubled about AI use, because of the environmental impacts, disadvantages, brain deterioration, etc. What do I do?",
-    "text": "I’m troubled about AI use, because of the environmental impacts, disadvantages, brain deterioration, etc. What do I do?\nAgain, talk to An! I am here to help navigate this new landscape, and figure out a plan that works for you, whether that’s sparingly using AI, not using it at all and relying on other resources, etc."
+    "objectID": "resources/git-prechecks.html#check-that-you-have-git-on-your-computer",
+    "href": "resources/git-prechecks.html#check-that-you-have-git-on-your-computer",
+    "title": "Git/GitHub Part 1: prechecks",
+    "section": "2. Check that you have git on your computer",
+    "text": "2. Check that you have git on your computer\nOpen RStudio. Open the Terminal.\nIf you are on a Mac, type which git and hit Enter.\nIf you are using a Windows machine, type where git and hit Enter.\n\n\n\n\n\n\nTip\n\n\n\nClick on any screenshot to make it bigger!\n\n\n\nYou should see something pop up that looks like a file path. It might look slightly different from this example, which is ok.\n\n\n\n\n\n\nNote\n\n\n\nMost computers come with git pre-installed. If you do not get a file path when you run which git or where git, set up a one-on-one meeting with An."
+  },
+  {
+    "objectID": "resources/git-prechecks.html#set-your-username-and-email",
+    "href": "resources/git-prechecks.html#set-your-username-and-email",
+    "title": "Git/GitHub Part 1: prechecks",
+    "section": "3. Set your username and email",
+    "text": "3. Set your username and email\nIn the Terminal, type git config --global user.name \"your-username-here\" (replace your-username-here) with your actual user name. Hit Enter.\n\n\n\n\n\n\nPay attention to spaces, dashes, and all punctuation!!!\n\n\n\nNone of the steps in the Terminal will work without the right spaces, dashes, etc.\n\n\nThen (still in the Terminal), type git config --global user.email your-email-here (replace your-email-here) with your email. No quotation marks around your email!\nThen (again, still in the Terminal), type git config --list --global. You should see your user name under the user.name field, and your email under the user.email field."
+  },
+  {
+    "objectID": "resources/storing-personal-access-token.html",
+    "href": "resources/storing-personal-access-token.html",
+    "title": "Git/GitHub Part 2: personal access token",
+    "section": "",
+    "text": "Have you completed all steps in Git/GitHub Part 1?\n\n\n\nIf you have not created a GitHub account and entered your information in the Terminal, go back to Part 1 and complete those steps before moving on to the steps in this part."
+  },
+  {
+    "objectID": "resources/storing-personal-access-token.html#canvas-video",
+    "href": "resources/storing-personal-access-token.html#canvas-video",
+    "title": "Git/GitHub Part 2: personal access token",
+    "section": "Canvas video",
+    "text": "Canvas video\nThere is a video on going through all these steps in the Resources page on Canvas (and here)."
+  },
+  {
+    "objectID": "resources/storing-personal-access-token.html#what-is-a-personal-access-token",
+    "href": "resources/storing-personal-access-token.html#what-is-a-personal-access-token",
+    "title": "Git/GitHub Part 2: personal access token",
+    "section": "What is a personal access token?",
+    "text": "What is a personal access token?\nFrom GitHub’s documentation:\n\nPersonal access tokens are an alternative to using passwords for authentication to GitHub when using the GitHub API or the command line."
+  },
+  {
+    "objectID": "resources/storing-personal-access-token.html#in-rstudio",
+    "href": "resources/storing-personal-access-token.html#in-rstudio",
+    "title": "Git/GitHub Part 2: personal access token",
+    "section": "In RStudio",
+    "text": "In RStudio\n\n1. Install usethis\nDo this in the console!\n\ninstall.packages(\"usethis\")\n\n\n\n\n2. Generate a personal access token using usethis\nAgain, do this in the console!\n\nusethis::create_github_token()\n\n\nThis will lead you to a web browser.\n(if prompted) in the web browser, enter your GitHub password."
+  },
+  {
+    "objectID": "resources/storing-personal-access-token.html#in-your-browser",
+    "href": "resources/storing-personal-access-token.html#in-your-browser",
+    "title": "Git/GitHub Part 2: personal access token",
+    "section": "In your browser",
+    "text": "In your browser\n\n3. Fill in the information about your personal access token.\nUnder “Note”, name your PAT. A logical name could be “PAT winter 2026”.\nUnder “Expiration”, select 90 days.\n\n\n\n4. Scroll to the bottom of the page, hit Generate token\nDO NOT MODIFY ANY OF THE PRE-SELECTED CHECK BOXES.\n\n\n\n5. Copy the personal access token to your clipboard"
+  },
+  {
+    "objectID": "resources/storing-personal-access-token.html#back-in-rstudio",
+    "href": "resources/storing-personal-access-token.html#back-in-rstudio",
+    "title": "Git/GitHub Part 2: personal access token",
+    "section": "Back in RStudio",
+    "text": "Back in RStudio\n\n6. Set the personal access token.\nRun this in the console!\n\ngitcreds::gitcreds_set()\n\n\n\n\n7. Paste your personal access token when prompted\nPaste your PERSONAL ACCESS TOKEN. NOT YOUR GITHUB PASSWORD. NOT YOUR COMPUTER PASSWORD.\nPASTE YOUR PERSONAL ACCESS TOKEN.\n\n\n\n8. Double check that the personal access token is stored\nAgain, run this in the console:\n\nusethis::git_sitrep()\n\nCheck that your user name and email are correct.\nCheck the Personal access token field under GitHub. This should say &lt;discovered&gt;.\n\n\n\nGet your set up double checked!\nCome see An during drop-ins weeks 3 or 4 OR make a one-on-one appointment during weeks 3 or 4. If you get your set up double checked, you will earn one additional token."
   },
   {
     "objectID": "resources/using-virtual-machine.html",
