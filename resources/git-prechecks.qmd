@@ -10,18 +10,6 @@ categories: [GitHub, Git]
 
 "Git" (pronounced with a hard "g", as in "give") is the software that tracks versions of files on your computer. "GitHub" (also pronounced with a hard "g") is the hosting platform that holds all versions of files tracked by Git.
 
-## Do not track files in folders on OneDrive or iCloud
-
-You **_NEED_** to know where the difference between files on your actual, physical computer vs files held on OneDrive or iCloud. Git _will not work properly_ with files on OneDrive or iCloud (in short, the cloud syncing does not work with version control).  
-
-For every folder you track with Git, you have to make sure it is _not_ on OneDrive or iCloud.  
-
-One easy way make sure that your folders are on your actual computer (again, _not_ on OneDrive or iCloud) is to create a folder called `git` or `github` outside of cloud folders. On my (An's) computer (which is a Mac), the file path to this folder is Macintosh HD > Users > An > `github`. 
-
-With Macs: your root directory is usually Macintosh HD.  
-
-With Windows: your root directory is the C: drive.
-
 ## Stay calm and do not panic
 
 You are going to run into problems when we use Git/GitHub in class if you do not set this up correctly. _PLEASE_ give yourself time to read the directions and follow the steps exactly as they are laid out. Additionally, reach out to An for individual help with any of these steps.
@@ -43,13 +31,31 @@ Again, we are going to start using Git/GitHub in class during week 5. If you do 
 
 # Steps 
 
-## 1. Create a GitHub account
+## 1. Create a folder called `git` or `github` on your computer.
+
+Create a folder called `git` or `github` in your _root directory_.
+
+With Macs: your root directory is usually Macintosh HD.  
+
+With Windows: your root directory is the C: drive.
+
+**To verify that your folder is in your root directory, look at the folder information (on Macs: right click > Get Info) or look at the file path.**
+
+:::{.callout-warning title="Do not use OneDrive or iCloud!"}
+
+git/GitHub _will not work properly_ with files on OneDrive or iCloud (in short, the cloud syncing does not work with version control).  
+
+Be sure that your folder is on your root directory. Make an appointment with An to get help if you cannot be sure that your folder is on your root.
+
+:::
+
+## 2. Create a GitHub account
 
 If you don't have one already, create a [GitHub account](https://github.com/).  
 
 Use your personal email, not your ucsb.edu email (because you will lose access to that email once you graduate).
 
-## 2. Check that you have `git` on your computer
+## 3. Check that you have `git` on your computer
 
 Open RStudio. Open the **Terminal**.  
 
@@ -69,7 +75,7 @@ You should see something pop up that looks like a file path. It might look sligh
 Most computers come with git pre-installed. If you do not get a file path when you run `which git` or `where git`, **set up a one-on-one meeting with An**.
 :::
 
-## 3. Set your username and email
+## 4. Set your username and email
 
 In the **Terminal**, type `git config --global user.name "your-username-here"` (replace `your-username-here`) with your actual user name. Hit Enter.
 
