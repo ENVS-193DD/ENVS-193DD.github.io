@@ -25,7 +25,7 @@
     "href": "electives/elective-01.html#visualize-the-data",
     "title": "Basic elective option 1",
     "section": "2. Visualize the data",
-    "text": "2. Visualize the data\nCreate a figure with months on the x-axis and total counts on the y-axis.\nFacet your figure so that you have four panels for each species.\nFor full credit:\n\nannotate all code\ncustomize the colors\nrelabel the x- and y-axes and legend title to be clean and informative\nuse a different theme than the default\nuse free scales for the y-axis"
+    "text": "2. Visualize the data\nCreate a timeseries figure with months on the x-axis and total counts on the y-axis, with different colors for each water year.\n\n\nedited 2026-04-16: clarifying type of figure - not a big deal if you’ve already submitted your elective!\nFacet your figure so that you have four panels for each species.\nFor full credit:\n\nannotate all code\ncustomize the colors\nrelabel the x- and y-axes and legend title to be clean and informative\nuse a different theme than the default\nuse free scales for the y-axis"
   },
   {
     "objectID": "electives/elective-01.html#interpret-the-figure",

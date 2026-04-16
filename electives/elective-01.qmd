@@ -87,7 +87,11 @@ summarize(total_counts = sum(count))
 
 ## 2. Visualize the data
 
-Create a figure with months on the x-axis and total counts on the y-axis.  
+Create a timeseries figure with months on the x-axis and total counts on the y-axis, with different colors for each water year.  
+
+:::{.column-margin}
+edited 2026-04-16: clarifying type of figure - not a big deal if you've already submitted your elective!
+:::
 
 Facet your figure so that you have four panels for each species.  
 
