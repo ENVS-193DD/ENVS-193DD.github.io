@@ -161,7 +161,11 @@ Additionally, for full credit:
 
 In 1-2 sentences each, summarize:  
 
-- the similarities or differences between the figure you made in part a and the figure you made in part b. _Be specific_ regarding the visual components (geometries) and how they represent variables (i.e. the x- and y-axes and colors)
+:::{.column-margin}
+edited 2026-04-16: specified which figure to compare to; not a problem if you compared to a different figure than I specified in the instructions. Sorry for the confusion here!
+:::
+
+- the similarities or differences between the figure you made in Problem 2 part d and the figure you made in part b. _Be specific_ regarding the visual components (geometries) and how they represent variables (i.e. the x- and y-axes and colors)
 - 1 species that was consistently present through time in _high abundance_, with information from the visual components from the figure
 
 
