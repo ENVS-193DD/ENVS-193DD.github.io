@@ -20,7 +20,8 @@
   {
     "listing": "/electives.html",
     "items": [
-      "/electives/elective-01.html"
+      "/electives/elective-01.html",
+      "/electives/elective-02.html"
     ]
   },
   {
@@ -28,7 +29,8 @@
     "items": [
       "/assignments/getting-set-up.html",
       "/assignments/individual-assignment-01.html",
-      "/assignments/individual-assignment-02.html"
+      "/assignments/individual-assignment-02.html",
+      "/assignments/individual-assignment-03.html"
     ]
   }
 ]

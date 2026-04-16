@@ -1,0 +1,217 @@
+---
+title: "Individual assignment 3"
+date: 2026-04-24
+---
+
+# Set up
+
+1. Create a new .qmd in the `code` folder of your `ENVS-193DD_week-03` folder. Make sure that you:
+    - fill in your name in the "Author" field
+    - are rendering to .pdf
+    - leave the visual editor box unchecked
+2. In the YAML of your .qmd, enter the date.
+3. Create a set up section for your code (refer to class code if you need help with this).
+4. Insert a code chunk to read in packages. 
+    - At minimum, you will need `tidyverse`, `janitor`, and `here`.
+5. Insert a code chunk to read in data.
+    - Be sure that you are using `here()` along with `read_csv()`.
+6. Insert a code chunk for class code that you need for your assignment.
+
+:::{.callout-note title="Practice your own editorial judgement!" collapse="true"}
+You will not need _all_ the code from class to do your assignment.  
+
+You will need to pick and choose the components that are relevant to the assignment.  
+
+If you copy-paste your entire class script into your homework, you will need to revise your assignment!
+:::
+
+7. Render to .pdf to make sure that you can render (if not, come ask for help!).
+8. Start your assignment!
+
+# Problems
+
+## 1. Salinity and temperature relationships across sites
+
+In this section, you will explore the relationship between salinity (which was in the `water_parameters` data frame) averaged across _all elevation codes for a single site during a single survey_ and air temperature (which was in the `weather` data frame) for each of the three sites (which were in the `metadata` data frame).
+
+Remember that we put all three data frames into one called `water_quality_weather` and then filtered out the outliers to create a data frame called `salinity_filtered`. You should be using `salinity_filtered` for this problem.
+
+### a. Plan your figure
+
+At the end of your code for part d, you should have a figure with three panels depicting the relationship between salinity (measured in ppt) and air temperature (measured in °F). Each point should represent a salinity measurement and an air temperature measurement.
+
+Fill in this list with the columns and/or geometries you would need to create a figure matching this description. You don't need _exact_ column names, but you do need to clearly articulate what variables would apply to each item on the list.  
+
+- x-axis:
+- y-axis:
+- color:
+- geometry (hint: you only need one):
+- function and argument to create separate panels:
+
+### b. Write your pseudocode
+
+The `salinity_filtered` data frame is not quite what you need to create this figure, but it is close.
+
+Write pseudocode to create a new object from `salinity_filtered` that would contain the columns you need to create this figure.
+
+### c. Code your pseudocode
+
+Write the code that corresponds to your pseudocode.  
+
+At the end of the code chunk, write code to run `str()` on your object to display the structure.
+
+### d. Code your figure
+
+Create your figure following the list you outlined in part a using the data frame you created in part c. For full marks:
+
+- make sure the x- and y-axes are labelled in a readable format with units for each
+- include a title that:
+    - describes the information shown in your figure and
+    - specifies the range of dates or time period for this subset of the data
+- use colors for each site that are different from the `ggplot()` defaults using a color palette package or otherwise
+- use a theme that is different from the `ggplot()` default
+
+### e. Interpret your figure
+
+In 1-2 sentences each, use **specific components of your figure** to determine and describe:
+
+- the relationship between salinity and air temperature
+- differences in the strength of this relationship across sites
+
+:::{.callout-note title="Finding it hard to articulate a pattern?" collapse="true"}
+Real data is messy! There's not always a clear relationship between variables. If you _cannot_ clearly articulate a pattern, state _why_.
+
+If you can articulate a pattern, also state _why_.
+:::
+
+## 2. Dissolved oxygen and temperature relationships
+
+In this problem, you will create a figure to explore the relationships between dissolved oxygen and water temperature at each elevation code for all three sites. You should use the `salinity_filtered` data frame for this figure.
+
+### a. Plan your figure
+
+At the end of your code in part b, you should have a figure with dissolved oxygen (measured in mg/L) on the y-axis, water temperature (measured in °C) on the x-axis, and points representing each measurement of dissolved oxygen and water temperature. In your figure, colors should represent elevation codes. You should also have three panels in your figure, with one panel for each site.
+
+Fill in this list with the _names of columns_ you would use from `salinity_filtered` for this figure or the appropriate functions to create the visualization.
+
+- x-axis:
+- y-axis:
+- color:
+- geometry (hint: you only need one):
+- function and argument to create separate panels:
+
+### b. Code your figure
+
+Create a figure following the list you made in part a. For full marks:
+
+- make sure the x- and y-axes are labelled in a readable format with units for each
+- include a title that:
+    - describes the information shown in your figure and
+    - specifies the range of dates or time period for this subset of the data
+- use colors for each site that are different from the `ggplot()` defaults using a color palette package or otherwise
+- use a theme that is different from the `ggplot()` default
+
+### c. Interpret your figure
+
+In 1-2 sentences each, use **specific components of your figure** to determine and describe:
+
+- the relationship between dissolved oxygen and air temperature
+- differences in the strength of this relationship across sites
+
+## 3. Salinity and water elevation relationships
+
+In this section, you will create a figure examining the relationship between salinity and water surface elevation measured at Venoco Bridge. Note that Venoco is the only location at which water surface elevation is measured using a visual gauge (that we saw on our walk), so Phelps Creek and East Channel _should not_ appear in your figure.
+
+For this section, you should be using the `salinity_filtered` data frame.
+
+### a. Plan your figure
+
+At the end of your code in part ____, you should have a figure in which water surface elevation (measured as feet above the bottom) is on the x-axis, salinity (measured in ppt) is on the y-axis, and each point represents a measurement of salinity. You should have different colors and panels for each elevation code.
+
+Fill in this list with the _names of columns_ you would use from `salinity_filtered` for this figure or the appropriate functions to create the visualization.
+
+- x-axis:
+- y-axis:
+- color:
+- geometry (hint: you only need one):
+- function and argument to create separate panels:
+
+### b. Code your figure
+
+Create a figure following the list you made in part a.  
+
+For full marks:
+
+- make sure the x- and y-axes are labelled in a readable format with units for each
+- include a title that:
+    - describes the information shown in your figure and
+    - specifies the range of dates or time period for this subset of the data
+- use colors for each site that are different from the `ggplot()` defaults using a color palette package or otherwise
+- use a theme that is different from the `ggplot()` default
+
+### c. Interpret your figure
+
+In 1-2 sentences each, use **specific components of your figure** to determine and describe:
+
+- the relationship between water surface elevation and salinity
+- differences in the strength of this relationship across elevation codes (i.e. at the bottom, 1 foot from the bottom, 2 feet from the bottom)
+
+# Assignment checklist
+
+Your rendered PDF should:
+
+- [ ] include your name, title, and submission date
+- [ ] include all code with annotations (see "General formatting components" for details)   
+- [ ] be organized and readable (see "General formatting components" for details)     
+- [ ] be free of messages and warnings from code chunk evaluation
+
+Your responses should include:  
+
+for Problem 1:   
+
+- [ ] written response for Problem 1a
+- [ ] written response for Problem 1b
+- [ ] annotated code and output for Problem 1c
+- [ ] annotated code and output for Problem 1d
+- [ ] written response for Problem 1e
+
+for Problem 2:  
+
+- [ ] written response for Problem 2a
+- [ ] annotated code and output for Problem 2b
+- [ ] written response for Problem 2c
+
+for Problem 3:  
+
+- [ ] written response for Problem 3a
+- [ ] annotated code and output for Problem 3b
+- [ ] written response for Problem 3c
+
+Lastly, check out the **rubric on Canvas** to see the component breakdown in more detail.  
+
+Your final submission should include:  
+
+- [ ] a single PDF rendered from a .qmd file
+- [ ] your submitted [Generative AI statement of use](https://docs.google.com/forms/d/e/1FAIpQLSevf1zSjndFN-XMyKrCmpiIl-K6pwP4aUShOzI94t0ZW-yiuw/viewform) by the due date
+
+# General formatting components
+
+You will only receive full marks for annotations if you have:  
+
+- meaningful comments on each line of visualization code and/or ggplot geom/theme call (not needed for each argument, though good to have)  
+- meaningful comments on each function in any piping operations  
+- meaningful comments in set up code to denote where packages and/or data are read in
+
+You will only receive full marks for readability if:  
+
+- code includes carriage returns, spaces, etc. to make pipe operations and arguments clear  
+- code includes consistent spacing and indents
+- headers are used correctly throughout document
+- text is formatted correctly (for example, superscripts/subscripts appear correctly)
+- text is distinct from in-line code or references to functions/objects (e.g. using backticks to denote functions)
+- bullet point lists appear as expected
+
+
+
+
+
