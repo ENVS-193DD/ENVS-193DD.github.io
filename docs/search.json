@@ -203,158 +203,207 @@
     "text": "Temporal dynamics of species richness\n\nGuiding question\nHow does species richness change through time for each group?\n\n\nSummarizing the data\n\n# creating new object from birds_wy2025\nbird_spp_count &lt;- birds_wy2025 |&gt; \n  # roll up subspecies\n  mutate(species = case_when(\n    species == \"Savannah Sparrow (Belding's)\" ~ \"Savannah Sparrow\",\n    .default = species\n  )) |&gt; \n  # group by observation date and eBird group\n  group_by(observation_date, e_bird_group) |&gt; \n  # calculate total counts\n  summarize(sum_spp = n_distinct(species)) |&gt; \n  # ungroup data frame\n  ungroup()\n\n\n\nVisualizing the data\n\n# base layer: ggplot\nggplot(data = bird_spp_count,\n       # x-axis should be observation date,\n       # y-axis should be number of species\n       # color by group\n       mapping = aes(x = observation_date,\n                     y = sum_spp,\n                     color = e_bird_group)) +\n  # first layer: points\n  geom_point() +\n  # second layer: lines\n  geom_line() +\n  # defining new y-axis breaks\n  scale_y_continuous(breaks = seq(from = 0, to = 10, by = 2)) +\n  # custom colors\n  scale_color_manual(values = natparks.pals(\"Saguaro\")) +\n  # different theme from default\n  theme_bw() +\n  # relabelling axes and adding title\n  labs(x = \"Date\",\n       y = \"Species richness\",\n       color = \"eBird group\")\n\n\n\n\n\n\n\n\n\n\nInterpretation\nSpecies richness of Herons, Ibis, and Allies stays consistent throughout the year.\nSpecies richness of waterfowl and shorebirds peaks in winter and spring.\nSpecies richness of New World Sparrows is highest in fall/winter and decinds in spring and summer.\nEND OF WEEK 2"
   },
   {
-    "objectID": "resources/using-virtual-machine.html",
-    "href": "resources/using-virtual-machine.html",
-    "title": "Using the virtual machine",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ENVS 193DD",
     "section": "",
-    "text": "For this class, we have a virtual machine: it allows you to run R and RStudio in a browser (e.g. Google Chrome, Safari, Firefox). Find the virtual machine here!\nThe benefits of using the virtual machine are plenty:\n\nyou don’t have to download R, RStudio, and Quarto\n\nthe versions of all the software you need are updated\n\nthe packages you need for the class are already installed\n\nyou can download everything you’ve worked on\n\nand more!\nThe one con is that you do need to be connected to the internet. But compared to the benefits, this is hopefully not a major hurdle.\nBasically, if you’re having any issues with your versions of R, RStudio, or Quarto, try running your code on the virtual machine."
+    "text": "Photo by FH Joyce"
   },
   {
-    "objectID": "resources/using-virtual-machine.html#what-is-the-virtual-machine",
-    "href": "resources/using-virtual-machine.html#what-is-the-virtual-machine",
-    "title": "Using the virtual machine",
+    "objectID": "index.html#instructor",
+    "href": "index.html#instructor",
+    "title": "ENVS 193DD",
+    "section": "Instructor",
+    "text": "Instructor\n\n\n\n\n\n\n\n\nName: An Bui (she/her)\nForms of address: An (preferred), Dr. Bui, Professor Bui\nEmail: an_bui [at] ucsb [dot] edu\nDrop-in hours: Thursdays 9:30 - 11:30 AM\nDrop-in location: At the tables outside the UCen 1st floor (facing the lagoon)\nMore about me: an-bui.com"
+  },
+  {
+    "objectID": "index.html#undergraduate-learning-assistants",
+    "href": "index.html#undergraduate-learning-assistants",
+    "title": "ENVS 193DD",
+    "section": "Undergraduate learning assistants",
+    "text": "Undergraduate learning assistants\n\n\n\n\n\n\n\n\nName: Matthew Roco-Calvo\nForms of address: Matt\nDrop-in hours: Fridays 10:50 - 11:50 AM\nDrop-in location: HSSB courtyard\nMore about me: LinkedIn\n\n\n\n\n\n\n\n\n\n\nName: Abigail Youngblood\nForms of address: Abigail\nDrop-in hours: Wednesdays 4-5 PM\nDrop-in location: UCEN (tables in front of Subway)\nMore about me: LinkedIn\n\n\n\n\n\n\n\nPhoto by FH Joyce"
+  },
+  {
+    "objectID": "resources/resubmissions.html",
+    "href": "resources/resubmissions.html",
+    "title": "Format for resubmission cover letter",
     "section": "",
-    "text": "For this class, we have a virtual machine: it allows you to run R and RStudio in a browser (e.g. Google Chrome, Safari, Firefox). Find the virtual machine here!\nThe benefits of using the virtual machine are plenty:\n\nyou don’t have to download R, RStudio, and Quarto\n\nthe versions of all the software you need are updated\n\nthe packages you need for the class are already installed\n\nyou can download everything you’ve worked on\n\nand more!\nThe one con is that you do need to be connected to the internet. But compared to the benefits, this is hopefully not a major hurdle.\nBasically, if you’re having any issues with your versions of R, RStudio, or Quarto, try running your code on the virtual machine."
+    "text": "In a document, put the name of the assignment you want to resubmit and “resubmission cover letter” in the title (e.g. “Individual assignment 2 resubmission cover letter”).\nFor each component that you want to redo for the possibility of getting full marks, you will need to articulate (in 1-2 sentences):\n\nwhat you got wrong\nwhat you need to do to fix it\nwhy that fix would improve the quality of your work (independently of the grade you received)\n\nFor example, if you got “partial marks” for multiple plots where you had overlapping axis labels, a reasonable request would be:\n\nMy x-axis labels for Problem 2a, 3b, and 5c were overlapping.\nFor 2a, I need to either spread out the x-axis or fix the way I read in the data to make sure the columns are correct (so that the date column is read in as a date rather than a character). For 3b and 5c, I need to create a line break in the axis label.\nMaking sure the x-axis labels don’t overlap improves the figure because the text would be readable."
   },
   {
-    "objectID": "resources/using-virtual-machine.html#logging-in-and-opening-things-up",
-    "href": "resources/using-virtual-machine.html#logging-in-and-opening-things-up",
-    "title": "Using the virtual machine",
-    "section": "2. Logging in and opening things up",
-    "text": "2. Logging in and opening things up\nOnce you open up the virtual machine, you’ll be asked to log in. Use your UCSB email to do that. You should then get a screen that looks like this:\n Click RStudio.\nYou should then see a screen that looks exactly like an RStudio screen!"
-  },
-  {
-    "objectID": "resources/using-virtual-machine.html#setting-up",
-    "href": "resources/using-virtual-machine.html#setting-up",
-    "title": "Using the virtual machine",
-    "section": "3. Setting up",
-    "text": "3. Setting up\nIf you’re opening this up for the first time, do task 5 in the Getting set up guide called “Change your settings”: Change your settings.\nAdditionally, you’ll want to set up a new folder for your ENVS 193DD materials. Make a new folder called ENVS-193DD by clicking on the “Folder” button in the Files tab in the bottom right."
-  },
-  {
-    "objectID": "resources/using-virtual-machine.html#getting-files-into-the-machine",
-    "href": "resources/using-virtual-machine.html#getting-files-into-the-machine",
-    "title": "Using the virtual machine",
-    "section": "4. Getting files into the machine",
-    "text": "4. Getting files into the machine\nDownload the zipped file of workshop materials from Canvas. Hit the Upload button (yellow arrow pointing up against a white paper). You should see a window that looks like this:\n\nHit Choose file and select the .zip file.\nThe machine will automatically unzip the file and create a new folder with all the file contents."
-  },
-  {
-    "objectID": "resources/using-virtual-machine.html#creating-and-using-rprojects",
-    "href": "resources/using-virtual-machine.html#creating-and-using-rprojects",
-    "title": "Using the virtual machine",
-    "section": "5. Creating and using Rprojects",
-    "text": "5. Creating and using Rprojects\nWe’re going to create a lot of Rprojects in this class to get used to it. You can create a project in an existing directory (aka folder) in the same way that you would in the desktop version of RStudio. Go to the button in the top left that says Project: (None) and click. Hit New Project.\n Then, select the “Existing Directory” option.\n\nChoose the directory you want to create a project in. Once you click “Browse”, you’ll see a box that looks like this:\n\nDouble click the folders until you get to the one you want (in this example, I went from ENVS-193DS &gt; ENVS-193DS_workshop-01).\nYou can confirm that you chose the right folder once you hit “Choose”:\n\nHit “Create Project”.\nYou should now see the new Rproject in two locations: 1) in the upper right corner and 2) in the list of files in your directory.\n\nOnce you’re done working in your project, you can close the project by going to Project &gt; Close Project.\n\nIf you need to open your project again, navigate to the folder using the Files tab in the bottom right corner. Click on the .Rproj file. You will then see a window that looks like this:\n\nHit “Yes” to open the project."
-  },
-  {
-    "objectID": "resources/using-virtual-machine.html#downloading-your-files",
-    "href": "resources/using-virtual-machine.html#downloading-your-files",
-    "title": "Using the virtual machine",
-    "section": "6. Downloading your files",
-    "text": "6. Downloading your files\nIf you want to hold onto your files on your computer (for example, once the class ends), you can download a whole directory. Click on the folder you want to download and go to More &gt; Export in the lower right pane.\n\nThe machine will download the whole folder as a .zip file, which you can then unzip on your computer."
-  },
-  {
-    "objectID": "resources/storing-personal-access-token.html",
-    "href": "resources/storing-personal-access-token.html",
-    "title": "Git/GitHub Part 2: personal access token",
+    "objectID": "resources/genAI.html",
+    "href": "resources/genAI.html",
+    "title": "Guidelines and policies on using AI",
     "section": "",
-    "text": "Have you completed all steps in Git/GitHub Part 1?\n\n\n\nIf you have not created a GitHub account and entered your information in the Terminal, go back to Part 1 and complete those steps before moving on to the steps in this part."
+    "text": "Generative AI tools like ChatGPT, Claude, Copilot, etc. can help solve a lot of coding problems: if you’re stuck and don’t know where to start, if you have code that keeps giving you an error, etc. - most of these issues can be solved using AI. The key to effective use of generative AI tools in environmental studies is to be honest about its use."
   },
   {
-    "objectID": "resources/storing-personal-access-token.html#canvas-video",
-    "href": "resources/storing-personal-access-token.html#canvas-video",
-    "title": "Git/GitHub Part 2: personal access token",
-    "section": "Canvas video",
-    "text": "Canvas video\nThere is a video on going through all these steps in the Resources page on Canvas (and here)."
-  },
-  {
-    "objectID": "resources/storing-personal-access-token.html#what-is-a-personal-access-token",
-    "href": "resources/storing-personal-access-token.html#what-is-a-personal-access-token",
-    "title": "Git/GitHub Part 2: personal access token",
-    "section": "What is a personal access token?",
-    "text": "What is a personal access token?\nFrom GitHub’s documentation:\n\nPersonal access tokens are an alternative to using passwords for authentication to GitHub when using the GitHub API or the command line."
-  },
-  {
-    "objectID": "resources/storing-personal-access-token.html#in-rstudio",
-    "href": "resources/storing-personal-access-token.html#in-rstudio",
-    "title": "Git/GitHub Part 2: personal access token",
-    "section": "In RStudio",
-    "text": "In RStudio\n\n1. Install usethis\nDo this in the console!\n\ninstall.packages(\"usethis\")\n\n\n\n\n2. Generate a personal access token using usethis\nAgain, do this in the console!\n\nusethis::create_github_token()\n\n\nThis will lead you to a web browser.\n(if prompted) in the web browser, enter your GitHub password."
-  },
-  {
-    "objectID": "resources/storing-personal-access-token.html#in-your-browser",
-    "href": "resources/storing-personal-access-token.html#in-your-browser",
-    "title": "Git/GitHub Part 2: personal access token",
-    "section": "In your browser",
-    "text": "In your browser\n\n3. Fill in the information about your personal access token.\nUnder “Note”, name your PAT. A logical name could be “PAT winter 2026”.\nUnder “Expiration”, select 90 days.\n\n\n\n4. Scroll to the bottom of the page, hit Generate token\nDO NOT MODIFY ANY OF THE PRE-SELECTED CHECK BOXES.\n\n\n\n5. Copy the personal access token to your clipboard"
-  },
-  {
-    "objectID": "resources/storing-personal-access-token.html#back-in-rstudio",
-    "href": "resources/storing-personal-access-token.html#back-in-rstudio",
-    "title": "Git/GitHub Part 2: personal access token",
-    "section": "Back in RStudio",
-    "text": "Back in RStudio\n\n6. Set the personal access token.\nRun this in the console!\n\ngitcreds::gitcreds_set()\n\n\n\n\n7. Paste your personal access token when prompted\nPaste your PERSONAL ACCESS TOKEN. NOT YOUR GITHUB PASSWORD. NOT YOUR COMPUTER PASSWORD.\nPASTE YOUR PERSONAL ACCESS TOKEN.\n\n\n\n8. Double check that the personal access token is stored\nAgain, run this in the console:\n\nusethis::git_sitrep()\n\nCheck that your user name and email are correct.\nCheck the Personal access token field under GitHub. This should say &lt;discovered&gt;.\n\n\n\nGet your set up double checked!\nCome see An during drop-ins weeks 3 or 4 OR make a one-on-one appointment during weeks 3 or 4. If you get your set up double checked, you will earn one additional token."
-  },
-  {
-    "objectID": "resources/git-prechecks.html",
-    "href": "resources/git-prechecks.html",
-    "title": "Git/GitHub Part 1: prechecks",
+    "objectID": "resources/genAI.html#why-use-ai",
+    "href": "resources/genAI.html#why-use-ai",
+    "title": "Guidelines and policies on using AI",
     "section": "",
-    "text": "“Git” (pronounced with a hard “g”, as in “give”) is the software that tracks versions of files on your computer. “GitHub” (also pronounced with a hard “g”) is the hosting platform that holds all versions of files tracked by Git.\n\n\n\nYou are going to run into problems when we use Git/GitHub in class if you do not set this up correctly. PLEASE give yourself time to read the directions and follow the steps exactly as they are laid out. Additionally, reach out to An for individual help with any of these steps.\n\n\n\nWe are going to start using Git/GitHub in class during week 5. You can get help to set up in:\n\ndrop-in hours with An during week 3 or week 4\na one-on-one meeting with An during week 3 or week 4\n\nIf you get your set up double checked, you will earn one additional token.\n\n\n\nAgain, we are going to start using Git/GitHub in class during week 5. If you do not set things up correctly on your own AND/OR if you do not get help during drop-ins, we will not stop to help you.\nYOU NEED TO SET EVERYTHING UP CORRECTLY BEFORE CLASS DURING WEEK 5."
+    "text": "Generative AI tools like ChatGPT, Claude, Copilot, etc. can help solve a lot of coding problems: if you’re stuck and don’t know where to start, if you have code that keeps giving you an error, etc. - most of these issues can be solved using AI. The key to effective use of generative AI tools in environmental studies is to be honest about its use."
   },
   {
-    "objectID": "resources/git-prechecks.html#git-vs-github",
-    "href": "resources/git-prechecks.html#git-vs-github",
-    "title": "Git/GitHub Part 1: prechecks",
+    "objectID": "resources/genAI.html#why-wouldnt-you-use-ai-in-this-class",
+    "href": "resources/genAI.html#why-wouldnt-you-use-ai-in-this-class",
+    "title": "Guidelines and policies on using AI",
+    "section": "Why wouldn’t you use AI in this class?",
+    "text": "Why wouldn’t you use AI in this class?\nIf you’re just starting out learning how to code, we recommend not using generative AI tools. You will likely retain a lot more information by googling, asking for help from classmates, meeting with An, or literally doing anything other than using a generative AI tool. In our experience, the conversations and discussions around materials and the struggle of sifting through a lot of information to try different things out is really effective for retaining information.\nAdditionally, while gen AI can quickly come up with code, it’s not always what you would expect, or what we expect to see in your assignments. It’s straightforward to see if it works - if the output is what you want, then the code works - but there are specifics in each assignment that you as a student enrolled in the class will know that an AI tool will not."
+  },
+  {
+    "objectID": "resources/genAI.html#if-i-want-to-use-ai-what-am-i-allowed-to-do",
+    "href": "resources/genAI.html#if-i-want-to-use-ai-what-am-i-allowed-to-do",
+    "title": "Guidelines and policies on using AI",
+    "section": "If I want to use AI, what am I allowed to do?",
+    "text": "If I want to use AI, what am I allowed to do?\nIf you want to use an AI tool, you may use it to:\n\nTo brainstorm or clarify your understanding of the assignment (e.g. “I have this idea but I’m not sure if it’s right. Can you help me figure out if it applies to this assignment?”)\n\nTo outline your approach or plan your workflow (e.g. “Can you help me figure out how to start this problem?”)\n\nTo clarify or deepen understanding of technical concepts (e.g. “What does this function do in my use case?”)\n\nTo generate or refine code snippets (e.g. “I wrote this code but I think it’s too long. How can I condense it?”)\n\nTo debug or troubleshoot code (e.g. “I wrote this code but it’s not working. What’s wrong with it?”)\n\nTo edit or improve the clarity, structure, or tone of my written responses (e.g. “I wrote this text to summarize a test but it’s too long. Can you help me shorten it to 1-2 sentences?”)\n\nTo check my reasoning, results, or interpretation of findings (e.g. “I interpreted a cleaning workflow in this way. Is my interpretation correct?”)"
+  },
+  {
+    "objectID": "resources/genAI.html#what-am-i-not-allowed-to-do",
+    "href": "resources/genAI.html#what-am-i-not-allowed-to-do",
+    "title": "Guidelines and policies on using AI",
+    "section": "What am I not allowed to do?",
+    "text": "What am I not allowed to do?\nYou are not allowed to use generative AI to produce new code for you to copy-paste into your assignments. Additionally, you may not use AI to generate new writing for you. For example, these prompts would not be allowed:\n\n“Write me code to visualize a boxplot.”\n\n“Write the description of this code.”\n\nAll code and writing in your assignments should be generated by you alone to start out with."
+  },
+  {
+    "objectID": "resources/genAI.html#im-ready-to-use-ai-on-my-assignments.-what-should-i-do-when-i-submit",
+    "href": "resources/genAI.html#im-ready-to-use-ai-on-my-assignments.-what-should-i-do-when-i-submit",
+    "title": "Guidelines and policies on using AI",
+    "section": "I’m ready to use AI on my assignments. What should I do when I submit?",
+    "text": "I’m ready to use AI on my assignments. What should I do when I submit?\nAll assignments need to include a generative AI statement of use (form here).\nKeep in mind that unreported or disallowed use of AI tools will result in an incomplete mark on an assignment and the assignment will not be eligible for revision or resubmission."
+  },
+  {
+    "objectID": "resources/genAI.html#im-not-sure-if-what-im-using-ai-for-is-allowed.-what-do-i-do",
+    "href": "resources/genAI.html#im-not-sure-if-what-im-using-ai-for-is-allowed.-what-do-i-do",
+    "title": "Guidelines and policies on using AI",
+    "section": "I’m not sure if what I’m using AI for is allowed. What do I do?",
+    "text": "I’m not sure if what I’m using AI for is allowed. What do I do?\nTalk to An!"
+  },
+  {
+    "objectID": "resources/genAI.html#im-troubled-about-ai-use-because-of-the-environmental-impacts-disadvantages-brain-deterioration-etc.-what-do-i-do",
+    "href": "resources/genAI.html#im-troubled-about-ai-use-because-of-the-environmental-impacts-disadvantages-brain-deterioration-etc.-what-do-i-do",
+    "title": "Guidelines and policies on using AI",
+    "section": "I’m troubled about AI use, because of the environmental impacts, disadvantages, brain deterioration, etc. What do I do?",
+    "text": "I’m troubled about AI use, because of the environmental impacts, disadvantages, brain deterioration, etc. What do I do?\nAgain, talk to An! I am here to help navigate this new landscape, and figure out a plan that works for you, whether that’s sparingly using AI, not using it at all and relying on other resources, etc."
+  },
+  {
+    "objectID": "assignments/individual-assignment-03.html",
+    "href": "assignments/individual-assignment-03.html",
+    "title": "Individual assignment 3",
     "section": "",
-    "text": "“Git” (pronounced with a hard “g”, as in “give”) is the software that tracks versions of files on your computer. “GitHub” (also pronounced with a hard “g”) is the hosting platform that holds all versions of files tracked by Git."
+    "text": "Create a new .qmd in the code folder of your ENVS-193DD_week-03 folder. Make sure that you:\n\nfill in your name in the “Author” field\nare rendering to .pdf\nleave the visual editor box unchecked\n\nIn the YAML of your .qmd, enter the date.\nCreate a set up section for your code (refer to class code if you need help with this).\nInsert a code chunk to read in packages.\n\nAt minimum, you will need tidyverse, janitor, and here.\n\nInsert a code chunk to read in data.\n\nBe sure that you are using here() along with read_csv().\n\nInsert a code chunk for class code that you need for your assignment.\n\n\n\n\n\n\n\nPractice your own editorial judgement!\n\n\n\n\n\nYou will not need all the code from class to do your assignment.\nYou will need to pick and choose the components that are relevant to the assignment.\nIf you copy-paste your entire class script into your homework, you will need to revise your assignment!\n\n\n\n\nRender to .pdf to make sure that you can render (if not, come ask for help!).\nStart your assignment!"
   },
   {
-    "objectID": "resources/git-prechecks.html#stay-calm-and-do-not-panic",
-    "href": "resources/git-prechecks.html#stay-calm-and-do-not-panic",
-    "title": "Git/GitHub Part 1: prechecks",
+    "objectID": "assignments/individual-assignment-03.html#salinity-and-temperature-relationships-across-sites",
+    "href": "assignments/individual-assignment-03.html#salinity-and-temperature-relationships-across-sites",
+    "title": "Individual assignment 3",
+    "section": "1. Salinity and temperature relationships across sites",
+    "text": "1. Salinity and temperature relationships across sites\nIn this section, you will explore the relationship between salinity (which was in the water_parameters data frame) averaged across all elevation codes for a single site during a single survey and air temperature (which was in the weather data frame) for each of the three sites (which were in the metadata data frame).\nRemember that we put all three data frames into one called water_quality_weather and then filtered out the outliers to create a data frame called salinity_filtered. You should be using salinity_filtered for this problem.\n\na. Plan your figure\nAt the end of your code for part d, you should have a figure with three panels depicting the relationship between salinity (measured in ppt) and air temperature (measured in °F). Each point should represent a salinity measurement and an air temperature measurement.\nFill in this list with the columns and/or geometries you would need to create a figure matching this description. You don’t need exact column names, but you do need to clearly articulate what variables would apply to each item on the list.\n\nx-axis:\ny-axis:\ncolor:\ngeometry (hint: you only need one):\nfunction and argument to create separate panels:\n\n\n\nb. Write your pseudocode\nThe salinity_filtered data frame is not quite what you need to create this figure, but it is close.\nWrite pseudocode to create a new object from salinity_filtered that would contain the columns you need to create this figure.\n\n\nc. Code your pseudocode\nWrite the code that corresponds to your pseudocode.\nAt the end of the code chunk, write code to run str() on your object to display the structure.\n\n\nd. Code your figure\nCreate your figure following the list you outlined in part a using the data frame you created in part c. For full marks:\n\nmake sure the x- and y-axes are labelled in a readable format with units for each\ninclude a title that:\n\ndescribes the information shown in your figure and\nspecifies the range of dates or time period for this subset of the data\n\nuse colors for each site that are different from the ggplot() defaults using a color palette package or otherwise\nuse a theme that is different from the ggplot() default\n\n\n\ne. Interpret your figure\nIn 1-2 sentences each, use specific components of your figure to determine and describe:\n\nthe relationship between salinity and air temperature\ndifferences in the strength of this relationship across sites\n\n\n\n\n\n\n\nFinding it hard to articulate a pattern?\n\n\n\n\n\nReal data is messy! There’s not always a clear relationship between variables. If you cannot clearly articulate a pattern, state why.\nIf you can articulate a pattern, also state why."
+  },
+  {
+    "objectID": "assignments/individual-assignment-03.html#dissolved-oxygen-and-temperature-relationships",
+    "href": "assignments/individual-assignment-03.html#dissolved-oxygen-and-temperature-relationships",
+    "title": "Individual assignment 3",
+    "section": "2. Dissolved oxygen and temperature relationships",
+    "text": "2. Dissolved oxygen and temperature relationships\nIn this problem, you will create a figure to explore the relationships between dissolved oxygen and water temperature at each elevation code for all three sites. You should use the salinity_filtered data frame for this figure.\n\na. Plan your figure\nAt the end of your code in part b, you should have a figure with dissolved oxygen (measured in mg/L) on the y-axis, water temperature (measured in °C) on the x-axis, and points representing each measurement of dissolved oxygen and water temperature. In your figure, colors should represent elevation codes. You should also have three panels in your figure, with one panel for each site.\nFill in this list with the names of columns you would use from salinity_filtered for this figure or the appropriate functions to create the visualization.\n\nx-axis:\ny-axis:\ncolor:\ngeometry (hint: you only need one):\nfunction and argument to create separate panels:\n\n\n\nb. Code your figure\nCreate a figure following the list you made in part a. For full marks:\n\nmake sure the x- and y-axes are labelled in a readable format with units for each\ninclude a title that:\n\ndescribes the information shown in your figure and\nspecifies the range of dates or time period for this subset of the data\n\nuse colors for each site that are different from the ggplot() defaults using a color palette package or otherwise\nuse a theme that is different from the ggplot() default\n\n\n\nc. Interpret your figure\nIn 1-2 sentences each, use specific components of your figure to determine and describe:\n\nthe relationship between dissolved oxygen and air temperature\ndifferences in the strength of this relationship across sites"
+  },
+  {
+    "objectID": "assignments/individual-assignment-03.html#salinity-and-water-elevation-relationships",
+    "href": "assignments/individual-assignment-03.html#salinity-and-water-elevation-relationships",
+    "title": "Individual assignment 3",
+    "section": "3. Salinity and water elevation relationships",
+    "text": "3. Salinity and water elevation relationships\nIn this section, you will create a figure examining the relationship between salinity and water surface elevation measured at Venoco Bridge. Note that Venoco is the only location at which water surface elevation is measured using a visual gauge (that we saw on our walk), so Phelps Creek and East Channel should not appear in your figure.\nFor this section, you should be using the salinity_filtered data frame.\n\na. Plan your figure\nAt the end of your code in part ____, you should have a figure in which water surface elevation (measured as feet above the bottom) is on the x-axis, salinity (measured in ppt) is on the y-axis, and each point represents a measurement of salinity. You should have different colors and panels for each elevation code.\nFill in this list with the names of columns you would use from salinity_filtered for this figure or the appropriate functions to create the visualization.\n\nx-axis:\ny-axis:\ncolor:\ngeometry (hint: you only need one):\nfunction and argument to create separate panels:\n\n\n\nb. Code your figure\nCreate a figure following the list you made in part a.\nFor full marks:\n\nmake sure the x- and y-axes are labelled in a readable format with units for each\ninclude a title that:\n\ndescribes the information shown in your figure and\nspecifies the range of dates or time period for this subset of the data\n\nuse colors for each site that are different from the ggplot() defaults using a color palette package or otherwise\nuse a theme that is different from the ggplot() default\n\n\n\nc. Interpret your figure\nIn 1-2 sentences each, use specific components of your figure to determine and describe:\n\nthe relationship between water surface elevation and salinity\ndifferences in the strength of this relationship across elevation codes (i.e. at the bottom, 1 foot from the bottom, 2 feet from the bottom)"
+  },
+  {
+    "objectID": "assignments/individual-assignment-02.html",
+    "href": "assignments/individual-assignment-02.html",
+    "title": "Individual assignment 2",
     "section": "",
-    "text": "You are going to run into problems when we use Git/GitHub in class if you do not set this up correctly. PLEASE give yourself time to read the directions and follow the steps exactly as they are laid out. Additionally, reach out to An for individual help with any of these steps."
+    "text": "Fill in your name in the YAML of the individual-assignment-template.qmd file.\nRead in your packages.\n\nRead in your data.\n\nCopy paste any code you need from class into your assignment script.\n\n\n\n\n\n\n\nPractice your own editorial judgement!\n\n\n\n\n\nYou will not need all the code from class to do your assignment.\nYou will need to pick and choose the components that are relevant to the assignment.\nIf you copy-paste your entire class script into your homework, you will need to revise your assignment!\n\n\n\n\nRender to .pdf to make sure that you can render (if not, come ask for help!).\nStart your assignment!"
   },
   {
-    "objectID": "resources/git-prechecks.html#opportunities-to-get-help-before-we-start-using-gitgithub-in-class",
-    "href": "resources/git-prechecks.html#opportunities-to-get-help-before-we-start-using-gitgithub-in-class",
-    "title": "Git/GitHub Part 1: prechecks",
+    "objectID": "assignments/individual-assignment-02.html#numbers-of-individuals",
+    "href": "assignments/individual-assignment-02.html#numbers-of-individuals",
+    "title": "Individual assignment 2",
+    "section": "1. Numbers of individuals",
+    "text": "1. Numbers of individuals\nIn the “Observations per species” section, we made figures showing the total counts per species for two eBird groups: Herons, Ibis, and Allies and Waterfowl.\nWe did this by summarizing the data for each group separately, then creating two separate figures.\nIn this section, you will use facet_wrap() to create a new figure.\n\na. Prep your data\nCreate a new data frame called bird_obs_count from birds_wy2025 summarizing the total counts per species in each of the four eBird groups.\nYou should be able to copy-paste the code from class and modify it to complete this question. For any line that you change, include an annotation explaining how you changed that line.\n\n\nb. Make a new figure\nUse a combination of ggplot(), geom_() and facet_wrap() (along with any associated functions to make your plot look nicer) to create a plot with total count on the x-axis and species on the y-axis with separate panels for each eBird group.\nFor full credit, be sure to:\n\nlabel the x- and y-axes\nget rid of the space between the bottom of the column and the axis line\nuse custom colors\nget rid of the legend (which is a redundant feature)\nmake sure all your axis labels are clear and readable (there are multiple solutions to this, from wrapping the labels to flipping the axes - do what you think is best to make sure that all the text is visible)\n\nAnnotate all your code to demonstrate your understanding of what you have written.\n\n\n\n\n\n\nWeird looking y-axis?\n\n\n\n\n\nIf your y-axis looks off, pay attention to what species are included in each group. Does it make sense that there is an axis tick for “Mallard” under “Shorebirds”? (Hint: no.)\nTo fix this, try running your code with additional arguments in your facet_wrap() like:\n\nscales = \"free_x\"\nscales = \"free_y\"\nscales = \"free\"\n\nto see how the axes might change. Choose the option that makes most sense for your figure.\n\n\n\n\n\nc. Interpret the figure\nAcross all eBird groups:\n\nWhich species had the highest total count?\nWhich species had the lowest total count?\n\nUse values from the data frame you made in part a OR visual components of the figure you made in part b to justify your claim."
+  },
+  {
+    "objectID": "assignments/individual-assignment-02.html#waterfowl-species-turnover",
+    "href": "assignments/individual-assignment-02.html#waterfowl-species-turnover",
+    "title": "Individual assignment 2",
+    "section": "2. Waterfowl species turnover",
+    "text": "2. Waterfowl species turnover\nSpecies turnover describes differences in the composition of species (i.e. which species are present or absent, and how their abundances differ).\nWhile species richness gives you a sense of how many species are in a community, species turnover can tell you which species are contributing to differences in abundance or richness between seasons.\n\na. Revisit an old figure\nLook back at class materials under the section “Seasonal differences in number of individuals”.\nIn 1-2 sentences, describe seasonal differences in total counts for Waterfowl.\nUse visual components of the plot to justify your interpretation.\n\n\nb. Write pseudocode\nWrite pseudocode to calculate the total count per species in Waterfowl per season.\nYou should end up with a data frame that looks something like this:\n\n\n\n\n\n\n\nc. Code your pseudocode.\nWrite the code that corresponds to your pseudocode.\nAt the end of the code chunk, write code to run str() on your object to display the structure.\n\n\nd. Make a visualization.\nMake a visualization of individual counts on the y-axis and season on the x-axis.\nFill the bars by species.\nAnnotate all code to demonstrate your understanding of what you’ve written.\nAdditionally, for full credit:\n\nlabel the x-axis, y-axis, and legend\ninclude a title\nget rid of the space at the bottom of the count axis\nuse custom colors from a palette package or otherwise\nuse a different theme from the default\n\n\n\n\n\n\n\nx-axis order looking off?\n\n\n\n\n\nRemember that water years start on October 1 of one year and end on September 30 of the next year. That means that a logical season order is fall –&gt; winter –&gt; spring –&gt; summer.\nIf your axis order needs fixing, set the levels in your code in part c.\n\n\n\n\n\ne. Understanding trends\nIn 1-2 sentences each, describe:\n\nWhat species is the most abundant across seasons?\nWhich species increased in abundance when comparing fall to winter?\nWhich species contribute to the increased number of Waterfowl individuals in winter and spring relative to fall and summer? In other words, which species are more abundant in winter and spring relative to fall and summer?\n\nFor each question, be specific about the calculated values from your object in part b OR visual components from your figure in part c that justifies each claim."
+  },
+  {
+    "objectID": "assignments/individual-assignment-02.html#waterfowl-temporal-dynamics",
+    "href": "assignments/individual-assignment-02.html#waterfowl-temporal-dynamics",
+    "title": "Individual assignment 2",
+    "section": "3. Waterfowl temporal dynamics",
+    "text": "3. Waterfowl temporal dynamics\nIn the “Temporal dynamics of individual counts” section, we calculated the total counts within eBird groups.\nIn this question, you will calculate and visualize the total counts within species for Waterfowl to answer the question: What are the dynamics through time of total counts for individual Waterfowl species?\n\na. Prep your data\nYou should be able to copy-paste the code from the “Temporal dynamics of individual counts” section and modify it to wrangle the data for Waterfowl.\nOn each line that you modify, write in your annotation how you modified the code.\nYou should end up with a wrangled data frame that is ready to be plotted.\n\n\nb. Make a new figure\nMake a visualization of the total counts for individual Waterfowl species through time. All species should be shown on your plot.\nAdditionally, for full credit:\n\nlabel the x-axis, y-axis, and legend\ninclude a title\nuse custom colors from a palette package or otherwise\nuse a different theme from the default\n\n\n\nc. Interpret the figure\nIn 1-2 sentences each, summarize:\n\n\nedited 2026-04-16: specified which figure to compare to; not a problem if you compared to a different figure than I specified in the instructions. Sorry for the confusion here!\n\nthe similarities or differences between the figure you made in Problem 2 part d and the figure you made in part b. Be specific regarding the visual components (geometries) and how they represent variables (i.e. the x- and y-axes and colors)\n1 species that was consistently present through time in high abundance, with information from the visual components from the figure"
+  },
+  {
+    "objectID": "assignments/individual-assignment-02.html#new-world-sparrow-temporal-dynamics",
+    "href": "assignments/individual-assignment-02.html#new-world-sparrow-temporal-dynamics",
+    "title": "Individual assignment 2",
+    "section": "4. New World Sparrow temporal dynamics",
+    "text": "4. New World Sparrow temporal dynamics\nIn this question, you will calculate and visualize the total counts within species for New World Sparrows to answer the question: What are the dynamics through time of total counts for individual sparrow species species?\n\na. Prep your data\nYou should be able to copy-paste the code from the “Temporal dynamics of individual counts” section and modify it to wrangle the data for sparrows.\n\n\nedited 2026-04-08: corrected text to refer to “sparrows”\nOn each line that you modify, write in your annotation how you modified the code.\nYou should end up with a wrangled data frame that is ready to be plotted.\n\n\nb. Make a new figure\nMake a visualization of the total counts for individual sparrow species through time. All species should be shown on your plot.\nAdditionally, for full credit:\n\nlabel the x-axis, y-axis, and legend\ninclude a title\nuse custom colors from a palette package or otherwise\nuse a different theme from the default\n\n\n\nc. Interpret the figure\nIn 1-2 sentences each, describe:\n\n2 species that tend to be consistently present throughout the year\n2 species that are only present in specific seasons (i.e. leave after a certain point in the year)"
+  },
+  {
+    "objectID": "assignments.html",
+    "href": "assignments.html",
+    "title": "Assignments",
     "section": "",
-    "text": "We are going to start using Git/GitHub in class during week 5. You can get help to set up in:\n\ndrop-in hours with An during week 3 or week 4\na one-on-one meeting with An during week 3 or week 4\n\nIf you get your set up double checked, you will earn one additional token."
+    "text": "Order By\n       Default\n         \n          Due date - Oldest\n        \n         \n          Due date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\nGetting set up\n\n\nMar 30, 2026\n\n\n\n\nIndividual assignment 1\n\n\nApr 10, 2026\n\n\n\n\nIndividual assignment 2\n\n\nApr 17, 2026\n\n\n\n\nIndividual assignment 3\n\n\nApr 24, 2026\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "resources/git-prechecks.html#in-class-technical-difficulties",
-    "href": "resources/git-prechecks.html#in-class-technical-difficulties",
-    "title": "Git/GitHub Part 1: prechecks",
+    "objectID": "electives.html",
+    "href": "electives.html",
+    "title": "Electives",
     "section": "",
-    "text": "Again, we are going to start using Git/GitHub in class during week 5. If you do not set things up correctly on your own AND/OR if you do not get help during drop-ins, we will not stop to help you.\nYOU NEED TO SET EVERYTHING UP CORRECTLY BEFORE CLASS DURING WEEK 5."
+    "text": "Order By\n       Default\n         \n          Due date - Oldest\n        \n         \n          Due date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\nBasic elective option 1\n\n\nApr 17, 2026\n\n\n\n\nBasic elective option 2\n\n\nApr 24, 2026\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "resources/git-prechecks.html#create-a-folder-called-git-or-github-on-your-computer.",
-    "href": "resources/git-prechecks.html#create-a-folder-called-git-or-github-on-your-computer.",
-    "title": "Git/GitHub Part 1: prechecks",
-    "section": "1. Create a folder called git or github on your computer.",
-    "text": "1. Create a folder called git or github on your computer.\nCreate a folder called git or github in your root directory.\nWith Macs: your root directory is usually Macintosh HD.\nWith Windows: your root directory is the C: drive.\nTo verify that your folder is in your root directory, look at the folder information (on Macs: right click &gt; Get Info) or look at the file path.\n\n\n\n\n\n\nDo not use OneDrive or iCloud!\n\n\n\ngit/GitHub will not work properly with files on OneDrive or iCloud (in short, the cloud syncing does not work with version control).\nBe sure that your folder is on your root directory. Make an appointment with An to get help if you cannot be sure that your folder is on your root."
+    "objectID": "in-class-materials.html",
+    "href": "in-class-materials.html",
+    "title": "In-class materials",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nWeek\n\n\nTitle\n\n\n\n\n\n\nWeek 1\n\n\nWater surface elevation at Venoco Bridge\n\n\n\n\nWeek 2\n\n\nBird species at NCOS\n\n\n\n\nWeek 3\n\n\nWater quality parameters\n\n\n\n\nWeek 4\n\n\nVernal pool vegetation\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "resources/git-prechecks.html#create-a-github-account",
-    "href": "resources/git-prechecks.html#create-a-github-account",
-    "title": "Git/GitHub Part 1: prechecks",
-    "section": "2. Create a GitHub account",
-    "text": "2. Create a GitHub account\nIf you don’t have one already, create a GitHub account.\nUse your personal email, not your ucsb.edu email (because you will lose access to that email once you graduate)."
+    "objectID": "assignments/individual-assignment-01.html",
+    "href": "assignments/individual-assignment-01.html",
+    "title": "Individual assignment 1",
+    "section": "",
+    "text": "Fill in your name in the individual-assignment-template.R script.\nFile &gt; Save as &gt; lastname-firstname_individual-assignment-01.R.\nRead in your packages.\n\nRead in your data.\n\nCopy paste any code you need from class into your assignment script.\n\n\n\n\n\n\n\nPractice your own editorial judgement!\n\n\n\n\n\nYou will not need all the code from class to do your assignment.\nYou will need to pick and choose the components that are relevant to the assignment.\nIf you copy-paste your entire class script into your homework, you will need to revise your assignment!\n\n\n\n\nStart your homework!"
   },
   {
-    "objectID": "resources/git-prechecks.html#check-that-you-have-git-on-your-computer",
-    "href": "resources/git-prechecks.html#check-that-you-have-git-on-your-computer",
-    "title": "Git/GitHub Part 1: prechecks",
-    "section": "3. Check that you have git on your computer",
-    "text": "3. Check that you have git on your computer\nOpen RStudio. Open the Terminal.\nIf you are on a Mac, type which git and hit Enter.\nIf you are using a Windows machine, type where git and hit Enter.\n\n\n\n\n\n\nTip\n\n\n\nClick on any screenshot to make it bigger!\n\n\n\nYou should see something pop up that looks like a file path. It might look slightly different from this example, which is ok.\n\n\n\n\n\n\nNote\n\n\n\nMost computers come with git pre-installed. If you do not get a file path when you run which git or where git, set up a one-on-one meeting with An."
+    "objectID": "assignments/individual-assignment-01.html#exploring-missing-data",
+    "href": "assignments/individual-assignment-01.html#exploring-missing-data",
+    "title": "Individual assignment 1",
+    "section": "1. Exploring missing data",
+    "text": "1. Exploring missing data\n\na. Write pseudocode\nIn class, we practiced writing “pseudocode” to group and summarize the data. Write pseudocode to calculate the number of missing water elevation values from 2025-09-03.\nRemember that pseudocode should not include any actual code. It should be plain language in the format of code.\n\n\nb. Code up your pseudocode.\nWrite the code that corresponds to the pseudocode that you wrote in part a.\nAnnotate all your code.\n\n\nedited 2026-04-02: took out requirement to show output (though output does have to be correct!)\n\n\nc. Number of missing values\nIn 1 sentence, state how many missing values there are for water elevation on 2025-09-03."
   },
   {
-    "objectID": "resources/git-prechecks.html#set-your-username-and-email",
-    "href": "resources/git-prechecks.html#set-your-username-and-email",
-    "title": "Git/GitHub Part 1: prechecks",
-    "section": "4. Set your username and email",
-    "text": "4. Set your username and email\nIn the Terminal, type git config --global user.name \"your-username-here\" (replace your-username-here) with your actual user name. Hit Enter.\n\n\n\n\n\n\nPay attention to spaces, dashes, and all punctuation!!!\n\n\n\nNone of the steps in the Terminal will work without the right spaces, dashes, etc.\n\n\nThen (still in the Terminal), type git config --global user.email your-email-here (replace your-email-here) with your email. No quotation marks around your email!\nThen (again, still in the Terminal), type git config --list --global. You should see your user name under the user.name field, and your email under the user.email field."
+    "objectID": "assignments/individual-assignment-01.html#exploration-of-temperature-data",
+    "href": "assignments/individual-assignment-01.html#exploration-of-temperature-data",
+    "title": "Individual assignment 1",
+    "section": "2. Exploration of temperature data",
+    "text": "2. Exploration of temperature data\nFor this exercise, be sure you are looking at venoco_water using View(venoco_water).\nUse the column manipulations to answer these questions.\n\na. Lowest temperature\nOn what date and at what time was the lowest temperature taken? What was the lowest temperature?\nExpress all numbers with units as needed.\n\n\nb. Highest temperature\nOn what date and at what time was the highest temperature taken? What was the highest temperature?\nExpress all numbers with units as needed."
+  },
+  {
+    "objectID": "assignments/individual-assignment-01.html#another-visualization",
+    "href": "assignments/individual-assignment-01.html#another-visualization",
+    "title": "Individual assignment 1",
+    "section": "3. Another visualization",
+    "text": "3. Another visualization\n\na. Write pseudocode to clean and summarize data\nWrite pseudocode to calculate the mean daily temperature at Venoco Bridge.\n\n\nb. Code up your pseudocode.\nCode the pseudocode you wrote in part a.\n\n\nc. Write pseudocode to visualize data\nWrite pseudocode to visualize mean daily temperature through time.\nUse point and line geometries.\nMake sure your pseudocode includes lines for labelling x- and y-axes.\n\n\nd. Code up your pseudocode\nMake a visualization of temperature through time following the pseudocode you wrote in part a.\nAnnotate each function in your code to demonstrate your understanding of what you’ve written.\n\n\ne. Comparing temporal trends\nDoes temperature follow similar temporal trends as water elevation? Why or why not?\nCompare the visual components of each plot to justify your answer."
+  },
+  {
+    "objectID": "assignments/individual-assignment-01.html#dealing-with-dates",
+    "href": "assignments/individual-assignment-01.html#dealing-with-dates",
+    "title": "Individual assignment 1",
+    "section": "4. Dealing with dates",
+    "text": "4. Dealing with dates\n\na. Types of objects\nThe earliest observation recorded in the dataset was from 2024-11-13. Run str(\"2024-11-13\") in the Console.\nWhat type of object is this?\nReference specific components of the output of str(\"2024-11-13\") to justify your response.\n\n\nb. Other types of objects\nNow, run str(as.Date(\"2024-11-13\")) in the Console.\nIn one sentence, describe what type of object is this. Use the specific components of the output of str(as.Date(\"2024-11-13\")) to justify your response.\n\n\nc. Working with a new dataset\nRead in the precipitation data using the following code in your set up section:\n\nprecip &lt;- read_csv(\"NOAA_daily_summaries_USW00053152_full_2025-12-09.csv\")\n\nList the variables and what values they contain in a bulleted list.\n\n\nd. Write pseudocode to filter the dataset\nWrite pseudocode to create a new object called precip_filtered to filter the dataset to only include precipitation readings from after 2024-09-30 and before 2025-10-01 (the 2025 water year).\n\n\ne. Code up your pseudocode\nCode your pseudocode that you wrote in part d. \nAnnotate all lines.\n\nTry using as.Date() and filter() together for this problem.\n\n\n\nf. Connecting information\nLook at the precip_filtered data frame. Find the column that corresponds to precipitation in inches called PRCP.\nWhat three dates in the precip_filtered data frame likely correspond to peaks in water elevation in (m) from the figure we made in class?\nBe specific by stating the date and the amount of precipitation in inches, and which peak the precipitation date connects to (e.g. the peak in [insert month here] likely corresponds to precipitation on [this date], which was [insert amount in inches here])."
   },
   {
     "objectID": "assignments/getting-set-up.html",
@@ -434,207 +483,207 @@
     "text": "Triple checking your set up\nIf you would like to verify your set up or get help, come see An on Tuesday the 31st of March between 9:30 AM - 12 PM in Bren 4017."
   },
   {
-    "objectID": "assignments/individual-assignment-01.html",
-    "href": "assignments/individual-assignment-01.html",
-    "title": "Individual assignment 1",
+    "objectID": "resources/git-prechecks.html",
+    "href": "resources/git-prechecks.html",
+    "title": "Git/GitHub Part 1: prechecks",
     "section": "",
-    "text": "Fill in your name in the individual-assignment-template.R script.\nFile &gt; Save as &gt; lastname-firstname_individual-assignment-01.R.\nRead in your packages.\n\nRead in your data.\n\nCopy paste any code you need from class into your assignment script.\n\n\n\n\n\n\n\nPractice your own editorial judgement!\n\n\n\n\n\nYou will not need all the code from class to do your assignment.\nYou will need to pick and choose the components that are relevant to the assignment.\nIf you copy-paste your entire class script into your homework, you will need to revise your assignment!\n\n\n\n\nStart your homework!"
+    "text": "“Git” (pronounced with a hard “g”, as in “give”) is the software that tracks versions of files on your computer. “GitHub” (also pronounced with a hard “g”) is the hosting platform that holds all versions of files tracked by Git.\n\n\n\nYou are going to run into problems when we use Git/GitHub in class if you do not set this up correctly. PLEASE give yourself time to read the directions and follow the steps exactly as they are laid out. Additionally, reach out to An for individual help with any of these steps.\n\n\n\nWe are going to start using Git/GitHub in class during week 5. You can get help to set up in:\n\ndrop-in hours with An during week 3 or week 4\na one-on-one meeting with An during week 3 or week 4\n\nIf you get your set up double checked, you will earn one additional token.\n\n\n\nAgain, we are going to start using Git/GitHub in class during week 5. If you do not set things up correctly on your own AND/OR if you do not get help during drop-ins, we will not stop to help you.\nYOU NEED TO SET EVERYTHING UP CORRECTLY BEFORE CLASS DURING WEEK 5."
   },
   {
-    "objectID": "assignments/individual-assignment-01.html#exploring-missing-data",
-    "href": "assignments/individual-assignment-01.html#exploring-missing-data",
-    "title": "Individual assignment 1",
-    "section": "1. Exploring missing data",
-    "text": "1. Exploring missing data\n\na. Write pseudocode\nIn class, we practiced writing “pseudocode” to group and summarize the data. Write pseudocode to calculate the number of missing water elevation values from 2025-09-03.\nRemember that pseudocode should not include any actual code. It should be plain language in the format of code.\n\n\nb. Code up your pseudocode.\nWrite the code that corresponds to the pseudocode that you wrote in part a.\nAnnotate all your code.\n\n\nedited 2026-04-02: took out requirement to show output (though output does have to be correct!)\n\n\nc. Number of missing values\nIn 1 sentence, state how many missing values there are for water elevation on 2025-09-03."
-  },
-  {
-    "objectID": "assignments/individual-assignment-01.html#exploration-of-temperature-data",
-    "href": "assignments/individual-assignment-01.html#exploration-of-temperature-data",
-    "title": "Individual assignment 1",
-    "section": "2. Exploration of temperature data",
-    "text": "2. Exploration of temperature data\nFor this exercise, be sure you are looking at venoco_water using View(venoco_water).\nUse the column manipulations to answer these questions.\n\na. Lowest temperature\nOn what date and at what time was the lowest temperature taken? What was the lowest temperature?\nExpress all numbers with units as needed.\n\n\nb. Highest temperature\nOn what date and at what time was the highest temperature taken? What was the highest temperature?\nExpress all numbers with units as needed."
-  },
-  {
-    "objectID": "assignments/individual-assignment-01.html#another-visualization",
-    "href": "assignments/individual-assignment-01.html#another-visualization",
-    "title": "Individual assignment 1",
-    "section": "3. Another visualization",
-    "text": "3. Another visualization\n\na. Write pseudocode to clean and summarize data\nWrite pseudocode to calculate the mean daily temperature at Venoco Bridge.\n\n\nb. Code up your pseudocode.\nCode the pseudocode you wrote in part a.\n\n\nc. Write pseudocode to visualize data\nWrite pseudocode to visualize mean daily temperature through time.\nUse point and line geometries.\nMake sure your pseudocode includes lines for labelling x- and y-axes.\n\n\nd. Code up your pseudocode\nMake a visualization of temperature through time following the pseudocode you wrote in part a.\nAnnotate each function in your code to demonstrate your understanding of what you’ve written.\n\n\ne. Comparing temporal trends\nDoes temperature follow similar temporal trends as water elevation? Why or why not?\nCompare the visual components of each plot to justify your answer."
-  },
-  {
-    "objectID": "assignments/individual-assignment-01.html#dealing-with-dates",
-    "href": "assignments/individual-assignment-01.html#dealing-with-dates",
-    "title": "Individual assignment 1",
-    "section": "4. Dealing with dates",
-    "text": "4. Dealing with dates\n\na. Types of objects\nThe earliest observation recorded in the dataset was from 2024-11-13. Run str(\"2024-11-13\") in the Console.\nWhat type of object is this?\nReference specific components of the output of str(\"2024-11-13\") to justify your response.\n\n\nb. Other types of objects\nNow, run str(as.Date(\"2024-11-13\")) in the Console.\nIn one sentence, describe what type of object is this. Use the specific components of the output of str(as.Date(\"2024-11-13\")) to justify your response.\n\n\nc. Working with a new dataset\nRead in the precipitation data using the following code in your set up section:\n\nprecip &lt;- read_csv(\"NOAA_daily_summaries_USW00053152_full_2025-12-09.csv\")\n\nList the variables and what values they contain in a bulleted list.\n\n\nd. Write pseudocode to filter the dataset\nWrite pseudocode to create a new object called precip_filtered to filter the dataset to only include precipitation readings from after 2024-09-30 and before 2025-10-01 (the 2025 water year).\n\n\ne. Code up your pseudocode\nCode your pseudocode that you wrote in part d. \nAnnotate all lines.\n\nTry using as.Date() and filter() together for this problem.\n\n\n\nf. Connecting information\nLook at the precip_filtered data frame. Find the column that corresponds to precipitation in inches called PRCP.\nWhat three dates in the precip_filtered data frame likely correspond to peaks in water elevation in (m) from the figure we made in class?\nBe specific by stating the date and the amount of precipitation in inches, and which peak the precipitation date connects to (e.g. the peak in [insert month here] likely corresponds to precipitation on [this date], which was [insert amount in inches here])."
-  },
-  {
-    "objectID": "in-class-materials.html",
-    "href": "in-class-materials.html",
-    "title": "In-class materials",
+    "objectID": "resources/git-prechecks.html#git-vs-github",
+    "href": "resources/git-prechecks.html#git-vs-github",
+    "title": "Git/GitHub Part 1: prechecks",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nWeek\n\n\nTitle\n\n\n\n\n\n\nWeek 1\n\n\nWater surface elevation at Venoco Bridge\n\n\n\n\nWeek 2\n\n\nBird species at NCOS\n\n\n\n\nWeek 3\n\n\nWater quality parameters\n\n\n\n\n\nNo matching items"
+    "text": "“Git” (pronounced with a hard “g”, as in “give”) is the software that tracks versions of files on your computer. “GitHub” (also pronounced with a hard “g”) is the hosting platform that holds all versions of files tracked by Git."
   },
   {
-    "objectID": "electives.html",
-    "href": "electives.html",
-    "title": "Electives",
+    "objectID": "resources/git-prechecks.html#stay-calm-and-do-not-panic",
+    "href": "resources/git-prechecks.html#stay-calm-and-do-not-panic",
+    "title": "Git/GitHub Part 1: prechecks",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Due date - Oldest\n        \n         \n          Due date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\nBasic elective option 1\n\n\nApr 17, 2026\n\n\n\n\nBasic elective option 2\n\n\nApr 24, 2026\n\n\n\n\n\nNo matching items"
+    "text": "You are going to run into problems when we use Git/GitHub in class if you do not set this up correctly. PLEASE give yourself time to read the directions and follow the steps exactly as they are laid out. Additionally, reach out to An for individual help with any of these steps."
   },
   {
-    "objectID": "assignments.html",
-    "href": "assignments.html",
-    "title": "Assignments",
+    "objectID": "resources/git-prechecks.html#opportunities-to-get-help-before-we-start-using-gitgithub-in-class",
+    "href": "resources/git-prechecks.html#opportunities-to-get-help-before-we-start-using-gitgithub-in-class",
+    "title": "Git/GitHub Part 1: prechecks",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Due date - Oldest\n        \n         \n          Due date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\nGetting set up\n\n\nMar 30, 2026\n\n\n\n\nIndividual assignment 1\n\n\nApr 10, 2026\n\n\n\n\nIndividual assignment 2\n\n\nApr 17, 2026\n\n\n\n\nIndividual assignment 3\n\n\nApr 24, 2026\n\n\n\n\n\nNo matching items"
+    "text": "We are going to start using Git/GitHub in class during week 5. You can get help to set up in:\n\ndrop-in hours with An during week 3 or week 4\na one-on-one meeting with An during week 3 or week 4\n\nIf you get your set up double checked, you will earn one additional token."
   },
   {
-    "objectID": "assignments/individual-assignment-02.html",
-    "href": "assignments/individual-assignment-02.html",
-    "title": "Individual assignment 2",
+    "objectID": "resources/git-prechecks.html#in-class-technical-difficulties",
+    "href": "resources/git-prechecks.html#in-class-technical-difficulties",
+    "title": "Git/GitHub Part 1: prechecks",
     "section": "",
-    "text": "Fill in your name in the YAML of the individual-assignment-template.qmd file.\nRead in your packages.\n\nRead in your data.\n\nCopy paste any code you need from class into your assignment script.\n\n\n\n\n\n\n\nPractice your own editorial judgement!\n\n\n\n\n\nYou will not need all the code from class to do your assignment.\nYou will need to pick and choose the components that are relevant to the assignment.\nIf you copy-paste your entire class script into your homework, you will need to revise your assignment!\n\n\n\n\nRender to .pdf to make sure that you can render (if not, come ask for help!).\nStart your assignment!"
+    "text": "Again, we are going to start using Git/GitHub in class during week 5. If you do not set things up correctly on your own AND/OR if you do not get help during drop-ins, we will not stop to help you.\nYOU NEED TO SET EVERYTHING UP CORRECTLY BEFORE CLASS DURING WEEK 5."
   },
   {
-    "objectID": "assignments/individual-assignment-02.html#numbers-of-individuals",
-    "href": "assignments/individual-assignment-02.html#numbers-of-individuals",
-    "title": "Individual assignment 2",
-    "section": "1. Numbers of individuals",
-    "text": "1. Numbers of individuals\nIn the “Observations per species” section, we made figures showing the total counts per species for two eBird groups: Herons, Ibis, and Allies and Waterfowl.\nWe did this by summarizing the data for each group separately, then creating two separate figures.\nIn this section, you will use facet_wrap() to create a new figure.\n\na. Prep your data\nCreate a new data frame called bird_obs_count from birds_wy2025 summarizing the total counts per species in each of the four eBird groups.\nYou should be able to copy-paste the code from class and modify it to complete this question. For any line that you change, include an annotation explaining how you changed that line.\n\n\nb. Make a new figure\nUse a combination of ggplot(), geom_() and facet_wrap() (along with any associated functions to make your plot look nicer) to create a plot with total count on the x-axis and species on the y-axis with separate panels for each eBird group.\nFor full credit, be sure to:\n\nlabel the x- and y-axes\nget rid of the space between the bottom of the column and the axis line\nuse custom colors\nget rid of the legend (which is a redundant feature)\nmake sure all your axis labels are clear and readable (there are multiple solutions to this, from wrapping the labels to flipping the axes - do what you think is best to make sure that all the text is visible)\n\nAnnotate all your code to demonstrate your understanding of what you have written.\n\n\n\n\n\n\nWeird looking y-axis?\n\n\n\n\n\nIf your y-axis looks off, pay attention to what species are included in each group. Does it make sense that there is an axis tick for “Mallard” under “Shorebirds”? (Hint: no.)\nTo fix this, try running your code with additional arguments in your facet_wrap() like:\n\nscales = \"free_x\"\nscales = \"free_y\"\nscales = \"free\"\n\nto see how the axes might change. Choose the option that makes most sense for your figure.\n\n\n\n\n\nc. Interpret the figure\nAcross all eBird groups:\n\nWhich species had the highest total count?\nWhich species had the lowest total count?\n\nUse values from the data frame you made in part a OR visual components of the figure you made in part b to justify your claim."
+    "objectID": "resources/git-prechecks.html#create-a-folder-called-git-or-github-on-your-computer.",
+    "href": "resources/git-prechecks.html#create-a-folder-called-git-or-github-on-your-computer.",
+    "title": "Git/GitHub Part 1: prechecks",
+    "section": "1. Create a folder called git or github on your computer.",
+    "text": "1. Create a folder called git or github on your computer.\nCreate a folder called git or github in your root directory.\nWith Macs: your root directory is usually Macintosh HD.\nWith Windows: your root directory is the C: drive.\nTo verify that your folder is in your root directory, look at the folder information (on Macs: right click &gt; Get Info) or look at the file path.\n\n\n\n\n\n\nDo not use OneDrive or iCloud!\n\n\n\ngit/GitHub will not work properly with files on OneDrive or iCloud (in short, the cloud syncing does not work with version control).\nBe sure that your folder is on your root directory. Make an appointment with An to get help if you cannot be sure that your folder is on your root."
   },
   {
-    "objectID": "assignments/individual-assignment-02.html#waterfowl-species-turnover",
-    "href": "assignments/individual-assignment-02.html#waterfowl-species-turnover",
-    "title": "Individual assignment 2",
-    "section": "2. Waterfowl species turnover",
-    "text": "2. Waterfowl species turnover\nSpecies turnover describes differences in the composition of species (i.e. which species are present or absent, and how their abundances differ).\nWhile species richness gives you a sense of how many species are in a community, species turnover can tell you which species are contributing to differences in abundance or richness between seasons.\n\na. Revisit an old figure\nLook back at class materials under the section “Seasonal differences in number of individuals”.\nIn 1-2 sentences, describe seasonal differences in total counts for Waterfowl.\nUse visual components of the plot to justify your interpretation.\n\n\nb. Write pseudocode\nWrite pseudocode to calculate the total count per species in Waterfowl per season.\nYou should end up with a data frame that looks something like this:\n\n\n\n\n\n\n\nc. Code your pseudocode.\nWrite the code that corresponds to your pseudocode.\nAt the end of the code chunk, write code to run str() on your object to display the structure.\n\n\nd. Make a visualization.\nMake a visualization of individual counts on the y-axis and season on the x-axis.\nFill the bars by species.\nAnnotate all code to demonstrate your understanding of what you’ve written.\nAdditionally, for full credit:\n\nlabel the x-axis, y-axis, and legend\ninclude a title\nget rid of the space at the bottom of the count axis\nuse custom colors from a palette package or otherwise\nuse a different theme from the default\n\n\n\n\n\n\n\nx-axis order looking off?\n\n\n\n\n\nRemember that water years start on October 1 of one year and end on September 30 of the next year. That means that a logical season order is fall –&gt; winter –&gt; spring –&gt; summer.\nIf your axis order needs fixing, set the levels in your code in part c.\n\n\n\n\n\ne. Understanding trends\nIn 1-2 sentences each, describe:\n\nWhat species is the most abundant across seasons?\nWhich species increased in abundance when comparing fall to winter?\nWhich species contribute to the increased number of Waterfowl individuals in winter and spring relative to fall and summer? In other words, which species are more abundant in winter and spring relative to fall and summer?\n\nFor each question, be specific about the calculated values from your object in part b OR visual components from your figure in part c that justifies each claim."
+    "objectID": "resources/git-prechecks.html#create-a-github-account",
+    "href": "resources/git-prechecks.html#create-a-github-account",
+    "title": "Git/GitHub Part 1: prechecks",
+    "section": "2. Create a GitHub account",
+    "text": "2. Create a GitHub account\nIf you don’t have one already, create a GitHub account.\nUse your personal email, not your ucsb.edu email (because you will lose access to that email once you graduate)."
   },
   {
-    "objectID": "assignments/individual-assignment-02.html#waterfowl-temporal-dynamics",
-    "href": "assignments/individual-assignment-02.html#waterfowl-temporal-dynamics",
-    "title": "Individual assignment 2",
-    "section": "3. Waterfowl temporal dynamics",
-    "text": "3. Waterfowl temporal dynamics\nIn the “Temporal dynamics of individual counts” section, we calculated the total counts within eBird groups.\nIn this question, you will calculate and visualize the total counts within species for Waterfowl to answer the question: What are the dynamics through time of total counts for individual Waterfowl species?\n\na. Prep your data\nYou should be able to copy-paste the code from the “Temporal dynamics of individual counts” section and modify it to wrangle the data for Waterfowl.\nOn each line that you modify, write in your annotation how you modified the code.\nYou should end up with a wrangled data frame that is ready to be plotted.\n\n\nb. Make a new figure\nMake a visualization of the total counts for individual Waterfowl species through time. All species should be shown on your plot.\nAdditionally, for full credit:\n\nlabel the x-axis, y-axis, and legend\ninclude a title\nuse custom colors from a palette package or otherwise\nuse a different theme from the default\n\n\n\nc. Interpret the figure\nIn 1-2 sentences each, summarize:\n\n\nedited 2026-04-16: specified which figure to compare to; not a problem if you compared to a different figure than I specified in the instructions. Sorry for the confusion here!\n\nthe similarities or differences between the figure you made in Problem 2 part d and the figure you made in part b. Be specific regarding the visual components (geometries) and how they represent variables (i.e. the x- and y-axes and colors)\n1 species that was consistently present through time in high abundance, with information from the visual components from the figure"
+    "objectID": "resources/git-prechecks.html#check-that-you-have-git-on-your-computer",
+    "href": "resources/git-prechecks.html#check-that-you-have-git-on-your-computer",
+    "title": "Git/GitHub Part 1: prechecks",
+    "section": "3. Check that you have git on your computer",
+    "text": "3. Check that you have git on your computer\nOpen RStudio. Open the Terminal.\nIf you are on a Mac, type which git and hit Enter.\nIf you are using a Windows machine, type where git and hit Enter.\n\n\n\n\n\n\nTip\n\n\n\nClick on any screenshot to make it bigger!\n\n\n\nYou should see something pop up that looks like a file path. It might look slightly different from this example, which is ok.\n\n\n\n\n\n\nNote\n\n\n\nMost computers come with git pre-installed. If you do not get a file path when you run which git or where git, set up a one-on-one meeting with An."
   },
   {
-    "objectID": "assignments/individual-assignment-02.html#new-world-sparrow-temporal-dynamics",
-    "href": "assignments/individual-assignment-02.html#new-world-sparrow-temporal-dynamics",
-    "title": "Individual assignment 2",
-    "section": "4. New World Sparrow temporal dynamics",
-    "text": "4. New World Sparrow temporal dynamics\nIn this question, you will calculate and visualize the total counts within species for New World Sparrows to answer the question: What are the dynamics through time of total counts for individual sparrow species species?\n\na. Prep your data\nYou should be able to copy-paste the code from the “Temporal dynamics of individual counts” section and modify it to wrangle the data for sparrows.\n\n\nedited 2026-04-08: corrected text to refer to “sparrows”\nOn each line that you modify, write in your annotation how you modified the code.\nYou should end up with a wrangled data frame that is ready to be plotted.\n\n\nb. Make a new figure\nMake a visualization of the total counts for individual sparrow species through time. All species should be shown on your plot.\nAdditionally, for full credit:\n\nlabel the x-axis, y-axis, and legend\ninclude a title\nuse custom colors from a palette package or otherwise\nuse a different theme from the default\n\n\n\nc. Interpret the figure\nIn 1-2 sentences each, describe:\n\n2 species that tend to be consistently present throughout the year\n2 species that are only present in specific seasons (i.e. leave after a certain point in the year)"
+    "objectID": "resources/git-prechecks.html#set-your-username-and-email",
+    "href": "resources/git-prechecks.html#set-your-username-and-email",
+    "title": "Git/GitHub Part 1: prechecks",
+    "section": "4. Set your username and email",
+    "text": "4. Set your username and email\nIn the Terminal, type git config --global user.name \"your-username-here\" (replace your-username-here) with your actual user name. Hit Enter.\n\n\n\n\n\n\nPay attention to spaces, dashes, and all punctuation!!!\n\n\n\nNone of the steps in the Terminal will work without the right spaces, dashes, etc.\n\n\nThen (still in the Terminal), type git config --global user.email your-email-here (replace your-email-here) with your email. No quotation marks around your email!\nThen (again, still in the Terminal), type git config --list --global. You should see your user name under the user.name field, and your email under the user.email field."
   },
   {
-    "objectID": "assignments/individual-assignment-03.html",
-    "href": "assignments/individual-assignment-03.html",
-    "title": "Individual assignment 3",
+    "objectID": "resources/storing-personal-access-token.html",
+    "href": "resources/storing-personal-access-token.html",
+    "title": "Git/GitHub Part 2: personal access token",
     "section": "",
-    "text": "Create a new .qmd in the code folder of your ENVS-193DD_week-03 folder. Make sure that you:\n\nfill in your name in the “Author” field\nare rendering to .pdf\nleave the visual editor box unchecked\n\nIn the YAML of your .qmd, enter the date.\nCreate a set up section for your code (refer to class code if you need help with this).\nInsert a code chunk to read in packages.\n\nAt minimum, you will need tidyverse, janitor, and here.\n\nInsert a code chunk to read in data.\n\nBe sure that you are using here() along with read_csv().\n\nInsert a code chunk for class code that you need for your assignment.\n\n\n\n\n\n\n\nPractice your own editorial judgement!\n\n\n\n\n\nYou will not need all the code from class to do your assignment.\nYou will need to pick and choose the components that are relevant to the assignment.\nIf you copy-paste your entire class script into your homework, you will need to revise your assignment!\n\n\n\n\nRender to .pdf to make sure that you can render (if not, come ask for help!).\nStart your assignment!"
+    "text": "Have you completed all steps in Git/GitHub Part 1?\n\n\n\nIf you have not created a GitHub account and entered your information in the Terminal, go back to Part 1 and complete those steps before moving on to the steps in this part."
   },
   {
-    "objectID": "assignments/individual-assignment-03.html#salinity-and-temperature-relationships-across-sites",
-    "href": "assignments/individual-assignment-03.html#salinity-and-temperature-relationships-across-sites",
-    "title": "Individual assignment 3",
-    "section": "1. Salinity and temperature relationships across sites",
-    "text": "1. Salinity and temperature relationships across sites\nIn this section, you will explore the relationship between salinity (which was in the water_parameters data frame) averaged across all elevation codes for a single site during a single survey and air temperature (which was in the weather data frame) for each of the three sites (which were in the metadata data frame).\nRemember that we put all three data frames into one called water_quality_weather and then filtered out the outliers to create a data frame called salinity_filtered. You should be using salinity_filtered for this problem.\n\na. Plan your figure\nAt the end of your code for part d, you should have a figure with three panels depicting the relationship between salinity (measured in ppt) and air temperature (measured in °F). Each point should represent a salinity measurement and an air temperature measurement.\nFill in this list with the columns and/or geometries you would need to create a figure matching this description. You don’t need exact column names, but you do need to clearly articulate what variables would apply to each item on the list.\n\nx-axis:\ny-axis:\ncolor:\ngeometry (hint: you only need one):\nfunction and argument to create separate panels:\n\n\n\nb. Write your pseudocode\nThe salinity_filtered data frame is not quite what you need to create this figure, but it is close.\nWrite pseudocode to create a new object from salinity_filtered that would contain the columns you need to create this figure.\n\n\nc. Code your pseudocode\nWrite the code that corresponds to your pseudocode.\nAt the end of the code chunk, write code to run str() on your object to display the structure.\n\n\nd. Code your figure\nCreate your figure following the list you outlined in part a using the data frame you created in part c. For full marks:\n\nmake sure the x- and y-axes are labelled in a readable format with units for each\ninclude a title that:\n\ndescribes the information shown in your figure and\nspecifies the range of dates or time period for this subset of the data\n\nuse colors for each site that are different from the ggplot() defaults using a color palette package or otherwise\nuse a theme that is different from the ggplot() default\n\n\n\ne. Interpret your figure\nIn 1-2 sentences each, use specific components of your figure to determine and describe:\n\nthe relationship between salinity and air temperature\ndifferences in the strength of this relationship across sites\n\n\n\n\n\n\n\nFinding it hard to articulate a pattern?\n\n\n\n\n\nReal data is messy! There’s not always a clear relationship between variables. If you cannot clearly articulate a pattern, state why.\nIf you can articulate a pattern, also state why."
+    "objectID": "resources/storing-personal-access-token.html#canvas-video",
+    "href": "resources/storing-personal-access-token.html#canvas-video",
+    "title": "Git/GitHub Part 2: personal access token",
+    "section": "Canvas video",
+    "text": "Canvas video\nThere is a video on going through all these steps in the Resources page on Canvas (and here)."
   },
   {
-    "objectID": "assignments/individual-assignment-03.html#dissolved-oxygen-and-temperature-relationships",
-    "href": "assignments/individual-assignment-03.html#dissolved-oxygen-and-temperature-relationships",
-    "title": "Individual assignment 3",
-    "section": "2. Dissolved oxygen and temperature relationships",
-    "text": "2. Dissolved oxygen and temperature relationships\nIn this problem, you will create a figure to explore the relationships between dissolved oxygen and water temperature at each elevation code for all three sites. You should use the salinity_filtered data frame for this figure.\n\na. Plan your figure\nAt the end of your code in part b, you should have a figure with dissolved oxygen (measured in mg/L) on the y-axis, water temperature (measured in °C) on the x-axis, and points representing each measurement of dissolved oxygen and water temperature. In your figure, colors should represent elevation codes. You should also have three panels in your figure, with one panel for each site.\nFill in this list with the names of columns you would use from salinity_filtered for this figure or the appropriate functions to create the visualization.\n\nx-axis:\ny-axis:\ncolor:\ngeometry (hint: you only need one):\nfunction and argument to create separate panels:\n\n\n\nb. Code your figure\nCreate a figure following the list you made in part a. For full marks:\n\nmake sure the x- and y-axes are labelled in a readable format with units for each\ninclude a title that:\n\ndescribes the information shown in your figure and\nspecifies the range of dates or time period for this subset of the data\n\nuse colors for each site that are different from the ggplot() defaults using a color palette package or otherwise\nuse a theme that is different from the ggplot() default\n\n\n\nc. Interpret your figure\nIn 1-2 sentences each, use specific components of your figure to determine and describe:\n\nthe relationship between dissolved oxygen and air temperature\ndifferences in the strength of this relationship across sites"
+    "objectID": "resources/storing-personal-access-token.html#what-is-a-personal-access-token",
+    "href": "resources/storing-personal-access-token.html#what-is-a-personal-access-token",
+    "title": "Git/GitHub Part 2: personal access token",
+    "section": "What is a personal access token?",
+    "text": "What is a personal access token?\nFrom GitHub’s documentation:\n\nPersonal access tokens are an alternative to using passwords for authentication to GitHub when using the GitHub API or the command line."
   },
   {
-    "objectID": "assignments/individual-assignment-03.html#salinity-and-water-elevation-relationships",
-    "href": "assignments/individual-assignment-03.html#salinity-and-water-elevation-relationships",
-    "title": "Individual assignment 3",
-    "section": "3. Salinity and water elevation relationships",
-    "text": "3. Salinity and water elevation relationships\nIn this section, you will create a figure examining the relationship between salinity and water surface elevation measured at Venoco Bridge. Note that Venoco is the only location at which water surface elevation is measured using a visual gauge (that we saw on our walk), so Phelps Creek and East Channel should not appear in your figure.\nFor this section, you should be using the salinity_filtered data frame.\n\na. Plan your figure\nAt the end of your code in part ____, you should have a figure in which water surface elevation (measured as feet above the bottom) is on the x-axis, salinity (measured in ppt) is on the y-axis, and each point represents a measurement of salinity. You should have different colors and panels for each elevation code.\nFill in this list with the names of columns you would use from salinity_filtered for this figure or the appropriate functions to create the visualization.\n\nx-axis:\ny-axis:\ncolor:\ngeometry (hint: you only need one):\nfunction and argument to create separate panels:\n\n\n\nb. Code your figure\nCreate a figure following the list you made in part a.\nFor full marks:\n\nmake sure the x- and y-axes are labelled in a readable format with units for each\ninclude a title that:\n\ndescribes the information shown in your figure and\nspecifies the range of dates or time period for this subset of the data\n\nuse colors for each site that are different from the ggplot() defaults using a color palette package or otherwise\nuse a theme that is different from the ggplot() default\n\n\n\nc. Interpret your figure\nIn 1-2 sentences each, use specific components of your figure to determine and describe:\n\nthe relationship between water surface elevation and salinity\ndifferences in the strength of this relationship across elevation codes (i.e. at the bottom, 1 foot from the bottom, 2 feet from the bottom)"
+    "objectID": "resources/storing-personal-access-token.html#in-rstudio",
+    "href": "resources/storing-personal-access-token.html#in-rstudio",
+    "title": "Git/GitHub Part 2: personal access token",
+    "section": "In RStudio",
+    "text": "In RStudio\n\n1. Install usethis\nDo this in the console!\n\ninstall.packages(\"usethis\")\n\n\n\n\n2. Generate a personal access token using usethis\nAgain, do this in the console!\n\nusethis::create_github_token()\n\n\nThis will lead you to a web browser.\n(if prompted) in the web browser, enter your GitHub password."
   },
   {
-    "objectID": "resources/genAI.html",
-    "href": "resources/genAI.html",
-    "title": "Guidelines and policies on using AI",
+    "objectID": "resources/storing-personal-access-token.html#in-your-browser",
+    "href": "resources/storing-personal-access-token.html#in-your-browser",
+    "title": "Git/GitHub Part 2: personal access token",
+    "section": "In your browser",
+    "text": "In your browser\n\n3. Fill in the information about your personal access token.\nUnder “Note”, name your PAT. A logical name could be “PAT winter 2026”.\nUnder “Expiration”, select 90 days.\n\n\n\n4. Scroll to the bottom of the page, hit Generate token\nDO NOT MODIFY ANY OF THE PRE-SELECTED CHECK BOXES.\n\n\n\n5. Copy the personal access token to your clipboard"
+  },
+  {
+    "objectID": "resources/storing-personal-access-token.html#back-in-rstudio",
+    "href": "resources/storing-personal-access-token.html#back-in-rstudio",
+    "title": "Git/GitHub Part 2: personal access token",
+    "section": "Back in RStudio",
+    "text": "Back in RStudio\n\n6. Set the personal access token.\nRun this in the console!\n\ngitcreds::gitcreds_set()\n\n\n\n\n7. Paste your personal access token when prompted\nPaste your PERSONAL ACCESS TOKEN. NOT YOUR GITHUB PASSWORD. NOT YOUR COMPUTER PASSWORD.\nPASTE YOUR PERSONAL ACCESS TOKEN.\n\n\n\n8. Double check that the personal access token is stored\nAgain, run this in the console:\n\nusethis::git_sitrep()\n\nCheck that your user name and email are correct.\nCheck the Personal access token field under GitHub. This should say &lt;discovered&gt;.\n\n\n\nGet your set up double checked!\nCome see An during drop-ins weeks 3 or 4 OR make a one-on-one appointment during weeks 3 or 4. If you get your set up double checked, you will earn one additional token."
+  },
+  {
+    "objectID": "resources/using-virtual-machine.html",
+    "href": "resources/using-virtual-machine.html",
+    "title": "Using the virtual machine",
     "section": "",
-    "text": "Generative AI tools like ChatGPT, Claude, Copilot, etc. can help solve a lot of coding problems: if you’re stuck and don’t know where to start, if you have code that keeps giving you an error, etc. - most of these issues can be solved using AI. The key to effective use of generative AI tools in environmental studies is to be honest about its use."
+    "text": "For this class, we have a virtual machine: it allows you to run R and RStudio in a browser (e.g. Google Chrome, Safari, Firefox). Find the virtual machine here!\nThe benefits of using the virtual machine are plenty:\n\nyou don’t have to download R, RStudio, and Quarto\n\nthe versions of all the software you need are updated\n\nthe packages you need for the class are already installed\n\nyou can download everything you’ve worked on\n\nand more!\nThe one con is that you do need to be connected to the internet. But compared to the benefits, this is hopefully not a major hurdle.\nBasically, if you’re having any issues with your versions of R, RStudio, or Quarto, try running your code on the virtual machine."
   },
   {
-    "objectID": "resources/genAI.html#why-use-ai",
-    "href": "resources/genAI.html#why-use-ai",
-    "title": "Guidelines and policies on using AI",
+    "objectID": "resources/using-virtual-machine.html#what-is-the-virtual-machine",
+    "href": "resources/using-virtual-machine.html#what-is-the-virtual-machine",
+    "title": "Using the virtual machine",
     "section": "",
-    "text": "Generative AI tools like ChatGPT, Claude, Copilot, etc. can help solve a lot of coding problems: if you’re stuck and don’t know where to start, if you have code that keeps giving you an error, etc. - most of these issues can be solved using AI. The key to effective use of generative AI tools in environmental studies is to be honest about its use."
+    "text": "For this class, we have a virtual machine: it allows you to run R and RStudio in a browser (e.g. Google Chrome, Safari, Firefox). Find the virtual machine here!\nThe benefits of using the virtual machine are plenty:\n\nyou don’t have to download R, RStudio, and Quarto\n\nthe versions of all the software you need are updated\n\nthe packages you need for the class are already installed\n\nyou can download everything you’ve worked on\n\nand more!\nThe one con is that you do need to be connected to the internet. But compared to the benefits, this is hopefully not a major hurdle.\nBasically, if you’re having any issues with your versions of R, RStudio, or Quarto, try running your code on the virtual machine."
   },
   {
-    "objectID": "resources/genAI.html#why-wouldnt-you-use-ai-in-this-class",
-    "href": "resources/genAI.html#why-wouldnt-you-use-ai-in-this-class",
-    "title": "Guidelines and policies on using AI",
-    "section": "Why wouldn’t you use AI in this class?",
-    "text": "Why wouldn’t you use AI in this class?\nIf you’re just starting out learning how to code, we recommend not using generative AI tools. You will likely retain a lot more information by googling, asking for help from classmates, meeting with An, or literally doing anything other than using a generative AI tool. In our experience, the conversations and discussions around materials and the struggle of sifting through a lot of information to try different things out is really effective for retaining information.\nAdditionally, while gen AI can quickly come up with code, it’s not always what you would expect, or what we expect to see in your assignments. It’s straightforward to see if it works - if the output is what you want, then the code works - but there are specifics in each assignment that you as a student enrolled in the class will know that an AI tool will not."
+    "objectID": "resources/using-virtual-machine.html#logging-in-and-opening-things-up",
+    "href": "resources/using-virtual-machine.html#logging-in-and-opening-things-up",
+    "title": "Using the virtual machine",
+    "section": "2. Logging in and opening things up",
+    "text": "2. Logging in and opening things up\nOnce you open up the virtual machine, you’ll be asked to log in. Use your UCSB email to do that. You should then get a screen that looks like this:\n Click RStudio.\nYou should then see a screen that looks exactly like an RStudio screen!"
   },
   {
-    "objectID": "resources/genAI.html#if-i-want-to-use-ai-what-am-i-allowed-to-do",
-    "href": "resources/genAI.html#if-i-want-to-use-ai-what-am-i-allowed-to-do",
-    "title": "Guidelines and policies on using AI",
-    "section": "If I want to use AI, what am I allowed to do?",
-    "text": "If I want to use AI, what am I allowed to do?\nIf you want to use an AI tool, you may use it to:\n\nTo brainstorm or clarify your understanding of the assignment (e.g. “I have this idea but I’m not sure if it’s right. Can you help me figure out if it applies to this assignment?”)\n\nTo outline your approach or plan your workflow (e.g. “Can you help me figure out how to start this problem?”)\n\nTo clarify or deepen understanding of technical concepts (e.g. “What does this function do in my use case?”)\n\nTo generate or refine code snippets (e.g. “I wrote this code but I think it’s too long. How can I condense it?”)\n\nTo debug or troubleshoot code (e.g. “I wrote this code but it’s not working. What’s wrong with it?”)\n\nTo edit or improve the clarity, structure, or tone of my written responses (e.g. “I wrote this text to summarize a test but it’s too long. Can you help me shorten it to 1-2 sentences?”)\n\nTo check my reasoning, results, or interpretation of findings (e.g. “I interpreted a cleaning workflow in this way. Is my interpretation correct?”)"
+    "objectID": "resources/using-virtual-machine.html#setting-up",
+    "href": "resources/using-virtual-machine.html#setting-up",
+    "title": "Using the virtual machine",
+    "section": "3. Setting up",
+    "text": "3. Setting up\nIf you’re opening this up for the first time, do task 5 in the Getting set up guide called “Change your settings”: Change your settings.\nAdditionally, you’ll want to set up a new folder for your ENVS 193DD materials. Make a new folder called ENVS-193DD by clicking on the “Folder” button in the Files tab in the bottom right."
   },
   {
-    "objectID": "resources/genAI.html#what-am-i-not-allowed-to-do",
-    "href": "resources/genAI.html#what-am-i-not-allowed-to-do",
-    "title": "Guidelines and policies on using AI",
-    "section": "What am I not allowed to do?",
-    "text": "What am I not allowed to do?\nYou are not allowed to use generative AI to produce new code for you to copy-paste into your assignments. Additionally, you may not use AI to generate new writing for you. For example, these prompts would not be allowed:\n\n“Write me code to visualize a boxplot.”\n\n“Write the description of this code.”\n\nAll code and writing in your assignments should be generated by you alone to start out with."
+    "objectID": "resources/using-virtual-machine.html#getting-files-into-the-machine",
+    "href": "resources/using-virtual-machine.html#getting-files-into-the-machine",
+    "title": "Using the virtual machine",
+    "section": "4. Getting files into the machine",
+    "text": "4. Getting files into the machine\nDownload the zipped file of workshop materials from Canvas. Hit the Upload button (yellow arrow pointing up against a white paper). You should see a window that looks like this:\n\nHit Choose file and select the .zip file.\nThe machine will automatically unzip the file and create a new folder with all the file contents."
   },
   {
-    "objectID": "resources/genAI.html#im-ready-to-use-ai-on-my-assignments.-what-should-i-do-when-i-submit",
-    "href": "resources/genAI.html#im-ready-to-use-ai-on-my-assignments.-what-should-i-do-when-i-submit",
-    "title": "Guidelines and policies on using AI",
-    "section": "I’m ready to use AI on my assignments. What should I do when I submit?",
-    "text": "I’m ready to use AI on my assignments. What should I do when I submit?\nAll assignments need to include a generative AI statement of use (form here).\nKeep in mind that unreported or disallowed use of AI tools will result in an incomplete mark on an assignment and the assignment will not be eligible for revision or resubmission."
+    "objectID": "resources/using-virtual-machine.html#creating-and-using-rprojects",
+    "href": "resources/using-virtual-machine.html#creating-and-using-rprojects",
+    "title": "Using the virtual machine",
+    "section": "5. Creating and using Rprojects",
+    "text": "5. Creating and using Rprojects\nWe’re going to create a lot of Rprojects in this class to get used to it. You can create a project in an existing directory (aka folder) in the same way that you would in the desktop version of RStudio. Go to the button in the top left that says Project: (None) and click. Hit New Project.\n Then, select the “Existing Directory” option.\n\nChoose the directory you want to create a project in. Once you click “Browse”, you’ll see a box that looks like this:\n\nDouble click the folders until you get to the one you want (in this example, I went from ENVS-193DS &gt; ENVS-193DS_workshop-01).\nYou can confirm that you chose the right folder once you hit “Choose”:\n\nHit “Create Project”.\nYou should now see the new Rproject in two locations: 1) in the upper right corner and 2) in the list of files in your directory.\n\nOnce you’re done working in your project, you can close the project by going to Project &gt; Close Project.\n\nIf you need to open your project again, navigate to the folder using the Files tab in the bottom right corner. Click on the .Rproj file. You will then see a window that looks like this:\n\nHit “Yes” to open the project."
   },
   {
-    "objectID": "resources/genAI.html#im-not-sure-if-what-im-using-ai-for-is-allowed.-what-do-i-do",
-    "href": "resources/genAI.html#im-not-sure-if-what-im-using-ai-for-is-allowed.-what-do-i-do",
-    "title": "Guidelines and policies on using AI",
-    "section": "I’m not sure if what I’m using AI for is allowed. What do I do?",
-    "text": "I’m not sure if what I’m using AI for is allowed. What do I do?\nTalk to An!"
+    "objectID": "resources/using-virtual-machine.html#downloading-your-files",
+    "href": "resources/using-virtual-machine.html#downloading-your-files",
+    "title": "Using the virtual machine",
+    "section": "6. Downloading your files",
+    "text": "6. Downloading your files\nIf you want to hold onto your files on your computer (for example, once the class ends), you can download a whole directory. Click on the folder you want to download and go to More &gt; Export in the lower right pane.\n\nThe machine will download the whole folder as a .zip file, which you can then unzip on your computer."
   },
   {
-    "objectID": "resources/genAI.html#im-troubled-about-ai-use-because-of-the-environmental-impacts-disadvantages-brain-deterioration-etc.-what-do-i-do",
-    "href": "resources/genAI.html#im-troubled-about-ai-use-because-of-the-environmental-impacts-disadvantages-brain-deterioration-etc.-what-do-i-do",
-    "title": "Guidelines and policies on using AI",
-    "section": "I’m troubled about AI use, because of the environmental impacts, disadvantages, brain deterioration, etc. What do I do?",
-    "text": "I’m troubled about AI use, because of the environmental impacts, disadvantages, brain deterioration, etc. What do I do?\nAgain, talk to An! I am here to help navigate this new landscape, and figure out a plan that works for you, whether that’s sparingly using AI, not using it at all and relying on other resources, etc."
-  },
-  {
-    "objectID": "resources/resubmissions.html",
-    "href": "resources/resubmissions.html",
-    "title": "Format for resubmission cover letter",
+    "objectID": "in-class-materials/week-04.html",
+    "href": "in-class-materials/week-04.html",
+    "title": "Vernal pool vegetation",
     "section": "",
-    "text": "In a document, put the name of the assignment you want to resubmit and “resubmission cover letter” in the title (e.g. “Individual assignment 2 resubmission cover letter”).\nFor each component that you want to redo for the possibility of getting full marks, you will need to articulate (in 1-2 sentences):\n\nwhat you got wrong\nwhat you need to do to fix it\nwhy that fix would improve the quality of your work (independently of the grade you received)\n\nFor example, if you got “partial marks” for multiple plots where you had overlapping axis labels, a reasonable request would be:\n\nMy x-axis labels for Problem 2a, 3b, and 5c were overlapping.\nFor 2a, I need to either spread out the x-axis or fix the way I read in the data to make sure the columns are correct (so that the date column is read in as a date rather than a character). For 3b and 5c, I need to create a line break in the axis label.\nMaking sure the x-axis labels don’t overlap improves the figure because the text would be readable."
+    "text": "What are the temporal trends in Coyote-thistle (Eryngium vaseyi) percent cover across years?\nWhat differences are there in Coyote-thistle percent cover across vernal pools?\n\n\n\nTo answer these questions, we are going to:\n\nreview reading in packages\n\nlibrary()\n\nuse familiar packages\n\ntidyverse\nhere\n\nintroduce new packages\n\nnaniar to visualize missing data\npatchwork to arrange multipanel figures\n\nreview reading in data\n\nread_csv()\n\nreview cleaning and wrangling functions/operators\n\nfilter()\nmutate()\nleft_join()\n\nreview summarizing functions\n\ngroup_by(), summarize(), and ungroup()\n\nreview visualizations using ggplot(), including:\n\ngeom_point() and geom_line()\ngeom_bar()\nfacet_wrap()\nscale_color_manual()\n\nintroduce a new visualization tool:\n\ngg_miss_var() and gg_miss_upset() to visualize missing data\n\nintroduce new wrangling functions:\n\nunite to create new columns with values separated by a character"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "ENVS 193DD",
+    "objectID": "in-class-materials/week-04.html#guiding-questions",
+    "href": "in-class-materials/week-04.html#guiding-questions",
+    "title": "Vernal pool vegetation",
     "section": "",
-    "text": "Photo by FH Joyce"
+    "text": "What are the temporal trends in Coyote-thistle (Eryngium vaseyi) percent cover across years?\nWhat differences are there in Coyote-thistle percent cover across vernal pools?"
   },
   {
-    "objectID": "index.html#instructor",
-    "href": "index.html#instructor",
-    "title": "ENVS 193DD",
-    "section": "Instructor",
-    "text": "Instructor\n\n\n\n\n\n\n\n\nName: An Bui (she/her)\nForms of address: An (preferred), Dr. Bui, Professor Bui\nEmail: an_bui [at] ucsb [dot] edu\nDrop-in hours: Thursdays 9:30 - 11:30 AM\nDrop-in location: At the tables outside the UCen 1st floor (facing the lagoon)\nMore about me: an-bui.com"
+    "objectID": "in-class-materials/week-04.html#data-science-tools",
+    "href": "in-class-materials/week-04.html#data-science-tools",
+    "title": "Vernal pool vegetation",
+    "section": "",
+    "text": "To answer these questions, we are going to:\n\nreview reading in packages\n\nlibrary()\n\nuse familiar packages\n\ntidyverse\nhere\n\nintroduce new packages\n\nnaniar to visualize missing data\npatchwork to arrange multipanel figures\n\nreview reading in data\n\nread_csv()\n\nreview cleaning and wrangling functions/operators\n\nfilter()\nmutate()\nleft_join()\n\nreview summarizing functions\n\ngroup_by(), summarize(), and ungroup()\n\nreview visualizations using ggplot(), including:\n\ngeom_point() and geom_line()\ngeom_bar()\nfacet_wrap()\nscale_color_manual()\n\nintroduce a new visualization tool:\n\ngg_miss_var() and gg_miss_upset() to visualize missing data\n\nintroduce new wrangling functions:\n\nunite to create new columns with values separated by a character"
   },
   {
-    "objectID": "index.html#undergraduate-learning-assistants",
-    "href": "index.html#undergraduate-learning-assistants",
-    "title": "ENVS 193DD",
-    "section": "Undergraduate learning assistants",
-    "text": "Undergraduate learning assistants\n\n\n\n\n\n\n\n\nName: Matthew Roco-Calvo\nForms of address: Matt\nDrop-in hours: Fridays 10:50 - 11:50 AM\nDrop-in location: HSSB courtyard\nMore about me: LinkedIn\n\n\n\n\n\n\n\n\n\n\nName: Abigail Youngblood\nForms of address: Abigail\nDrop-in hours: Wednesdays 4-5 PM\nDrop-in location: UCEN (tables in front of Subway)\nMore about me: LinkedIn\n\n\n\n\n\n\n\nPhoto by FH Joyce"
+    "objectID": "in-class-materials/week-04.html#set-up",
+    "href": "in-class-materials/week-04.html#set-up",
+    "title": "Vernal pool vegetation",
+    "section": "1. Set up",
+    "text": "1. Set up\n\nPackages\n\n# general use\nlibrary(tidyverse)\n\n# file organization\nlibrary(here)\n\n# data visualization\nlibrary(naniar)\nlibrary(patchwork)\n\n\n\nData\n\nveg &lt;- read_csv(here(\"data\", \"veg.csv\"))\n\nmetadata &lt;- read_csv(here(\"data\", \"vp_veg_metadata.csv\"))"
+  },
+  {
+    "objectID": "in-class-materials/week-04.html#cleaning",
+    "href": "in-class-materials/week-04.html#cleaning",
+    "title": "Vernal pool vegetation",
+    "section": "2. Cleaning",
+    "text": "2. Cleaning\n\nExploring missingness prior to cleaning\n\ngg_miss_var(veg)\n\n\n\n\n\n\n\ngg_miss_upset(veg)\n\n\n\n\n\n\n\n\nWhich variables tend to have missing values?\n[insert note here]\n\n\nImplicit NAs\n\n# create a new object from veg\npools_implicitNA &lt;- veg |&gt; \n  # filter all occurrences where transect_name contains VP\n  filter(str_detect(transect_name, \"VP\")) |&gt; \n  # group by year, pool, and species\n  group_by(year, transect_name, psoc) |&gt;\n  # calculate mean percent cover\n  summarize(mean_pc = mean(percent_cover, na.rm = TRUE)) |&gt; \n  # ungroup data frame\n  ungroup() |&gt; \n  # create a new column called year_pool from year and transect name\n  unite(\"year_pool\", year, transect_name, remove = TRUE) |&gt;\n  # join with metadata by year_pool\n  left_join(metadata, by = \"year_pool\")\n\n\n\nExplicit 0s\n\n# create a new object from veg\npools_explicit0 &lt;- veg |&gt; \n  # filter all occurrences where transect_name contains VP\n  filter(str_detect(transect_name, \"VP\")) |&gt; \n  # complete all possible combinations of year, pool, psoc and distance\n  complete(year, transect_name, psoc, transect_distance,\n           # fill values of percent cover with 0\n           fill = list(percent_cover = 0)\n           ) |&gt;\n  # group by year, pool, and psoc\n  group_by(year, transect_name, psoc) |&gt;\n  # calculate total percent cover across all quads\n  summarize(sum_pc = sum(percent_cover, na.rm = TRUE)) |&gt;\n  # ungroup the data frame\n  ungroup() |&gt;\n  # create a new column called year_pool from year and transect name\n  unite(\"year_pool\", year, transect_name, remove = TRUE) |&gt; \n  # join with metadata data frame\n  left_join(metadata, by = \"year_pool\") |&gt; \n  # calculate mean percent cover from total percent cover/number of quadrats\n  mutate(mean_pc = sum_pc/num_quad)\n\n\n\nExploring missingness after summarizing\n\ngg_miss_var(pools_implicitNA)\n\n\n\n\n\n\n\ngg_miss_var(pools_explicit0)\n\n\n\n\n\n\n\n\nNo missing values in either data frame."
+  },
+  {
+    "objectID": "in-class-materials/week-04.html#filtering-further",
+    "href": "in-class-materials/week-04.html#filtering-further",
+    "title": "Vernal pool vegetation",
+    "section": "3. Filtering further",
+    "text": "3. Filtering further\nFilter to only include Eryngium vaseyi.\n\n# creating new ojbect from implicit NA data frame\nfiltered_implicitNA &lt;- pools_implicitNA |&gt; \n  # filter to only include \n  filter(psoc == \"Eryngium_vaseyi\")\n\nfiltered_explicit0 &lt;- pools_explicit0 |&gt; \n  filter(psoc == \"Eryngium_vaseyi\")"
+  },
+  {
+    "objectID": "in-class-materials/week-04.html#visualizing",
+    "href": "in-class-materials/week-04.html#visualizing",
+    "title": "Vernal pool vegetation",
+    "section": "4. Visualizing",
+    "text": "4. Visualizing\nCreate a plot depicting mean percent cover through time using the implicit NA data frame.\nColor geometries by vernal pool.\n\n# creating a new object to store plot\nimplicitNA_plot &lt;- ggplot(data = filtered_implicitNA, \n                          # x-axis: year\n                          # y-axis: mean percent cover\n                          # color geometries by pool\n                          aes(x = year,\n                              y = mean_pc,\n                              color = transect_name)) +\n  # first layer: points to represent mean percent cover\n  geom_point() +\n  # second layer: lines to connect points\n  geom_line() +\n  # add title to describe data frame\n  labs(title = \"no complete\")\n\n# display plot\nimplicitNA_plot\n\n\n\n\n\n\n\n\nCreate a plot depicting mean percent cover through time using the explicit 0 data frame.\nColor geometries by vernal pool.\n\n# creating a new object to store plot\nexplicit0_plot &lt;- ggplot(data = filtered_explicit0, \n                          # x-axis: year\n                          # y-axis: mean percent cover\n                          # color geometries by pool\n                          aes(x = year,\n                              y = mean_pc,\n                              color = transect_name)) +\n  # first layer: points to represent mean percent cover\n  geom_point() +\n  # second layer: lines to connect points\n  geom_line() +\n  # add title to describe data frame\n  labs(title = \"complete (understanding missing values are 0)\")\n\n# display plot\nexplicit0_plot\n\n\n\n\n\n\n\n\nPut both of those plots together using patchwork.\n\nimplicitNA_plot / explicit0_plot\n\n\n\n\n\n\n\n\nHow do these plots differ?\n[insert note here]\nHow does Coyote-thistle percent cover change through time? Is this different across pools?\n[insert note here]"
   },
   {
     "objectID": "in-class-materials/week-03.html",
