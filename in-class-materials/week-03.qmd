@@ -45,18 +45,18 @@ To answer these questions, we are going to:
   - `facet_wrap()`
   - `scale_color_manual()`
 - introduce a new visualization tool:
-  - `stat_summary()` to visualize quick summary statistics
-- introduce new tools to deal with dates and times:
+  - `stat_summary()` from `ggplot2` (within `tidyverse`) to visualize quick summary statistics
+- introduce new tools to deal with dates and times from the `lubridate` package (within `tiydverse`):
   - `mdy_hms()` and `mdy()` to parse dates into POSIXct (Portable Operating System Interface calendar time) format which is a standard way of denoting dates and times
   - `month()` to extract the month from a given POSIXct object
   - `year()` to extract the year from a given POSIXct object
-- introduce a new wrangling concept: **joins** using
+- introduce a new wrangling concept: **joins** using functions from the `dplyr` package (within `tidyverse`)
   - `left_join()` to join two data frames (x and y) and retain all rows in x
   - `full_join()` to join two data frames (x and y) and retain all rows in x and y
 - introduce new wrangling functions:
-  - `pull()` to extract a data frame column as a vector
-  - `relocate()` to rearrange columns in a data frame
-  - `rename()` to rename a column
+  - `pull()` from the `dplyr` package to extract a data frame column as a vector
+  - `relocate()` from the `dplyr` package to rearrange columns in a data frame
+  - `rename()` from the `dplyr` package to rename a column
 - introduce a new operator:
   - `!` to exclude observations
 - introduce new ways of formatting Quarto documents, including
