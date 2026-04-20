@@ -1,7 +1,7 @@
 ---
 title: "Vernal pool vegetation"
 subtitle: "Week 4"
-categories: [library(), tidyverse, janitor, here, ggplot colors, filter(), mutate(), select(), case_when(), fct_relevel(), '%in%', relocate(), rename(), group_by(), summarize(), ungroup(), count(), ggplot(), geom_point(), geom_line(), geom_bar(), facet_wrap(), scale_color_manual(), stat_summary(), mdy_hms(), month(), year(), left_join(), full_join(), pull(), '!', quarto]
+categories: [library(), tidyverse, here, naniar, patchwork, read_csv(), filter(), mutate(), unite(), left_join(), group_by(), summarize(), ungroup(), ggplot(), geom_point(), geom_line(), gg_miss_var(), gg_miss_upset, quarto]
 ---
 
 # Summary
@@ -34,13 +34,10 @@ To answer these questions, we are going to:
   - `group_by()`, `summarize()`, and `ungroup()`
 - review visualizations using `ggplot()`, including:
   - `geom_point()` and `geom_line()`
-  - `geom_bar()`
-  - `facet_wrap()`
-  - `scale_color_manual()`
 - introduce a new visualization tool:
   - `gg_miss_var()` and `gg_miss_upset()` to visualize missing data
 - introduce new wrangling functions:
-  - `unite` to create new columns with values separated by a character
+  - `unite()` to create new columns with values separated by a character
 
 
 # In-class code
