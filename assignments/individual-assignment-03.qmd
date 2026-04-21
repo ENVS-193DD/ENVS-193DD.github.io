@@ -115,7 +115,11 @@ Create a figure following the list you made in part a. For full marks:
 
 In 1-2 sentences each, use **specific components of your figure** to determine and describe:
 
-- the relationship between dissolved oxygen and air temperature
+:::{.column-margin}
+edited 2026-04-20: specified to describe relationship between dissolved oxygen and _water_ temperature (not air temperature)
+:::
+
+- the relationship between dissolved oxygen and water temperature
 - differences in the strength of this relationship across sites
 
 ## 3. Salinity and water elevation relationships
@@ -126,7 +130,11 @@ For this section, you should be using the `salinity_filtered` data frame.
 
 ### a. Plan your figure
 
-At the end of your code in part ____, you should have a figure in which water surface elevation (measured as feet above the bottom) is on the x-axis, salinity (measured in ppt) is on the y-axis, and each point represents a measurement of salinity. You should have different colors and panels for each elevation code.
+:::{.column-margin}
+edited 2026-04-20: referring to specific part of question regarding creating a figure
+:::
+
+At the end of your code in part b, you should have a figure in which water surface elevation (measured as feet above the bottom) is on the x-axis, salinity (measured in ppt) is on the y-axis, and each point represents a measurement of salinity. You should have different colors and panels for each elevation code.
 
 Fill in this list with the _names of columns_ you would use from `salinity_filtered` for this figure or the appropriate functions to create the visualization.
 
