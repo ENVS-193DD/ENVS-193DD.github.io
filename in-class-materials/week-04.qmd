@@ -252,3 +252,50 @@ implicitNA_plot / explicit0_plot
 **How does Coyote-thistle percent cover change through time? Is this different across pools?**
 
 [insert note here]
+
+# Extra stuff
+
+## Wrapping long lines of code in rendered pdfs
+
+Sometimes, there are long lines of code that you don't want to separate with a line break. 
+
+When you render to pdf, those lines will run off the side of the page.
+
+There are lots of solutions to this, from simply inserting a line break (which we've done in class) to installing new packages.
+
+One way to fix this (thanks to some solutions people proposed in this [thread](https://github.com/orgs/quarto-dev/discussions/4121)) is to alter the YAML.
+
+Instead of having this in the YAML:
+
+```{r}
+#| eval: false
+
+format: pdf
+```
+
+... you can replace with this:
+
+```{r}
+#| eval: false
+
+format: 
+  pdf:
+    include-in-header: 
+       text: |
+         \usepackage{fvextra}
+         \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+         \DefineVerbatimEnvironment{OutputCode}{Verbatim}{breaklines,commandchars=\\\{\}}
+
+```
+
+which would then lead to a rendered PDF with a long line of code to look like:
+
+![](/in-class-materials/images/code-line-breaks.png)
+
+This is the simplest solution I've found, though there may be others. 
+
+There's an example of this at the bottom of the rendered PDF on Canvas.
+
+Try it out and see what happens!
+
+
