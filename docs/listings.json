@@ -5,17 +5,18 @@
       "/resources/resubmissions.html",
       "/resources/git-prechecks.html",
       "/resources/storing-personal-access-token.html",
+      "/resources/using-github.html",
       "/resources/genAI.html",
       "/resources/using-virtual-machine.html"
     ]
   },
   {
-    "listing": "/assignments.html",
+    "listing": "/in-class-materials.html",
     "items": [
-      "/assignments/getting-set-up.html",
-      "/assignments/individual-assignment-01.html",
-      "/assignments/individual-assignment-02.html",
-      "/assignments/individual-assignment-03.html"
+      "/in-class-materials/week-01.html",
+      "/in-class-materials/week-02.html",
+      "/in-class-materials/week-03.html",
+      "/in-class-materials/week-04.html"
     ]
   },
   {
@@ -26,12 +27,12 @@
     ]
   },
   {
-    "listing": "/in-class-materials.html",
+    "listing": "/assignments.html",
     "items": [
-      "/in-class-materials/week-01.html",
-      "/in-class-materials/week-02.html",
-      "/in-class-materials/week-03.html",
-      "/in-class-materials/week-04.html"
+      "/assignments/getting-set-up.html",
+      "/assignments/individual-assignment-01.html",
+      "/assignments/individual-assignment-02.html",
+      "/assignments/individual-assignment-03.html"
     ]
   }
 ]
