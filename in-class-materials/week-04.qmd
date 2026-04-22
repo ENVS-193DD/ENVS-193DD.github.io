@@ -89,13 +89,28 @@ gg_miss_upset(veg)
 
 ### Implicit NAs
 
+:::{.column-margin}
+edited 2026-04-22: adding:
+
+```{r}
+#| eval: false
+
+  filter(str_detect(transect_name, "VP") &
+           site == "ncos") 
+```
+
+to cleaning code in implicit NA section _and_ explicit 0 section to filter for NCOS sites in addition to any transect names with a character string of `"VP"`.
+:::
+
 ```{r}
 #| label: implicitNAs
 
 # create a new object from veg
 pools_implicitNA <- veg |> 
   # filter all occurrences where transect_name contains VP
-  filter(str_detect(transect_name, "VP")) |> 
+  # and only observations at NCOS
+  filter(str_detect(transect_name, "VP") &
+           site == "ncos") |> 
   # group by year, pool, and species
   group_by(year, transect_name, psoc) |>
   # calculate mean percent cover
@@ -116,7 +131,9 @@ pools_implicitNA <- veg |>
 # create a new object from veg
 pools_explicit0 <- veg |> 
   # filter all occurrences where transect_name contains VP
-  filter(str_detect(transect_name, "VP")) |> 
+  # and only observations at NCOS
+  filter(str_detect(transect_name, "VP") &
+           site == "ncos") |> 
   # complete all possible combinations of year, pool, psoc and distance
   complete(year, transect_name, psoc, transect_distance,
            # fill values of percent cover with 0
