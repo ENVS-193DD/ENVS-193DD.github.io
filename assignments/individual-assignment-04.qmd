@@ -1,0 +1,241 @@
+---
+title: "Individual assignment 4"
+date: 2026-05-01
+---
+
+# Set up
+
+1. Create a new .qmd in the `code` folder of your `ENVS-193DD_week-04` folder. Make sure that you:
+    - fill in your name in the "Author" field
+    - are rendering to .pdf
+    - leave the visual editor box unchecked
+2. In the YAML of your .qmd, enter the date.
+3. Create a set up section for your code (refer to class code if you need help with this).
+4. Insert a code chunk to read in packages. 
+    - At minimum, you will need `tidyverse`, `janitor`, and `here`.
+5. Insert a code chunk to read in data.
+    - Be sure that you are using `here()` along with `read_csv()`.
+6. Insert a code chunk for class code that you need for your assignment.
+
+:::{.callout-note title="Practice your own editorial judgement!" collapse="true"}
+You will not need _all_ the code from class to do your assignment.  
+
+You will need to pick and choose the components that are relevant to the assignment.  
+
+If you copy-paste your entire class script into your homework, you will need to revise your assignment!
+:::
+
+7. Render to .pdf to make sure that you can render.
+8. Start your assignment!
+
+# Problems
+
+## 1. Pool differences in mean percent cover
+
+In this section, you will visualize differences in Coyote-thistle (_Eryngium vaseyi_) between pools and compare insights from your new visualization with the plot we made in class.
+
+### a. Plan your figure
+
+In part b, you will create a figure examining percent cover of Coyote-thistle across pools.
+
+List the columns you would need from `filtered_explicit0` to create a figure matching this description.
+
+- x-axis: 
+- y-axis:
+- geometry to represent each pool:
+- geometry to represent mean mean percent cover (consider the mean of a mean):
+
+:::{.callout-note title="Stuck?" collapse="true"}
+We have made a plot like this before. Go back to the materials on water quality to see how we created a figure to compare mean salinity across the three sampling sites.
+:::
+
+### b. Code your figure
+
+Code your figure following the list you outlined in part 1a. For full marks:
+
+- make sure the x- and y-axes are labelled in a readable format
+- include a title that:
+    - describes the information shown in your figure and
+    - specifies the range of years or time period for this data
+- represent the mean in a way that is visually distinct from each individual pool with color, shape size, and shape type
+- use a theme that is different from the ggplot() default
+
+### c. Interpret your figure
+
+In 1-2 sentences each, explain:
+
+- which 2 pools have the most Coyote-thistle percent cover (on average), and which 2 pools have the least
+- how the insights from this visualization differ and/or are similar to the visualization we made in class
+- how pools differ in the spread of mean percent cover of Coyote-thistle
+
+Be specific about the visual components that you're using to support your claim for each point.
+
+
+## 2. Trends through time in native species richness
+
+Restorationists are typically interested in species richness of native plant species.
+
+In this section, you will calculate and visualize species richness at all vernal pools.
+
+### a. Pseudocode for native species
+
+The `pools_explicit0` data frame contains all plant species - native and non-native - that occur in vernal pools. 
+
+Before visualizing native species richness, you will need to calculate it.
+
+Before calculating species richness, you will need to have a list of native species with which to filter the `pools_explicit0` data frame.
+
+In this section, write pseudocode to get an object called `native_spp` that is a _vector_ containing all unique values for native species from the `veg` data frame.
+
+### b. Code your pseudocode
+
+Code the pseudocode that you outlined in part a. 
+
+At the end of your code chunk, use `sample()` to display 10 random entries from your vector.
+
+
+### c. Calculate native species richness
+
+Create a new data frame (call it whatever you want) in which you calculate species richness for each pool in a given year.
+
+You should end up with a data frame that looks like this:
+
+![](/assignments/images/individual-assignment-04/2c-example.png){fig-align="center" width="70%"}
+
+At the end of your code chunk, use `slice_sample()` to display 10 random rows from your data frame.
+
+:::{.callout-note title="Careful with your filtering steps!" collapse="true"}
+This is an exercise in being careful about your species richness calculations. Are you calculating the total number of species that _could_ occur at a given pool in a given year, or are you calculating the total number of species that are _present_ at a given pool in a given year?
+:::
+
+:::{.callout-note title="To roll up or not" collapse="true"}
+Note that you _will not_ need to roll up any subspecies. Happy to explain why if you are curious, but in short you are fine to calculate species richness without adjusting for subspecies identifications.
+:::
+
+### d. Code your figure
+
+Create a timeseries figure depicting species richness through time faceted by pool. For full credit:
+
+- color by pool
+- use a color palette package that is _not_ `NatParksPalettes` or `colorbrewer` (google "R color palettes" for inspiration)
+- use a different theme from the default
+- take out the legend
+- label the x- and y-axes
+
+
+### e. Interpret your figure
+
+In 1-2 sentences, describe:
+
+- the pools in which species richness tends to be _increasing_, on average
+- the pools in which species richness tends to be _decreasing_, on average
+- the pools in which species richness tends to be _the same_, on average
+
+Be specific about the visual components of the plot that you are using to make these claims.
+
+## 3. Trends through time in native species percent cover
+
+We spent a lot of time thinking about how to use `complete()` because we wanted to calculate the mean percent cover per species per pool per year, and doing so required handling implicit missingness.
+
+However, there are calculations that _do not_ need adjustments for implicit missingness.
+
+In this section, you will calculate and visualize the _total_ native species percent cover divided by the number of quadrats for each pool in a given year.
+
+### a. Plan your figure
+
+In part c, you will create a figure examining total native species percent cover through time. You will also facet your figure by pool.
+
+List the columns you would need from a data frame _and the values they should contain_ to create a figure matching this description.
+
+- x-axis: 
+- y-axis:
+- geometries (there are two):
+- facet function and argument:
+
+### b. Wrangle your data
+
+Create an object called `native_pc` from `veg`. In no particular order (and this is not an exhaustive list),
+
+- filter to only include native species
+- filter to only include surveys from vernal pools at NCOS
+- calculate the total native percent cover for a single pool in a year
+- join with the `metadata` data frame
+- calculate total native percent cover divided by the number of quadrats
+
+At the end of your code chunk, use `slice_sample()` to display 10 random rows from `native_pc`.
+
+### c. Code your figure
+
+Code the figure you described in part a with the data frame you created in part b. For full credit:
+
+- color by pool
+- use the same colors as you did in 2d (for consistency)
+- use a different theme from the default
+- take out the legend
+- label the x- and y-axes
+
+### d. Interpret your figure
+
+In 1-3 sentences each, explain:
+
+- why it is possible to have y-axis values greater than 100%
+- how trends through time in percent cover differ (if at all) from trends through time in species richness
+- how this figure relates to Figure 8 in the monitoring report
+
+Be specific about the visual components of the plot that you are using to make these claims.
+
+# Assignment checklist
+
+Your rendered PDF should:
+
+- [ ] include your name, title, and submission date
+- [ ] include all code with annotations (see "General formatting components" for details)   
+- [ ] be organized and readable (see "General formatting components" for details)     
+- [ ] be free of messages and warnings from code chunk evaluation
+
+Your responses should include:  
+
+for Problem 1:   
+
+- [ ] written response for Problem 1a
+- [ ] annotated code and output for Problem 1b
+- [ ] written response for Problem 1c
+
+for Problem 2:  
+
+- [ ] written response for Problem 2a
+- [ ] annotated code and output for Problem 2b
+- [ ] annotated code and output for Problem 2c
+- [ ] annotated code and output for Problem 2d
+- [ ] written response for Problem 2e
+
+for Problem 3:  
+
+- [ ] written response for Problem 3a
+- [ ] annotated code and output for Problem 3b
+- [ ] annotated code and output for Problem 3c
+- [ ] written response for Problem 3d
+
+Lastly, check out the **rubric on Canvas** to see the component breakdown in more detail.  
+
+Your final submission should include:  
+
+- [ ] a single PDF rendered from a .qmd file
+- [ ] your submitted [Generative AI statement of use](https://docs.google.com/forms/d/e/1FAIpQLSevf1zSjndFN-XMyKrCmpiIl-K6pwP4aUShOzI94t0ZW-yiuw/viewform) by the due date
+
+# General formatting components
+
+You will only receive full marks for annotations if you have:  
+
+- meaningful comments on each line of visualization code and/or ggplot geom/theme call (not needed for each argument, though good to have)  
+- meaningful comments on each function in any piping operations  
+- meaningful comments in set up code to denote where packages and/or data are read in
+
+You will only receive full marks for readability if:  
+
+- code includes carriage returns, spaces, etc. to make pipe operations and arguments clear  
+- code includes consistent spacing and indents
+- headers are used correctly throughout document
+- text is formatted correctly (for example, superscripts/subscripts appear correctly)
+- text is distinct from in-line code or references to functions/objects (e.g. using backticks to denote functions)
+- bullet point lists appear as expected

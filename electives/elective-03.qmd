@@ -1,0 +1,129 @@
+---
+title: "Basic elective option 3"
+date: 2026-05-01
+---
+
+# Set up
+
+1. Create a new .qmd in the `code` folder of your `ENVS-193DD_week-04` folder. Make sure that you:
+    - fill in your name in the "Author" field
+    - are rendering to .pdf
+    - leave the visual editor box unchecked
+2. In the YAML of your .qmd, enter the date.
+3. Create a set up section for your code (refer to class code if you need help with this).
+4. Insert a code chunk to read in packages. 
+    - At minimum, you will need `tidyverse`, `janitor`, and `here`.
+5. Insert a code chunk to read in data.
+    - Be sure that you are using `here()` along with `read_csv()`.
+6. Insert a code chunk for class code that you need for your assignment.
+
+:::{.callout-note title="Practice your own editorial judgement!" collapse="true"}
+You will not need _all_ the code from class to do your assignment.  
+
+You will need to pick and choose the components that are relevant to the assignment.  
+
+If you copy-paste your entire class script into your homework, you will need to revise your assignment!
+:::
+
+7. Render to .pdf to make sure that you can render.
+8. Start your assignment!
+
+# Elective
+
+In this elective, you will explore trends in a group of vernal pool species and consider why some species that are not usually associated with vernal pools might be present.
+
+## 1. Trends through time for other native species
+
+The spikerush species (genus _Eleocharis_) are widely distributed, native California plants that tend to occur in vernal pools.
+
+In this section, you will explore trends through time for each of the _Eleocharis_ species in this dataset.
+
+### a. Revisit the monitoring report
+
+Find Appendix 2 - Vegetation Monitoring Plant Species Lists in the monitoring report (linked on Canvas).
+
+In 1-3 sentences, describe the trends you see in _Eleocharis_ species presence/absence that you see in the figure on page 77. Be specific about the plot and the visual components you used to characterize these trends.
+
+### b. Plan your figure
+
+In part d, you will create a figure examining mean percent cover of _Eleocharis_ species through time. Geometries should be colored by pool, and you should have different panels for each species.
+
+List the columns you would need from `pools_explicit0` to create a figure matching this description.
+
+- x-axis: `year`
+- y-axis: `mean_pc`
+- color: `transect_name`
+- facet and argument: `facet_wrap(~ psoc)`
+
+### c. Wrangling the data
+
+The existing `pools_explicit0` data frame has more species than you need.
+
+Use `str_detect()` with `filter()` to only include observations for _Eleocharis_ species.
+
+Then, use `str_replace()` with `mutate()` to _replace_ the `_` (underscore) with ` ` (a space).
+
+At the end of your code chunk, display 10 random rows of the data frame with `slice_sample()`.
+
+:::{.callout-note title="Not sure how to use these functions?" collapse="true"}
+Look at the help page at the examples! Click "Run examples" to see the output to understand how each function works.
+:::
+
+### d. Code your figure
+
+Code your figure following the list you outlined in part 1a. For full marks:
+
+- make sure the x- and y-axes and legend are labelled in a readable format
+- include a title that:
+    - describes the information shown in your figure and
+    - specifies the range of dates or time period for this subset of the data
+- use colors that are different from the ggplot() defaults using a color palette package or otherwise
+- use a theme that is different from the ggplot() default
+
+### e. Interpret your figure
+
+In 1-3 sentences each, describe:
+
+- the differences in the species represented in the figure you made and the figure in the monitoring report, with an explanation for why those differences exist
+- differences or similarities in mean percent cover trends through time for each species
+- your best guess as to why _Eleocharis acicularis_ is especially abundant in VP-08
+- your best guess as to why _Eleocharis macrostachya_ disappears in 2025
+- your best guess as to why _Eleocharis palustris_ appears in 2024
+
+## 2. Differences between pools in Baccharis
+
+Coyote brush (_Baccharis pilularis_) is a native California shrub that can take over other habitats in what's called "woody encroachment", which is when _Baccharis_ takes over a habitat it's not supposed to.
+
+In this section, you will create a plot to compare mean percent cover of _Baccharis_ across different pools. See your figure from Problem 1 of the assignment this week for inspiration.
+
+### a. Wrangle your data
+
+Write code to create a new object called `baccharis_df` in which you have filtered to only include observations of _Baccharis pilularis_.
+
+### b. Code your figure
+
+Code your figure. For full marks:
+
+- make sure the x- and y-axes are labelled in a readable format
+- include a title that:
+    - describes the information shown in your figure and
+    - specifies the range of years or time period for this data
+- represent the mean in a way that is visually distinct from each individual pool with color, shape size, and shape type
+- use a theme that is different from the ggplot() default
+
+
+### c. Interpret your figure
+
+In 1-3 sentences each, explain:
+
+- which 2 pools have the most _Baccharis_ percent cover (on average), and which 2 pools have the least
+- why these sets of pools might differ in the amount of _Baccharis_ that might be present
+- whether or not, in your opinion, any of these pools are in danger of woody encroachment
+
+
+
+
+
+
+
+

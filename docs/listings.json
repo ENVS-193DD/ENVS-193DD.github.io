@@ -23,7 +23,8 @@
     "listing": "/electives.html",
     "items": [
       "/electives/elective-01.html",
-      "/electives/elective-02.html"
+      "/electives/elective-02.html",
+      "/electives/elective-03.html"
     ]
   },
   {
@@ -32,7 +33,8 @@
       "/assignments/getting-set-up.html",
       "/assignments/individual-assignment-01.html",
       "/assignments/individual-assignment-02.html",
-      "/assignments/individual-assignment-03.html"
+      "/assignments/individual-assignment-03.html",
+      "/assignments/individual-assignment-04.html"
     ]
   }
 ]
