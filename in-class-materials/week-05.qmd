@@ -1,0 +1,58 @@
+---
+title: "Aquatic invertebrates"
+subtitle: "Week 5"
+categories: [library(), tidyverse, here, naniar, patchwork, scales, janitor, read_csv(), read_xlsx(), filter(), mutate(), clean_names(), unite(), rename(), left_join(), group_by(), summarize(), ungroup(), ggplot(), geom_point(), semi_join(), pivot_longer(), gg_miss_var(), quarto, '%in%', '!']
+---
+
+# Summary
+
+## Guiding questions
+
+What are the differences between sites in median salinity?
+
+What are the differences between sites in median copepod abundance?
+
+Are these differences between sites similar?
+
+## Data science tools
+
+To answer these questions, we are going to:  
+
+- review reading in packages
+  - `library()`
+- use familiar packages
+  - `tidyverse`
+  - `here`
+  - `naniar`
+  - `patchwork`
+  - `scales`
+- introduce new packages
+  - `readxl` to read data from `.xlsx` files
+- review reading in data
+  - `read_csv()` and `here()` for file organization
+- review cleaning and wrangling functions/operators
+  - `filter()`
+  - `mutate()`
+  - `clean_names()`
+  - `left_join()` 
+  - `unite()`
+  - `rename()`
+  - `%in%`
+  - `!`
+- review summarizing functions 
+  - `group_by()`, `summarize()`, and `ungroup()`
+- review visualizations using `ggplot()`, including:
+  - `geom_point()` 
+- review visualizations of missing data:
+  - `gg_miss_var()`
+- introduce a new join:
+  - `semi_join()` from `dplyr` to filter data frames
+- introduce a new wrangling function:
+  - `pivot_longer()` from `tidyr` to convert data frames from wide to long format
+
+
+# In-class code
+
+All in-class code resides in this [repository](https://github.com/ENVS-193DD/week-05_spring-2026_aquatic-inverts). The rendered key is [here](https://github.com/ENVS-193DD/week-05_spring-2026_aquatic-inverts/blob/main/code/week-05_in-class-KEY.pdf), and the raw .qmd is [here](https://github.com/ENVS-193DD/week-05_spring-2026_aquatic-inverts/blob/main/code/week-05_in-class-KEY.qmd). 
+
+Fork the repository to create a remote copy, then clone it to your computer to create a local copy. 
