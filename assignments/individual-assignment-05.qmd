@@ -1,0 +1,251 @@
+---
+title: "Individual assignment 5"
+date: 2026-05-08
+---
+
+# Set up
+
+1. Create a new .qmd in the `code` folder of your `ENVS-193DD_week-05` repo. Make sure that you:
+    - fill in your name in the "Author" field
+    - are rendering to .pdf
+    - leave the visual editor box unchecked
+2. In the YAML of your .qmd, enter the date.
+3. Create a set up section for your code (refer to class code if you need help with this).
+4. Insert a code chunk to read in packages. 
+    - At minimum, you will need `tidyverse`, `janitor`, and `here`.
+5. Insert a code chunk to read in data.
+    - Be sure that you are using `here()` along with `read_csv()`.
+6. Insert a code chunk for class code that you need for your assignment.
+
+:::{.callout-note title="Practice your own editorial judgement!" collapse="true"}
+You will not need _all_ the code from class to do your assignment.  
+
+You will need to pick and choose the components that are relevant to the assignment.  
+
+If you copy-paste your entire class script into your homework, you will need to revise your assignment!
+:::
+
+7. Render to .pdf to make sure that you can render.
+8. [Stage, commit, and push your changes.]{style="color: #BE5A47;"}
+9. [Find your rendered PDF on your GitHub remote. Copy the link.]{style="color: #BE5A47;"}
+10. [Back in RStudio, edit your README to include a link to your rendered assignment PDF.]{style="color: #BE5A47;"}
+11. [Stage, commit, and push your changes.]{style="color: #BE5A47;"}
+12. Start your assignment!
+
+# Problems
+
+## 1. Visualizing differences across sites in major taxon abundance
+
+In class, we visualized the differences across sites in median (log transformed) copepod abundance.
+
+In this section, you will create another figure to add to the multipanel plot of salinity and copepod abundance to show _ostracod_ abundance.
+
+### a. Plan your figure
+
+In part 1d, you should end up with a three panel figure. All three panels should have site on the x-axis, but each panel will have a different y-axis. 
+
+In part 1c, you will create one component of the three panel figure. Provide a list of the axes and geometries you will need to create a figure in 1c showing differences between sites in ostracod abundance.
+
+- x-axis: 
+- y-axis: 
+- geometry to represent average abundance/L: 
+- geometry to represent medians: 
+
+:::{.callout-tip title="Stage, commit, and push your changes!"}
+Try rendering your .qmd. Double check your .pdf. Fix anything you need to fix. 
+
+Then, stage, commit, and push your change.
+:::
+
+### b. Wrangle your data
+
+The `aq_ins_clean` data frame will need some further wrangling before you create the figure you described in part 1a. 
+
+In this section, create the data frame you will need to make your figure.
+
+At the end of your code chunk, display 10 random rows from your data frame using `slice_sample()`.
+
+:::{.callout-tip title="Stage, commit, and push your changes!"}
+Try rendering your .qmd. Double check your .pdf. Fix anything you need to fix. 
+
+Then, stage, commit, and push your change.
+:::
+
+### c. Code your figure
+
+Create the figure you outlined in part 1a in a way that mirrors the two-panel figure with which we ended class. For full marks:
+
+- make sure the x- and y-axes are labelled in a readable format
+- include a title that describes the taxonomic group being plotted
+- represent the median in a way that is visually distinct from each individual average abundance/L measurement with color, shape size, and shape type
+- use a theme that is different from the ggplot() default
+
+:::{.callout-tip title="Stage, commit, and push your changes!"}
+Try rendering your .qmd. Double check your .pdf. Fix anything you need to fix. 
+
+Then, stage, commit, and push your change.
+:::
+
+### d. Create a multipanel figure
+
+Combine the figure you made in 1c with the figures from class to create a multipanel figure using `patchwork`. Position the plots in the following arrangement:
+
+![](/assignments/images/individual-assignment-05/plot-arrangement.png){fig-align="center" width="70%"}
+
+:::{.callout-note title="Stuck?"}
+Look at the [package documentation](https://patchwork.data-imaginist.com/) to see examples.
+:::
+
+:::{.callout-tip title="Stage, commit, and push your changes!"}
+Try rendering your .qmd. Double check your .pdf. Fix anything you need to fix. 
+
+Then, stage, commit, and push your change.
+:::
+
+### e. Interpret your figure
+
+In 1-2 sentences each, describe:
+
+- differences between sites in copepod and ostracod abundance
+- how ostracod abundance may relate (or not) to site-level differences in salinity
+
+Be specific using the visual components of the plot.
+
+:::{.callout-tip title="Stage, commit, and push your changes!"}
+Try rendering your .qmd. Double check your .pdf. Fix anything you need to fix. 
+
+Then, stage, commit, and push your change.
+:::
+
+## Visualizing total abundance as a function of salinity
+
+In this problem, you will create a figure visualizing _log-transformed abundance_ as a function of salinity (measured in parts per thousand) to determine how salinity may influence invertebrate abundance (regardless of site).
+
+### a. Plan your figure
+
+At the end of part 2c, you should have a figure:  
+
+- depicting _log-transformed average_ abundance/L on the y-axis and salinity on the x-axis
+- with different panels for each taxon in `aq_ins_clean` with free scales for both axes
+- with each taxon in its own color
+
+Provide a list of values, geometries, and/or arguments that would be appropriate to make a figure matching this description.
+
+- x-axis: 
+- y-axis: 
+- color: 
+- geometry: 
+- facets: 
+
+:::{.callout-tip title="Stage, commit, and push your changes!"}
+Try rendering your .qmd. Double check your .pdf. Fix anything you need to fix. 
+
+Then, stage, commit, and push your change.
+:::
+
+### b. Wrangle your data
+
+The `aq_ins_clean` data frame will need some further wrangling before you create the figure you described in part 1a. 
+
+In this section, manipulate the existing `aq_ins_clean` data frame to create new columns, modify existing columns, and/or select columns to create the figure you outlined in part 1a.
+
+Additionally:
+
+- make sure each taxon is in title case
+- order taxon levels by maximum abundance
+
+At the end of your code chunk, display 10 random rows from your data frame using `slice_sample()`.
+
+:::{.callout-note title="Reminder: what should each component of the plot be?"}
+Revisit the directions from 2a and your outline to determine which columns you might keep from the data frame, which columns you might manipulate, and what new columns you might create.
+:::
+
+:::{.callout-tip title="Stage, commit, and push your changes!"}
+Try rendering your .qmd. Double check your .pdf. Fix anything you need to fix. 
+
+Then, stage, commit, and push your change.
+:::
+
+### c. Code your figure
+
+Create the figure you outlined in part 2a. For full marks:
+
+- make sure the x- and y-axes are labelled in a readable format
+- use a different theme from the default
+- use different colors from the default
+- take out the legend
+
+:::{.callout-tip title="Stage, commit, and push your changes!"}
+Try rendering your .qmd. Double check your .pdf. Fix anything you need to fix. 
+
+Then, stage, commit, and push your change.
+:::
+
+### d. Interpret your figure
+
+In 3-5 sentences each, describe differences or similarities between taxa in relationships between abundance and salinity. Be specific using the visual components of the plot.
+
+:::{.callout-tip title="Stage, commit, and push your changes!"}
+Try rendering your .qmd. Double check your .pdf. Fix anything you need to fix. 
+
+Then, stage, commit, and push your change.
+:::
+
+# Assignment checklist
+
+Your rendered PDF should:
+
+- [ ] include your name, title, and submission date
+- [ ] include all code with annotations (see "General formatting components" for details)   
+- [ ] be organized and readable (see "General formatting components" for details)     
+- [ ] be free of messages and warnings from code chunk evaluation
+
+Your responses should include:  
+
+for Problem 1:   
+
+- [ ] written response for Problem 1a
+- [ ] annotated code and output for Problem 1b
+- [ ] annotated code and output for Problem 1c
+- [ ] annotated code and output for Problem 1d
+- [ ] written response for Problem 1e
+
+for Problem 2:  
+
+- [ ] written response for Problem 2a
+- [ ] annotated code and output for Problem 2b
+- [ ] annotated code and output for Problem 2c
+- [ ] written response for Problem 2d
+
+Lastly, check out the **rubric on Canvas** to see the component breakdown in more detail.  
+
+Your final submission should include:  
+
+- [ ] a link to your GitHub repo
+- [ ] your submitted [Generative AI statement of use](https://docs.google.com/forms/d/e/1FAIpQLSevf1zSjndFN-XMyKrCmpiIl-K6pwP4aUShOzI94t0ZW-yiuw/viewform) by the due date
+
+# Git/GitHub components
+
+Your GitHub repository should:
+
+- [ ] have a link to your rendered homework pdf
+- [ ] be organized with separate folders for `code` and `data`, with your homework .qmd and .pdf in the `code` folder
+- [ ] show at least 10 commits/pushes with a descriptive, concise commit message clearly describing what changes you are committing
+
+# General formatting components
+
+You will only receive full marks for annotations if you have:  
+
+- meaningful comments on each line of visualization code and/or ggplot geom/theme call (not needed for each argument, though good to have)  
+- meaningful comments on each function in any piping operations  
+- meaningful comments in set up code to denote where packages and/or data are read in
+
+You will only receive full marks for readability if:  
+
+- code includes carriage returns, spaces, etc. to make pipe operations and arguments clear  
+- code includes consistent spacing and indents
+- headers are used correctly throughout document
+- text is formatted correctly (for example, superscripts/subscripts appear correctly)
+- text is distinct from in-line code or references to functions/objects (e.g. using backticks to denote functions)
+- bullet point lists appear as expected
+

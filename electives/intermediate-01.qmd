@@ -1,0 +1,166 @@
+---
+title: "Intermediate elective option 1"
+date: 2026-05-08
+---
+
+# Intermediate electives
+
+Intermediate elective options 1 and 2 involve the exact same steps. However, they are focused on different data sets.
+
+Option 1 covers 1) Venoco Bridge water surface elevation, 2) birds, and 3) water quality parameters.
+
+Option 2 covers 1) vernal pool vegetation and 2) aquatic invertebrates.
+
+**Choose the option you want to complete based on the data set you are most interested in.**
+
+# Set up
+
+On GitHub:
+
+1. Create a new repository called `intermediate-elective`. Be sure to initialize with a README.
+2. Clone that repository to your computer (or virtual machine, if you are using that option). Make sure it is in the `git` or `github` folder.
+
+In the Finder or File Explorer or RStudio:
+
+3. Create new folders for `code` and `data` in your repo.
+4. Add any data files you need to the `data` folder.
+
+:::{.callout-note title="Actions to get this done"}
+You will need to copy data files you need into your `data` folder. 
+:::
+
+In RStudio:
+
+4. Create a new .qmd in the `code` folder. Be sure to:
+    - select the PDF option
+    - **uncheck** the box to use the visual editor (so that you are using the source editor)
+5. Insert a code chunk to read in your packages.
+6. Insert a code chunk to read in your data.
+7. Render to .pdf to make sure that you can render.
+8. [Stage, commit, and push your changes.]{style="color: #BE5A47;"}
+9. [Find your rendered PDF on your GitHub remote. Copy the link.]{style="color: #BE5A47;"}
+10. [Back in RStudio, edit your README to include a link to your rendered assignment PDF.]{style="color: #BE5A47;"}
+11. [Stage, commit, and push your changes.]{style="color: #BE5A47;"}
+12. Start your elective!
+
+# Elective
+
+## What you will do in this elective
+
+In class and in assignments, you have created figures to explore patterns in data. **For your intermediate elective, you will create a figure that tells a story through more advanced customization.**
+
+## Background
+
+[Tidy Tuesday](https://github.com/rfordatascience/tidytuesday) is a project organized by data scientists to encourage open exploration of publicly available datasets. 
+
+Participants in Tidy Tuesday create a visualization from a new dataset that's shared each week. Some examples include [Bird Sightings at Sea](https://github.com/rfordatascience/tidytuesday/blob/main/data/2026/2026-04-14/readme.md), [Pokemon](https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-04-01/readme.md), and [Objects Launched into Space](https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-04-23/readme.md).
+
+For your elective, you will choose one of these visualizations as inspiration to create a figure using your selected dataset.
+
+## Options
+
+For inspiration, you may choose one (or more) of the following:
+
+- Nicola Rennie's ["Can an exploding snowman predict the summer season?"](https://github.com/nrennie/tidytuesday/tree/main/2025/2025-12-02)
+- Nicola Rennie's ["UFO Sightings"](https://github.com/nrennie/tidytuesday/tree/main/2023/2023-06-20)
+- Ijeamaka Anyene's ["Historically Black Colleges and Universities"](https://github.com/Ijeamakaanyene/tidytuesday)
+- Tobias Stalder's ["Hiking Locations in Washington"](https://github.com/toebR/Tidy-Tuesday/blob/master/hiking/dataviz_hiking.png)
+- Steven Ponce's ["Evolution of MTA Art Materials (1980-2020)"](https://stevenponce.netlify.app/data_visualizations/TidyTuesday/2025/tt_2025_29.html)
+- Steven Ponce's ["Horror Films Are Lottery Tickets"](https://stevenponce.netlify.app/data_visualizations/30DayChartChallenge/2026/30dcc_2026_10.html)
+- Steven Ponce's ["Coal falls. Renewables rise."](https://stevenponce.netlify.app/data_visualizations/30DayChartChallenge/2026/30dcc_2026_24.html)
+- Cristina Cametti's ["IKEA most popular designers"](https://github.com/camecry/ILoveTidyTuesday/tree/master#ikea-forniture---tidytuesday-project-03-11-2020)
+- Cédric Scherer's ["Bill Dimensions of Brush-tailed Penguins"](https://github.com/Z3tt/TidyTuesday/tree/main/plots/2020_31)
+- Victor Gauto's ["Participación femenina en las elecciones de EE.UU"](https://vhgauto.github.io/tidytuesday/2023/semana_45.html)
+- Victor Gauto's ["Porcentaje de superficie cubierta por agua en Estados de EEUU."](https://vhgauto.github.io/tidytuesday/2023/semana_31.html)
+
+## Open and reproducible work
+
+All the code to create the above visualizations is openly available. You can and should repurpose the code to make the inspiration visualizations for your own figure.
+
+To get another person's code onto your computer, you can:
+
+1. fork their repository (generally good but not a great option if there are lots of folders/files in their repo and you only want one or two)
+2. download the relevant folder to your computer
+3. copy paste their code
+
+## Objective
+
+You should be able to create a visualization that closely matches your inspiration in **aesthetics** with different data and variables.
+
+This means that you should be able to recreate the core visual components (e.g. geometries, plot types) while replacing the information/variables to fit your own dataset (e.g. axes, explanatory text).
+
+This _also_ means that you may have to install new packages, modify your inspiration's code, and/or clean/wrangle your dataset to fit the visualization.
+
+**Note:** if you are unsure which components of your inspiration you should be able to recrate, _ask for help._
+
+# Problems
+
+## 1. Explain your inspiration
+
+In 1-2 sentences each, describe:
+
+- which visualization you chose for your inspiration
+- why it makes sense for your dataset of choice
+- which variables from your dataset will be shown in your visualization, and what visual components they map onto (axes, shapes, colors, etc.)
+
+:::{.callout-tip title="Stage, commit, and push your changes!"}
+Try rendering your .qmd. Double check your .pdf. Fix anything you need to fix. 
+
+Then, stage, commit, and push your change.
+:::
+
+## 2. Plan your figure
+
+Sketch what your figure would look like following your inspiration. 
+
+Insert that sketch (as a photo, screenshot, or otherwise) into your document.
+
+:::{.callout-tip title="Stage, commit, and push your changes!"}
+Try rendering your .qmd. Double check your .pdf. Fix anything you need to fix. 
+
+Then, stage, commit, and push your change.
+:::
+
+## 3. Code your figure
+
+Clean/wrangle your data as needed.
+
+Then, code the figure you decided to create. 
+
+Make sure all your code is annotated, and that the output is showing.
+
+:::{.callout-tip title="Stage, commit, and push your changes!"}
+As you are working, stop occasionally to render, stage, commit, and push.
+
+The length of this section will vary based on your dataset and inspiration, so set a timer or something similar to commit/push every 20 minutes or so (or some other interval of time that makes sense for your workflow).
+:::
+
+## 4. Describe your process
+
+In 1-3 sentences each, describe:
+
+- your process of using someone else's code to create a visualization
+- challenges you encountered as you made your visualization
+- how your visualization differs from visualizations you made in class, for assignments, or for a previous elective
+
+:::{.callout-tip title="Stage, commit, and push your changes!"}
+Try rendering your .qmd. Double check your .pdf. Fix anything you need to fix. 
+
+Then, stage, commit, and push your change.
+:::
+
+# Don't forget to fill in your README!
+
+Once you are done with your elective, edit your README (in RStudio) to include sections for:
+
+- General information
+- Data and file information
+- Rendered output
+
+Save, stage, commit, and push your changes.
+
+
+
+
+
+

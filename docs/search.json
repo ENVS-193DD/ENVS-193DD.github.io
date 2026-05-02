@@ -7,6 +7,76 @@
     "text": "Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nFormat for resubmission cover letter\n\n\nrequired for Revisions needed marks\n\n\n\n\nGit/GitHub Part 1: prechecks\n\n\ncreating an account and making sure git is on your computer and configured correctly\n\n\n\n\nGit/GitHub Part 2: personal access token\n\n\nstoring your personal access token\n\n\n\n\nGit/GitHub basics\n\n\ncloning, committing, pushing, forking, pulling\n\n\n\n\nGuidelines and policies on using AI\n\n\nOpenness about using AI is good, actually!\n\n\n\n\nUsing the virtual machine\n\n\nCan’t install R/RStudio on your computer? Don’t have a computer? Use the virtual machine!\n\n\n\n\n\nNo matching items"
   },
   {
+    "objectID": "electives/intermediate-01.html",
+    "href": "electives/intermediate-01.html",
+    "title": "Intermediate elective option 1",
+    "section": "",
+    "text": "Intermediate elective options 1 and 2 involve the exact same steps. However, they are focused on different data sets.\nOption 1 covers 1) Venoco Bridge water surface elevation, 2) birds, and 3) water quality parameters.\nOption 2 covers 1) vernal pool vegetation and 2) aquatic invertebrates.\nChoose the option you want to complete based on the data set you are most interested in."
+  },
+  {
+    "objectID": "electives/intermediate-01.html#what-you-will-do-in-this-elective",
+    "href": "electives/intermediate-01.html#what-you-will-do-in-this-elective",
+    "title": "Intermediate elective option 1",
+    "section": "What you will do in this elective",
+    "text": "What you will do in this elective\nIn class and in assignments, you have created figures to explore patterns in data. For your intermediate elective, you will create a figure that tells a story through more advanced customization."
+  },
+  {
+    "objectID": "electives/intermediate-01.html#background",
+    "href": "electives/intermediate-01.html#background",
+    "title": "Intermediate elective option 1",
+    "section": "Background",
+    "text": "Background\nTidy Tuesday is a project organized by data scientists to encourage open exploration of publicly available datasets.\nParticipants in Tidy Tuesday create a visualization from a new dataset that’s shared each week. Some examples include Bird Sightings at Sea, Pokemon, and Objects Launched into Space.\nFor your elective, you will choose one of these visualizations as inspiration to create a figure using your selected dataset."
+  },
+  {
+    "objectID": "electives/intermediate-01.html#options",
+    "href": "electives/intermediate-01.html#options",
+    "title": "Intermediate elective option 1",
+    "section": "Options",
+    "text": "Options\nFor inspiration, you may choose one (or more) of the following:\n\nNicola Rennie’s “Can an exploding snowman predict the summer season?”\nNicola Rennie’s “UFO Sightings”\nIjeamaka Anyene’s “Historically Black Colleges and Universities”\nTobias Stalder’s “Hiking Locations in Washington”\nSteven Ponce’s “Evolution of MTA Art Materials (1980-2020)”\nSteven Ponce’s “Horror Films Are Lottery Tickets”\nSteven Ponce’s “Coal falls. Renewables rise.”\nCristina Cametti’s “IKEA most popular designers”\nCédric Scherer’s “Bill Dimensions of Brush-tailed Penguins”\nVictor Gauto’s “Participación femenina en las elecciones de EE.UU”\nVictor Gauto’s “Porcentaje de superficie cubierta por agua en Estados de EEUU.”"
+  },
+  {
+    "objectID": "electives/intermediate-01.html#open-and-reproducible-work",
+    "href": "electives/intermediate-01.html#open-and-reproducible-work",
+    "title": "Intermediate elective option 1",
+    "section": "Open and reproducible work",
+    "text": "Open and reproducible work\nAll the code to create the above visualizations is openly available. You can and should repurpose the code to make the inspiration visualizations for your own figure.\nTo get another person’s code onto your computer, you can:\n\nfork their repository (generally good but not a great option if there are lots of folders/files in their repo and you only want one or two)\ndownload the relevant folder to your computer\ncopy paste their code"
+  },
+  {
+    "objectID": "electives/intermediate-01.html#objective",
+    "href": "electives/intermediate-01.html#objective",
+    "title": "Intermediate elective option 1",
+    "section": "Objective",
+    "text": "Objective\nYou should be able to create a visualization that closely matches your inspiration in aesthetics with different data and variables.\nThis means that you should be able to recreate the core visual components (e.g. geometries, plot types) while replacing the information/variables to fit your own dataset (e.g. axes, explanatory text).\nThis also means that you may have to install new packages, modify your inspiration’s code, and/or clean/wrangle your dataset to fit the visualization.\nNote: if you are unsure which components of your inspiration you should be able to recrate, ask for help."
+  },
+  {
+    "objectID": "electives/intermediate-01.html#explain-your-inspiration",
+    "href": "electives/intermediate-01.html#explain-your-inspiration",
+    "title": "Intermediate elective option 1",
+    "section": "1. Explain your inspiration",
+    "text": "1. Explain your inspiration\nIn 1-2 sentences each, describe:\n\nwhich visualization you chose for your inspiration\nwhy it makes sense for your dataset of choice\nwhich variables from your dataset will be shown in your visualization, and what visual components they map onto (axes, shapes, colors, etc.)\n\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nTry rendering your .qmd. Double check your .pdf. Fix anything you need to fix.\nThen, stage, commit, and push your change."
+  },
+  {
+    "objectID": "electives/intermediate-01.html#plan-your-figure",
+    "href": "electives/intermediate-01.html#plan-your-figure",
+    "title": "Intermediate elective option 1",
+    "section": "2. Plan your figure",
+    "text": "2. Plan your figure\nSketch what your figure would look like following your inspiration.\nInsert that sketch (as a photo, screenshot, or otherwise) into your document.\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nTry rendering your .qmd. Double check your .pdf. Fix anything you need to fix.\nThen, stage, commit, and push your change."
+  },
+  {
+    "objectID": "electives/intermediate-01.html#code-your-figure",
+    "href": "electives/intermediate-01.html#code-your-figure",
+    "title": "Intermediate elective option 1",
+    "section": "3. Code your figure",
+    "text": "3. Code your figure\nClean/wrangle your data as needed.\nThen, code the figure you decided to create.\nMake sure all your code is annotated, and that the output is showing.\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nAs you are working, stop occasionally to render, stage, commit, and push.\nThe length of this section will vary based on your dataset and inspiration, so set a timer or something similar to commit/push every 20 minutes or so (or some other interval of time that makes sense for your workflow)."
+  },
+  {
+    "objectID": "electives/intermediate-01.html#describe-your-process",
+    "href": "electives/intermediate-01.html#describe-your-process",
+    "title": "Intermediate elective option 1",
+    "section": "4. Describe your process",
+    "text": "4. Describe your process\nIn 1-3 sentences each, describe:\n\nyour process of using someone else’s code to create a visualization\nchallenges you encountered as you made your visualization\nhow your visualization differs from visualizations you made in class, for assignments, or for a previous elective\n\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nTry rendering your .qmd. Double check your .pdf. Fix anything you need to fix.\nThen, stage, commit, and push your change."
+  },
+  {
     "objectID": "electives/elective-01.html",
     "href": "electives/elective-01.html",
     "title": "Basic elective option 1",
@@ -350,27 +420,6 @@
     "text": "4. Dealing with dates\n\na. Types of objects\nThe earliest observation recorded in the dataset was from 2024-11-13. Run str(\"2024-11-13\") in the Console.\nWhat type of object is this?\nReference specific components of the output of str(\"2024-11-13\") to justify your response.\n\n\nb. Other types of objects\nNow, run str(as.Date(\"2024-11-13\")) in the Console.\nIn one sentence, describe what type of object is this. Use the specific components of the output of str(as.Date(\"2024-11-13\")) to justify your response.\n\n\nc. Working with a new dataset\nRead in the precipitation data using the following code in your set up section:\n\nprecip &lt;- read_csv(\"NOAA_daily_summaries_USW00053152_full_2025-12-09.csv\")\n\nList the variables and what values they contain in a bulleted list.\n\n\nd. Write pseudocode to filter the dataset\nWrite pseudocode to create a new object called precip_filtered to filter the dataset to only include precipitation readings from after 2024-09-30 and before 2025-10-01 (the 2025 water year).\n\n\ne. Code up your pseudocode\nCode your pseudocode that you wrote in part d. \nAnnotate all lines.\n\nTry using as.Date() and filter() together for this problem.\n\n\n\nf. Connecting information\nLook at the precip_filtered data frame. Find the column that corresponds to precipitation in inches called PRCP.\nWhat three dates in the precip_filtered data frame likely correspond to peaks in water elevation in (m) from the figure we made in class?\nBe specific by stating the date and the amount of precipitation in inches, and which peak the precipitation date connects to (e.g. the peak in [insert month here] likely corresponds to precipitation on [this date], which was [insert amount in inches here])."
   },
   {
-    "objectID": "assignments.html",
-    "href": "assignments.html",
-    "title": "Assignments",
-    "section": "",
-    "text": "Order By\n       Default\n         \n          Due date - Oldest\n        \n         \n          Due date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\nGetting set up\n\n\nMar 30, 2026\n\n\n\n\nIndividual assignment 1\n\n\nApr 10, 2026\n\n\n\n\nIndividual assignment 2\n\n\nApr 17, 2026\n\n\n\n\nIndividual assignment 3\n\n\nApr 24, 2026\n\n\n\n\nIndividual assignment 4\n\n\nMay 1, 2026\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "electives.html",
-    "href": "electives.html",
-    "title": "Electives",
-    "section": "",
-    "text": "Order By\n       Default\n         \n          Due date - Oldest\n        \n         \n          Due date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\nBasic elective option 1\n\n\nApr 17, 2026\n\n\n\n\nBasic elective option 2\n\n\nApr 24, 2026\n\n\n\n\nBasic elective option 3\n\n\nMay 1, 2026\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "in-class-materials.html",
-    "href": "in-class-materials.html",
-    "title": "In-class materials",
-    "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nWeek\n\n\nTitle\n\n\n\n\n\n\nWeek 1\n\n\nWater surface elevation at Venoco Bridge\n\n\n\n\nWeek 2\n\n\nBird species at NCOS\n\n\n\n\nWeek 3\n\n\nWater quality parameters\n\n\n\n\nWeek 4\n\n\nVernal pool vegetation\n\n\n\n\nWeek 5\n\n\nAquatic invertebrates\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "assignments/individual-assignment-04.html",
     "href": "assignments/individual-assignment-04.html",
     "title": "Individual assignment 4",
@@ -397,6 +446,48 @@
     "title": "Individual assignment 4",
     "section": "3. Trends through time in native species percent cover",
     "text": "3. Trends through time in native species percent cover\nWe spent a lot of time thinking about how to use complete() because we wanted to calculate the mean percent cover per species per pool per year, and doing so required handling implicit missingness.\nHowever, there are calculations that do not need adjustments for implicit missingness.\nIn this section, you will calculate and visualize the total native species percent cover divided by the number of quadrats for each pool in a given year.\n\na. Plan your figure\nIn part c, you will create a figure examining total native species percent cover through time. You will also facet your figure by pool.\nList the columns you would need from a data frame and the values they should contain to create a figure matching this description.\n\nx-axis:\ny-axis:\ngeometries (there are two):\nfacet function and argument:\n\n\n\nb. Wrangle your data\nCreate an object called native_pc from veg. In no particular order (and this is not an exhaustive list),\n\nfilter to only include native species\nfilter to only include surveys from vernal pools at NCOS\ncalculate the total native percent cover for a single pool in a year\njoin with the metadata data frame\ncalculate total native percent cover divided by the number of quadrats\n\nAt the end of your code chunk, use slice_sample() to display 10 random rows from native_pc.\n\n\nc. Code your figure\nCode the figure you described in part a with the data frame you created in part b. For full credit:\n\ncolor by pool\nuse the same colors as you did in 2d (for consistency)\nuse a different theme from the default\ntake out the legend\nlabel the x- and y-axes\n\n\n\nd. Interpret your figure\nIn 1-3 sentences each, explain:\n\nwhy it is possible to have y-axis values greater than 100%\nhow trends through time in percent cover differ (if at all) from trends through time in species richness\nhow this figure relates to Figure 8 in the monitoring report\n\nBe specific about the visual components of the plot that you are using to make these claims."
+  },
+  {
+    "objectID": "in-class-materials.html",
+    "href": "in-class-materials.html",
+    "title": "In-class materials",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nWeek\n\n\nTitle\n\n\n\n\n\n\nWeek 1\n\n\nWater surface elevation at Venoco Bridge\n\n\n\n\nWeek 2\n\n\nBird species at NCOS\n\n\n\n\nWeek 3\n\n\nWater quality parameters\n\n\n\n\nWeek 4\n\n\nVernal pool vegetation\n\n\n\n\nWeek 5\n\n\nAquatic invertebrates\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "electives.html",
+    "href": "electives.html",
+    "title": "Electives",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Due date - Oldest\n        \n         \n          Due date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\nBasic elective option 1\n\n\nApr 17, 2026\n\n\n\n\nBasic elective option 2\n\n\nApr 24, 2026\n\n\n\n\nBasic elective option 3\n\n\nMay 1, 2026\n\n\n\n\nIntermediate elective option 1\n\n\nMay 8, 2026\n\n\n\n\nIntermediate elective option 2\n\n\nMay 15, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "assignments.html",
+    "href": "assignments.html",
+    "title": "Assignments",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Due date - Oldest\n        \n         \n          Due date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\nGetting set up\n\n\nMar 30, 2026\n\n\n\n\nIndividual assignment 1\n\n\nApr 10, 2026\n\n\n\n\nIndividual assignment 2\n\n\nApr 17, 2026\n\n\n\n\nIndividual assignment 3\n\n\nApr 24, 2026\n\n\n\n\nIndividual assignment 4\n\n\nMay 1, 2026\n\n\n\n\nIndividual assignment 5\n\n\nMay 8, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "assignments/individual-assignment-05.html",
+    "href": "assignments/individual-assignment-05.html",
+    "title": "Individual assignment 5",
+    "section": "",
+    "text": "Create a new .qmd in the code folder of your ENVS-193DD_week-05 repo. Make sure that you:\n\nfill in your name in the “Author” field\nare rendering to .pdf\nleave the visual editor box unchecked\n\nIn the YAML of your .qmd, enter the date.\nCreate a set up section for your code (refer to class code if you need help with this).\nInsert a code chunk to read in packages.\n\nAt minimum, you will need tidyverse, janitor, and here.\n\nInsert a code chunk to read in data.\n\nBe sure that you are using here() along with read_csv().\n\nInsert a code chunk for class code that you need for your assignment.\n\n\n\n\n\n\n\nPractice your own editorial judgement!\n\n\n\n\n\nYou will not need all the code from class to do your assignment.\nYou will need to pick and choose the components that are relevant to the assignment.\nIf you copy-paste your entire class script into your homework, you will need to revise your assignment!\n\n\n\n\nRender to .pdf to make sure that you can render.\nStage, commit, and push your changes.\nFind your rendered PDF on your GitHub remote. Copy the link.\nBack in RStudio, edit your README to include a link to your rendered assignment PDF.\nStage, commit, and push your changes.\nStart your assignment!"
+  },
+  {
+    "objectID": "assignments/individual-assignment-05.html#visualizing-differences-across-sites-in-major-taxon-abundance",
+    "href": "assignments/individual-assignment-05.html#visualizing-differences-across-sites-in-major-taxon-abundance",
+    "title": "Individual assignment 5",
+    "section": "1. Visualizing differences across sites in major taxon abundance",
+    "text": "1. Visualizing differences across sites in major taxon abundance\nIn class, we visualized the differences across sites in median (log transformed) copepod abundance.\nIn this section, you will create another figure to add to the multipanel plot of salinity and copepod abundance to show ostracod abundance.\n\na. Plan your figure\nIn part 1d, you should end up with a three panel figure. All three panels should have site on the x-axis, but each panel will have a different y-axis.\nIn part 1c, you will create one component of the three panel figure. Provide a list of the axes and geometries you will need to create a figure in 1c showing differences between sites in ostracod abundance.\n\nx-axis:\ny-axis:\ngeometry to represent average abundance/L:\ngeometry to represent medians:\n\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nTry rendering your .qmd. Double check your .pdf. Fix anything you need to fix.\nThen, stage, commit, and push your change.\n\n\n\n\nb. Wrangle your data\nThe aq_ins_clean data frame will need some further wrangling before you create the figure you described in part 1a.\nIn this section, create the data frame you will need to make your figure.\nAt the end of your code chunk, display 10 random rows from your data frame using slice_sample().\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nTry rendering your .qmd. Double check your .pdf. Fix anything you need to fix.\nThen, stage, commit, and push your change.\n\n\n\n\nc. Code your figure\nCreate the figure you outlined in part 1a in a way that mirrors the two-panel figure with which we ended class. For full marks:\n\nmake sure the x- and y-axes are labelled in a readable format\ninclude a title that describes the taxonomic group being plotted\nrepresent the median in a way that is visually distinct from each individual average abundance/L measurement with color, shape size, and shape type\nuse a theme that is different from the ggplot() default\n\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nTry rendering your .qmd. Double check your .pdf. Fix anything you need to fix.\nThen, stage, commit, and push your change.\n\n\n\n\nd. Create a multipanel figure\nCombine the figure you made in 1c with the figures from class to create a multipanel figure using patchwork. Position the plots in the following arrangement:\n\n\n\n\n\n\n\n\n\n\n\nStuck?\n\n\n\nLook at the package documentation to see examples.\n\n\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nTry rendering your .qmd. Double check your .pdf. Fix anything you need to fix.\nThen, stage, commit, and push your change.\n\n\n\n\ne. Interpret your figure\nIn 1-2 sentences each, describe:\n\ndifferences between sites in copepod and ostracod abundance\nhow ostracod abundance may relate (or not) to site-level differences in salinity\n\nBe specific using the visual components of the plot.\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nTry rendering your .qmd. Double check your .pdf. Fix anything you need to fix.\nThen, stage, commit, and push your change."
+  },
+  {
+    "objectID": "assignments/individual-assignment-05.html#visualizing-total-abundance-as-a-function-of-salinity",
+    "href": "assignments/individual-assignment-05.html#visualizing-total-abundance-as-a-function-of-salinity",
+    "title": "Individual assignment 5",
+    "section": "Visualizing total abundance as a function of salinity",
+    "text": "Visualizing total abundance as a function of salinity\nIn this problem, you will create a figure visualizing log-transformed abundance as a function of salinity (measured in parts per thousand) to determine how salinity may influence invertebrate abundance (regardless of site).\n\na. Plan your figure\nAt the end of part 2c, you should have a figure:\n\ndepicting log-transformed average abundance/L on the y-axis and salinity on the x-axis\nwith different panels for each taxon in aq_ins_clean with free scales for both axes\nwith each taxon in its own color\n\nProvide a list of values, geometries, and/or arguments that would be appropriate to make a figure matching this description.\n\nx-axis:\ny-axis:\ncolor:\ngeometry:\nfacets:\n\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nTry rendering your .qmd. Double check your .pdf. Fix anything you need to fix.\nThen, stage, commit, and push your change.\n\n\n\n\nb. Wrangle your data\nThe aq_ins_clean data frame will need some further wrangling before you create the figure you described in part 1a.\nIn this section, manipulate the existing aq_ins_clean data frame to create new columns, modify existing columns, and/or select columns to create the figure you outlined in part 1a.\nAdditionally:\n\nmake sure each taxon is in title case\norder taxon levels by maximum abundance\n\nAt the end of your code chunk, display 10 random rows from your data frame using slice_sample().\n\n\n\n\n\n\nReminder: what should each component of the plot be?\n\n\n\nRevisit the directions from 2a and your outline to determine which columns you might keep from the data frame, which columns you might manipulate, and what new columns you might create.\n\n\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nTry rendering your .qmd. Double check your .pdf. Fix anything you need to fix.\nThen, stage, commit, and push your change.\n\n\n\n\nc. Code your figure\nCreate the figure you outlined in part 2a. For full marks:\n\nmake sure the x- and y-axes are labelled in a readable format\nuse a different theme from the default\nuse different colors from the default\ntake out the legend\n\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nTry rendering your .qmd. Double check your .pdf. Fix anything you need to fix.\nThen, stage, commit, and push your change.\n\n\n\n\nd. Interpret your figure\nIn 3-5 sentences each, describe differences or similarities between taxa in relationships between abundance and salinity. Be specific using the visual components of the plot.\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nTry rendering your .qmd. Double check your .pdf. Fix anything you need to fix.\nThen, stage, commit, and push your change."
   },
   {
     "objectID": "assignments/individual-assignment-02.html",
@@ -852,6 +943,76 @@
     "title": "Basic elective option 3",
     "section": "2. Differences between pools in Baccharis",
     "text": "2. Differences between pools in Baccharis\nCoyote brush (Baccharis pilularis) is a native California shrub that can take over other habitats in what’s called “woody encroachment”, which is when Baccharis takes over a habitat it’s not supposed to.\nIn this section, you will create a plot to compare mean percent cover of Baccharis across different pools. See your figure from Problem 1 of the assignment this week for inspiration.\n\na. Wrangle your data\nWrite code to create a new object called baccharis_df in which you have filtered to only include observations of Baccharis pilularis.\n\n\nb. Code your figure\nCode your figure. For full marks:\n\nmake sure the x- and y-axes are labelled in a readable format\ninclude a title that:\n\ndescribes the information shown in your figure and\nspecifies the range of years or time period for this data\n\nrepresent the mean in a way that is visually distinct from each individual pool with color, shape size, and shape type\nuse a theme that is different from the ggplot() default\n\n\n\nc. Interpret your figure\nIn 1-3 sentences each, explain:\n\nwhich 2 pools have the most Baccharis percent cover (on average), and which 2 pools have the least\nwhy these sets of pools might differ in the amount of Baccharis that might be present\nwhether or not, in your opinion, any of these pools are in danger of woody encroachment"
+  },
+  {
+    "objectID": "electives/intermediate-02.html",
+    "href": "electives/intermediate-02.html",
+    "title": "Intermediate elective option 2",
+    "section": "",
+    "text": "Intermediate elective options 1 and 2 involve the exact same steps. However, they are focused on different data sets.\nOption 1 covers 1) Venoco Bridge water surface elevation, 2) birds, and 3) water quality parameters.\nOption 2 covers 1) vernal pool vegetation and 2) aquatic invertebrates.\nChoose the option you want to complete based on the data set you are most interested in."
+  },
+  {
+    "objectID": "electives/intermediate-02.html#what-you-will-do-in-this-elective",
+    "href": "electives/intermediate-02.html#what-you-will-do-in-this-elective",
+    "title": "Intermediate elective option 2",
+    "section": "What you will do in this elective",
+    "text": "What you will do in this elective\nIn class and in assignments, you have created figures to explore patterns in data. For your intermediate elective, you will create a figure that tells a story through more advanced customization."
+  },
+  {
+    "objectID": "electives/intermediate-02.html#background",
+    "href": "electives/intermediate-02.html#background",
+    "title": "Intermediate elective option 2",
+    "section": "Background",
+    "text": "Background\nTidy Tuesday is a project organized by data scientists to encourage open exploration of publicly available datasets.\nParticipants in Tidy Tuesday create a visualization from a new dataset that’s shared each week. Some examples include Bird Sightings at Sea, Pokemon, and Objects Launched into Space.\nFor your elective, you will choose one of these visualizations as inspiration to create a figure using your selected dataset."
+  },
+  {
+    "objectID": "electives/intermediate-02.html#options",
+    "href": "electives/intermediate-02.html#options",
+    "title": "Intermediate elective option 2",
+    "section": "Options",
+    "text": "Options\nFor inspiration, you may choose one (or more) of the following:\n\nNicola Rennie’s “Can an exploding snowman predict the summer season?”\nNicola Rennie’s “UFO Sightings”\nIjeamaka Anyene’s “Historically Black Colleges and Universities”\nTobias Stalder’s “Hiking Locations in Washington”\nSteven Ponce’s “Evolution of MTA Art Materials (1980-2020)”\nSteven Ponce’s “Horror Films Are Lottery Tickets”\nSteven Ponce’s “Coal falls. Renewables rise.”\nCristina Cametti’s “IKEA most popular designers”\nCédric Scherer’s “Bill Dimensions of Brush-tailed Penguins”\nVictor Gauto’s “Participación femenina en las elecciones de EE.UU”\nVictor Gauto’s “Porcentaje de superficie cubierta por agua en Estados de EEUU.”"
+  },
+  {
+    "objectID": "electives/intermediate-02.html#open-and-reproducible-work",
+    "href": "electives/intermediate-02.html#open-and-reproducible-work",
+    "title": "Intermediate elective option 2",
+    "section": "Open and reproducible work",
+    "text": "Open and reproducible work\nAll the code to create the above visualizations is openly available. You can and should repurpose the code to make the inspiration visualizations for your own figure.\nTo get another person’s code onto your computer, you can:\n\nfork their repository (generally good but not a great option if there are lots of folders/files in their repo and you only want one or two)\ndownload the relevant folder to your computer\ncopy paste their code"
+  },
+  {
+    "objectID": "electives/intermediate-02.html#objective",
+    "href": "electives/intermediate-02.html#objective",
+    "title": "Intermediate elective option 2",
+    "section": "Objective",
+    "text": "Objective\nYou should be able to create a visualization that closely matches your inspiration in aesthetics with different data and variables.\nThis means that you should be able to recreate the core visual components (e.g. geometries, plot types) while replacing the information/variables to fit your own dataset (e.g. axes, explanatory text).\nThis also means that you may have to install new packages, modify your inspiration’s code, and/or clean/wrangle your dataset to fit the visualization.\nNote: if you are unsure which components of your inspiration you should be able to recrate, ask for help."
+  },
+  {
+    "objectID": "electives/intermediate-02.html#explain-your-inspiration",
+    "href": "electives/intermediate-02.html#explain-your-inspiration",
+    "title": "Intermediate elective option 2",
+    "section": "1. Explain your inspiration",
+    "text": "1. Explain your inspiration\nIn 1-2 sentences each, describe:\n\nwhich visualization you chose for your inspiration\nwhy it makes sense for your dataset of choice\nwhich variables from your dataset will be shown in your visualization, and what visual components they map onto (axes, shapes, colors, etc.)\n\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nTry rendering your .qmd. Double check your .pdf. Fix anything you need to fix.\nThen, stage, commit, and push your change."
+  },
+  {
+    "objectID": "electives/intermediate-02.html#plan-your-figure",
+    "href": "electives/intermediate-02.html#plan-your-figure",
+    "title": "Intermediate elective option 2",
+    "section": "2. Plan your figure",
+    "text": "2. Plan your figure\nSketch what your figure would look like following your inspiration.\nInsert that sketch (as a photo, screenshot, or otherwise) into your document.\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nTry rendering your .qmd. Double check your .pdf. Fix anything you need to fix.\nThen, stage, commit, and push your change."
+  },
+  {
+    "objectID": "electives/intermediate-02.html#code-your-figure",
+    "href": "electives/intermediate-02.html#code-your-figure",
+    "title": "Intermediate elective option 2",
+    "section": "3. Code your figure",
+    "text": "3. Code your figure\nClean/wrangle your data as needed.\nThen, code the figure you decided to create.\nMake sure all your code is annotated, and that the output is showing.\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nAs you are working, stop occasionally to render, stage, commit, and push.\nThe length of this section will vary based on your dataset and inspiration, so set a timer or something similar to commit/push every 20 minutes or so (or some other interval of time that makes sense for your workflow)."
+  },
+  {
+    "objectID": "electives/intermediate-02.html#describe-your-process",
+    "href": "electives/intermediate-02.html#describe-your-process",
+    "title": "Intermediate elective option 2",
+    "section": "4. Describe your process",
+    "text": "4. Describe your process\nIn 1-3 sentences each, describe:\n\nyour process of using someone else’s code to create a visualization\nchallenges you encountered as you made your visualization\nhow your visualization differs from visualizations you made in class, for assignments, or for a previous elective\n\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nTry rendering your .qmd. Double check your .pdf. Fix anything you need to fix.\nThen, stage, commit, and push your change."
   },
   {
     "objectID": "system-checks.html",
