@@ -231,6 +231,7 @@ Your GitHub repository should:
 - [ ] have a link to your rendered homework pdf
 - [ ] be organized with separate folders for `code` and `data`, with your homework .qmd and .pdf in the `code` folder
 - [ ] show at least 10 commits/pushes with a descriptive, concise commit message clearly describing what changes you are committing
+- [ ] have a clear, descriptive README with sections for "General information", "Date and file information", and "Rendered output"
 
 # General formatting components
 

@@ -159,6 +159,55 @@ Once you are done with your elective, edit your README (in RStudio) to include s
 
 Save, stage, commit, and push your changes.
 
+# Elective checklist
+
+Your rendered PDF should:
+
+- [ ] include your name, title, and submission date
+- [ ] include all code with annotations (see "General formatting components" for details)   
+- [ ] be organized and readable (see "General formatting components" for details)     
+- [ ] be free of messages and warnings from code chunk evaluation
+
+Your responses should include:  
+
+- [ ] written response for Problem 1
+- [ ] image for Problem 2
+- [ ] annotated code and output for Problem 3
+- [ ] written response for Problem 4
+
+Lastly, check out the **rubric on Canvas** to see the component breakdown in more detail.  
+
+Your final submission should include:  
+
+- [ ] a link to your GitHub repo
+- [ ] your submitted [Generative AI statement of use](https://docs.google.com/forms/d/e/1FAIpQLSevf1zSjndFN-XMyKrCmpiIl-K6pwP4aUShOzI94t0ZW-yiuw/viewform) by the due date
+
+# Git/GitHub components
+
+Your GitHub repository should:
+
+- [ ] have a link to your rendered elective pdf
+- [ ] be organized with separate folders for `code` and `data`, with your homework .qmd and .pdf in the `code` folder
+- [ ] show at least 10 commits/pushes with a descriptive, concise commit message clearly describing what changes you are committing
+- [ ] have a clear, descriptive README with sections for "General information", "Date and file information", and "Rendered output"
+
+# General formatting components
+
+You will only receive full marks for annotations if you have:  
+
+- meaningful comments on each line of visualization code and/or ggplot geom/theme call (not needed for each argument, though good to have)  
+- meaningful comments on each function in any piping operations  
+- meaningful comments in set up code to denote where packages and/or data are read in
+
+You will only receive full marks for readability if:  
+
+- code includes carriage returns, spaces, etc. to make pipe operations and arguments clear  
+- code includes consistent spacing and indents
+- headers are used correctly throughout document
+- text is formatted correctly (for example, superscripts/subscripts appear correctly)
+- text is distinct from in-line code or references to functions/objects (e.g. using backticks to denote functions)
+- bullet point lists appear as expected
+
 
 
 
