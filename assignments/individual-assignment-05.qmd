@@ -117,7 +117,7 @@ Try rendering your .qmd. Double check your .pdf. Fix anything you need to fix.
 Then, stage, commit, and push your change.
 :::
 
-## Visualizing total abundance as a function of salinity
+## 2. Visualizing total abundance as a function of salinity
 
 In this problem, you will create a figure visualizing _log-transformed abundance_ as a function of salinity (measured in parts per thousand) to determine how salinity may influence invertebrate abundance (regardless of site).
 
