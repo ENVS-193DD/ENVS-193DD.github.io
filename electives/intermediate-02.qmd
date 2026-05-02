@@ -91,7 +91,9 @@ This means that you should be able to recreate the core visual components (e.g. 
 
 This _also_ means that you may have to install new packages, modify your inspiration's code, and/or clean/wrangle your dataset to fit the visualization.
 
-**Note:** if you are unsure which components of your inspiration you should be able to recrate, _ask for help._
+:::{.callout-tip title="Unsure which components of your inspiration you should be able to recreate?"}
+Ask for help! 
+:::
 
 # Problems
 
