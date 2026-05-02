@@ -129,6 +129,8 @@ Then, code the figure you decided to create.
 
 Make sure all your code is annotated, and that the output is showing.
 
+At the end of this section, include code to save your final figure as a .jpg or .png file.
+
 :::{.callout-tip title="Stage, commit, and push your changes!"}
 As you are working, stop occasionally to render, stage, commit, and push.
 
@@ -190,6 +192,7 @@ Your GitHub repository should:
 - [ ] be organized with separate folders for `code` and `data`, with your homework .qmd and .pdf in the `code` folder
 - [ ] show at least 10 commits/pushes with a descriptive, concise commit message clearly describing what changes you are committing
 - [ ] have a clear, descriptive README with sections for "General information", "Date and file information", and "Rendered output"
+- [ ] have your final image file (that you created in problem 3) shown somewhere in the README
 
 # General formatting components
 

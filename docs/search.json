@@ -67,7 +67,7 @@
     "href": "electives/intermediate-01.html#code-your-figure",
     "title": "Intermediate elective option 1",
     "section": "3. Code your figure",
-    "text": "3. Code your figure\nClean/wrangle your data as needed.\nThen, code the figure you decided to create.\nMake sure all your code is annotated, and that the output is showing.\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nAs you are working, stop occasionally to render, stage, commit, and push.\nThe length of this section will vary based on your dataset and inspiration, so set a timer or something similar to commit/push every 20 minutes or so (or some other interval of time that makes sense for your workflow)."
+    "text": "3. Code your figure\nClean/wrangle your data as needed.\nThen, code the figure you decided to create.\nMake sure all your code is annotated, and that the output is showing.\nAt the end of this section, include code to save your final figure as a .jpg or .png file.\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nAs you are working, stop occasionally to render, stage, commit, and push.\nThe length of this section will vary based on your dataset and inspiration, so set a timer or something similar to commit/push every 20 minutes or so (or some other interval of time that makes sense for your workflow)."
   },
   {
     "objectID": "electives/intermediate-01.html#describe-your-process",
@@ -1005,7 +1005,7 @@
     "href": "electives/intermediate-02.html#code-your-figure",
     "title": "Intermediate elective option 2",
     "section": "3. Code your figure",
-    "text": "3. Code your figure\nClean/wrangle your data as needed.\nThen, code the figure you decided to create.\nMake sure all your code is annotated, and that the output is showing.\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nAs you are working, stop occasionally to render, stage, commit, and push.\nThe length of this section will vary based on your dataset and inspiration, so set a timer or something similar to commit/push every 20 minutes or so (or some other interval of time that makes sense for your workflow)."
+    "text": "3. Code your figure\nClean/wrangle your data as needed.\nThen, code the figure you decided to create.\nMake sure all your code is annotated, and that the output is showing.\nAt the end of this section, include code to save your final figure as a .jpg or .png file.\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nAs you are working, stop occasionally to render, stage, commit, and push.\nThe length of this section will vary based on your dataset and inspiration, so set a timer or something similar to commit/push every 20 minutes or so (or some other interval of time that makes sense for your workflow)."
   },
   {
     "objectID": "electives/intermediate-02.html#describe-your-process",
