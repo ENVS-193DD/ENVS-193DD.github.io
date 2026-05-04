@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="An Bui">
-<meta name="description" content="creating an account and making sure git is on your computer and configured correctly">
+<meta name="dcterms.date" content="2026-06-10">
 
-<title>ENVS 193DD - Git/GitHub Part 1: prechecks</title>
+<title>ENVS 193DD - Advanced elective</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,9 +74,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -157,43 +153,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <div class="quarto-title-block"><div><h1 class="title">Git/GitHub Part 1: prechecks</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
-                  <div>
-        <div class="description">
-          creating an account and making sure git is on your computer and configured correctly
-        </div>
-      </div>
-                          <div class="quarto-categories">
-                <div class="quarto-category">GitHub</div>
-                <div class="quarto-category">Git</div>
-              </div>
-                  </div>
+      <div class="quarto-title-block"><div><h1 class="title">Advanced elective</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+                      </div>
   </div>
     
-  <div class="quarto-title-meta-author">
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-heading">Affiliation</div>
-    
-      <div class="quarto-title-meta-contents">
-      <p class="author"><a href="https://an-bui.com/">An Bui</a> </p>
-    </div>
-    <div class="quarto-title-meta-contents">
-          <p class="affiliation">
-              <a href="https://es.ucsb.edu/">
-              UC Santa Barbara, Environmental Studies Program
-              </a>
-            </p>
-        </div>
-    </div>
-
+  
   <div class="quarto-title-meta">
 
-        
+      
+      <div>
+      <div class="quarto-title-meta-heading">Due date</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 10, 2026</p>
+      </div>
+    </div>
     
       <div>
       <div class="quarto-title-meta-heading">Modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">April 14, 2026</p>
+        <p class="date-modified">May 3, 2026</p>
       </div>
     </div>
       
@@ -207,21 +185,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#things-to-keep-in-mind" id="toc-things-to-keep-in-mind" class="nav-link active" data-scroll-target="#things-to-keep-in-mind">Things to keep in mind</a>
-  <ul>
-  <li><a href="#git-vs-github" id="toc-git-vs-github" class="nav-link" data-scroll-target="#git-vs-github">Git vs GitHub</a></li>
-  <li><a href="#stay-calm-and-do-not-panic" id="toc-stay-calm-and-do-not-panic" class="nav-link" data-scroll-target="#stay-calm-and-do-not-panic">Stay calm and do not panic</a></li>
-  <li><a href="#opportunities-to-get-help-before-we-start-using-gitgithub-in-class" id="toc-opportunities-to-get-help-before-we-start-using-gitgithub-in-class" class="nav-link" data-scroll-target="#opportunities-to-get-help-before-we-start-using-gitgithub-in-class">Opportunities to get help before we start using Git/GitHub in class</a></li>
-  <li><a href="#in-class-technical-difficulties" id="toc-in-class-technical-difficulties" class="nav-link" data-scroll-target="#in-class-technical-difficulties">In-class technical difficulties</a></li>
-  </ul></li>
-  <li><a href="#steps" id="toc-steps" class="nav-link" data-scroll-target="#steps">Steps</a>
-  <ul>
-  <li><a href="#create-a-folder-called-git-or-github-on-your-computer." id="toc-create-a-folder-called-git-or-github-on-your-computer." class="nav-link" data-scroll-target="#create-a-folder-called-git-or-github-on-your-computer.">1. Create a folder called <code>git</code> or <code>github</code> on your computer.</a></li>
-  <li><a href="#create-a-github-account" id="toc-create-a-github-account" class="nav-link" data-scroll-target="#create-a-github-account">2. Create a GitHub account</a></li>
-  <li><a href="#check-that-you-have-git-on-your-computer" id="toc-check-that-you-have-git-on-your-computer" class="nav-link" data-scroll-target="#check-that-you-have-git-on-your-computer">3. Check that you have <code>git</code> on your computer</a></li>
-  <li><a href="#set-your-username-and-email" id="toc-set-your-username-and-email" class="nav-link" data-scroll-target="#set-your-username-and-email">4. Set your username and email</a></li>
-  </ul></li>
-  <li><a href="#congratulations-you-have-successfully-completed-the-precheck-steps." id="toc-congratulations-you-have-successfully-completed-the-precheck-steps." class="nav-link" data-scroll-target="#congratulations-you-have-successfully-completed-the-precheck-steps.">Congratulations! You have successfully completed the precheck steps.</a></li>
+  <li><a href="#advanced-elective" id="toc-advanced-elective" class="nav-link active" data-scroll-target="#advanced-elective">Advanced elective</a></li>
+  <li><a href="#completion-of-the-advanced-elective" id="toc-completion-of-the-advanced-elective" class="nav-link" data-scroll-target="#completion-of-the-advanced-elective">Completion of the advanced elective</a></li>
+  <li><a href="#timeline-check-in" id="toc-timeline-check-in" class="nav-link" data-scroll-target="#timeline-check-in">Timeline check in</a></li>
+  <li><a href="#presentation-of-the-advanced-elective" id="toc-presentation-of-the-advanced-elective" class="nav-link" data-scroll-target="#presentation-of-the-advanced-elective">Presentation of the advanced elective</a></li>
   </ul>
 </nav>
 </nav>
@@ -236,117 +203,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="things-to-keep-in-mind" class="level1">
-<h1>Things to keep in mind</h1>
-<section id="git-vs-github" class="level2">
-<h2 class="anchored" data-anchor-id="git-vs-github">Git vs GitHub</h2>
-<p>“Git” (pronounced with a hard “g”, as in “give”) is the software that tracks versions of files on your computer. “GitHub” (also pronounced with a hard “g”) is the hosting platform that holds all versions of files tracked by Git.</p>
+<section id="advanced-elective" class="level1">
+<h1>Advanced elective</h1>
+<p>For the advanced elective, you will create a piece of art or media that is relevant to your project. For example, you could make a short film introducing the plants of NCOS if your project is on vegetation; you could create a field guide zine if your project is on birds; you could create sculptures of ostracods and copepods if your project is on aquatic invertebrates; you could create a hand-drawn map of salinity in the slough if your project is on hydrology.</p>
+<p>This elective is fairly loose to allow for maximum creative freedom; however, your elective must be <em>closely linked to your response variable</em>. For example, if your response variable is species richness, then your elective should include the diversity of species in some way. If your response variable is salinity in parts per thousand, then your elective should show how salinity is measured or understood.</p>
 </section>
-<section id="stay-calm-and-do-not-panic" class="level2">
-<h2 class="anchored" data-anchor-id="stay-calm-and-do-not-panic">Stay calm and do not panic</h2>
-<p>You are going to run into problems when we use Git/GitHub in class if you do not set this up correctly. <em>PLEASE</em> give yourself time to read the directions and follow the steps exactly as they are laid out. Additionally, reach out to An for individual help with any of these steps.</p>
+<section id="completion-of-the-advanced-elective" class="level1">
+<h1>Completion of the advanced elective</h1>
+<p><strong>You may work in your project groups for this elective.</strong> Check in with your fellow project members to discuss completion of this elective as a team.</p>
+<p>If you decide to complete the advanced elective, you <em>must</em> include a section in your work plan and your proposal to outline your ideas for your elective.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Check in as soon as you can once you've decided on an idea.">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Check in as soon as you can once you’ve decided on an idea.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The sooner you get feedback, the sooner you can start - and the sooner you can pivot if you need to!</p>
+</div>
+</div>
 </section>
-<section id="opportunities-to-get-help-before-we-start-using-gitgithub-in-class" class="level2">
-<h2 class="anchored" data-anchor-id="opportunities-to-get-help-before-we-start-using-gitgithub-in-class">Opportunities to get help before we start using Git/GitHub in class</h2>
-<p>We are going to start using Git/GitHub in class during week 5. You can get help to set up in:</p>
+<section id="timeline-check-in" class="level1">
+<h1>Timeline check in</h1>
+<p>For your project check in during week 8, you should have:</p>
 <ul>
-<li>drop-in hours with An during week 3 or week 4</li>
-<li>a one-on-one meeting with An during week 3 or week 4</li>
+<li>a plan for completing the elective</li>
+<li>a draft/sketch/outline of the idea</li>
 </ul>
-<p>If you get your set up double checked, you will earn <strong>one</strong> additional token.</p>
 </section>
-<section id="in-class-technical-difficulties" class="level2">
-<h2 class="anchored" data-anchor-id="in-class-technical-difficulties">In-class technical difficulties</h2>
-<p>Again, we are going to start using Git/GitHub in class during week 5. If you do not set things up correctly on your own <em>AND/OR</em> if you do not get help during drop-ins, we will not stop to help you.</p>
-<p><strong>YOU NEED TO SET EVERYTHING UP CORRECTLY BEFORE CLASS DURING WEEK 5.</strong></p>
-</section>
-</section>
-<section id="steps" class="level1">
-<h1>Steps</h1>
-<section id="create-a-folder-called-git-or-github-on-your-computer." class="level2">
-<h2 class="anchored" data-anchor-id="create-a-folder-called-git-or-github-on-your-computer.">1. Create a folder called <code>git</code> or <code>github</code> on your computer.</h2>
-<p>Create a folder called <code>git</code> or <code>github</code> in your <em>root directory</em>.</p>
-<p>With Macs: your root directory is usually Macintosh HD.</p>
-<p>With Windows: your root directory is the C: drive.</p>
-<p><strong>To verify that your folder is in your root directory, look at the folder information (on Macs: right click &gt; Get Info) or look at the file path.</strong></p>
-<div class="callout callout-style-default callout-warning callout-titled" title="Do not use OneDrive or iCloud!">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Do not use OneDrive or iCloud!
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>git/GitHub <em>will not work properly</em> with files on OneDrive or iCloud (in short, the cloud syncing does not work with version control).</p>
-<p>Be sure that your folder is on your root directory. Make an appointment with An to get help if you cannot be sure that your folder is on your root.</p>
-</div>
-</div>
-</section>
-<section id="create-a-github-account" class="level2">
-<h2 class="anchored" data-anchor-id="create-a-github-account">2. Create a GitHub account</h2>
-<p>If you don’t have one already, create a <a href="https://github.com/">GitHub account</a>.</p>
-<p>Use your personal email, not your ucsb.edu email (because you will lose access to that email once you graduate).</p>
-</section>
-<section id="check-that-you-have-git-on-your-computer" class="level2">
-<h2 class="anchored" data-anchor-id="check-that-you-have-git-on-your-computer">3. Check that you have <code>git</code> on your computer</h2>
-<p>Open RStudio. Open the <strong>Terminal</strong>.</p>
-<p>If you are on a Mac, type <code>which git</code> and hit Enter.</p>
-<p>If you are using a Windows machine, type <code>where git</code> and hit Enter.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Click on any screenshot to make it bigger!</p>
-</div>
-</div>
-<p><a href="../resources/images/github-prechecks/01_which-git.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="../resources/images/github-prechecks/01_which-git.png" class="img-fluid"></a></p>
-<p>You should see something pop up that looks like a file path. It might look slightly different from this example, which is ok.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Most computers come with git pre-installed. If you do not get a file path when you run <code>which git</code> or <code>where git</code>, <strong>set up a one-on-one meeting with An</strong>.</p>
-</div>
-</div>
-</section>
-<section id="set-your-username-and-email" class="level2">
-<h2 class="anchored" data-anchor-id="set-your-username-and-email">4. Set your username and email</h2>
-<p>In the <strong>Terminal</strong>, type <code>git config --global user.name "your-username-here"</code> (replace <code>your-username-here</code>) with your actual user name. Hit Enter.</p>
-<div class="callout callout-style-default callout-warning callout-titled" title="Pay attention to spaces, dashes, and all punctuation!!!">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Pay attention to spaces, dashes, and all punctuation!!!
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>None of the steps in the Terminal will work without the right spaces, dashes, etc.</p>
-</div>
-</div>
-<p>Then (still in the <strong>Terminal</strong>), type <code>git config --global user.email your-email-here</code> (replace <code>your-email-here</code>) with your email. <strong>No quotation marks around your email!</strong></p>
-<p>Then (again, still in the <strong>Terminal</strong>), type <code>git config --list --global</code>. You should see your user name under the <code>user.name</code> field, and your email under the <code>user.email</code> field.</p>
-<p><a href="../resources/images/github-prechecks/02_global-config-options.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="../resources/images/github-prechecks/02_global-config-options.png" class="img-fluid"></a></p>
-</section>
-</section>
-<section id="congratulations-you-have-successfully-completed-the-precheck-steps." class="level1">
-<h1>Congratulations! You have successfully completed the precheck steps.</h1>
-<p>Now go to <a href="https://envs-193dd.github.io/resources/storing-personal-access-token">Git/GitHub Part 2: setting your personal access token</a>.</p>
+<section id="presentation-of-the-advanced-elective" class="level1">
+<h1>Presentation of the advanced elective</h1>
+<p>If <em>all</em> members of your group opt in to completing the advanced elective, you may present on your elective <em>instead</em> of your project results in week 10. However, this means your advanced elective must be completed by week 10.</p>
 
 
 <!-- -->
@@ -815,126 +705,45 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Git/GitHub Part 1: prechecks"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "creating an account and making sure git is on your computer and configured correctly"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [GitHub, Git]</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu"># Things to keep in mind</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## Git vs GitHub</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>"Git" (pronounced with a hard "g", as in "give") is the software that tracks versions of files on your computer. "GitHub" (also pronounced with a hard "g") is the hosting platform that holds all versions of files tracked by Git.</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## Stay calm and do not panic</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>You are going to run into problems when we use Git/GitHub in class if you do not set this up correctly. _PLEASE_ give yourself time to read the directions and follow the steps exactly as they are laid out. Additionally, reach out to An for individual help with any of these steps.</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Opportunities to get help before we start using Git/GitHub in class</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>We are going to start using Git/GitHub in class during week 5. You can get help to set up in:  </span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>drop-in hours with An during week 3 or week 4</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>a one-on-one meeting with An during week 3 or week 4</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Advanced elective"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2026-06-10</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># Advanced elective</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>For the advanced elective, you will create a piece of art or media that is relevant to your project. For example, you could make a short film introducing the plants of NCOS if your project is on vegetation; you could create a field guide zine if your project is on birds; you could create sculptures of ostracods and copepods if your project is on aquatic invertebrates; you could create a hand-drawn map of salinity in the slough if your project is on hydrology.</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>This elective is fairly loose to allow for maximum creative freedom; however, your elective must be _closely linked to your response variable_. For example, if your response variable is species richness, then your elective should include the diversity of species in some way. If your response variable is salinity in parts per thousand, then your elective should show how salinity is measured or understood.</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu"># Completion of the advanced elective</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>**You may work in your project groups for this elective.** Check in with your fellow project members to discuss completion of this elective as a team.</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>If you decide to complete the advanced elective, you _must_ include a section in your work plan and your proposal to outline your ideas for your elective.</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>:::{.callout-tip title="Check in as soon as you can once you've decided on an idea."}</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>The sooner you get feedback, the sooner you can start - and the sooner you can pivot if you need to!</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>If you get your set up double checked, you will earn **one** additional token.</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu"># Timeline check in</span></span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">## In-class technical difficulties</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>For your project check in during week 8, you should have:</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>Again, we are going to start using Git/GitHub in class during week 5. If you do not set things up correctly on your own _AND/OR_ if you do not get help during drop-ins, we will not stop to help you.  </span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>**YOU NEED TO SET EVERYTHING UP CORRECTLY BEFORE CLASS DURING WEEK 5.**</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="fu"># Steps </span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1. Create a folder called `git` or `github` on your computer.</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>a plan for completing the elective</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>a draft/sketch/outline of the idea</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu"># Presentation of the advanced elective</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>If _all_ members of your group opt in to completing the advanced elective, you may present on your elective _instead_ of your project results in week 10. However, this means your advanced elective must be completed by week 10.</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>Create a folder called <span class="in">`git`</span> or <span class="in">`github`</span> in your _root directory_.</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>With Macs: your root directory is usually Macintosh HD.  </span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>With Windows: your root directory is the C: drive.</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>**To verify that your folder is in your root directory, look at the folder information (on Macs: right click &gt; Get Info) or look at the file path.**</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>:::{.callout-warning title="Do not use OneDrive or iCloud!"}</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>git/GitHub _will not work properly_ with files on OneDrive or iCloud (in short, the cloud syncing does not work with version control).  </span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>Be sure that your folder is on your root directory. Make an appointment with An to get help if you cannot be sure that your folder is on your root.</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2. Create a GitHub account</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>If you don't have one already, create a <span class="co">[</span><span class="ot">GitHub account</span><span class="co">](https://github.com/)</span>.  </span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>Use your personal email, not your ucsb.edu email (because you will lose access to that email once you graduate).</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3. Check that you have `git` on your computer</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>Open RStudio. Open the **Terminal**.  </span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>If you are on a Mac, type <span class="in">`which git`</span> and hit Enter.  </span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>If you are using a Windows machine, type <span class="in">`where git`</span> and hit Enter. </span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>:::{.callout-tip}</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>Click on any screenshot to make it bigger!</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="al">![](/resources/images/github-prechecks/01_which-git.png)</span></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>You should see something pop up that looks like a file path. It might look slightly different from this example, which is ok.  </span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>:::{.callout-note}</span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>Most computers come with git pre-installed. If you do not get a file path when you run <span class="in">`which git`</span> or <span class="in">`where git`</span>, **set up a one-on-one meeting with An**.</span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="fu">## 4. Set your username and email</span></span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>In the **Terminal**, type <span class="in">`git config --global user.name "your-username-here"`</span> (replace <span class="in">`your-username-here`</span>) with your actual user name. Hit Enter.</span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>:::{.callout-warning title="Pay attention to spaces, dashes, and all punctuation!!!"}</span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>None of the steps in the Terminal will work without the right spaces, dashes, etc.</span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>Then (still in the **Terminal**), type `git config --global user.email your-email-here` (replace `your-email-here`) with your email. **No quotation marks around your email!**  </span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>Then (again, still in the **Terminal**), type <span class="in">`git config --list --global`</span>. You should see your user name under the <span class="in">`user.name`</span> field, and your email under the <span class="in">`user.email`</span> field.</span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="al">![](/resources/images/github-prechecks/02_global-config-options.png)</span></span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="fu"># Congratulations! You have successfully completed the precheck steps.</span></span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>Now go to <span class="co">[</span><span class="ot">Git/GitHub Part 2: setting your personal access token</span><span class="co">](https://envs-193dd.github.io/resources/storing-personal-access-token)</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","loop":false,"openEffect":"zoom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
-    }
-  });
-
-};
-          </script>
 
 
 
