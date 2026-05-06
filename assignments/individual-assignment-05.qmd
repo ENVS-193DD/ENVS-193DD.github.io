@@ -183,7 +183,11 @@ Then, stage, commit, and push your change.
 
 ### d. Interpret your figure
 
-In 3-5 sentences each, describe differences or similarities between taxa in relationships between abundance and salinity. Be specific using the visual components of the plot.
+In 3-5 sentences, describe differences or similarities between taxa in relationships between abundance and salinity. Be specific using the visual components of the plot.
+
+:::{.column-margin}
+edited 2026-05-06: taking out "each" in directions (write 3-5 sentences _maximum_)
+:::
 
 :::{.callout-tip title="Stage, commit, and push your changes!"}
 Try rendering your .qmd. Double check your .pdf. Fix anything you need to fix. 
