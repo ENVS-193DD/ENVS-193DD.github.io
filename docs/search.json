@@ -84,6 +84,62 @@
     "text": "4. Describe your process\nIn 1-3 sentences each, describe:\n\nyour process of using someone else’s code to create a visualization\nchallenges you encountered as you made your visualization\nhow your visualization differs from visualizations you made in class, for assignments, or for a previous elective\n\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nTry rendering your .qmd. Double check your .pdf. Fix anything you need to fix.\nThen, stage, commit, and push your change."
   },
   {
+    "objectID": "electives/intermediate-02.html#explain-your-inspiration-1",
+    "href": "electives/intermediate-02.html#explain-your-inspiration-1",
+    "title": "Intermediate elective option 2",
+    "section": "1. Explain your inspiration",
+    "text": "1. Explain your inspiration\n\nreference to visualization chosen for inspiration\nwhy this visualization makes sense for your dataset given the variables\nwhich variables will be shown in the visualization\nhow variables map onto visual components\nspecific references to inspiration visualization and variables in dataset throughout"
+  },
+  {
+    "objectID": "electives/intermediate-02.html#plan-your-figure-1",
+    "href": "electives/intermediate-02.html#plan-your-figure-1",
+    "title": "Intermediate elective option 2",
+    "section": "2. Plan your figure",
+    "text": "2. Plan your figure\n\nsketch included in document"
+  },
+  {
+    "objectID": "electives/intermediate-02.html#code-your-figure-1",
+    "href": "electives/intermediate-02.html#code-your-figure-1",
+    "title": "Intermediate elective option 2",
+    "section": "3. Code your figure",
+    "text": "3. Code your figure\n\nannotated code for cleaning/wrangling\nannotated code for visualization\noutput is shown clearly without overlapping elements, text, etc.\nfigure represents data accurately\nclear connections in visual elements between inspiration and output"
+  },
+  {
+    "objectID": "electives/intermediate-02.html#describe-your-process.",
+    "href": "electives/intermediate-02.html#describe-your-process.",
+    "title": "Intermediate elective option 2",
+    "section": "4. Describe your process.",
+    "text": "4. Describe your process.\n\ndescription of process to adapting code\ndescription of challenges to making visualization\ncontrasts between output in problem 3 with other visualizations from class\nclear and specific descriptions throughout"
+  },
+  {
+    "objectID": "electives/intermediate-02.html#gitgithub-component",
+    "href": "electives/intermediate-02.html#gitgithub-component",
+    "title": "Intermediate elective option 2",
+    "section": "Git/GitHub component",
+    "text": "Git/GitHub component\n\nREADME includes required sections (General information, “Data and file information”, “Rendered output”)\nREADME sections filled in with enough information to understand the structure of the repository\nlink to rendered output in README works\nREADME should display final rendered figure\nat least 10 commits/pushes with descriptive, concise commit message (be careful with this - if you don’t write a clear description in your commit message, there’s really no going back)"
+  },
+  {
+    "objectID": "electives/intermediate-02.html#general-formatting",
+    "href": "electives/intermediate-02.html#general-formatting",
+    "title": "Intermediate elective option 2",
+    "section": "General formatting",
+    "text": "General formatting\n\nname, date at top of document\ntitle should be readable\nset up section to read in packages and data\nall code should be included and annotated\ncode and written responses are readable and clearly distinguished from each other\ncode should have line breaks such that all code is visible in rendered .pdf (or edited YAML such that long lines wrap)\nspaces and indents in code are consistent\nall messages and warnings should be hidden"
+  },
+  {
+    "objectID": "electives/intermediate-02.html#submission",
+    "href": "electives/intermediate-02.html#submission",
+    "title": "Intermediate elective option 2",
+    "section": "Submission",
+    "text": "Submission\nlink to GitHub repo"
+  },
+  {
+    "objectID": "electives/intermediate-02.html#generative-ai-statement-of-use",
+    "href": "electives/intermediate-02.html#generative-ai-statement-of-use",
+    "title": "Intermediate elective option 2",
+    "section": "Generative AI statement of use",
+    "text": "Generative AI statement of use\n\nfull: submitted\nmissing: not submitted, entire assignment marked as missing"
+  },
+  {
     "objectID": "electives/elective-03.html",
     "href": "electives/elective-03.html",
     "title": "Basic elective option 3",
@@ -560,6 +616,41 @@
     "text": "2. Visualizing total abundance as a function of salinity\nIn this problem, you will create a figure visualizing log-transformed abundance as a function of salinity (measured in parts per thousand) to determine how salinity may influence invertebrate abundance (regardless of site).\n\na. Plan your figure\nAt the end of part 2c, you should have a figure:\n\ndepicting log-transformed average abundance/L on the y-axis and salinity on the x-axis\nwith different panels for each taxon in aq_ins_clean with free scales for both axes\nwith each taxon in its own color\n\nProvide a list of values, geometries, and/or arguments that would be appropriate to make a figure matching this description.\n\nx-axis:\ny-axis:\ncolor:\ngeometry:\nfacets:\n\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nTry rendering your .qmd. Double check your .pdf. Fix anything you need to fix.\nThen, stage, commit, and push your change.\n\n\n\n\nb. Wrangle your data\nThe aq_ins_clean data frame will need some further wrangling before you create the figure you described in part 1a.\nIn this section, manipulate the existing aq_ins_clean data frame to create new columns, modify existing columns, and/or select columns to create the figure you outlined in part 1a.\nAdditionally:\n\nmake sure each taxon is in title case\norder taxon levels by maximum abundance\n\nAt the end of your code chunk, display 10 random rows from your data frame using slice_sample().\n\n\n\n\n\n\nReminder: what should each component of the plot be?\n\n\n\nRevisit the directions from 2a and your outline to determine which columns you might keep from the data frame, which columns you might manipulate, and what new columns you might create.\n\n\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nTry rendering your .qmd. Double check your .pdf. Fix anything you need to fix.\nThen, stage, commit, and push your change.\n\n\n\n\nc. Code your figure\nCreate the figure you outlined in part 2a. For full marks:\n\nmake sure the x- and y-axes are labelled in a readable format\nuse a different theme from the default\nuse different colors from the default\ntake out the legend\n\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nTry rendering your .qmd. Double check your .pdf. Fix anything you need to fix.\nThen, stage, commit, and push your change.\n\n\n\n\nd. Interpret your figure\nIn 3-5 sentences, describe differences or similarities between taxa in relationships between abundance and salinity. Be specific using the visual components of the plot.\n\n\nedited 2026-05-06: taking out “each” in directions (write 3-5 sentences maximum)\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nTry rendering your .qmd. Double check your .pdf. Fix anything you need to fix.\nThen, stage, commit, and push your change."
   },
   {
+    "objectID": "assignments/individual-assignment-05.html#visualizing-differences-across-sites-in-major-taxon-abundance-1",
+    "href": "assignments/individual-assignment-05.html#visualizing-differences-across-sites-in-major-taxon-abundance-1",
+    "title": "Individual assignment 5",
+    "section": "1. Visualizing differences across sites in major taxon abundance",
+    "text": "1. Visualizing differences across sites in major taxon abundance\n\na. Plan your figure\n\nexpected format: bullet point list of columns that would roughly correspond to each function/argument\neffective: code structured from this list should produce expected output: plot with correct variables on each axis and correct visual components\n\n\n\nb. Wrangle your data\n\nexpected format: annotated code using pipe operators, readable with line breaks, spaces, etc.\neffective: code should produce expected output: data frame of log-transformed ostracod abundance at each site at each sampling point\nrandom sample of 10 rows in data frame should be shown\n\n\n\nc. Code your figure.\n\nexpected format: annotated code using +, readable with line breaks, spaces, etc.\neffective: all code produces expected output: plot representing differences in median ostracod abundance between sites\nfigure customization:\n\nx- and y-axis labels are clear\ntitle includes taxonomic group\nmedians are represented in a way that is visually distinct from each individual average abundance/L measurement with color, shape size, and shape type\nusing a theme that is different from the ggplot() default\n\n\n\n\nd. Create a multipanel figure\n\nannotated code and output for multipanel figure as shown in example\n\n\n\ne. Interpret your figure\n\ncorrect and logical description of differences between sites in copepod and ostracod abundance\nlogical explanation of how ostracod abundance may relate (or not) to site-level differences in salinity\nspecific reference to visual elements of plots"
+  },
+  {
+    "objectID": "assignments/individual-assignment-05.html#visualizing-total-abundance-as-a-function-of-salinity-1",
+    "href": "assignments/individual-assignment-05.html#visualizing-total-abundance-as-a-function-of-salinity-1",
+    "title": "Individual assignment 5",
+    "section": "Visualizing total abundance as a function of salinity",
+    "text": "Visualizing total abundance as a function of salinity\n\na. Plan your figure\n\nexpected format: bullet point list of columns that would roughly correspond to each function/argument\neffective: code structured from this list should produce expected output: plot with correct variables on each axis and correct visual components\n\n\n\nb. Wrangle your data\n\nexpected format: annotated code using pipe operators, readable with line breaks, spaces, etc.\neffective: code should produce expected output: data frame of log-transformed abundance for each taxon at each site at each sampling date\nrandom sample of 10 rows in data frame should be shown\n\n\n\nc. Code your figure.\n\nexpected format: annotated code using +, readable with line breaks, spaces, etc.\neffective: all code produces expected output: plot representing abundance as a function of salinity for each taxon in dataset\nfigure customization:\n\nx- and y-axis labels are clear\nusing a theme that is different from the ggplot() default\nusing colors that are different from ggplot() defaults\nlegend is removed\n\n\n\n\nd. Interpret your figure\n\nREADME includes required sections (General information, “Data and file information”, “Rendered output”)\nREADME sections filled in with enough information to understand the structure of the repository\nlink to rendered output in README works\nat least 10 commits/pushes with descriptive, concise commit message (be careful with this - if you don’t write a clear description in your commit message, there’s really no going back)"
+  },
+  {
+    "objectID": "assignments/individual-assignment-05.html#general-formatting",
+    "href": "assignments/individual-assignment-05.html#general-formatting",
+    "title": "Individual assignment 5",
+    "section": "General formatting",
+    "text": "General formatting\n\nname, date at top of document\ntitle should be readable\nset up section to read in packages and data\nall code should be included and annotated\ncode and written responses are readable and clearly distinguished from each other\ncode should have line breaks such that all code is visible in rendered .pdf (or edited YAML such that long lines wrap)\nspaces and indents in code are consistent\nall messages and warnings should be hidden"
+  },
+  {
+    "objectID": "assignments/individual-assignment-05.html#submission",
+    "href": "assignments/individual-assignment-05.html#submission",
+    "title": "Individual assignment 5",
+    "section": "Submission",
+    "text": "Submission\n\nlink to GitHub repo"
+  },
+  {
+    "objectID": "assignments/individual-assignment-05.html#generative-ai-statement-of-use",
+    "href": "assignments/individual-assignment-05.html#generative-ai-statement-of-use",
+    "title": "Individual assignment 5",
+    "section": "Generative AI statement of use",
+    "text": "Generative AI statement of use\n\nfull: submitted\nmissing: not submitted, entire assignment marked as missing"
+  },
+  {
     "objectID": "assignments.html",
     "href": "assignments.html",
     "title": "Assignments",
@@ -1027,6 +1118,62 @@
     "title": "Intermediate elective option 1",
     "section": "4. Describe your process",
     "text": "4. Describe your process\nIn 1-3 sentences each, describe:\n\nyour process of using someone else’s code to create a visualization\nchallenges you encountered as you made your visualization\nhow your visualization differs from visualizations you made in class, for assignments, or for a previous elective\n\n\n\n\n\n\n\nStage, commit, and push your changes!\n\n\n\nTry rendering your .qmd. Double check your .pdf. Fix anything you need to fix.\nThen, stage, commit, and push your change."
+  },
+  {
+    "objectID": "electives/intermediate-01.html#explain-your-inspiration-1",
+    "href": "electives/intermediate-01.html#explain-your-inspiration-1",
+    "title": "Intermediate elective option 1",
+    "section": "1. Explain your inspiration",
+    "text": "1. Explain your inspiration\n\nreference to visualization chosen for inspiration\nwhy this visualization makes sense for your dataset given the variables\nwhich variables will be shown in the visualization\nhow variables map onto visual components\nspecific references to inspiration visualization and variables in dataset throughout"
+  },
+  {
+    "objectID": "electives/intermediate-01.html#plan-your-figure-1",
+    "href": "electives/intermediate-01.html#plan-your-figure-1",
+    "title": "Intermediate elective option 1",
+    "section": "2. Plan your figure",
+    "text": "2. Plan your figure\n\nsketch included in document"
+  },
+  {
+    "objectID": "electives/intermediate-01.html#code-your-figure-1",
+    "href": "electives/intermediate-01.html#code-your-figure-1",
+    "title": "Intermediate elective option 1",
+    "section": "3. Code your figure",
+    "text": "3. Code your figure\n\nannotated code for cleaning/wrangling\nannotated code for visualization\noutput is shown clearly without overlapping elements, text, etc.\nfigure represents data accurately\nclear connections in visual elements between inspiration and output"
+  },
+  {
+    "objectID": "electives/intermediate-01.html#describe-your-process.",
+    "href": "electives/intermediate-01.html#describe-your-process.",
+    "title": "Intermediate elective option 1",
+    "section": "4. Describe your process.",
+    "text": "4. Describe your process.\n\ndescription of process to adapting code\ndescription of challenges to making visualization\ncontrasts between output in problem 3 with other visualizations from class\nclear and specific descriptions throughout"
+  },
+  {
+    "objectID": "electives/intermediate-01.html#gitgithub-component",
+    "href": "electives/intermediate-01.html#gitgithub-component",
+    "title": "Intermediate elective option 1",
+    "section": "Git/GitHub component",
+    "text": "Git/GitHub component\n\nREADME includes required sections (General information, “Data and file information”, “Rendered output”)\nREADME sections filled in with enough information to understand the structure of the repository\nlink to rendered output in README works\nREADME should display final rendered figure\nat least 10 commits/pushes with descriptive, concise commit message (be careful with this - if you don’t write a clear description in your commit message, there’s really no going back)"
+  },
+  {
+    "objectID": "electives/intermediate-01.html#general-formatting",
+    "href": "electives/intermediate-01.html#general-formatting",
+    "title": "Intermediate elective option 1",
+    "section": "General formatting",
+    "text": "General formatting\n\nname, date at top of document\ntitle should be readable\nset up section to read in packages and data\nall code should be included and annotated\ncode and written responses are readable and clearly distinguished from each other\ncode should have line breaks such that all code is visible in rendered .pdf (or edited YAML such that long lines wrap)\nspaces and indents in code are consistent\nall messages and warnings should be hidden"
+  },
+  {
+    "objectID": "electives/intermediate-01.html#submission",
+    "href": "electives/intermediate-01.html#submission",
+    "title": "Intermediate elective option 1",
+    "section": "Submission",
+    "text": "Submission\nlink to GitHub repo"
+  },
+  {
+    "objectID": "electives/intermediate-01.html#generative-ai-statement-of-use",
+    "href": "electives/intermediate-01.html#generative-ai-statement-of-use",
+    "title": "Intermediate elective option 1",
+    "section": "Generative AI statement of use",
+    "text": "Generative AI statement of use\n\nfull: submitted\nmissing: not submitted, entire assignment marked as missing"
   },
   {
     "objectID": "system-checks.html",

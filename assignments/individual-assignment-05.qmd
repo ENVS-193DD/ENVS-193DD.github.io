@@ -254,3 +254,88 @@ You will only receive full marks for readability if:
 - text is distinct from in-line code or references to functions/objects (e.g. using backticks to denote functions)
 - bullet point lists appear as expected
 
+# Rubric
+
+## 1. Visualizing differences across sites in major taxon abundance
+
+### a. Plan your figure
+
+- expected format: bullet point list of columns that would roughly correspond to each function/argument
+- effective: code structured from this list should produce expected output: plot with correct variables on each axis and correct visual components
+
+### b. Wrangle your data
+
+- expected format: annotated code using pipe operators, readable with line breaks, spaces, etc. 
+- effective: code should produce expected output: data frame of log-transformed ostracod abundance at each site at each sampling point
+- random sample of 10 rows in data frame should be shown
+
+### c. Code your figure.
+
+- expected format: annotated code using +, readable with line breaks, spaces, etc.
+- effective: all code produces expected output: plot representing differences in median ostracod abundance between sites
+- figure customization:
+    - x- and y-axis labels are clear
+    - title includes taxonomic group
+    - medians are represented in a way that is visually distinct from each individual average abundance/L measurement with color, shape size, and shape type
+    - using a theme that is different from the ggplot() default
+
+### d. Create a multipanel figure
+
+- annotated code and output for multipanel figure as shown in example
+
+### e. Interpret your figure
+
+- correct and logical description of differences between sites in copepod and ostracod abundance
+- logical explanation of how ostracod abundance may relate (or not) to site-level differences in salinity
+- specific reference to visual elements of plots
+
+## Visualizing total abundance as a function of salinity
+
+### a. Plan your figure
+
+- expected format: bullet point list of columns that would roughly correspond to each function/argument
+- effective: code structured from this list should produce expected output: plot with correct variables on each axis and correct visual components
+
+### b. Wrangle your data
+
+- expected format: annotated code using pipe operators, readable with line breaks, spaces, etc. 
+- effective: code should produce expected output: data frame of log-transformed abundance for each taxon at each site at each sampling date
+- random sample of 10 rows in data frame should be shown
+
+### c. Code your figure.
+
+- expected format: annotated code using +, readable with line breaks, spaces, etc.
+- effective: all code produces expected output: plot representing abundance as a function of salinity for each taxon in dataset
+- figure customization:
+    - x- and y-axis labels are clear
+    - using a theme that is different from the ggplot() default
+    - using colors that are different from ggplot() defaults
+    - legend is removed
+
+### d. Interpret your figure
+
+- README includes required sections (General information, "Data and file information", "Rendered output")
+- README sections filled in with enough information to understand the structure of the repository
+- link to rendered output in README works
+- at least 10 commits/pushes with descriptive, concise commit message (be careful with this - if you don't write a clear description in your commit message, there's really no going back)
+
+## General formatting
+
+- name, date at top of document
+- title should be readable
+- set up section to read in packages and data 
+- all code should be included and annotated
+- code and written responses are readable and clearly distinguished from each other
+- code should have line breaks such that all code is visible in rendered .pdf (or edited YAML such that long lines wrap)
+- spaces and indents in code are consistent
+- all messages and warnings should be hidden
+
+## Submission
+
+- link to GitHub repo
+
+## Generative AI statement of use
+
+- full: submitted
+- missing: not submitted, entire assignment marked as missing
+

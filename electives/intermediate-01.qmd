@@ -213,6 +213,65 @@ You will only receive full marks for readability if:
 - text is distinct from in-line code or references to functions/objects (e.g. using backticks to denote functions)
 - bullet point lists appear as expected
 
+# Rubric
+
+## 1. Explain your inspiration
+
+- reference to visualization chosen for inspiration
+- why this visualization makes sense for your dataset given the variables
+- which variables will be shown in the visualization 
+- how variables map onto visual components
+- specific references to inspiration visualization and variables in dataset throughout
+
+## 2. Plan your figure
+
+- sketch included in document
+
+## 3. Code your figure
+
+- annotated code for cleaning/wrangling
+- annotated code for visualization
+- output is shown clearly without overlapping elements, text, etc.
+- figure represents data accurately
+- clear connections in visual elements between inspiration and output
+
+## 4. Describe your process.
+
+- description of process to adapting code
+- description of challenges to making visualization
+- contrasts between output in problem 3 with other visualizations from class
+- clear and specific descriptions throughout
+
+## Git/GitHub component
+
+- README includes required sections (General information, "Data and file information", "Rendered output")
+- README sections filled in with enough information to understand the structure of the repository
+- link to rendered output in README works
+- README should display final rendered figure
+- at least 10 commits/pushes with descriptive, concise commit message (be careful with this - if you don't write a clear description in your commit message, there's really no going back)
+
+
+## General formatting
+
+- name, date at top of document
+- title should be readable
+- set up section to read in packages and data 
+- all code should be included and annotated
+- code and written responses are readable and clearly distinguished from each other
+- code should have line breaks such that all code is visible in rendered .pdf (or edited YAML such that long lines wrap)
+- spaces and indents in code are consistent
+- all messages and warnings should be hidden
+
+## Submission
+
+link to GitHub repo
+
+## Generative AI statement of use
+
+- full: submitted
+- missing: not submitted, entire assignment marked as missing
+
+
 
 
 

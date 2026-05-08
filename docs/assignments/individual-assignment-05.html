@@ -174,7 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">May 6, 2026</p>
+        <p class="date-modified">May 8, 2026</p>
       </div>
     </div>
       
@@ -210,6 +210,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#assignment-checklist" id="toc-assignment-checklist" class="nav-link" data-scroll-target="#assignment-checklist">Assignment checklist</a></li>
   <li><a href="#gitgithub-components" id="toc-gitgithub-components" class="nav-link" data-scroll-target="#gitgithub-components">Git/GitHub components</a></li>
   <li><a href="#general-formatting-components" id="toc-general-formatting-components" class="nav-link" data-scroll-target="#general-formatting-components">General formatting components</a></li>
+  <li><a href="#rubric" id="toc-rubric" class="nav-link" data-scroll-target="#rubric">Rubric</a>
+  <ul>
+  <li><a href="#visualizing-differences-across-sites-in-major-taxon-abundance-1" id="toc-visualizing-differences-across-sites-in-major-taxon-abundance-1" class="nav-link" data-scroll-target="#visualizing-differences-across-sites-in-major-taxon-abundance-1">1. Visualizing differences across sites in major taxon abundance</a>
+  <ul>
+  <li><a href="#a.-plan-your-figure-2" id="toc-a.-plan-your-figure-2" class="nav-link" data-scroll-target="#a.-plan-your-figure-2">a. Plan your figure</a></li>
+  <li><a href="#b.-wrangle-your-data-2" id="toc-b.-wrangle-your-data-2" class="nav-link" data-scroll-target="#b.-wrangle-your-data-2">b. Wrangle your data</a></li>
+  <li><a href="#c.-code-your-figure." id="toc-c.-code-your-figure." class="nav-link" data-scroll-target="#c.-code-your-figure.">c.&nbsp;Code your figure.</a></li>
+  <li><a href="#d.-create-a-multipanel-figure-1" id="toc-d.-create-a-multipanel-figure-1" class="nav-link" data-scroll-target="#d.-create-a-multipanel-figure-1">d.&nbsp;Create a multipanel figure</a></li>
+  <li><a href="#e.-interpret-your-figure-1" id="toc-e.-interpret-your-figure-1" class="nav-link" data-scroll-target="#e.-interpret-your-figure-1">e. Interpret your figure</a></li>
+  </ul></li>
+  <li><a href="#visualizing-total-abundance-as-a-function-of-salinity-1" id="toc-visualizing-total-abundance-as-a-function-of-salinity-1" class="nav-link" data-scroll-target="#visualizing-total-abundance-as-a-function-of-salinity-1">Visualizing total abundance as a function of salinity</a>
+  <ul>
+  <li><a href="#a.-plan-your-figure-3" id="toc-a.-plan-your-figure-3" class="nav-link" data-scroll-target="#a.-plan-your-figure-3">a. Plan your figure</a></li>
+  <li><a href="#b.-wrangle-your-data-3" id="toc-b.-wrangle-your-data-3" class="nav-link" data-scroll-target="#b.-wrangle-your-data-3">b. Wrangle your data</a></li>
+  <li><a href="#c.-code-your-figure.-1" id="toc-c.-code-your-figure.-1" class="nav-link" data-scroll-target="#c.-code-your-figure.-1">c.&nbsp;Code your figure.</a></li>
+  <li><a href="#d.-interpret-your-figure-1" id="toc-d.-interpret-your-figure-1" class="nav-link" data-scroll-target="#d.-interpret-your-figure-1">d.&nbsp;Interpret your figure</a></li>
+  </ul></li>
+  <li><a href="#general-formatting" id="toc-general-formatting" class="nav-link" data-scroll-target="#general-formatting">General formatting</a></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
+  <li><a href="#generative-ai-statement-of-use" id="toc-generative-ai-statement-of-use" class="nav-link" data-scroll-target="#generative-ai-statement-of-use">Generative AI statement of use</a></li>
+  </ul></li>
   </ul>
 </nav>
 </nav>
@@ -590,10 +611,126 @@ Stage, commit, and push your changes!
 <li>text is distinct from in-line code or references to functions/objects (e.g.&nbsp;using backticks to denote functions)</li>
 <li>bullet point lists appear as expected</li>
 </ul>
+</section>
+<section id="rubric" class="level1">
+<h1>Rubric</h1>
+<section id="visualizing-differences-across-sites-in-major-taxon-abundance-1" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-differences-across-sites-in-major-taxon-abundance-1">1. Visualizing differences across sites in major taxon abundance</h2>
+<section id="a.-plan-your-figure-2" class="level3">
+<h3 class="anchored" data-anchor-id="a.-plan-your-figure-2">a. Plan your figure</h3>
+<ul>
+<li>expected format: bullet point list of columns that would roughly correspond to each function/argument</li>
+<li>effective: code structured from this list should produce expected output: plot with correct variables on each axis and correct visual components</li>
+</ul>
+</section>
+<section id="b.-wrangle-your-data-2" class="level3">
+<h3 class="anchored" data-anchor-id="b.-wrangle-your-data-2">b. Wrangle your data</h3>
+<ul>
+<li>expected format: annotated code using pipe operators, readable with line breaks, spaces, etc.</li>
+<li>effective: code should produce expected output: data frame of log-transformed ostracod abundance at each site at each sampling point</li>
+<li>random sample of 10 rows in data frame should be shown</li>
+</ul>
+</section>
+<section id="c.-code-your-figure." class="level3">
+<h3 class="anchored" data-anchor-id="c.-code-your-figure.">c.&nbsp;Code your figure.</h3>
+<ul>
+<li>expected format: annotated code using +, readable with line breaks, spaces, etc.</li>
+<li>effective: all code produces expected output: plot representing differences in median ostracod abundance between sites</li>
+<li>figure customization:
+<ul>
+<li>x- and y-axis labels are clear</li>
+<li>title includes taxonomic group</li>
+<li>medians are represented in a way that is visually distinct from each individual average abundance/L measurement with color, shape size, and shape type</li>
+<li>using a theme that is different from the ggplot() default</li>
+</ul></li>
+</ul>
+</section>
+<section id="d.-create-a-multipanel-figure-1" class="level3">
+<h3 class="anchored" data-anchor-id="d.-create-a-multipanel-figure-1">d.&nbsp;Create a multipanel figure</h3>
+<ul>
+<li>annotated code and output for multipanel figure as shown in example</li>
+</ul>
+</section>
+<section id="e.-interpret-your-figure-1" class="level3">
+<h3 class="anchored" data-anchor-id="e.-interpret-your-figure-1">e. Interpret your figure</h3>
+<ul>
+<li>correct and logical description of differences between sites in copepod and ostracod abundance</li>
+<li>logical explanation of how ostracod abundance may relate (or not) to site-level differences in salinity</li>
+<li>specific reference to visual elements of plots</li>
+</ul>
+</section>
+</section>
+<section id="visualizing-total-abundance-as-a-function-of-salinity-1" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-total-abundance-as-a-function-of-salinity-1">Visualizing total abundance as a function of salinity</h2>
+<section id="a.-plan-your-figure-3" class="level3">
+<h3 class="anchored" data-anchor-id="a.-plan-your-figure-3">a. Plan your figure</h3>
+<ul>
+<li>expected format: bullet point list of columns that would roughly correspond to each function/argument</li>
+<li>effective: code structured from this list should produce expected output: plot with correct variables on each axis and correct visual components</li>
+</ul>
+</section>
+<section id="b.-wrangle-your-data-3" class="level3">
+<h3 class="anchored" data-anchor-id="b.-wrangle-your-data-3">b. Wrangle your data</h3>
+<ul>
+<li>expected format: annotated code using pipe operators, readable with line breaks, spaces, etc.</li>
+<li>effective: code should produce expected output: data frame of log-transformed abundance for each taxon at each site at each sampling date</li>
+<li>random sample of 10 rows in data frame should be shown</li>
+</ul>
+</section>
+<section id="c.-code-your-figure.-1" class="level3">
+<h3 class="anchored" data-anchor-id="c.-code-your-figure.-1">c.&nbsp;Code your figure.</h3>
+<ul>
+<li>expected format: annotated code using +, readable with line breaks, spaces, etc.</li>
+<li>effective: all code produces expected output: plot representing abundance as a function of salinity for each taxon in dataset</li>
+<li>figure customization:
+<ul>
+<li>x- and y-axis labels are clear</li>
+<li>using a theme that is different from the ggplot() default</li>
+<li>using colors that are different from ggplot() defaults</li>
+<li>legend is removed</li>
+</ul></li>
+</ul>
+</section>
+<section id="d.-interpret-your-figure-1" class="level3">
+<h3 class="anchored" data-anchor-id="d.-interpret-your-figure-1">d.&nbsp;Interpret your figure</h3>
+<ul>
+<li>README includes required sections (General information, “Data and file information”, “Rendered output”)</li>
+<li>README sections filled in with enough information to understand the structure of the repository</li>
+<li>link to rendered output in README works</li>
+<li>at least 10 commits/pushes with descriptive, concise commit message (be careful with this - if you don’t write a clear description in your commit message, there’s really no going back)</li>
+</ul>
+</section>
+</section>
+<section id="general-formatting" class="level2">
+<h2 class="anchored" data-anchor-id="general-formatting">General formatting</h2>
+<ul>
+<li>name, date at top of document</li>
+<li>title should be readable</li>
+<li>set up section to read in packages and data</li>
+<li>all code should be included and annotated</li>
+<li>code and written responses are readable and clearly distinguished from each other</li>
+<li>code should have line breaks such that all code is visible in rendered .pdf (or edited YAML such that long lines wrap)</li>
+<li>spaces and indents in code are consistent</li>
+<li>all messages and warnings should be hidden</li>
+</ul>
+</section>
+<section id="submission" class="level2">
+<h2 class="anchored" data-anchor-id="submission">Submission</h2>
+<ul>
+<li>link to GitHub repo</li>
+</ul>
+</section>
+<section id="generative-ai-statement-of-use" class="level2">
+<h2 class="anchored" data-anchor-id="generative-ai-statement-of-use">Generative AI statement of use</h2>
+<ul>
+<li>full: submitted</li>
+<li>missing: not submitted, entire assignment marked as missing</li>
+</ul>
 
 
 <!-- -->
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1311,10 +1448,95 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-252"><a href="#cb1-252" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>headers are used correctly throughout document</span>
 <span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>text is formatted correctly (for example, superscripts/subscripts appear correctly)</span>
 <span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>text is distinct from in-line code or references to functions/objects (e.g. using backticks to denote functions)</span>
-<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>bullet point lists appear as expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>bullet point lists appear as expected</span>
+<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a><span class="fu"># Rubric</span></span>
+<span id="cb1-258"><a href="#cb1-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1. Visualizing differences across sites in major taxon abundance</span></span>
+<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a><span class="fu">### a. Plan your figure</span></span>
+<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-263"><a href="#cb1-263" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>expected format: bullet point list of columns that would roughly correspond to each function/argument</span>
+<span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>effective: code structured from this list should produce expected output: plot with correct variables on each axis and correct visual components</span>
+<span id="cb1-265"><a href="#cb1-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a><span class="fu">### b. Wrangle your data</span></span>
+<span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>expected format: annotated code using pipe operators, readable with line breaks, spaces, etc. </span>
+<span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>effective: code should produce expected output: data frame of log-transformed ostracod abundance at each site at each sampling point</span>
+<span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>random sample of 10 rows in data frame should be shown</span>
+<span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a><span class="fu">### c. Code your figure.</span></span>
+<span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>expected format: annotated code using +, readable with line breaks, spaces, etc.</span>
+<span id="cb1-275"><a href="#cb1-275" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>effective: all code produces expected output: plot representing differences in median ostracod abundance between sites</span>
+<span id="cb1-276"><a href="#cb1-276" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>figure customization:</span>
+<span id="cb1-277"><a href="#cb1-277" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>x- and y-axis labels are clear</span>
+<span id="cb1-278"><a href="#cb1-278" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>title includes taxonomic group</span>
+<span id="cb1-279"><a href="#cb1-279" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>medians are represented in a way that is visually distinct from each individual average abundance/L measurement with color, shape size, and shape type</span>
+<span id="cb1-280"><a href="#cb1-280" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>using a theme that is different from the ggplot() default</span>
+<span id="cb1-281"><a href="#cb1-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-282"><a href="#cb1-282" aria-hidden="true" tabindex="-1"></a><span class="fu">### d. Create a multipanel figure</span></span>
+<span id="cb1-283"><a href="#cb1-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-284"><a href="#cb1-284" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>annotated code and output for multipanel figure as shown in example</span>
+<span id="cb1-285"><a href="#cb1-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-286"><a href="#cb1-286" aria-hidden="true" tabindex="-1"></a><span class="fu">### e. Interpret your figure</span></span>
+<span id="cb1-287"><a href="#cb1-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-288"><a href="#cb1-288" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>correct and logical description of differences between sites in copepod and ostracod abundance</span>
+<span id="cb1-289"><a href="#cb1-289" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>logical explanation of how ostracod abundance may relate (or not) to site-level differences in salinity</span>
+<span id="cb1-290"><a href="#cb1-290" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>specific reference to visual elements of plots</span>
+<span id="cb1-291"><a href="#cb1-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-292"><a href="#cb1-292" aria-hidden="true" tabindex="-1"></a><span class="fu">## Visualizing total abundance as a function of salinity</span></span>
+<span id="cb1-293"><a href="#cb1-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-294"><a href="#cb1-294" aria-hidden="true" tabindex="-1"></a><span class="fu">### a. Plan your figure</span></span>
+<span id="cb1-295"><a href="#cb1-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-296"><a href="#cb1-296" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>expected format: bullet point list of columns that would roughly correspond to each function/argument</span>
+<span id="cb1-297"><a href="#cb1-297" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>effective: code structured from this list should produce expected output: plot with correct variables on each axis and correct visual components</span>
+<span id="cb1-298"><a href="#cb1-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-299"><a href="#cb1-299" aria-hidden="true" tabindex="-1"></a><span class="fu">### b. Wrangle your data</span></span>
+<span id="cb1-300"><a href="#cb1-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-301"><a href="#cb1-301" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>expected format: annotated code using pipe operators, readable with line breaks, spaces, etc. </span>
+<span id="cb1-302"><a href="#cb1-302" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>effective: code should produce expected output: data frame of log-transformed abundance for each taxon at each site at each sampling date</span>
+<span id="cb1-303"><a href="#cb1-303" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>random sample of 10 rows in data frame should be shown</span>
+<span id="cb1-304"><a href="#cb1-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-305"><a href="#cb1-305" aria-hidden="true" tabindex="-1"></a><span class="fu">### c. Code your figure.</span></span>
+<span id="cb1-306"><a href="#cb1-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-307"><a href="#cb1-307" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>expected format: annotated code using +, readable with line breaks, spaces, etc.</span>
+<span id="cb1-308"><a href="#cb1-308" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>effective: all code produces expected output: plot representing abundance as a function of salinity for each taxon in dataset</span>
+<span id="cb1-309"><a href="#cb1-309" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>figure customization:</span>
+<span id="cb1-310"><a href="#cb1-310" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>x- and y-axis labels are clear</span>
+<span id="cb1-311"><a href="#cb1-311" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>using a theme that is different from the ggplot() default</span>
+<span id="cb1-312"><a href="#cb1-312" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>using colors that are different from ggplot() defaults</span>
+<span id="cb1-313"><a href="#cb1-313" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>legend is removed</span>
+<span id="cb1-314"><a href="#cb1-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-315"><a href="#cb1-315" aria-hidden="true" tabindex="-1"></a><span class="fu">### d. Interpret your figure</span></span>
+<span id="cb1-316"><a href="#cb1-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-317"><a href="#cb1-317" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>README includes required sections (General information, "Data and file information", "Rendered output")</span>
+<span id="cb1-318"><a href="#cb1-318" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>README sections filled in with enough information to understand the structure of the repository</span>
+<span id="cb1-319"><a href="#cb1-319" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>link to rendered output in README works</span>
+<span id="cb1-320"><a href="#cb1-320" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>at least 10 commits/pushes with descriptive, concise commit message (be careful with this - if you don't write a clear description in your commit message, there's really no going back)</span>
+<span id="cb1-321"><a href="#cb1-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-322"><a href="#cb1-322" aria-hidden="true" tabindex="-1"></a><span class="fu">## General formatting</span></span>
+<span id="cb1-323"><a href="#cb1-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-324"><a href="#cb1-324" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>name, date at top of document</span>
+<span id="cb1-325"><a href="#cb1-325" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>title should be readable</span>
+<span id="cb1-326"><a href="#cb1-326" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>set up section to read in packages and data </span>
+<span id="cb1-327"><a href="#cb1-327" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>all code should be included and annotated</span>
+<span id="cb1-328"><a href="#cb1-328" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>code and written responses are readable and clearly distinguished from each other</span>
+<span id="cb1-329"><a href="#cb1-329" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>code should have line breaks such that all code is visible in rendered .pdf (or edited YAML such that long lines wrap)</span>
+<span id="cb1-330"><a href="#cb1-330" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>spaces and indents in code are consistent</span>
+<span id="cb1-331"><a href="#cb1-331" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>all messages and warnings should be hidden</span>
+<span id="cb1-332"><a href="#cb1-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-333"><a href="#cb1-333" aria-hidden="true" tabindex="-1"></a><span class="fu">## Submission</span></span>
+<span id="cb1-334"><a href="#cb1-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-335"><a href="#cb1-335" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>link to GitHub repo</span>
+<span id="cb1-336"><a href="#cb1-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-337"><a href="#cb1-337" aria-hidden="true" tabindex="-1"></a><span class="fu">## Generative AI statement of use</span></span>
+<span id="cb1-338"><a href="#cb1-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-339"><a href="#cb1-339" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>full: submitted</span>
+<span id="cb1-340"><a href="#cb1-340" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>missing: not submitted, entire assignment marked as missing</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom","loop":false});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","loop":false});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
