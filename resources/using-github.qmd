@@ -2,6 +2,9 @@
 title: "Git/GitHub basics"
 description: "cloning, committing, pushing, forking, pulling"
 categories: [git, github]
+format: 
+  html: 
+    syntax-highlighting: arrow
 ---
 
 :::{.callout-note}
@@ -463,6 +466,130 @@ Pull prior to committing.
 Then push!
 
 ![](/resources/images/github/68_push.png){width=80%}
+
+## Getting changes into your forked repository
+
+Sometimes you will have forked a repository and made your own changes to files. Once there is a change in the original ("upstream") repository, you may want to incorporate those changes into your own fork without losing your changes.
+
+### Verifying that there have been changes to the repository
+
+When you have made a change and the "upstream" has made a change, your remote fork will show you something like this:
+
+![](/resources/images/github/upstream-changes/02_remote-diff.png){width=80%}
+
+Some number of commits "behind" means that there have been changes to the original repo that you do not have in your fork.
+
+### Check your connection to remote repositories.
+
+In RStudio, navigate to the Terminal.
+
+To check connections to remote repos, type:
+
+```bash
+git remote -v
+```
+
+You should see an output that shows "push" (where you push changes to) and "fetch" (where you get changes _from_).
+
+![](/resources/images/github/upstream-changes/03_init-remote-v.png){width=80%}
+
+### Set the upstream repo.
+
+In this step, you have to tell git which repository is the "upstream" repository from your fork.
+
+Find the git url for the _original_ repository by visiting the page for the original repo and copying the url from the green "Code" button.
+
+Back in the RStudio terminal, type `git remote add`, add a space, and paste the URL. Your command should look like:
+
+```bash
+git remote add https://github.com/REPO-OWNER/REPO-NAME.git
+```
+
+Hit enter/return.
+
+Double check that you have correctly added the upstream repo by running:
+
+```bash
+git remote -v
+```
+
+You should now see the upstream repo in the output.
+
+![](/resources/images/github/upstream-changes/04_add-upstream.png){width=80%}
+
+### Fetch changes from the upstream
+
+Get the new changes from the upstream repository by running:
+
+```bash
+git fetch upstream
+```
+
+git is now understanding that there are new changes from the upstream repo.
+
+![](/resources/images/github/upstream-changes/05_git-fetch-upstream.png){width=80%}
+
+### Merge changes from the upstream
+
+To incorporate changes from the upstream repo, run:
+
+```bash
+git merge upstream/main
+```
+
+![](/resources/images/github/upstream-changes/06_git-merge-upstream-main.png){width=80%}
+
+**Note:** When you run this command, you will see different outputs in the Terminal prompting you to write a commit message. What you see depends on your operating system, so don't panic if you see something different.
+
+Toggle to see the two options.
+
+:::{.panel-tabset}
+#### Option 1: Vim
+
+You may see something like this:
+
+![](/resources/images/github/upstream-changes/06a_vim.png){width=80%}
+
+You can edit the commit message (at the top of the output: "Merge remote-tracking branch upstream/main"), or you can leave as is.
+
+Hit `Ctrl` + `C`. Once you do so, you should see a message at the bottom that states: `Type :qa and press <Enter> to exit Vim`.
+
+Type `:qa` and press Enter/Return.
+
+You should then be led back to what looks like a normal Terminal window.
+
+![](/resources/images/github/upstream-changes/06b_return-from-vim.png){width=80%}
+
+Then, **PUSH** those changes.
+
+#### Option 2: Pico
+
+You may see something like this:
+
+![](/resources/images/github/upstream-changes/06c_pico.png){width=80%}
+
+You can edit the commit message (at the top of the output: "Merge remote-tracking branch upstream/main"), or you can leave as is.
+
+Hit `Ctrl` + `X`.
+
+You should then be led back to what looks like a normal Terminal window.
+
+![](/resources/images/github/upstream-changes/06d_return-from-pico.png){width=80%}
+
+Then, **PUSH** those changes.
+
+:::
+
+**You have successfully incorporated changes from the upstream repo and pushed those changes to your own fork.**
+
+### Looking at the commit history
+
+On your own commit history, you will be able to see the commits from the upstream repo describing the change and your own commit from merging those changes into your repository.
+
+
+![](/resources/images/github/upstream-changes/07_commit-history.png){width=80%}
+
+
 
 
 
