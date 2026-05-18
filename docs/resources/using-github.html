@@ -193,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">May 12, 2026</p>
+        <p class="date-modified">May 18, 2026</p>
       </div>
     </div>
       
@@ -738,8 +738,8 @@ Source credit
 <h3 class="anchored" data-anchor-id="set-the-upstream-repo.">Set the upstream repo.</h3>
 <p>In this step, you have to tell git which repository is the “upstream” repository from your fork.</p>
 <p>Find the git url for the <em>original</em> repository by visiting the page for the original repo and copying the url from the green “Code” button.</p>
-<p>Back in the RStudio terminal, type <code>git remote add</code>, add a space, and paste the URL. Your command should look like:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add https://github.com/REPO-OWNER/REPO-NAME.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Back in the RStudio terminal, type <code>git remote add upstream</code>, add a space, and paste the URL. Your command should look like:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add upstream https://github.com/REPO-OWNER/REPO-NAME.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Hit enter/return.</p>
 <p>Double check that you have correctly added the upstream repo by running:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1749,10 +1749,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb6-489"><a href="#cb6-489" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-490"><a href="#cb6-490" aria-hidden="true" tabindex="-1"></a>Find the git url for the _original_ repository by visiting the page for the original repo and copying the url from the green "Code" button.</span>
 <span id="cb6-491"><a href="#cb6-491" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-492"><a href="#cb6-492" aria-hidden="true" tabindex="-1"></a>Back in the RStudio terminal, type <span class="in">`git remote add`</span>, add a space, and paste the URL. Your command should look like:</span>
+<span id="cb6-492"><a href="#cb6-492" aria-hidden="true" tabindex="-1"></a>Back in the RStudio terminal, type <span class="in">`git remote add upstream`</span>, add a space, and paste the URL. Your command should look like:</span>
 <span id="cb6-493"><a href="#cb6-493" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-494"><a href="#cb6-494" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb6-495"><a href="#cb6-495" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add https://github.com/REPO-OWNER/REPO-NAME.git</span>
+<span id="cb6-495"><a href="#cb6-495" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add upstream https://github.com/REPO-OWNER/REPO-NAME.git</span>
 <span id="cb6-496"><a href="#cb6-496" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb6-497"><a href="#cb6-497" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-498"><a href="#cb6-498" aria-hidden="true" tabindex="-1"></a>Hit enter/return.</span>
@@ -1850,7 +1850,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb6-590"><a href="#cb6-590" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

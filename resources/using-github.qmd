@@ -489,10 +489,10 @@ In this step, you have to tell git which repository is the "upstream" repository
 
 Find the git url for the _original_ repository by visiting the page for the original repo and copying the url from the green "Code" button.
 
-Back in the RStudio terminal, type `git remote add`, add a space, and paste the URL. Your command should look like:
+Back in the RStudio terminal, type `git remote add upstream`, add a space, and paste the URL. Your command should look like:
 
 ```bash
-git remote add https://github.com/REPO-OWNER/REPO-NAME.git
+git remote add upstream https://github.com/REPO-OWNER/REPO-NAME.git
 ```
 
 Hit enter/return.
