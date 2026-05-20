@@ -2,6 +2,7 @@
   {
     "listing": "/resources.html",
     "items": [
+      "/resources/adding-citations.html",
       "/resources/resubmissions.html",
       "/resources/git-prechecks.html",
       "/resources/storing-personal-access-token.html",
@@ -11,14 +12,13 @@
     ]
   },
   {
-    "listing": "/assignments.html",
+    "listing": "/in-class-materials.html",
     "items": [
-      "/assignments/getting-set-up.html",
-      "/assignments/individual-assignment-01.html",
-      "/assignments/individual-assignment-02.html",
-      "/assignments/individual-assignment-03.html",
-      "/assignments/individual-assignment-04.html",
-      "/assignments/individual-assignment-05.html"
+      "/in-class-materials/week-01.html",
+      "/in-class-materials/week-02.html",
+      "/in-class-materials/week-03.html",
+      "/in-class-materials/week-04.html",
+      "/in-class-materials/week-05.html"
     ]
   },
   {
@@ -33,13 +33,14 @@
     ]
   },
   {
-    "listing": "/in-class-materials.html",
+    "listing": "/assignments.html",
     "items": [
-      "/in-class-materials/week-01.html",
-      "/in-class-materials/week-02.html",
-      "/in-class-materials/week-03.html",
-      "/in-class-materials/week-04.html",
-      "/in-class-materials/week-05.html"
+      "/assignments/getting-set-up.html",
+      "/assignments/individual-assignment-01.html",
+      "/assignments/individual-assignment-02.html",
+      "/assignments/individual-assignment-03.html",
+      "/assignments/individual-assignment-04.html",
+      "/assignments/individual-assignment-05.html"
     ]
   }
 ]
